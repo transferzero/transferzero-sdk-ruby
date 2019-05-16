@@ -186,8 +186,6 @@ module TransferZero
     # @param headers The request header
     #
     # @return boolean
-    #
-
     def validate_webhook_request(url, body, headers)
       nonce = headers[:'Authorization-Nonce'] || headers['Authorization-Nonce']
       signature = headers[:'Authorization-Signature'] || headers['Authorization-Signature']
