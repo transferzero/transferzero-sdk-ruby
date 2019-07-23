@@ -15,10 +15,10 @@ require 'date'
 module TransferZero
   # Debits are used to fund transactions from your internal TransferZero balance.
   class Debit
-    # The amount to be debited from your account.  The “amount” parameter is optional - - if included, it must equal the amount required to fund the transaction. - if omitted, it will default to the amount required to fund the transaction. 
+    # The amount to be debited from your account.  The \"amount\" parameter is optional - - if included, it must equal the amount required to fund the transaction. - if omitted, it will default to the amount required to fund the transaction. 
     attr_accessor :amount
 
-    # The currency of the amount in 3-character alpha ISO 4217 currency format
+    # The currency of the amount in 3-character alpha ISO 4217 currency format.  The \"currency\" parameter is optional - if omitted, it will default to the payin currency of the transaction. - it can be added in as an additional check to ensure that the expected currency is used. (an error will be given back if it does not match up with the payin currency of the transaction) 
     attr_accessor :currency
 
     # Describes what the debit is funding
@@ -138,10 +138,6 @@ module TransferZero
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @currency.nil?
-        invalid_properties.push('invalid value for "currency", currency cannot be nil.')
-      end
-
       if @to_type.nil?
         invalid_properties.push('invalid value for "to_type", to_type cannot be nil.')
       end
@@ -156,7 +152,6 @@ module TransferZero
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @currency.nil?
       return false if @to_type.nil?
       return false if @to_id.nil?
       true

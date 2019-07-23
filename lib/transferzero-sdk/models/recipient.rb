@@ -32,6 +32,9 @@ module TransferZero
     # Shows whether the recipient can be edited using the PATCH /v1/recipients/{id} endpoint or not
     attr_accessor :editable
 
+    # Shows whether the transaction made to the recipient can be retried or not
+    attr_accessor :retriable
+
     # Shows how much this payment is worth in USD
     attr_accessor :input_usd_amount
 
@@ -80,6 +83,7 @@ module TransferZero
         :'metadata' => :'metadata',
         :'created_at' => :'created_at',
         :'editable' => :'editable',
+        :'retriable' => :'retriable',
         :'input_usd_amount' => :'input_usd_amount',
         :'may_cancel' => :'may_cancel',
         :'state_reason' => :'state_reason',
@@ -106,6 +110,7 @@ module TransferZero
         :'metadata' => :'Object',
         :'created_at' => :'DateTime',
         :'editable' => :'Boolean',
+        :'retriable' => :'Boolean',
         :'input_usd_amount' => :'Float',
         :'may_cancel' => :'Boolean',
         :'state_reason' => :'String',
@@ -160,6 +165,10 @@ module TransferZero
 
       if attributes.key?(:'editable')
         self.editable = attributes[:'editable']
+      end
+
+      if attributes.key?(:'retriable')
+        self.retriable = attributes[:'retriable']
       end
 
       if attributes.key?(:'input_usd_amount')
@@ -260,6 +269,7 @@ module TransferZero
           metadata == o.metadata &&
           created_at == o.created_at &&
           editable == o.editable &&
+          retriable == o.retriable &&
           input_usd_amount == o.input_usd_amount &&
           may_cancel == o.may_cancel &&
           state_reason == o.state_reason &&
@@ -285,7 +295,7 @@ module TransferZero
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [requested_amount, requested_currency, payout_method, metadata, created_at, editable, input_usd_amount, may_cancel, state_reason, state, transaction_id, transaction_state, exchange_rate, fee_fractional, input_amount, input_currency, output_amount, output_currency, id, errors].hash
+      [requested_amount, requested_currency, payout_method, metadata, created_at, editable, retriable, input_usd_amount, may_cancel, state_reason, state, transaction_id, transaction_state, exchange_rate, fee_fractional, input_amount, input_currency, output_amount, output_currency, id, errors].hash
     end
 
 require 'active_support/core_ext/hash'

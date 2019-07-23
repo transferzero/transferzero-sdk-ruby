@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **metadata** | [**Object**](.md) | Additional metadata that can be added to a recipient. These values will be returned on request | [optional] 
 **created_at** | **DateTime** | Date and time that the recipient was created. | [optional] 
 **editable** | **Boolean** | Shows whether the recipient can be edited using the PATCH /v1/recipients/{id} endpoint or not | [optional] 
+**retriable** | **Boolean** | Shows whether the transaction made to the recipient can be retried or not | [optional] 
 **input_usd_amount** | **Float** | Shows how much this payment is worth in USD | [optional] 
 **may_cancel** | **Boolean** | Shows whether the payment can be cancelled using the DELETE /v1/recipients/{id} endpoint or not. The payment can not be cancelled if the payout is pending. | [optional] 
 **state_reason** | **String** | In case the payment is unsuccessful it holds the error message associated with the last unsuccessful payout. | [optional] 
@@ -35,9 +36,10 @@ instance = TransferZero::Recipient.new(requested_amount: 750.0,
                                  payout_method: null,
                                  metadata: {},
                                  created_at: null,
-                                 editable: null,
+                                 editable: true,
+                                 retriable: true,
                                  input_usd_amount: 10,
-                                 may_cancel: null,
+                                 may_cancel: true,
                                  state_reason: null,
                                  state: null,
                                  transaction_id: 97e79719-06e4-4794-aeeb-d2d9415d983a,
