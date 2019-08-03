@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **margin** | **String** | The margin set for transactions in this currency | [optional] 
 **usd_equivalent** | **String** | The equivalent of the currency to 1 USD | [optional] 
 **rate** | **Float** | The rate of this particular currency with the base one | [optional] 
+**mtm_rate** | **Float** | Mark to market rate of this particular currency against the base one with the margin factored in | [optional] 
 
 ## Code Sample
 
@@ -26,12 +27,13 @@ instance = TransferZero::CurrencyOpposite.new(code: NGN,
                                  symbol: ₦,
                                  decimals: 2,
                                  subunit_to_unit: 100,
-                                 primary: true,
+                                 primary: null,
                                  min: 100,
                                  max: 50000000,
                                  margin: null,
                                  usd_equivalent: null,
-                                 rate: null)
+                                 rate: null,
+                                 mtm_rate: null)
 ```
 
 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 require 'TransferZero'
 
 instance = TransferZero::FieldSelectValidation.new(_in: {&quot;20&quot;:&quot;Current&quot;,&quot;10&quot;:&quot;Savings&quot;},
-                                 allow_blank: false)
+                                 allow_blank: null)
 ```
 
 

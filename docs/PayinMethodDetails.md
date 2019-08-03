@@ -15,7 +15,7 @@ require 'TransferZero'
 
 instance = TransferZero::PayinMethodDetails.new(redirect_url: null,
                                  phone_number: +2569999999,
-                                 send_instructions: true)
+                                 send_instructions: null)
 ```
 
 

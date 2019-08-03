@@ -67,7 +67,7 @@ end
 
 
 # **info_currencies_in**
-> CurrencyExchangeListResponse info_currencies_in
+> CurrencyExchangeListResponse info_currencies_in(opts)
 
 Getting a list of possible input currencies
 
@@ -80,9 +80,13 @@ require 'transferzero-sdk'
 
 api_instance = TransferZero::CurrencyInfoApi.new
 
+opts = { 
+  sender_id: 'sender_id_example' # String | Allows the scoping of the results by `sender_id` (optional).  Example: `/v1/info/currencies/in?sender_id=26ec8517-2f0d-48c0-b74f-0bccb9ab3a87`
+}
+
 begin
   #Getting a list of possible input currencies
-  result = api_instance.info_currencies_in
+  result = api_instance.info_currencies_in(opts)
   p result
 rescue TransferZero::ApiError => e
   if e.validation_error
@@ -96,7 +100,10 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sender_id** | [**String**](.md)| Allows the scoping of the results by &#x60;sender_id&#x60; (optional).  Example: &#x60;/v1/info/currencies/in?sender_id&#x3D;26ec8517-2f0d-48c0-b74f-0bccb9ab3a87&#x60; | [optional] 
 
 ### Return type
 
@@ -124,7 +131,7 @@ end
 
 
 # **info_currencies_out**
-> CurrencyExchangeListResponse info_currencies_out
+> CurrencyExchangeListResponse info_currencies_out(opts)
 
 Getting a list of possible output currencies
 
@@ -137,9 +144,13 @@ require 'transferzero-sdk'
 
 api_instance = TransferZero::CurrencyInfoApi.new
 
+opts = { 
+  sender_id: 'sender_id_example' # String | Allows the scoping of the results by `sender_id` (optional).  Example: `/v1/info/currencies/out?sender_id=26ec8517-2f0d-48c0-b74f-0bccb9ab3a87`
+}
+
 begin
   #Getting a list of possible output currencies
-  result = api_instance.info_currencies_out
+  result = api_instance.info_currencies_out(opts)
   p result
 rescue TransferZero::ApiError => e
   if e.validation_error
@@ -153,7 +164,10 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sender_id** | [**String**](.md)| Allows the scoping of the results by &#x60;sender_id&#x60; (optional).  Example: &#x60;/v1/info/currencies/out?sender_id&#x3D;26ec8517-2f0d-48c0-b74f-0bccb9ab3a87&#x60; | [optional] 
 
 ### Return type
 

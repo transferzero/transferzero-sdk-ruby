@@ -47,6 +47,9 @@ module TransferZero
     # The rate of this particular currency with the base one
     attr_accessor :rate
 
+    # Mark to market rate of this particular currency against the base one with the margin factored in
+    attr_accessor :mtm_rate
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -60,7 +63,8 @@ module TransferZero
         :'max' => :'max',
         :'margin' => :'margin',
         :'usd_equivalent' => :'usd_equivalent',
-        :'rate' => :'rate'
+        :'rate' => :'rate',
+        :'mtm_rate' => :'mtm_rate'
       }
     end
 
@@ -77,15 +81,15 @@ module TransferZero
         :'max' => :'String',
         :'margin' => :'String',
         :'usd_equivalent' => :'String',
-        :'rate' => :'Float'
+        :'rate' => :'Float',
+        :'mtm_rate' => :'Float'
       }
     end
 
     # List of class defined in allOf (OpenAPI v3)
     def self.openapi_all_of
       [
-      :'Currency',
-      :'CurrencyOppositeAllOf'
+      :'Currency'
       ]
     end
 
@@ -147,6 +151,10 @@ module TransferZero
       if attributes.key?(:'rate')
         self.rate = attributes[:'rate']
       end
+
+      if attributes.key?(:'mtm_rate')
+        self.mtm_rate = attributes[:'mtm_rate']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -177,7 +185,8 @@ module TransferZero
           max == o.max &&
           margin == o.margin &&
           usd_equivalent == o.usd_equivalent &&
-          rate == o.rate
+          rate == o.rate &&
+          mtm_rate == o.mtm_rate
     end
 
     # @see the `==` method
@@ -189,7 +198,7 @@ module TransferZero
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [code, name, symbol, decimals, subunit_to_unit, primary, min, max, margin, usd_equivalent, rate].hash
+      [code, name, symbol, decimals, subunit_to_unit, primary, min, max, margin, usd_equivalent, rate, mtm_rate].hash
     end
 
 require 'active_support/core_ext/hash'

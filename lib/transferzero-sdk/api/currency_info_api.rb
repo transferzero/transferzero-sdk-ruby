@@ -72,6 +72,7 @@ module TransferZero
     # Getting a list of possible input currencies
     # Fetches a list of currencies available to use as the input currency in other API requests. Usually the 3-character alpha ISO 4217 currency code (eg. USD) is used as the identifier. Use this endpoint to determine the current exchange rate from a specific input currency to any output currency that's available. 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :sender_id Allows the scoping of the results by &#x60;sender_id&#x60; (optional).  Example: &#x60;/v1/info/currencies/in?sender_id&#x3D;26ec8517-2f0d-48c0-b74f-0bccb9ab3a87&#x60;
     # @return [CurrencyExchangeListResponse]
     def info_currencies_in(opts = {})
       data, _status_code, _headers = info_currencies_in_with_http_info(opts)
@@ -81,6 +82,7 @@ module TransferZero
     # Getting a list of possible input currencies
     # Fetches a list of currencies available to use as the input currency in other API requests. Usually the 3-character alpha ISO 4217 currency code (eg. USD) is used as the identifier. Use this endpoint to determine the current exchange rate from a specific input currency to any output currency that&#39;s available. 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :sender_id Allows the scoping of the results by &#x60;sender_id&#x60; (optional).  Example: &#x60;/v1/info/currencies/in?sender_id&#x3D;26ec8517-2f0d-48c0-b74f-0bccb9ab3a87&#x60;
     # @return [Array<(CurrencyExchangeListResponse, Fixnum, Hash)>] CurrencyExchangeListResponse data, response status code and response headers
     def info_currencies_in_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -91,6 +93,7 @@ module TransferZero
 
       # query parameters
       query_params = {}
+      query_params[:'sender_id'] = opts[:'sender_id'] if !opts[:'sender_id'].nil?
 
       # header parameters
       header_params = {}
@@ -120,6 +123,7 @@ module TransferZero
     # Getting a list of possible output currencies
     # Fetches a list of currencies available to use as the output currency and their exchange rates against the available input currencies. Usually the 3-character alpha ISO 4217 currency code (eg. USD) is used as the identifier. 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :sender_id Allows the scoping of the results by &#x60;sender_id&#x60; (optional).  Example: &#x60;/v1/info/currencies/out?sender_id&#x3D;26ec8517-2f0d-48c0-b74f-0bccb9ab3a87&#x60;
     # @return [CurrencyExchangeListResponse]
     def info_currencies_out(opts = {})
       data, _status_code, _headers = info_currencies_out_with_http_info(opts)
@@ -129,6 +133,7 @@ module TransferZero
     # Getting a list of possible output currencies
     # Fetches a list of currencies available to use as the output currency and their exchange rates against the available input currencies. Usually the 3-character alpha ISO 4217 currency code (eg. USD) is used as the identifier. 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :sender_id Allows the scoping of the results by &#x60;sender_id&#x60; (optional).  Example: &#x60;/v1/info/currencies/out?sender_id&#x3D;26ec8517-2f0d-48c0-b74f-0bccb9ab3a87&#x60;
     # @return [Array<(CurrencyExchangeListResponse, Fixnum, Hash)>] CurrencyExchangeListResponse data, response status code and response headers
     def info_currencies_out_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -139,6 +144,7 @@ module TransferZero
 
       # query parameters
       query_params = {}
+      query_params[:'sender_id'] = opts[:'sender_id'] if !opts[:'sender_id'].nil?
 
       # header parameters
       header_params = {}
