@@ -17,17 +17,22 @@ module TransferZero
     # The rate of this particular currency with the base one
     attr_accessor :rate
 
+    # Mark to market rate of this particular currency against the base one with the margin factored in
+    attr_accessor :mtm_rate
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'rate' => :'rate'
+        :'rate' => :'rate',
+        :'mtm_rate' => :'mtm_rate'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'rate' => :'Float'
+        :'rate' => :'Float',
+        :'mtm_rate' => :'Float'
       }
     end
 
@@ -49,6 +54,10 @@ module TransferZero
       if attributes.key?(:'rate')
         self.rate = attributes[:'rate']
       end
+
+      if attributes.key?(:'mtm_rate')
+        self.mtm_rate = attributes[:'mtm_rate']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -69,7 +78,8 @@ module TransferZero
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          rate == o.rate
+          rate == o.rate &&
+          mtm_rate == o.mtm_rate
     end
 
     # @see the `==` method
@@ -81,7 +91,7 @@ module TransferZero
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [rate].hash
+      [rate, mtm_rate].hash
     end
 
 require 'active_support/core_ext/hash'
