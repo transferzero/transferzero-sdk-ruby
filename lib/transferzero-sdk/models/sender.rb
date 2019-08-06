@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  # This contains the details of the sender. The first time a specific sender is used the full details should be provided. Once a sender is created and is used, the next time you MUST only send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes.  Personal Sender Example: ```json {   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"first_name\": \"Johnny\",   \"last_name\": \"English\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"address_description\": \"Description of address\",   \"postal_code\": \"798983\",   \"birth_date\": \"1900-12-31\",   \"documents\": [ ],   \"ip\": \"127.0.0.1\",   \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",   \"metadata\": { } } ```  Business Sender Example:  ```json {   \"type\": \"business\",   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"name\": \"MyCompany\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"postal_code\": \"798983\",   \"address_description\": \"Description of address\",   \"documents\": [ ],   \"ip\": \"127.0.0.1\",   \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",   \"metadata\": { } } ```  [Sender in the API documentation](https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#sender)
+  # This contains the details of the sender. The first time a specific sender is used the full details should be provided. Once a sender is created and is used, the next time you MUST only send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes.  Personal Sender Example: ```json {   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"first_name\": \"Johnny\",   \"last_name\": \"English\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"address_description\": \"Description of address\",   \"postal_code\": \"798983\",   \"birth_date\": \"1900-12-31\",   \"documents\": [ ],   \"ip\": \"127.0.0.1\",   \"identification_number\": \"AB123456\",   \"identification_type\": \"ID\",   \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",   \"metadata\": { } } ```  Business Sender Example:  ```json {   \"type\": \"business\",   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"name\": \"MyCompany\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"postal_code\": \"798983\",   \"address_description\": \"Description of address\",   \"documents\": [ ],   \"ip\": \"127.0.0.1\",   \"identification_number\": \"AB123456\",   \"identification_type\": \"ID\",   \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",   \"metadata\": { } } ```  [Sender in the API documentation](https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#sender)
   class Sender
     # Type of sender to create - either person or business (defaults to person) 
     attr_accessor :type
@@ -74,6 +74,12 @@ module TransferZero
 
     # IP of sender
     attr_accessor :ip
+
+    # Identification number of document used
+    attr_accessor :identification_number
+
+    # Document to be identified. The identification type can be one of the following:  - `DL`: Driving License - `PP`: International Passport - `ID`: National ID - `OT`: Other
+    attr_accessor :identification_type
 
     # Needed for KYC checks. Required to approve the sender unless KYC is waived for your account. Please send us an empty list of documents: `\"documents\": [ ]` in the request if KYC has been waived.  If the documents already exist, please send the Document ID eg. ```JSON \"documents\": [   {     \"id\": \"b6648ba3-1c7b-4f59-8580-684899c84a07\"   } ] ```
     attr_accessor :documents
@@ -136,6 +142,8 @@ module TransferZero
         :'postal_code' => :'postal_code',
         :'birth_date' => :'birth_date',
         :'ip' => :'ip',
+        :'identification_number' => :'identification_number',
+        :'identification_type' => :'identification_type',
         :'documents' => :'documents',
         :'metadata' => :'metadata',
         :'state' => :'state',
@@ -168,6 +176,8 @@ module TransferZero
         :'postal_code' => :'String',
         :'birth_date' => :'Date',
         :'ip' => :'String',
+        :'identification_number' => :'String',
+        :'identification_type' => :'String',
         :'documents' => :'Array<Document>',
         :'metadata' => :'Object',
         :'state' => :'SenderState',
@@ -272,6 +282,14 @@ module TransferZero
         self.ip = attributes[:'ip']
       end
 
+      if attributes.key?(:'identification_number')
+        self.identification_number = attributes[:'identification_number']
+      end
+
+      if attributes.key?(:'identification_type')
+        self.identification_type = attributes[:'identification_type']
+      end
+
       if attributes.key?(:'documents')
         if (value = attributes[:'documents']).is_a?(Array)
           self.documents = value
@@ -352,6 +370,8 @@ module TransferZero
       return false if @street.nil?
       return false if @postal_code.nil?
       return false if @ip.nil?
+      identification_type_validator = EnumAttributeValidator.new('String', ["DL", "PP", "ID", "OT"])
+      return false unless identification_type_validator.valid?(@identification_type)
       return false if @documents.nil?
       true
     end
@@ -364,6 +384,16 @@ module TransferZero
         fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
       end
       @type = type
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] identification_type Object to be assigned
+    def identification_type=(identification_type)
+      validator = EnumAttributeValidator.new('String', ["DL", "PP", "ID", "OT"])
+      unless validator.valid?(identification_type)
+        fail ArgumentError, "invalid value for \"identification_type\", must be one of #{validator.allowable_values}."
+      end
+      @identification_type = identification_type
     end
 
     # Checks equality by comparing each attribute.
@@ -391,6 +421,8 @@ module TransferZero
           postal_code == o.postal_code &&
           birth_date == o.birth_date &&
           ip == o.ip &&
+          identification_number == o.identification_number &&
+          identification_type == o.identification_type &&
           documents == o.documents &&
           metadata == o.metadata &&
           state == o.state &&
@@ -408,7 +440,7 @@ module TransferZero
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [type, country, phone_country, phone_number, email, first_name, middle_name, last_name, occupation, nationality, onboarding_status, address, description, name, city, street, address_description, postal_code, birth_date, ip, documents, metadata, state, id, external_id, errors].hash
+      [type, country, phone_country, phone_number, email, first_name, middle_name, last_name, occupation, nationality, onboarding_status, address, description, name, city, street, address_description, postal_code, birth_date, ip, identification_number, identification_type, documents, metadata, state, id, external_id, errors].hash
     end
 
 require 'active_support/core_ext/hash'

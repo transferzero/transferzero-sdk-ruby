@@ -24,6 +24,8 @@ Name | Type | Description | Notes
 **postal_code** | **String** | Zip code of sender | 
 **birth_date** | **Date** | Date of birth of sender | [optional] 
 **ip** | **String** | IP of sender | 
+**identification_number** | **String** | Identification number of document used | [optional] 
+**identification_type** | **String** | Document to be identified. The identification type can be one of the following:  - &#x60;DL&#x60;: Driving License - &#x60;PP&#x60;: International Passport - &#x60;ID&#x60;: National ID - &#x60;OT&#x60;: Other | [optional] 
 **documents** | [**Array&lt;Document&gt;**](Document.md) | Needed for KYC checks. Required to approve the sender unless KYC is waived for your account. Please send us an empty list of documents: &#x60;\&quot;documents\&quot;: [ ]&#x60; in the request if KYC has been waived.  If the documents already exist, please send the Document ID eg. &#x60;&#x60;&#x60;JSON \&quot;documents\&quot;: [   {     \&quot;id\&quot;: \&quot;b6648ba3-1c7b-4f59-8580-684899c84a07\&quot;   } ] &#x60;&#x60;&#x60; | 
 **metadata** | [**Object**](.md) | Metadata of sender. You can store any detail specific to your integration here (for example the local ID of the sender on your end). When requesting sender details you will receive the sent metadata back. Also when sending sender related webhooks you will receive the details stored here as well. | [optional] 
 **state** | [**SenderState**](SenderState.md) |  | [optional] 
@@ -56,6 +58,8 @@ instance = TransferZero::Sender.new(type: person,
                                  postal_code: 798983,
                                  birth_date: null,
                                  ip: 127.0.0.1,
+                                 identification_number: AB123456,
+                                 identification_type: ID,
                                  documents: [{&quot;id&quot;:&quot;b6648ba3-1c7b-4f59-8580-684899c84a07&quot;}],
                                  metadata: {},
                                  state: null,
