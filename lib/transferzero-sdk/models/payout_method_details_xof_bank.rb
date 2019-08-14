@@ -13,65 +13,73 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  class DocumentWebhook
-    # The ID of the webhook that was used to send out this callback
-    attr_accessor :webhook
+  # ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"bank_account\": \"0987654321\",   \"bank_name\": \"BRM\",   \"bank_country\": \"SN\" # ISO country code for Senegal } ``` *** Currently in Beta phase ***
+  class PayoutMethodDetailsXOFBank
+    attr_accessor :first_name
 
-    # The event that triggered this webhook
-    attr_accessor :event
+    attr_accessor :last_name
 
-    attr_accessor :object
+    attr_accessor :bank_account
+
+    attr_accessor :bank_name
+
+    attr_accessor :bank_country
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'webhook' => :'webhook',
-        :'event' => :'event',
-        :'object' => :'object'
+        :'first_name' => :'first_name',
+        :'last_name' => :'last_name',
+        :'bank_account' => :'bank_account',
+        :'bank_name' => :'bank_name',
+        :'bank_country' => :'bank_country'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'webhook' => :'String',
-        :'event' => :'String',
-        :'object' => :'Document'
+        :'first_name' => :'String',
+        :'last_name' => :'String',
+        :'bank_account' => :'String',
+        :'bank_name' => :'String',
+        :'bank_country' => :'String'
       }
-    end
-
-    # List of class defined in allOf (OpenAPI v3)
-    def self.openapi_all_of
-      [
-      :'Webhook'
-      ]
     end
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::DocumentWebhook` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsXOFBank` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::DocumentWebhook`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsXOFBank`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'webhook')
-        self.webhook = attributes[:'webhook']
+      if attributes.key?(:'first_name')
+        self.first_name = attributes[:'first_name']
       end
 
-      if attributes.key?(:'event')
-        self.event = attributes[:'event']
+      if attributes.key?(:'last_name')
+        self.last_name = attributes[:'last_name']
       end
 
-      if attributes.key?(:'object')
-        self.object = attributes[:'object']
+      if attributes.key?(:'bank_account')
+        self.bank_account = attributes[:'bank_account']
+      end
+
+      if attributes.key?(:'bank_name')
+        self.bank_name = attributes[:'bank_name']
+      end
+
+      if attributes.key?(:'bank_country')
+        self.bank_country = attributes[:'bank_country']
       end
     end
 
@@ -79,16 +87,24 @@ module TransferZero
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @webhook.nil?
-        invalid_properties.push('invalid value for "webhook", webhook cannot be nil.')
+      if @first_name.nil?
+        invalid_properties.push('invalid value for "first_name", first_name cannot be nil.')
       end
 
-      if @event.nil?
-        invalid_properties.push('invalid value for "event", event cannot be nil.')
+      if @last_name.nil?
+        invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
       end
 
-      if @object.nil?
-        invalid_properties.push('invalid value for "object", object cannot be nil.')
+      if @bank_account.nil?
+        invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
+      end
+
+      if @bank_name.nil?
+        invalid_properties.push('invalid value for "bank_name", bank_name cannot be nil.')
+      end
+
+      if @bank_country.nil?
+        invalid_properties.push('invalid value for "bank_country", bank_country cannot be nil.')
       end
 
       invalid_properties
@@ -97,9 +113,11 @@ module TransferZero
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @webhook.nil?
-      return false if @event.nil?
-      return false if @object.nil?
+      return false if @first_name.nil?
+      return false if @last_name.nil?
+      return false if @bank_account.nil?
+      return false if @bank_name.nil?
+      return false if @bank_country.nil?
       true
     end
 
@@ -108,9 +126,11 @@ module TransferZero
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          webhook == o.webhook &&
-          event == o.event &&
-          object == o.object
+          first_name == o.first_name &&
+          last_name == o.last_name &&
+          bank_account == o.bank_account &&
+          bank_name == o.bank_name &&
+          bank_country == o.bank_country
     end
 
     # @see the `==` method
@@ -122,7 +142,7 @@ module TransferZero
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [webhook, event, object].hash
+      [first_name, last_name, bank_account, bank_name, bank_country].hash
     end
 
 require 'active_support/core_ext/hash'

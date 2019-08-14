@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **phone_number** | **String** |  | 
 **mobile_provider** | [**PayoutMethodMobileProviderEnum**](PayoutMethodMobileProviderEnum.md) |  | 
 **bank_name** | **String** |  | 
+**bank_country** | **String** |  | 
 **iban** | **String** |  | 
 **bic** | **String** |  | [optional] 
 **sender_identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | 
@@ -37,6 +38,7 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  phone_number: null,
                                  mobile_provider: null,
                                  bank_name: null,
+                                 bank_country: null,
                                  iban: null,
                                  bic: null,
                                  sender_identity_card_type: null,
