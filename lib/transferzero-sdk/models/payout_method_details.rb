@@ -236,10 +236,6 @@ module TransferZero
         invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
       end
 
-      if @bank_account_type.nil?
-        invalid_properties.push('invalid value for "bank_account_type", bank_account_type cannot be nil.')
-      end
-
       if @phone_number.nil?
         invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
       end
@@ -290,7 +286,6 @@ module TransferZero
       return false if @last_name.nil?
       return false if @bank_code.nil?
       return false if @bank_account.nil?
-      return false if @bank_account_type.nil?
       return false if @phone_number.nil?
       return false if @mobile_provider.nil?
       return false if @bank_name.nil?

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **last_name** | **String** |  | 
 **bank_code** | **String** |  | 
 **bank_account** | **String** |  | 
-**bank_account_type** | [**PayoutMethodBankAccountTypeEnum**](PayoutMethodBankAccountTypeEnum.md) |  | 
+**bank_account_type** | [**PayoutMethodBankAccountTypeEnum**](PayoutMethodBankAccountTypeEnum.md) |  | [optional] 
 
 ## Code Sample
 
