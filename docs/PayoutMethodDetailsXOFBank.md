@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **first_name** | **String** |  | 
 **last_name** | **String** |  | 
-**bank_account** | **String** |  | 
+**iban** | **String** |  | 
 **bank_name** | **String** |  | 
 **bank_country** | **String** |  | 
 
@@ -17,7 +17,7 @@ require 'TransferZero'
 
 instance = TransferZero::PayoutMethodDetailsXOFBank.new(first_name: null,
                                  last_name: null,
-                                 bank_account: null,
+                                 iban: null,
                                  bank_name: null,
                                  bank_country: null)
 ```

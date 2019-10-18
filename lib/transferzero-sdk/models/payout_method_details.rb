@@ -28,11 +28,11 @@ module TransferZero
 
     attr_accessor :mobile_provider
 
+    attr_accessor :iban
+
     attr_accessor :bank_name
 
     attr_accessor :bank_country
-
-    attr_accessor :iban
 
     attr_accessor :bic
 
@@ -64,9 +64,9 @@ module TransferZero
         :'bank_account_type' => :'bank_account_type',
         :'phone_number' => :'phone_number',
         :'mobile_provider' => :'mobile_provider',
+        :'iban' => :'iban',
         :'bank_name' => :'bank_name',
         :'bank_country' => :'bank_country',
-        :'iban' => :'iban',
         :'bic' => :'bic',
         :'sender_identity_card_type' => :'sender_identity_card_type',
         :'sender_identity_card_id' => :'sender_identity_card_id',
@@ -90,9 +90,9 @@ module TransferZero
         :'bank_account_type' => :'PayoutMethodBankAccountTypeEnum',
         :'phone_number' => :'String',
         :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
+        :'iban' => :'String',
         :'bank_name' => :'String',
         :'bank_country' => :'String',
-        :'iban' => :'String',
         :'bic' => :'String',
         :'sender_identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
         :'sender_identity_card_id' => :'String',
@@ -163,16 +163,16 @@ module TransferZero
         self.mobile_provider = attributes[:'mobile_provider']
       end
 
+      if attributes.key?(:'iban')
+        self.iban = attributes[:'iban']
+      end
+
       if attributes.key?(:'bank_name')
         self.bank_name = attributes[:'bank_name']
       end
 
       if attributes.key?(:'bank_country')
         self.bank_country = attributes[:'bank_country']
-      end
-
-      if attributes.key?(:'iban')
-        self.iban = attributes[:'iban']
       end
 
       if attributes.key?(:'bic')
@@ -244,16 +244,16 @@ module TransferZero
         invalid_properties.push('invalid value for "mobile_provider", mobile_provider cannot be nil.')
       end
 
+      if @iban.nil?
+        invalid_properties.push('invalid value for "iban", iban cannot be nil.')
+      end
+
       if @bank_name.nil?
         invalid_properties.push('invalid value for "bank_name", bank_name cannot be nil.')
       end
 
       if @bank_country.nil?
         invalid_properties.push('invalid value for "bank_country", bank_country cannot be nil.')
-      end
-
-      if @iban.nil?
-        invalid_properties.push('invalid value for "iban", iban cannot be nil.')
       end
 
       if @sender_identity_card_type.nil?
@@ -288,9 +288,9 @@ module TransferZero
       return false if @bank_account.nil?
       return false if @phone_number.nil?
       return false if @mobile_provider.nil?
+      return false if @iban.nil?
       return false if @bank_name.nil?
       return false if @bank_country.nil?
-      return false if @iban.nil?
       return false if @sender_identity_card_type.nil?
       return false if @sender_identity_card_id.nil?
       return false if @sender_city_of_birth.nil?
@@ -327,9 +327,9 @@ module TransferZero
           bank_account_type == o.bank_account_type &&
           phone_number == o.phone_number &&
           mobile_provider == o.mobile_provider &&
+          iban == o.iban &&
           bank_name == o.bank_name &&
           bank_country == o.bank_country &&
-          iban == o.iban &&
           bic == o.bic &&
           sender_identity_card_type == o.sender_identity_card_type &&
           sender_identity_card_id == o.sender_identity_card_id &&
@@ -351,7 +351,7 @@ module TransferZero
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, bank_name, bank_country, iban, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference].hash
+      [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, iban, bank_name, bank_country, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference].hash
     end
 
 require 'active_support/core_ext/hash'

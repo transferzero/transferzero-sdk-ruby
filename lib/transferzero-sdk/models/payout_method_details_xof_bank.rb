@@ -13,13 +13,13 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  # ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"bank_account\": \"0987654321\",   \"bank_name\": \"BRM\",   \"bank_country\": \"SN\" # ISO country code for Senegal } ``` *** Currently in Beta phase ***
+  # ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"iban\": \"SN08SN0000000000000000000000\",   \"bank_name\": \"BRM\",   \"bank_country\": \"SN\" # ISO country code for Senegal } ``` *** Currently in Beta phase ***
   class PayoutMethodDetailsXOFBank
     attr_accessor :first_name
 
     attr_accessor :last_name
 
-    attr_accessor :bank_account
+    attr_accessor :iban
 
     attr_accessor :bank_name
 
@@ -30,7 +30,7 @@ module TransferZero
       {
         :'first_name' => :'first_name',
         :'last_name' => :'last_name',
-        :'bank_account' => :'bank_account',
+        :'iban' => :'iban',
         :'bank_name' => :'bank_name',
         :'bank_country' => :'bank_country'
       }
@@ -41,7 +41,7 @@ module TransferZero
       {
         :'first_name' => :'String',
         :'last_name' => :'String',
-        :'bank_account' => :'String',
+        :'iban' => :'String',
         :'bank_name' => :'String',
         :'bank_country' => :'String'
       }
@@ -70,8 +70,8 @@ module TransferZero
         self.last_name = attributes[:'last_name']
       end
 
-      if attributes.key?(:'bank_account')
-        self.bank_account = attributes[:'bank_account']
+      if attributes.key?(:'iban')
+        self.iban = attributes[:'iban']
       end
 
       if attributes.key?(:'bank_name')
@@ -95,8 +95,8 @@ module TransferZero
         invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
       end
 
-      if @bank_account.nil?
-        invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
+      if @iban.nil?
+        invalid_properties.push('invalid value for "iban", iban cannot be nil.')
       end
 
       if @bank_name.nil?
@@ -115,7 +115,7 @@ module TransferZero
     def valid?
       return false if @first_name.nil?
       return false if @last_name.nil?
-      return false if @bank_account.nil?
+      return false if @iban.nil?
       return false if @bank_name.nil?
       return false if @bank_country.nil?
       true
@@ -128,7 +128,7 @@ module TransferZero
       self.class == o.class &&
           first_name == o.first_name &&
           last_name == o.last_name &&
-          bank_account == o.bank_account &&
+          iban == o.iban &&
           bank_name == o.bank_name &&
           bank_country == o.bank_country
     end
@@ -142,7 +142,7 @@ module TransferZero
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [first_name, last_name, bank_account, bank_name, bank_country].hash
+      [first_name, last_name, iban, bank_name, bank_country].hash
     end
 
 require 'active_support/core_ext/hash'
