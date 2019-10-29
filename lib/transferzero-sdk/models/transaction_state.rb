@@ -23,6 +23,7 @@ module TransferZero
     PAID = "paid".freeze
     CANCELED = "canceled".freeze
     REFUNDED = "refunded".freeze
+    PROCESSING = "processing".freeze
     EXCEPTION = "exception".freeze
 
     # Builds the enum from string
