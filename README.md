@@ -136,6 +136,7 @@ Class | Method | HTTP request | Description
 *TransferZero::SendersApi* | [**patch_sender**](docs/SendersApi.md#patch_sender) | **PATCH** /senders/{Sender ID} | Updating a sender
 *TransferZero::SendersApi* | [**post_senders**](docs/SendersApi.md#post_senders) | **POST** /senders | Creating a sender
 *TransferZero::TransactionsApi* | [**calculate_transactions**](docs/TransactionsApi.md#calculate_transactions) | **POST** /transactions/calculate | Calculates transaction amounts for a transaction payload
+*TransferZero::TransactionsApi* | [**create_and_fund_transaction**](docs/TransactionsApi.md#create_and_fund_transaction) | **POST** /transactions/create_and_fund | Creates a new transaction and funds it from account balance
 *TransferZero::TransactionsApi* | [**get_transaction**](docs/TransactionsApi.md#get_transaction) | **GET** /transactions/{Transaction ID} | Fetch a single transaction
 *TransferZero::TransactionsApi* | [**get_transactions**](docs/TransactionsApi.md#get_transactions) | **GET** /transactions | Get a list of transactions
 *TransferZero::TransactionsApi* | [**payin_transaction**](docs/TransactionsApi.md#payin_transaction) | **POST** /transactions/{Transaction ID}/payin | Creates a fake payin for transaction
@@ -164,9 +165,11 @@ Class | Method | HTTP request | Description
  - [TransferZero::ApiLogResponse](docs/ApiLogResponse.md)
  - [TransferZero::Currency](docs/Currency.md)
  - [TransferZero::CurrencyExchange](docs/CurrencyExchange.md)
+ - [TransferZero::CurrencyExchangeAllOf](docs/CurrencyExchangeAllOf.md)
  - [TransferZero::CurrencyExchangeListResponse](docs/CurrencyExchangeListResponse.md)
  - [TransferZero::CurrencyListResponse](docs/CurrencyListResponse.md)
  - [TransferZero::CurrencyOpposite](docs/CurrencyOpposite.md)
+ - [TransferZero::CurrencyOppositeAllOf](docs/CurrencyOppositeAllOf.md)
  - [TransferZero::Debit](docs/Debit.md)
  - [TransferZero::DebitListRequest](docs/DebitListRequest.md)
  - [TransferZero::DebitListResponse](docs/DebitListResponse.md)
@@ -178,6 +181,7 @@ Class | Method | HTTP request | Description
  - [TransferZero::DocumentRequest](docs/DocumentRequest.md)
  - [TransferZero::DocumentResponse](docs/DocumentResponse.md)
  - [TransferZero::DocumentWebhook](docs/DocumentWebhook.md)
+ - [TransferZero::DocumentWebhookAllOf](docs/DocumentWebhookAllOf.md)
  - [TransferZero::ErrorStatus](docs/ErrorStatus.md)
  - [TransferZero::FieldDescription](docs/FieldDescription.md)
  - [TransferZero::FieldSelectValidation](docs/FieldSelectValidation.md)
@@ -210,12 +214,14 @@ Class | Method | HTTP request | Description
  - [TransferZero::PayoutMethodRequest](docs/PayoutMethodRequest.md)
  - [TransferZero::PayoutMethodResponse](docs/PayoutMethodResponse.md)
  - [TransferZero::PayoutMethodWebhook](docs/PayoutMethodWebhook.md)
+ - [TransferZero::PayoutMethodWebhookAllOf](docs/PayoutMethodWebhookAllOf.md)
  - [TransferZero::Recipient](docs/Recipient.md)
  - [TransferZero::RecipientListResponse](docs/RecipientListResponse.md)
  - [TransferZero::RecipientRequest](docs/RecipientRequest.md)
  - [TransferZero::RecipientResponse](docs/RecipientResponse.md)
  - [TransferZero::RecipientState](docs/RecipientState.md)
  - [TransferZero::RecipientWebhook](docs/RecipientWebhook.md)
+ - [TransferZero::RecipientWebhookAllOf](docs/RecipientWebhookAllOf.md)
  - [TransferZero::Sender](docs/Sender.md)
  - [TransferZero::SenderListResponse](docs/SenderListResponse.md)
  - [TransferZero::SenderRequest](docs/SenderRequest.md)
@@ -224,6 +230,7 @@ Class | Method | HTTP request | Description
  - [TransferZero::SenderResponseMeta](docs/SenderResponseMeta.md)
  - [TransferZero::SenderState](docs/SenderState.md)
  - [TransferZero::SenderWebhook](docs/SenderWebhook.md)
+ - [TransferZero::SenderWebhookAllOf](docs/SenderWebhookAllOf.md)
  - [TransferZero::Transaction](docs/Transaction.md)
  - [TransferZero::TransactionListResponse](docs/TransactionListResponse.md)
  - [TransferZero::TransactionRequest](docs/TransactionRequest.md)
@@ -233,6 +240,7 @@ Class | Method | HTTP request | Description
  - [TransferZero::TransactionState](docs/TransactionState.md)
  - [TransferZero::TransactionTraits](docs/TransactionTraits.md)
  - [TransferZero::TransactionWebhook](docs/TransactionWebhook.md)
+ - [TransferZero::TransactionWebhookAllOf](docs/TransactionWebhookAllOf.md)
  - [TransferZero::ValidationErrorDescription](docs/ValidationErrorDescription.md)
  - [TransferZero::Webhook](docs/Webhook.md)
  - [TransferZero::WebhookDefinition](docs/WebhookDefinition.md)

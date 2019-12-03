@@ -77,6 +77,62 @@ module TransferZero
     end
 
 
+    # Creates a new transaction and funds it from account balance
+    # This endpoint creates a transaction and funds it from an account balance. You must ensure that you have established an account with us in the pay-in currency of the transactions you wish to create, and that this account is sufficently funded, before calling this endpoint.  Note that the <pre>external_id</pre> field is required for requests to this endpoint.
+    # @param transaction_request 
+    # @param [Hash] opts the optional parameters
+    # @return [TransactionResponse]
+    def create_and_fund_transaction(transaction_request, opts = {})
+      data, _status_code, _headers = create_and_fund_transaction_with_http_info(transaction_request, opts)
+      data
+    end
+
+    # Creates a new transaction and funds it from account balance
+    # This endpoint creates a transaction and funds it from an account balance. You must ensure that you have established an account with us in the pay-in currency of the transactions you wish to create, and that this account is sufficently funded, before calling this endpoint.  Note that the &lt;pre&gt;external_id&lt;/pre&gt; field is required for requests to this endpoint.
+    # @param transaction_request 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(TransactionResponse, Fixnum, Hash)>] TransactionResponse data, response status code and response headers
+    def create_and_fund_transaction_with_http_info(transaction_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: TransactionsApi.create_and_fund_transaction ...'
+      end
+      # verify the required parameter 'transaction_request' is set
+      if @api_client.config.client_side_validation && transaction_request.nil?
+        fail ArgumentError, "Missing the required parameter 'transaction_request' when calling TransactionsApi.create_and_fund_transaction"
+      end
+      # resource path
+      local_var_path = '/transactions/create_and_fund'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(transaction_request)
+      auth_names = ['AuthorizationKey', 'AuthorizationNonce', 'AuthorizationSecret', 'AuthorizationSignature']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'TransactionResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: TransactionsApi#create_and_fund_transaction\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+
     # Fetch a single transaction
     # Finds and returns a Transaction created by the requesting API key, using the provided Transaction ID.
     # @param transaction_id ID of the transaction.  Example: &#x60;/v1/transactions/bf9ff782-e182-45ac-abea-5bce83ad6670&#x60;

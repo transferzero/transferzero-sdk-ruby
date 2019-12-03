@@ -5,6 +5,7 @@ All URIs are relative to *https://api-sandbox.transferzero.com/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**calculate_transactions**](TransactionsApi.md#calculate_transactions) | **POST** /transactions/calculate | Calculates transaction amounts for a transaction payload
+[**create_and_fund_transaction**](TransactionsApi.md#create_and_fund_transaction) | **POST** /transactions/create_and_fund | Creates a new transaction and funds it from account balance
 [**get_transaction**](TransactionsApi.md#get_transaction) | **GET** /transactions/{Transaction ID} | Fetch a single transaction
 [**get_transactions**](TransactionsApi.md#get_transactions) | **GET** /transactions | Get a list of transactions
 [**payin_transaction**](TransactionsApi.md#payin_transaction) | **POST** /transactions/{Transaction ID}/payin | Creates a fake payin for transaction
@@ -39,6 +40,67 @@ rescue TransferZero::ApiError => e
     p result
   else
     puts "Exception when calling TransactionsApi->calculate_transactions: #{e}"
+  end
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **transaction_request** | [**TransactionRequest**](TransactionRequest.md)|  | 
+
+### Return type
+
+[**TransactionResponse**](TransactionResponse.md)
+
+### Authorization
+
+You can set the API Key and Secret on the TransferZero object when setting it up:
+
+```ruby
+
+TransferZero.configure do |config|
+  config.api_key = '<key'
+  config.api_secret = '<secret>'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
+end
+
+```
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **create_and_fund_transaction**
+> TransactionResponse create_and_fund_transaction(transaction_request)
+
+Creates a new transaction and funds it from account balance
+
+This endpoint creates a transaction and funds it from an account balance. You must ensure that you have established an account with us in the pay-in currency of the transactions you wish to create, and that this account is sufficently funded, before calling this endpoint.  Note that the <pre>external_id</pre> field is required for requests to this endpoint.
+
+### Example
+```ruby
+# load the gem
+require 'transferzero-sdk'
+
+api_instance = TransferZero::TransactionsApi.new
+
+
+begin
+  #Creates a new transaction and funds it from account balance
+  result = api_instance.create_and_fund_transaction(transaction_request)
+  p result
+rescue TransferZero::ApiError => e
+  if e.validation_error
+    puts "WARN: Validation error occured when calling the endpoint"
+    result = e.response_object("TransactionResponse")
+    p result
+  else
+    puts "Exception when calling TransactionsApi->create_and_fund_transaction: #{e}"
   end
 end
 ```

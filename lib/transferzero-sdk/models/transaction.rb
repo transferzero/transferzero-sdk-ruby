@@ -51,7 +51,7 @@ module TransferZero
     # The latest time when the transaction has to be funded, otherwise it will be cancelled
     attr_accessor :expires_at
 
-    # Optional ID that is supplied by partner linking it to the partner's own Sender ID. Note: if present we will validate whether the sent ID is a duplicate in our system or not.
+    # Optional ID that is supplied by partner linking it to the partner's own Transaction ID. Note: if present we will validate whether the sent ID is a duplicate in our system or not.
     attr_accessor :external_id
 
     attr_accessor :id

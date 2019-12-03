@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ```ruby
 require 'TransferZero'
 
-instance = TransferZero::AccountMeta.new(negative_balance: null)
+instance = TransferZero::AccountMeta.new(negative_balance: false)
 ```
 
 
