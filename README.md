@@ -43,9 +43,9 @@ Finally add this to the Gemfile:
 
 ### Install from Git
 
-If the Ruby gem is hosted at a git repository: https://github.com/transferzero/transferzero-ruby-sdk, then add the following in the Gemfile:
+If the Ruby gem is hosted at a git repository: https://github.com/transferzero/transferzero-sdk-ruby, then add the following in the Gemfile:
 
-    gem 'transferzero-sdk', :git => 'https://github.com/transferzero/transferzero-ruby-sdk.git'
+    gem 'transferzero-sdk', :git => 'https://github.com/transferzero/transferzero-sdk-ruby.git'
 
 ### Include the Ruby code directly
 
