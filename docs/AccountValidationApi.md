@@ -4,15 +4,15 @@ All URIs are relative to *https://api-sandbox.transferzero.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**post_account_validations**](AccountValidationApi.md#post_account_validations) | **POST** /account_validations | Validates the existence of a bank account
+[**post_account_validations**](AccountValidationApi.md#post_account_validations) | **POST** /account_validations | Validates the existence of a bank account or a mobile phone number
 
 
 # **post_account_validations**
 > AccountValidationResponse post_account_validations(account_validation_request)
 
-Validates the existence of a bank account
+Validates the existence of a bank account or a mobile phone number
 
-Validates the existence of a bank account and returns the associated customer name
+Validates the existence of a bank account or mobile phone number and returns the associated customer name
 
 ### Example
 ```ruby
@@ -23,7 +23,7 @@ api_instance = TransferZero::AccountValidationApi.new
 
 
 begin
-  #Validates the existence of a bank account
+  #Validates the existence of a bank account or a mobile phone number
   result = api_instance.post_account_validations(account_validation_request)
   p result
 rescue TransferZero::ApiError => e

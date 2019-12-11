@@ -20,13 +20,16 @@ module TransferZero
     # Bank Code to query - same codes are used as for creating the transactions
     attr_accessor :bank_code
 
-    # Country of account in 2-character alpha ISO 3166-2 country format (only NG is currently supported)
+    # Phone number to query
+    attr_accessor :phone_number
+
+    # Country of account in 2-character alpha ISO 3166-2 country format
     attr_accessor :country
 
     # The currency the bank account is in
     attr_accessor :currency
 
-    # The method of the payment. Currently only bank is supported
+    # The method of the payment. Currently bank and mobile are supported
     attr_accessor :method
 
     class EnumAttributeValidator
@@ -56,6 +59,7 @@ module TransferZero
       {
         :'bank_account' => :'bank_account',
         :'bank_code' => :'bank_code',
+        :'phone_number' => :'phone_number',
         :'country' => :'country',
         :'currency' => :'currency',
         :'method' => :'method'
@@ -67,6 +71,7 @@ module TransferZero
       {
         :'bank_account' => :'String',
         :'bank_code' => :'String',
+        :'phone_number' => :'String',
         :'country' => :'String',
         :'currency' => :'String',
         :'method' => :'String'
@@ -96,6 +101,10 @@ module TransferZero
         self.bank_code = attributes[:'bank_code']
       end
 
+      if attributes.key?(:'phone_number')
+        self.phone_number = attributes[:'phone_number']
+      end
+
       if attributes.key?(:'country')
         self.country = attributes[:'country']
       end
@@ -113,14 +122,6 @@ module TransferZero
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @bank_account.nil?
-        invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
-      end
-
-      if @bank_code.nil?
-        invalid_properties.push('invalid value for "bank_code", bank_code cannot be nil.')
-      end
-
       if @country.nil?
         invalid_properties.push('invalid value for "country", country cannot be nil.')
       end
@@ -139,8 +140,6 @@ module TransferZero
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @bank_account.nil?
-      return false if @bank_code.nil?
       return false if @country.nil?
       country_validator = EnumAttributeValidator.new('String', ["NG", "GH"])
       return false unless country_validator.valid?(@country)
@@ -148,7 +147,7 @@ module TransferZero
       currency_validator = EnumAttributeValidator.new('String', ["NGN", "GHS"])
       return false unless currency_validator.valid?(@currency)
       return false if @method.nil?
-      method_validator = EnumAttributeValidator.new('String', ["bank"])
+      method_validator = EnumAttributeValidator.new('String', ["bank", "mobile"])
       return false unless method_validator.valid?(@method)
       true
     end
@@ -176,7 +175,7 @@ module TransferZero
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] method Object to be assigned
     def method=(method)
-      validator = EnumAttributeValidator.new('String', ["bank"])
+      validator = EnumAttributeValidator.new('String', ["bank", "mobile"])
       unless validator.valid?(method)
         fail ArgumentError, "invalid value for \"method\", must be one of #{validator.allowable_values}."
       end
@@ -190,6 +189,7 @@ module TransferZero
       self.class == o.class &&
           bank_account == o.bank_account &&
           bank_code == o.bank_code &&
+          phone_number == o.phone_number &&
           country == o.country &&
           currency == o.currency &&
           method == o.method
@@ -204,7 +204,7 @@ module TransferZero
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [bank_account, bank_code, country, currency, method].hash
+      [bank_account, bank_code, phone_number, country, currency, method].hash
     end
 
 require 'active_support/core_ext/hash'
