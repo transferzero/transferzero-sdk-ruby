@@ -84,8 +84,7 @@ module TransferZero
     # List of class defined in allOf (OpenAPI v3)
     def self.openapi_all_of
       [
-      :'Currency',
-      :'CurrencyExchangeAllOf'
+      :'Currency'
       ]
     end
 

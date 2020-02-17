@@ -15,12 +15,16 @@ require 'date'
 module TransferZero
   # ```JSON   \"details\": {     \"redirect_url\": \"http://redirect.back.to\"   } ```
   class PayinMethodDetailsNGNBank
+    # The payment method which the user will use to make the payments. Options are `bank`, `card` or you can leave empty to support both.
+    attr_accessor :payment_method
+
     # This is where the user should be redirected back when the payment has been finished
     attr_accessor :redirect_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'payment_method' => :'payment_method',
         :'redirect_url' => :'redirect_url'
       }
     end
@@ -28,6 +32,7 @@ module TransferZero
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'payment_method' => :'String',
         :'redirect_url' => :'String'
       }
     end
@@ -47,6 +52,10 @@ module TransferZero
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'payment_method')
+        self.payment_method = attributes[:'payment_method']
+      end
+
       if attributes.key?(:'redirect_url')
         self.redirect_url = attributes[:'redirect_url']
       end
@@ -56,17 +65,12 @@ module TransferZero
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @redirect_url.nil?
-        invalid_properties.push('invalid value for "redirect_url", redirect_url cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @redirect_url.nil?
       true
     end
 
@@ -75,6 +79,7 @@ module TransferZero
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          payment_method == o.payment_method &&
           redirect_url == o.redirect_url
     end
 
@@ -87,7 +92,7 @@ module TransferZero
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [redirect_url].hash
+      [payment_method, redirect_url].hash
     end
 
 require 'active_support/core_ext/hash'

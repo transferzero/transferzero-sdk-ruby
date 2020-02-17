@@ -15,6 +15,9 @@ require 'date'
 module TransferZero
   # Fields needed by the payment processor. Depends on the chose payin type.  See the appropriate model details for more info:  - `NGN::Bank`: see [`PayinMethodDetailsNGNBank`](#model-PayinMethodDetailsNGNBank) - `GHS::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile) - `UGX::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile) - `TZS::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile) 
   class PayinMethodDetails
+    # The payment method which the user will use to make the payments. Options are `bank`, `card` or you can leave empty to support both.
+    attr_accessor :payment_method
+
     # This is where the user should be redirected back when the payment has been finished
     attr_accessor :redirect_url
 
@@ -27,6 +30,7 @@ module TransferZero
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'payment_method' => :'payment_method',
         :'redirect_url' => :'redirect_url',
         :'phone_number' => :'phone_number',
         :'send_instructions' => :'send_instructions'
@@ -36,6 +40,7 @@ module TransferZero
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'payment_method' => :'String',
         :'redirect_url' => :'String',
         :'phone_number' => :'String',
         :'send_instructions' => :'Boolean'
@@ -65,6 +70,10 @@ module TransferZero
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'payment_method')
+        self.payment_method = attributes[:'payment_method']
+      end
+
       if attributes.key?(:'redirect_url')
         self.redirect_url = attributes[:'redirect_url']
       end
@@ -82,10 +91,6 @@ module TransferZero
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @redirect_url.nil?
-        invalid_properties.push('invalid value for "redirect_url", redirect_url cannot be nil.')
-      end
-
       if @phone_number.nil?
         invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
       end
@@ -96,7 +101,6 @@ module TransferZero
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @redirect_url.nil?
       return false if @phone_number.nil?
       _one_of_found = false
       openapi_one_of.each do |_class|
@@ -122,6 +126,7 @@ module TransferZero
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          payment_method == o.payment_method &&
           redirect_url == o.redirect_url &&
           phone_number == o.phone_number &&
           send_instructions == o.send_instructions
@@ -136,7 +141,7 @@ module TransferZero
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [redirect_url, phone_number, send_instructions].hash
+      [payment_method, redirect_url, phone_number, send_instructions].hash
     end
 
 require 'active_support/core_ext/hash'
