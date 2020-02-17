@@ -15,7 +15,7 @@ credentials = {
     host: "https://api-sandbox.transferzero.com/v1"
 }
 
-# Please see our documentation at https://github.com/transferzero/api-documentation
+# Please see our documentation at https://docs.transferzero.com
 # and the API specification at http://api.transferzero.com/documentation/
 # for more information.
 
@@ -39,7 +39,7 @@ class Client
   end
 
   def account_validation_example
-    # See https://github.com/transferzero/api-documentation/blob/master/additional-features.md#bank-account-name-enquiry
+    # See https://docs.transferzero.com/docs/additional-features/#bank-account-name-enquiry
     # for more information on how this feature can be used
     begin
       request = TransferZero::AccountValidationRequest.new
@@ -63,7 +63,7 @@ class Client
   end
 
   def create_sender_example
-    # For more details on senders please check https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#sender
+    # For more details on senders please check https://docs.transferzero.com/docs/transaction-flow/#sender
     begin
       api = TransferZero::SendersApi.new
       sender = TransferZero::Sender.new
@@ -98,7 +98,7 @@ class Client
   end
 
   def get_sender_by_external_id_example
-    # Find more details on external IDs at https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#external-id
+    # Find more details on external IDs at https://docs.transferzero.com/docs/transaction-flow/#external-id
     begin
       opts = { external_id: 'SENDER-2b59def0' }
       sender = TransferZero::SendersApi.new
@@ -113,7 +113,7 @@ class Client
   end
 
   def update_sender_example
-    # For more details on senders please check https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#sender
+    # For more details on senders please check https://docs.transferzero.com/docs/transaction-flow/#sender
     begin
       api = TransferZero::SendersApi.new
       sender = TransferZero::Sender.new
@@ -135,15 +135,15 @@ class Client
     begin
       api = TransferZero::TransactionsApi.new
       transaction = TransferZero::Transaction.new
-      # Please check our documentation at https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md
+      # Please check our documentation at https://docs.transferzero.com/docs/transaction-flow/
       # for details on how transactions work.
 
       sender = TransferZero::Sender.new
       # When adding a sender to transaction, please use either an id or external_id. Providing both will result in a validation error.
-      # Please see our documentation at https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#sender
+      # Please see our documentation at https://docs.transferzero.com/docs/transaction-flow/#sender
       sender.id = 'ec33484c-4456-4625-a823-9704a3a54e68'
 
-      # You can find the various payout options at https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#payout-details
+      # You can find the various payout options at https://docs.transferzero.com/docs/transaction-flow/#payout-details
       ngn_bank_details = TransferZero::PayoutMethodDetails.new
       ngn_bank_details.bank_account = '123456789'
       ngn_bank_details.bank_account_type = TransferZero::PayoutMethodBankAccountTypeEnum::N20
@@ -155,17 +155,17 @@ class Client
       payout_method.type = 'NGN::Bank'
       payout_method.details = ngn_bank_details
 
-      # Please see https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#requested-amount-and-currency
+      # Please see https://docs.transferzero.com/docs/transaction-flow/#requested-amount-and-currency
       # on what the request amount and currencies do
       recipient = TransferZero::Recipient.new
       recipient.requested_amount = 10000
       recipient.requested_currency = 'NGN'
       recipient.payout_method = payout_method
 
-      # Similarly you can check https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#requested-amount-and-currency
+      # Similarly you can check https://docs.transferzero.com/docs/transaction-flow/#requested-amount-and-currency
       # on details about the input currency parameter
 
-      # Find more details on external IDs at https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#external-id
+      # Find more details on external IDs at https://docs.transferzero.com/docs/transaction-flow/#external-id
       transaction.external_id = 'TRANSACTION-1f834add' # Optional field for customer's ID
       transaction.input_currency = 'GBP'
       transaction.sender = sender
@@ -188,7 +188,7 @@ class Client
   end
 
   def get_transaction_by_external_id_example
-    # Please see https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#external-id
+    # Please see https://docs.transferzero.com/docs/transaction-flow/#external-id
     # for more details on external IDs
     begin
       opts = { external_id: 'TRANSACTION-1f834add' }
@@ -208,7 +208,7 @@ class Client
     if transaction_id.nil?
       puts "Transaction with ID #{transaction_id} does not exist"
     else
-      # Please see https://github.com/transferzero/api-documentation/blob/master/transaction-flow.md#funding-transactions
+      # Please see https://docs.transferzero.com/docs/transaction-flow/#funding-transactions
       # on details about funding transactions
       debit = TransferZero::Debit.new
       debit.currency = 'GBP'
@@ -235,7 +235,7 @@ class Client
   end
 
   def webhook_parse_example
-    # Please see https://github.com/transferzero/api-documentation#webhooks
+    # Please see https://docs.transferzero.com#webhooks
     # for more details about how webhooks / callbacks work from our system
     headers = {
       "Authorization-Nonce": "<authorization-nonce>",

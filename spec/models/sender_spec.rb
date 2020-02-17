@@ -156,6 +156,22 @@ describe 'Sender' do
     end
   end
 
+  describe 'test attribute "identification_number"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "identification_type"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["DL", "PP", "ID", "OT"])
+      # validator.allowable_values.each do |value|
+      #   expect { @instance.identification_type = value }.not_to raise_error
+      # end
+    end
+  end
+
   describe 'test attribute "documents"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

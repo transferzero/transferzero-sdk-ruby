@@ -32,6 +32,12 @@ describe 'Document' do
       expect(@instance).to be_instance_of(TransferZero::Document)
     end
   end
+  describe 'test attribute "sender_id"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "upload"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -75,6 +81,12 @@ describe 'Document' do
       # validator.allowable_values.each do |value|
       #   expect { @instance.side = value }.not_to raise_error
       # end
+    end
+  end
+
+  describe 'test attribute "document_type"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 

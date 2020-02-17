@@ -44,6 +44,18 @@ describe 'TransactionsApi' do
     end
   end
 
+  # unit tests for create_and_fund_transaction
+  # Creates a new transaction and funds it from account balance
+  # This endpoint creates a transaction and funds it from an account balance. You must ensure that you have established an account with us in the pay-in currency of the transactions you wish to create, and that this account is sufficently funded, before calling this endpoint.  Note that the &lt;pre&gt;external_id&lt;/pre&gt; field is required for requests to this endpoint.
+  # @param transaction_request 
+  # @param [Hash] opts the optional parameters
+  # @return [TransactionResponse]
+  describe 'create_and_fund_transaction test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_transaction
   # Fetch a single transaction
   # Finds and returns a Transaction created by the requesting API key, using the provided Transaction ID.
@@ -63,6 +75,7 @@ describe 'TransactionsApi' do
   # @option opts [Integer] :page The page number to request (defaults to 1)
   # @option opts [Integer] :per The number of results to load per page (defaults to 10)
   # @option opts [String] :external_id Allows filtering results by &#x60;external_id&#x60;.  Example: &#x60;/v1/senders?external_id&#x3D;26ec8517-2f0d-48c0-b74f-0bccb9ab3a87&#x60;
+  # @option opts [String] :sender_id Allows filtering results by &#x60;sender_id&#x60;.  Example: &#x60;/v1/transactions?sender_id&#x3D;b41d3cb7-6c54-4245-85fc-8e30690eb0f7&#x60;
   # @return [TransactionListResponse]
   describe 'get_transactions test' do
     it 'should work' do

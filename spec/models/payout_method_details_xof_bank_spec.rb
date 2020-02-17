@@ -44,7 +44,7 @@ describe 'PayoutMethodDetailsXOFBank' do
     end
   end
 
-  describe 'test attribute "bank_account"' do
+  describe 'test attribute "iban"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

@@ -44,6 +44,12 @@ describe 'AccountValidationRequest' do
     end
   end
 
+  describe 'test attribute "phone_number"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "country"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -67,7 +73,7 @@ describe 'AccountValidationRequest' do
   describe 'test attribute "method"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["bank"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["bank", "mobile"])
       # validator.allowable_values.each do |value|
       #   expect { @instance.method = value }.not_to raise_error
       # end

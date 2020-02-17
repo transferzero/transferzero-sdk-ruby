@@ -32,6 +32,12 @@ describe 'PayinMethodDetails' do
       expect(@instance).to be_instance_of(TransferZero::PayinMethodDetails)
     end
   end
+  describe 'test attribute "payment_method"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "redirect_url"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
