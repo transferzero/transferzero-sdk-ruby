@@ -212,6 +212,7 @@ Class | Method | HTTP request | Description
  - [TransferZero::PayoutMethodRequest](docs/PayoutMethodRequest.md)
  - [TransferZero::PayoutMethodResponse](docs/PayoutMethodResponse.md)
  - [TransferZero::PayoutMethodWebhook](docs/PayoutMethodWebhook.md)
+ - [TransferZero::PoliticallyExposedPerson](docs/PoliticallyExposedPerson.md)
  - [TransferZero::Recipient](docs/Recipient.md)
  - [TransferZero::RecipientListResponse](docs/RecipientListResponse.md)
  - [TransferZero::RecipientRequest](docs/RecipientRequest.md)

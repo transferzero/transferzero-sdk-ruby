@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 require 'TransferZero'
 
 instance = TransferZero::PayinMethodDetailsMobile.new(phone_number: +2569999999,
-                                 send_instructions: true)
+                                 send_instructions: null)
 ```
 
 

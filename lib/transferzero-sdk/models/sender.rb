@@ -84,6 +84,9 @@ module TransferZero
     # Needed for KYC checks. Required to approve the sender unless KYC is waived for your account. Please send us an empty list of documents: `\"documents\": [ ]` in the request if KYC has been waived.  If the documents already exist, please send the Document ID eg. ```JSON \"documents\": [   {     \"id\": \"b6648ba3-1c7b-4f59-8580-684899c84a07\"   } ] ```
     attr_accessor :documents
 
+    # A list of politically exposed people, individuals who are or have been entrusted with prominent public functions by a country, for example heads of state or heads of government, senior politicians, senior government, judicial or military officials, senior executives of state owned corporations, important political party officials.  There is a limit of three (3) politically exposed people per Sender.  Politically exposed person example: ```json   {     \"name\": \"Ronald Reagan\",     \"position\": \"President of the United States\",     \"started_date\": \"1981-01-20T00:00:00.000Z\",     \"ended_date\": \"1989-01-20T00:00:00.000Z\"   } ```
+    attr_accessor :politically_exposed_people
+
     # Metadata of sender. You can store any detail specific to your integration here (for example the local ID of the sender on your end). When requesting sender details you will receive the sent metadata back. Also when sending sender related webhooks you will receive the details stored here as well.
     attr_accessor :metadata
 
@@ -145,6 +148,7 @@ module TransferZero
         :'identification_number' => :'identification_number',
         :'identification_type' => :'identification_type',
         :'documents' => :'documents',
+        :'politically_exposed_people' => :'politically_exposed_people',
         :'metadata' => :'metadata',
         :'state' => :'state',
         :'id' => :'id',
@@ -179,6 +183,7 @@ module TransferZero
         :'identification_number' => :'String',
         :'identification_type' => :'String',
         :'documents' => :'Array<Document>',
+        :'politically_exposed_people' => :'Array<PoliticallyExposedPerson>',
         :'metadata' => :'Object',
         :'state' => :'SenderState',
         :'id' => :'String',
@@ -293,6 +298,12 @@ module TransferZero
       if attributes.key?(:'documents')
         if (value = attributes[:'documents']).is_a?(Array)
           self.documents = value
+        end
+      end
+
+      if attributes.key?(:'politically_exposed_people')
+        if (value = attributes[:'politically_exposed_people']).is_a?(Array)
+          self.politically_exposed_people = value
         end
       end
 
@@ -424,6 +435,7 @@ module TransferZero
           identification_number == o.identification_number &&
           identification_type == o.identification_type &&
           documents == o.documents &&
+          politically_exposed_people == o.politically_exposed_people &&
           metadata == o.metadata &&
           state == o.state &&
           id == o.id &&
@@ -440,7 +452,7 @@ module TransferZero
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [type, country, phone_country, phone_number, email, first_name, middle_name, last_name, occupation, nationality, onboarding_status, address, description, name, city, street, address_description, postal_code, birth_date, ip, identification_number, identification_type, documents, metadata, state, id, external_id, errors].hash
+      [type, country, phone_country, phone_number, email, first_name, middle_name, last_name, occupation, nationality, onboarding_status, address, description, name, city, street, address_description, postal_code, birth_date, ip, identification_number, identification_type, documents, politically_exposed_people, metadata, state, id, external_id, errors].hash
     end
 
 require 'active_support/core_ext/hash'
