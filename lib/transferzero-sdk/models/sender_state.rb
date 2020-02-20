@@ -14,13 +14,13 @@ require 'date'
 
 module TransferZero
   class SenderState
+    INCOMPLETE = "incomplete".freeze
     INITIAL = "initial".freeze
     VERIFIED = "verified".freeze
     APPROVED = "approved".freeze
     BANNED = "banned".freeze
     REJECTED = "rejected".freeze
     DISABLED = "disabled".freeze
-    INCOMPLETE = "incomplete".freeze
 
     # Builds the enum from string
     # @param [String] The enum value in the form of the string
