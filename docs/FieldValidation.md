@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ```ruby
 require 'TransferZero'
 
-instance = TransferZero::FieldValidation.new(presence: null,
+instance = TransferZero::FieldValidation.new(presence: true,
                                  inclusion: null,
                                  format: {&quot;with&quot;:&quot;(?-mix:\\A\\d+\\z)&quot;})
 ```
