@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  # This contains the details of the sender. The first time a specific sender is used the full details should be provided. Once a sender is created and is used, the next time you MUST only send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes.  Personal Sender Example: ```json {   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"first_name\": \"Johnny\",   \"last_name\": \"English\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"address_description\": \"Description of address\",   \"postal_code\": \"798983\",   \"birth_date\": \"1900-12-31\",   \"documents\": [ ],   \"ip\": \"127.0.0.1\",   \"identification_number\": \"AB123456\",   \"identification_type\": \"ID\",   \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",   \"metadata\": { } } ```  Business Sender Example:  ```json {   \"type\": \"business\",   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"name\": \"MyCompany\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"postal_code\": \"798983\",   \"address_description\": \"Description of address\",   \"documents\": [ ],   \"ip\": \"127.0.0.1\",   \"identification_number\": \"AB123456\",   \"identification_type\": \"ID\",   \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",   \"metadata\": { } } ```  [Sender in the API documentation](https://docs.transferzero.com/docs/transaction-flow/#sender)
+  # This contains the details of the sender. The first time a specific sender is used the full details should be provided. Once a sender is created and is used, the next time you MUST only send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes.  Personal Sender Example: ```json {   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"first_name\": \"Johnny\",   \"last_name\": \"English\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"address_description\": \"Description of address\",   \"postal_code\": \"798983\",   \"birth_date\": \"1900-12-31\",   \"documents\": [ ],   \"politically_exposed_people\": [ ],   \"ip\": \"127.0.0.1\",   \"identification_number\": \"AB123456\",   \"identification_type\": \"ID\",   \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",   \"metadata\": { } } ```  Business Sender Example:  ```json {   \"type\": \"business\",   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"name\": \"MyCompany\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"postal_code\": \"798983\",   \"address_description\": \"Description of address\",   \"documents\": [ ],   \"politically_exposed_people\": [ ],   \"ip\": \"127.0.0.1\",   \"identification_number\": \"AB123456\",   \"identification_type\": \"ID\",   \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",   \"metadata\": { } } ```  [Sender in the API documentation](https://docs.transferzero.com/docs/transaction-flow/#sender)
   class Sender
     attr_accessor :id
 
@@ -121,6 +121,9 @@ module TransferZero
     # Needed for KYC checks. Required to approve the sender unless KYC is waived for your account. Please send us an empty list of documents: `\"documents\": [ ]` in the request if KYC has been waived.  If the documents already exist, please send the Document ID eg. ```JSON \"documents\": [   {     \"id\": \"b6648ba3-1c7b-4f59-8580-684899c84a07\"   } ] ```
     attr_accessor :documents
 
+    # A list of politically exposed people, individuals who are or have been entrusted with prominent public functions by a country, for example heads of state or heads of government, senior politicians, senior government, judicial or military officials, senior executives of state owned corporations, important political party officials.  There is a limit of three (3) politically exposed people per Sender.  Politically exposed person example: ```json   {     \"name\": \"Ronald Reagan\",     \"position\": \"President of the United States\",     \"started_date\": \"1981-01-20T00:00:00.000Z\",     \"ended_date\": \"1989-01-20T00:00:00.000Z\"   } ```
+    attr_accessor :politically_exposed_people
+
     # Metadata of sender. You can store any detail specific to your integration here (for example the local ID of the sender on your end). When requesting sender details you will receive the sent metadata back. Also when sending sender related webhooks you will receive the details stored here as well.
     attr_accessor :metadata
 
@@ -129,9 +132,6 @@ module TransferZero
 
     # The onboarding status of the sender
     attr_accessor :onboarding_status
-
-    # A list of politically exposed people, individuals who are or have been entrusted with prominent public functions by a country, for example heads of state or heads of government, senior politicians, senior government, judicial or military officials, senior executives of state owned corporations, important political party officials.  There is a limit of three (3) politically exposed people per Sender.  Politically exposed person example: ```json   {     \"name\": \"Ronald Reagan\",     \"position\": \"President of the United States\",     \"started_date\": \"1981-01-20T00:00:00.000Z\",     \"ended_date\": \"1989-01-20T00:00:00.000Z\"   } ```
-    attr_accessor :politically_exposed_people
 
     # Optional ID that is supplied by partner linking it to the partner's own Sender ID. Note: if present we will validate whether the sent ID is a duplicate in our system or not.
     attr_accessor :external_id
@@ -197,10 +197,10 @@ module TransferZero
         :'trading_country' => :'trading_country',
         :'trading_address' => :'trading_address',
         :'documents' => :'documents',
+        :'politically_exposed_people' => :'politically_exposed_people',
         :'metadata' => :'metadata',
         :'errors' => :'errors',
         :'onboarding_status' => :'onboarding_status',
-        :'politically_exposed_people' => :'politically_exposed_people',
         :'external_id' => :'external_id'
       }
     end
@@ -244,10 +244,10 @@ module TransferZero
         :'trading_country' => :'String',
         :'trading_address' => :'String',
         :'documents' => :'Array<Document>',
+        :'politically_exposed_people' => :'Array<PoliticallyExposedPerson>',
         :'metadata' => :'Object',
         :'errors' => :'Hash<String, Array<ValidationErrorDescription>>',
         :'onboarding_status' => :'String',
-        :'politically_exposed_people' => :'Array<PoliticallyExposedPerson>',
         :'external_id' => :'String'
       }
     end
@@ -413,6 +413,12 @@ module TransferZero
         end
       end
 
+      if attributes.key?(:'politically_exposed_people')
+        if (value = attributes[:'politically_exposed_people']).is_a?(Array)
+          self.politically_exposed_people = value
+        end
+      end
+
       if attributes.key?(:'metadata')
         self.metadata = attributes[:'metadata']
       end
@@ -425,12 +431,6 @@ module TransferZero
 
       if attributes.key?(:'onboarding_status')
         self.onboarding_status = attributes[:'onboarding_status']
-      end
-
-      if attributes.key?(:'politically_exposed_people')
-        if (value = attributes[:'politically_exposed_people']).is_a?(Array)
-          self.politically_exposed_people = value
-        end
       end
 
       if attributes.key?(:'external_id')
@@ -568,10 +568,10 @@ module TransferZero
           trading_country == o.trading_country &&
           trading_address == o.trading_address &&
           documents == o.documents &&
+          politically_exposed_people == o.politically_exposed_people &&
           metadata == o.metadata &&
           errors == o.errors &&
           onboarding_status == o.onboarding_status &&
-          politically_exposed_people == o.politically_exposed_people &&
           external_id == o.external_id
     end
 
@@ -584,7 +584,7 @@ module TransferZero
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, core_business_activities, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id].hash
+      [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, core_business_activities, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, documents, politically_exposed_people, metadata, errors, onboarding_status, external_id].hash
     end
 
 require 'active_support/core_ext/hash'

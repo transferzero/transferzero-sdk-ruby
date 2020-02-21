@@ -13,7 +13,6 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  # An optional list of politically exposed people, individuals who are or have been entrusted with prominent public functions by a country,  for example heads of state or heads of government, senior politicians, senior government, judicial or military officials,  senior executives of state owned corporations, important political party officials.  There is a limit of three (3) politically exposed people per Sender.  Politically exposed person example: ```json   {     \"name\": \"Ronald Reagan\",      \"position\": \"President of the United States\",      \"started_date\": \"1981-01-20T00:00:00.000Z\",     \"ended_date\": \"1989-01-20T00:00:00.000Z\"   } ```
   class PoliticallyExposedPerson
     attr_accessor :id
 
