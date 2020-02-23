@@ -14,8 +14,6 @@ require 'date'
 
 module TransferZero
   class Document
-    attr_accessor :sender_id
-
     # Base64 encoded data uri of an image/pdf file or a fully qualified url
     attr_accessor :upload
 
@@ -42,6 +40,9 @@ module TransferZero
     attr_accessor :issuing_country
 
     attr_accessor :id
+
+    # The state of the document. Can be one of the following:  - `initial`: When a document is created and has not been through any checks (the default state) - `verified`: A document has passed compliance checks - `rejected`: The document has failed compliance checks
+    attr_accessor :state
 
     # The fields that have some problems and don't pass validation
     attr_accessor :errors
@@ -71,7 +72,6 @@ module TransferZero
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'sender_id' => :'sender_id',
         :'upload' => :'upload',
         :'upload_file_name' => :'upload_file_name',
         :'metadata' => :'metadata',
@@ -82,6 +82,7 @@ module TransferZero
         :'document_type' => :'document_type',
         :'issuing_country' => :'issuing_country',
         :'id' => :'id',
+        :'state' => :'state',
         :'errors' => :'errors'
       }
     end
@@ -89,7 +90,6 @@ module TransferZero
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'sender_id' => :'String',
         :'upload' => :'String',
         :'upload_file_name' => :'String',
         :'metadata' => :'Object',
@@ -100,6 +100,7 @@ module TransferZero
         :'document_type' => :'String',
         :'issuing_country' => :'String',
         :'id' => :'String',
+        :'state' => :'String',
         :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
       }
     end
@@ -118,10 +119,6 @@ module TransferZero
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'sender_id')
-        self.sender_id = attributes[:'sender_id']
-      end
 
       if attributes.key?(:'upload')
         self.upload = attributes[:'upload']
@@ -161,6 +158,10 @@ module TransferZero
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
       end
 
       if attributes.key?(:'errors')
@@ -210,7 +211,6 @@ module TransferZero
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          sender_id == o.sender_id &&
           upload == o.upload &&
           upload_file_name == o.upload_file_name &&
           metadata == o.metadata &&
@@ -221,6 +221,7 @@ module TransferZero
           document_type == o.document_type &&
           issuing_country == o.issuing_country &&
           id == o.id &&
+          state == o.state &&
           errors == o.errors
     end
 
@@ -233,7 +234,7 @@ module TransferZero
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [sender_id, upload, upload_file_name, metadata, upload_content_type, upload_file_size, category, side, document_type, issuing_country, id, errors].hash
+      [upload, upload_file_name, metadata, upload_content_type, upload_file_size, category, side, document_type, issuing_country, id, state, errors].hash
     end
 
 require 'active_support/core_ext/hash'

@@ -115,7 +115,6 @@ Class | Method | HTTP request | Description
 *TransferZero::CurrencyInfoApi* | [**info_currencies**](docs/CurrencyInfoApi.md#info_currencies) | **GET** /info/currencies | Getting a list of possible requested currencies
 *TransferZero::CurrencyInfoApi* | [**info_currencies_in**](docs/CurrencyInfoApi.md#info_currencies_in) | **GET** /info/currencies/in | Getting a list of possible input currencies
 *TransferZero::CurrencyInfoApi* | [**info_currencies_out**](docs/CurrencyInfoApi.md#info_currencies_out) | **GET** /info/currencies/out | Getting a list of possible output currencies
-*TransferZero::DocumentsApi* | [**delete_document**](docs/DocumentsApi.md#delete_document) | **DELETE** /documents/{Document ID} | Deleting a document
 *TransferZero::DocumentsApi* | [**get_document**](docs/DocumentsApi.md#get_document) | **GET** /documents/{Document ID} | Fetching a document
 *TransferZero::DocumentsApi* | [**get_documents**](docs/DocumentsApi.md#get_documents) | **GET** /documents | Getting a list of documents
 *TransferZero::DocumentsApi* | [**post_documents**](docs/DocumentsApi.md#post_documents) | **POST** /documents | Creating a document
