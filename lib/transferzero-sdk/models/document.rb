@@ -41,9 +41,6 @@ module TransferZero
 
     attr_accessor :id
 
-    # The state of the document. Can be one of the following:  - `initial`: When a document is created and has not been through any checks (the default state) - `verified`: A document has passed compliance checks - `rejected`: The document has failed compliance checks
-    attr_accessor :state
-
     # The fields that have some problems and don't pass validation
     attr_accessor :errors
 
@@ -82,7 +79,6 @@ module TransferZero
         :'document_type' => :'document_type',
         :'issuing_country' => :'issuing_country',
         :'id' => :'id',
-        :'state' => :'state',
         :'errors' => :'errors'
       }
     end
@@ -100,7 +96,6 @@ module TransferZero
         :'document_type' => :'String',
         :'issuing_country' => :'String',
         :'id' => :'String',
-        :'state' => :'String',
         :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
       }
     end
@@ -160,10 +155,6 @@ module TransferZero
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
       if attributes.key?(:'errors')
         if (value = attributes[:'errors']).is_a?(Hash)
           self.errors = value
@@ -221,7 +212,6 @@ module TransferZero
           document_type == o.document_type &&
           issuing_country == o.issuing_country &&
           id == o.id &&
-          state == o.state &&
           errors == o.errors
     end
 
@@ -234,7 +224,7 @@ module TransferZero
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [upload, upload_file_name, metadata, upload_content_type, upload_file_size, category, side, document_type, issuing_country, id, state, errors].hash
+      [upload, upload_file_name, metadata, upload_content_type, upload_file_size, category, side, document_type, issuing_country, id, errors].hash
     end
 
 require 'active_support/core_ext/hash'

@@ -118,6 +118,12 @@ module TransferZero
     # The Business trading address (used only with a Business sender)
     attr_accessor :trading_address
 
+    # The estimated number of monthly transactions (used only with a Business sender)
+    attr_accessor :number_monthly_transactions
+
+    # The estimated amount for all transactions each month in USD (used only with a Business sender)
+    attr_accessor :amount_monthly_transactions
+
     # Needed for KYC checks. Required to approve the sender unless KYC is waived for your account. Please send us an empty list of documents: `\"documents\": [ ]` in the request if KYC has been waived.  If the documents already exist, please send the Document ID eg. ```JSON \"documents\": [   {     \"id\": \"b6648ba3-1c7b-4f59-8580-684899c84a07\"   } ] ```
     attr_accessor :documents
 
@@ -196,6 +202,8 @@ module TransferZero
         :'contact_person_email' => :'contact_person_email',
         :'trading_country' => :'trading_country',
         :'trading_address' => :'trading_address',
+        :'number_monthly_transactions' => :'number_monthly_transactions',
+        :'amount_monthly_transactions' => :'amount_monthly_transactions',
         :'documents' => :'documents',
         :'metadata' => :'metadata',
         :'errors' => :'errors',
@@ -243,6 +251,8 @@ module TransferZero
         :'contact_person_email' => :'String',
         :'trading_country' => :'String',
         :'trading_address' => :'String',
+        :'number_monthly_transactions' => :'String',
+        :'amount_monthly_transactions' => :'String',
         :'documents' => :'Array<Document>',
         :'metadata' => :'Object',
         :'errors' => :'Hash<String, Array<ValidationErrorDescription>>',
@@ -407,6 +417,14 @@ module TransferZero
         self.trading_address = attributes[:'trading_address']
       end
 
+      if attributes.key?(:'number_monthly_transactions')
+        self.number_monthly_transactions = attributes[:'number_monthly_transactions']
+      end
+
+      if attributes.key?(:'amount_monthly_transactions')
+        self.amount_monthly_transactions = attributes[:'amount_monthly_transactions']
+      end
+
       if attributes.key?(:'documents')
         if (value = attributes[:'documents']).is_a?(Array)
           self.documents = value
@@ -567,6 +585,8 @@ module TransferZero
           contact_person_email == o.contact_person_email &&
           trading_country == o.trading_country &&
           trading_address == o.trading_address &&
+          number_monthly_transactions == o.number_monthly_transactions &&
+          amount_monthly_transactions == o.amount_monthly_transactions &&
           documents == o.documents &&
           metadata == o.metadata &&
           errors == o.errors &&
@@ -584,7 +604,7 @@ module TransferZero
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, core_business_activities, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id].hash
+      [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, core_business_activities, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id].hash
     end
 
 require 'active_support/core_ext/hash'
