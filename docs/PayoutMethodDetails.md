@@ -24,6 +24,8 @@ Name | Type | Description | Notes
 **identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | [optional] 
 **identity_card_id** | **String** |  | [optional] 
 **reference** | **String** |  | [optional] 
+**name** | **String** |  | 
+**address** | **String** |  | 
 
 ## Code Sample
 
@@ -49,7 +51,9 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  reason: null,
                                  identity_card_type: null,
                                  identity_card_id: null,
-                                 reference: null)
+                                 reference: null,
+                                 name: null,
+                                 address: null)
 ```
 
 

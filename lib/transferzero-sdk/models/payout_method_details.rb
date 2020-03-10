@@ -54,6 +54,10 @@ module TransferZero
 
     attr_accessor :reference
 
+    attr_accessor :name
+
+    attr_accessor :address
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -76,7 +80,9 @@ module TransferZero
         :'reason' => :'reason',
         :'identity_card_type' => :'identity_card_type',
         :'identity_card_id' => :'identity_card_id',
-        :'reference' => :'reference'
+        :'reference' => :'reference',
+        :'name' => :'name',
+        :'address' => :'address'
       }
     end
 
@@ -102,13 +108,16 @@ module TransferZero
         :'reason' => :'String',
         :'identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
         :'identity_card_id' => :'String',
-        :'reference' => :'String'
+        :'reference' => :'String',
+        :'name' => :'String',
+        :'address' => :'String'
       }
     end
 
     # List of class defined in oneOf (OpenAPI v3)
     def self.openapi_one_of
       [
+      :'PayoutMethodDetailsBTC',
       :'PayoutMethodDetailsBalance',
       :'PayoutMethodDetailsGHSBank',
       :'PayoutMethodDetailsIBAN',
@@ -214,6 +223,14 @@ module TransferZero
       if attributes.key?(:'reference')
         self.reference = attributes[:'reference']
       end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'address')
+        self.address = attributes[:'address']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -276,6 +293,14 @@ module TransferZero
         invalid_properties.push('invalid value for "sender_gender", sender_gender cannot be nil.')
       end
 
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
+      if @address.nil?
+        invalid_properties.push('invalid value for "address", address cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -296,6 +321,8 @@ module TransferZero
       return false if @sender_city_of_birth.nil?
       return false if @sender_country_of_birth.nil?
       return false if @sender_gender.nil?
+      return false if @name.nil?
+      return false if @address.nil?
       _one_of_found = false
       openapi_one_of.each do |_class|
         _one_of = TransferZero.const_get(_class).build_from_hash(self.to_hash)
@@ -339,7 +366,9 @@ module TransferZero
           reason == o.reason &&
           identity_card_type == o.identity_card_type &&
           identity_card_id == o.identity_card_id &&
-          reference == o.reference
+          reference == o.reference &&
+          name == o.name &&
+          address == o.address
     end
 
     # @see the `==` method
@@ -351,7 +380,7 @@ module TransferZero
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, iban, bank_name, bank_country, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference].hash
+      [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, iban, bank_name, bank_country, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address].hash
     end
 
 require 'active_support/core_ext/hash'
