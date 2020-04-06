@@ -13,123 +13,123 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  # ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"bank_code\": \"030100\",   \"bank_account\": \"123456789\" } ```  The current banks supported and their bank_codes values are:  - Access Bank: 280100 - Barclays Bank: 030100 - GCB Bank: 040100 - Ecobank: 130100 - First National Bank: 330100 - Heritage Bank: 370100 - Prudential Bank: 180100 - Stanbic Bank: 190100 - Standard Chartered Bank: 020100 - United Bank for Africa: 060100 - Zenith Bank: 120100
-  class PayoutMethodDetailsGHSBank
-    attr_accessor :first_name
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"bank_code\": \"030100\",   \"bank_account\": \"123456789\" } ```  The current banks supported and their bank_codes values are:  - Access Bank: 280100 - Barclays Bank: 030100 - GCB Bank: 040100 - Ecobank: 130100 - First National Bank: 330100 - Heritage Bank: 370100 - Prudential Bank: 180100 - Stanbic Bank: 190100 - Standard Chartered Bank: 020100 - United Bank for Africa: 060100 - Zenith Bank: 120100
+class PayoutMethodDetailsGHSBank
+  attr_accessor :first_name
 
-    attr_accessor :last_name
+  attr_accessor :last_name
 
-    attr_accessor :bank_code
+  attr_accessor :bank_code
 
-    attr_accessor :bank_account
+  attr_accessor :bank_account
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'first_name' => :'first_name',
-        :'last_name' => :'last_name',
-        :'bank_code' => :'bank_code',
-        :'bank_account' => :'bank_account'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'first_name' => :'first_name',
+      :'last_name' => :'last_name',
+      :'bank_code' => :'bank_code',
+      :'bank_account' => :'bank_account'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'first_name' => :'String',
+      :'last_name' => :'String',
+      :'bank_code' => :'String',
+      :'bank_account' => :'String'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsGHSBank` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'first_name' => :'String',
-        :'last_name' => :'String',
-        :'bank_code' => :'String',
-        :'bank_account' => :'String'
-      }
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsGHSBank`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+      end
+      h[k.to_sym] = v
+    }
+
+    if attributes.key?(:'first_name')
+      self.first_name = attributes[:'first_name']
     end
 
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsGHSBank` initialize method"
-      end
-
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsGHSBank`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'first_name')
-        self.first_name = attributes[:'first_name']
-      end
-
-      if attributes.key?(:'last_name')
-        self.last_name = attributes[:'last_name']
-      end
-
-      if attributes.key?(:'bank_code')
-        self.bank_code = attributes[:'bank_code']
-      end
-
-      if attributes.key?(:'bank_account')
-        self.bank_account = attributes[:'bank_account']
-      end
+    if attributes.key?(:'last_name')
+      self.last_name = attributes[:'last_name']
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      if @first_name.nil?
-        invalid_properties.push('invalid value for "first_name", first_name cannot be nil.')
-      end
-
-      if @last_name.nil?
-        invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
-      end
-
-      if @bank_code.nil?
-        invalid_properties.push('invalid value for "bank_code", bank_code cannot be nil.')
-      end
-
-      if @bank_account.nil?
-        invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
-      end
-
-      invalid_properties
+    if attributes.key?(:'bank_code')
+      self.bank_code = attributes[:'bank_code']
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      return false if @first_name.nil?
-      return false if @last_name.nil?
-      return false if @bank_code.nil?
-      return false if @bank_account.nil?
-      true
+    if attributes.key?(:'bank_account')
+      self.bank_account = attributes[:'bank_account']
+    end
+  end
+
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    if @first_name.nil?
+      invalid_properties.push('invalid value for "first_name", first_name cannot be nil.')
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          first_name == o.first_name &&
-          last_name == o.last_name &&
-          bank_code == o.bank_code &&
-          bank_account == o.bank_account
+    if @last_name.nil?
+      invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
     end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
+    if @bank_code.nil?
+      invalid_properties.push('invalid value for "bank_code", bank_code cannot be nil.')
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [first_name, last_name, bank_code, bank_account].hash
+    if @bank_account.nil?
+      invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
     end
+
+    invalid_properties
+  end
+
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    return false if @first_name.nil?
+    return false if @last_name.nil?
+    return false if @bank_code.nil?
+    return false if @bank_account.nil?
+    true
+  end
+
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        first_name == o.first_name &&
+        last_name == o.last_name &&
+        bank_code == o.bank_code &&
+        bank_account == o.bank_account
+  end
+
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [first_name, last_name, bank_code, bank_account].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -245,5 +245,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

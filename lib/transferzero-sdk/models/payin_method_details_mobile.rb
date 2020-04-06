@@ -13,92 +13,92 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  # ```JSON \"details\": {   \"phone_number\": \"+2569999999\",   \"send_instructions\": true } ```
-  class PayinMethodDetailsMobile
-    # The phone number where the funds should be collected from
-    attr_accessor :phone_number
+# ```JSON \"details\": {   \"phone_number\": \"+2569999999\",   \"send_instructions\": true } ```
+class PayinMethodDetailsMobile
+  # The phone number where the funds should be collected from
+  attr_accessor :phone_number
 
-    # States whether to send out the instructions to the phone number on how to pay the funds or not. This shuold always be set to true, otherwise the sender might not receive a prompt for payment.
-    attr_accessor :send_instructions
+  # States whether to send out the instructions to the phone number on how to pay the funds or not. This shuold always be set to true, otherwise the sender might not receive a prompt for payment.
+  attr_accessor :send_instructions
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'phone_number' => :'phone_number',
-        :'send_instructions' => :'send_instructions'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'phone_number' => :'phone_number',
+      :'send_instructions' => :'send_instructions'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'phone_number' => :'String',
+      :'send_instructions' => :'Boolean'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayinMethodDetailsMobile` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'phone_number' => :'String',
-        :'send_instructions' => :'Boolean'
-      }
-    end
-
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayinMethodDetailsMobile` initialize method"
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayinMethodDetailsMobile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
+      h[k.to_sym] = v
+    }
 
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayinMethodDetailsMobile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'phone_number')
-        self.phone_number = attributes[:'phone_number']
-      end
-
-      if attributes.key?(:'send_instructions')
-        self.send_instructions = attributes[:'send_instructions']
-      end
+    if attributes.key?(:'phone_number')
+      self.phone_number = attributes[:'phone_number']
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      if @phone_number.nil?
-        invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
-      end
+    if attributes.key?(:'send_instructions')
+      self.send_instructions = attributes[:'send_instructions']
+    end
+  end
 
-      invalid_properties
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    if @phone_number.nil?
+      invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      return false if @phone_number.nil?
-      true
-    end
+    invalid_properties
+  end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          phone_number == o.phone_number &&
-          send_instructions == o.send_instructions
-    end
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    return false if @phone_number.nil?
+    true
+  end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
-    end
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        phone_number == o.phone_number &&
+        send_instructions == o.send_instructions
+  end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [phone_number, send_instructions].hash
-    end
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [phone_number, send_instructions].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -214,5 +214,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

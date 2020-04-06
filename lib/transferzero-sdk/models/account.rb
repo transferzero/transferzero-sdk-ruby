@@ -13,86 +13,86 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  class Account
-    # The account balance for the given currency
-    attr_accessor :amount
+class Account
+  # The account balance for the given currency
+  attr_accessor :amount
 
-    # The currency of this balance
-    attr_accessor :currency
+  # The currency of this balance
+  attr_accessor :currency
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'amount' => :'amount',
-        :'currency' => :'currency'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'amount' => :'amount',
+      :'currency' => :'currency'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'amount' => :'Float',
+      :'currency' => :'String'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::Account` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'amount' => :'Float',
-        :'currency' => :'String'
-      }
-    end
-
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::Account` initialize method"
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::Account`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
+      h[k.to_sym] = v
+    }
 
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::Account`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'amount')
-        self.amount = attributes[:'amount']
-      end
-
-      if attributes.key?(:'currency')
-        self.currency = attributes[:'currency']
-      end
+    if attributes.key?(:'amount')
+      self.amount = attributes[:'amount']
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      invalid_properties
+    if attributes.key?(:'currency')
+      self.currency = attributes[:'currency']
     end
+  end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      true
-    end
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    invalid_properties
+  end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          amount == o.amount &&
-          currency == o.currency
-    end
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    true
+  end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
-    end
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        amount == o.amount &&
+        currency == o.currency
+  end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [amount, currency].hash
-    end
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [amount, currency].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -208,5 +208,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

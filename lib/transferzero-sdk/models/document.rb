@@ -13,219 +13,219 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  class Document
-    # Base64 encoded data uri of an image/pdf file or a fully qualified url
-    attr_accessor :upload
+class Document
+  # Base64 encoded data uri of an image/pdf file or a fully qualified url
+  attr_accessor :upload
 
-    # Name of the upload
-    attr_accessor :upload_file_name
+  # Name of the upload
+  attr_accessor :upload_file_name
 
-    # Metadata of document
-    attr_accessor :metadata
+  # Metadata of document
+  attr_accessor :metadata
 
-    attr_accessor :upload_content_type
+  attr_accessor :upload_content_type
 
-    attr_accessor :upload_file_size
+  attr_accessor :upload_file_size
 
-    # uncategorised
-    attr_accessor :category
+  # uncategorised
+  attr_accessor :category
 
-    # The side of the KYC ID. One of 'front' or 'back'
-    attr_accessor :side
+  # The side of the KYC ID. One of 'front' or 'back'
+  attr_accessor :side
 
-    # This is a brief description of the document type
-    attr_accessor :document_type
+  # This is a brief description of the document type
+  attr_accessor :document_type
 
-    # Issuing country of ID in 2-character alpha ISO 3166-2 country format
-    attr_accessor :issuing_country
+  # Issuing country of ID in 2-character alpha ISO 3166-2 country format
+  attr_accessor :issuing_country
 
-    attr_accessor :id
+  attr_accessor :id
 
-    # The fields that have some problems and don't pass validation
-    attr_accessor :errors
+  # The fields that have some problems and don't pass validation
+  attr_accessor :errors
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
+  class EnumAttributeValidator
+    attr_reader :datatype
+    attr_reader :allowable_values
 
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
-
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'upload' => :'upload',
-        :'upload_file_name' => :'upload_file_name',
-        :'metadata' => :'metadata',
-        :'upload_content_type' => :'upload_content_type',
-        :'upload_file_size' => :'upload_file_size',
-        :'category' => :'category',
-        :'side' => :'side',
-        :'document_type' => :'document_type',
-        :'issuing_country' => :'issuing_country',
-        :'id' => :'id',
-        :'errors' => :'errors'
-      }
-    end
-
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'upload' => :'String',
-        :'upload_file_name' => :'String',
-        :'metadata' => :'Object',
-        :'upload_content_type' => :'String',
-        :'upload_file_size' => :'Integer',
-        :'category' => :'String',
-        :'side' => :'String',
-        :'document_type' => :'String',
-        :'issuing_country' => :'String',
-        :'id' => :'String',
-        :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
-      }
-    end
-
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::Document` initialize method"
-      end
-
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::Document`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'upload')
-        self.upload = attributes[:'upload']
-      end
-
-      if attributes.key?(:'upload_file_name')
-        self.upload_file_name = attributes[:'upload_file_name']
-      end
-
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'upload_content_type')
-        self.upload_content_type = attributes[:'upload_content_type']
-      end
-
-      if attributes.key?(:'upload_file_size')
-        self.upload_file_size = attributes[:'upload_file_size']
-      end
-
-      if attributes.key?(:'category')
-        self.category = attributes[:'category']
-      end
-
-      if attributes.key?(:'side')
-        self.side = attributes[:'side']
-      end
-
-      if attributes.key?(:'document_type')
-        self.document_type = attributes[:'document_type']
-      end
-
-      if attributes.key?(:'issuing_country')
-        self.issuing_country = attributes[:'issuing_country']
-      end
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'errors')
-        if (value = attributes[:'errors']).is_a?(Hash)
-          self.errors = value
+    def initialize(datatype, allowable_values)
+      @allowable_values = allowable_values.map do |value|
+        case datatype.to_s
+        when /Integer/i
+          value.to_i
+        when /Float/i
+          value.to_f
+        else
+          value
         end
       end
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      if @upload.nil?
-        invalid_properties.push('invalid value for "upload", upload cannot be nil.')
+    def valid?(value)
+      !value || allowable_values.include?(value)
+    end
+  end
+
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'upload' => :'upload',
+      :'upload_file_name' => :'upload_file_name',
+      :'metadata' => :'metadata',
+      :'upload_content_type' => :'upload_content_type',
+      :'upload_file_size' => :'upload_file_size',
+      :'category' => :'category',
+      :'side' => :'side',
+      :'document_type' => :'document_type',
+      :'issuing_country' => :'issuing_country',
+      :'id' => :'id',
+      :'errors' => :'errors'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'upload' => :'String',
+      :'upload_file_name' => :'String',
+      :'metadata' => :'Object',
+      :'upload_content_type' => :'String',
+      :'upload_file_size' => :'Integer',
+      :'category' => :'String',
+      :'side' => :'String',
+      :'document_type' => :'String',
+      :'issuing_country' => :'String',
+      :'id' => :'String',
+      :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::Document` initialize method"
+    end
+
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::Document`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
+      h[k.to_sym] = v
+    }
 
-      if @upload_file_name.nil?
-        invalid_properties.push('invalid value for "upload_file_name", upload_file_name cannot be nil.')
+    if attributes.key?(:'upload')
+      self.upload = attributes[:'upload']
+    end
+
+    if attributes.key?(:'upload_file_name')
+      self.upload_file_name = attributes[:'upload_file_name']
+    end
+
+    if attributes.key?(:'metadata')
+      self.metadata = attributes[:'metadata']
+    end
+
+    if attributes.key?(:'upload_content_type')
+      self.upload_content_type = attributes[:'upload_content_type']
+    end
+
+    if attributes.key?(:'upload_file_size')
+      self.upload_file_size = attributes[:'upload_file_size']
+    end
+
+    if attributes.key?(:'category')
+      self.category = attributes[:'category']
+    end
+
+    if attributes.key?(:'side')
+      self.side = attributes[:'side']
+    end
+
+    if attributes.key?(:'document_type')
+      self.document_type = attributes[:'document_type']
+    end
+
+    if attributes.key?(:'issuing_country')
+      self.issuing_country = attributes[:'issuing_country']
+    end
+
+    if attributes.key?(:'id')
+      self.id = attributes[:'id']
+    end
+
+    if attributes.key?(:'errors')
+      if (value = attributes[:'errors']).is_a?(Hash)
+        self.errors = value
       end
+    end
+  end
 
-      invalid_properties
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    if @upload.nil?
+      invalid_properties.push('invalid value for "upload", upload cannot be nil.')
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      return false if @upload.nil?
-      return false if @upload_file_name.nil?
-      side_validator = EnumAttributeValidator.new('String', ["front", "back"])
-      return false unless side_validator.valid?(@side)
-      true
+    if @upload_file_name.nil?
+      invalid_properties.push('invalid value for "upload_file_name", upload_file_name cannot be nil.')
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] side Object to be assigned
-    def side=(side)
-      validator = EnumAttributeValidator.new('String', ["front", "back"])
-      unless validator.valid?(side)
-        fail ArgumentError, "invalid value for \"side\", must be one of #{validator.allowable_values}."
-      end
-      @side = side
-    end
+    invalid_properties
+  end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          upload == o.upload &&
-          upload_file_name == o.upload_file_name &&
-          metadata == o.metadata &&
-          upload_content_type == o.upload_content_type &&
-          upload_file_size == o.upload_file_size &&
-          category == o.category &&
-          side == o.side &&
-          document_type == o.document_type &&
-          issuing_country == o.issuing_country &&
-          id == o.id &&
-          errors == o.errors
-    end
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    return false if @upload.nil?
+    return false if @upload_file_name.nil?
+    side_validator = EnumAttributeValidator.new('String', ["front", "back"])
+    return false unless side_validator.valid?(@side)
+    true
+  end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
+  # Custom attribute writer method checking allowed values (enum).
+  # @param [Object] side Object to be assigned
+  def side=(side)
+    validator = EnumAttributeValidator.new('String', ["front", "back"])
+    unless validator.valid?(side.presence)
+      fail ArgumentError, "invalid value for \"side\", must be one of #{validator.allowable_values}."
     end
+    @side = side
+  end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [upload, upload_file_name, metadata, upload_content_type, upload_file_size, category, side, document_type, issuing_country, id, errors].hash
-    end
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        upload == o.upload &&
+        upload_file_name == o.upload_file_name &&
+        metadata == o.metadata &&
+        upload_content_type == o.upload_content_type &&
+        upload_file_size == o.upload_file_size &&
+        category == o.category &&
+        side == o.side &&
+        document_type == o.document_type &&
+        issuing_country == o.issuing_country &&
+        id == o.id &&
+        errors == o.errors
+  end
+
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [upload, upload_file_name, metadata, upload_content_type, upload_file_size, category, side, document_type, issuing_country, id, errors].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -341,5 +341,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

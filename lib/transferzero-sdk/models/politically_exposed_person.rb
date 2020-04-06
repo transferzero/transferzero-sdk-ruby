@@ -13,145 +13,145 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  class PoliticallyExposedPerson
-    attr_accessor :id
+class PoliticallyExposedPerson
+  attr_accessor :id
 
-    # Full name of the politically exposed person 
-    attr_accessor :name
+  # Full name of the politically exposed person 
+  attr_accessor :name
 
-    # The office held by the politically exposed person 
-    attr_accessor :position
+  # The office held by the politically exposed person 
+  attr_accessor :position
 
-    # The date on which the person started holding the office 
-    attr_accessor :started_date
+  # The date on which the person started holding the office 
+  attr_accessor :started_date
 
-    # The date on which the person ended holding the office 
-    attr_accessor :ended_date
+  # The date on which the person ended holding the office 
+  attr_accessor :ended_date
 
-    # The ID of the Sender to whom the person is attached to 
-    attr_accessor :sender_id
+  # The ID of the Sender to whom the person is attached to 
+  attr_accessor :sender_id
 
-    # Date and time the person was created
-    attr_accessor :created_at
+  # Date and time the person was created
+  attr_accessor :created_at
 
-    # Date and time the person was updated
-    attr_accessor :updated_at
+  # Date and time the person was updated
+  attr_accessor :updated_at
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'id' => :'id',
-        :'name' => :'name',
-        :'position' => :'position',
-        :'started_date' => :'started_date',
-        :'ended_date' => :'ended_date',
-        :'sender_id' => :'sender_id',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'id' => :'id',
+      :'name' => :'name',
+      :'position' => :'position',
+      :'started_date' => :'started_date',
+      :'ended_date' => :'ended_date',
+      :'sender_id' => :'sender_id',
+      :'created_at' => :'created_at',
+      :'updated_at' => :'updated_at'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'id' => :'Integer',
+      :'name' => :'String',
+      :'position' => :'String',
+      :'started_date' => :'DateTime',
+      :'ended_date' => :'DateTime',
+      :'sender_id' => :'String',
+      :'created_at' => :'DateTime',
+      :'updated_at' => :'DateTime'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PoliticallyExposedPerson` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'id' => :'Integer',
-        :'name' => :'String',
-        :'position' => :'String',
-        :'started_date' => :'DateTime',
-        :'ended_date' => :'DateTime',
-        :'sender_id' => :'String',
-        :'created_at' => :'DateTime',
-        :'updated_at' => :'DateTime'
-      }
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PoliticallyExposedPerson`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+      end
+      h[k.to_sym] = v
+    }
+
+    if attributes.key?(:'id')
+      self.id = attributes[:'id']
     end
 
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PoliticallyExposedPerson` initialize method"
-      end
-
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PoliticallyExposedPerson`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'position')
-        self.position = attributes[:'position']
-      end
-
-      if attributes.key?(:'started_date')
-        self.started_date = attributes[:'started_date']
-      end
-
-      if attributes.key?(:'ended_date')
-        self.ended_date = attributes[:'ended_date']
-      end
-
-      if attributes.key?(:'sender_id')
-        self.sender_id = attributes[:'sender_id']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
-      end
+    if attributes.key?(:'name')
+      self.name = attributes[:'name']
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      invalid_properties
+    if attributes.key?(:'position')
+      self.position = attributes[:'position']
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      true
+    if attributes.key?(:'started_date')
+      self.started_date = attributes[:'started_date']
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          id == o.id &&
-          name == o.name &&
-          position == o.position &&
-          started_date == o.started_date &&
-          ended_date == o.ended_date &&
-          sender_id == o.sender_id &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at
+    if attributes.key?(:'ended_date')
+      self.ended_date = attributes[:'ended_date']
     end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
+    if attributes.key?(:'sender_id')
+      self.sender_id = attributes[:'sender_id']
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [id, name, position, started_date, ended_date, sender_id, created_at, updated_at].hash
+    if attributes.key?(:'created_at')
+      self.created_at = attributes[:'created_at']
     end
+
+    if attributes.key?(:'updated_at')
+      self.updated_at = attributes[:'updated_at']
+    end
+  end
+
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    invalid_properties
+  end
+
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    true
+  end
+
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        id == o.id &&
+        name == o.name &&
+        position == o.position &&
+        started_date == o.started_date &&
+        ended_date == o.ended_date &&
+        sender_id == o.sender_id &&
+        created_at == o.created_at &&
+        updated_at == o.updated_at
+  end
+
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [id, name, position, started_date, ended_date, sender_id, created_at, updated_at].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -267,5 +267,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

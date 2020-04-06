@@ -13,116 +13,116 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  class Pagination
-    # The number of the current page
-    attr_accessor :current_page
+class Pagination
+  # The number of the current page
+  attr_accessor :current_page
 
-    # The number of the next page. If no next page exists, this will be `null`
-    attr_accessor :next_page
+  # The number of the next page. If no next page exists, this will be `null`
+  attr_accessor :next_page
 
-    # The number of the previous page. If no previous page exists, this will be `null`
-    attr_accessor :prev_page
+  # The number of the previous page. If no previous page exists, this will be `null`
+  attr_accessor :prev_page
 
-    # The number of pages in the result set
-    attr_accessor :total_pages
+  # The number of pages in the result set
+  attr_accessor :total_pages
 
-    # The total number of results in the set
-    attr_accessor :total_count
+  # The total number of results in the set
+  attr_accessor :total_count
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'current_page' => :'current_page',
-        :'next_page' => :'next_page',
-        :'prev_page' => :'prev_page',
-        :'total_pages' => :'total_pages',
-        :'total_count' => :'total_count'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'current_page' => :'current_page',
+      :'next_page' => :'next_page',
+      :'prev_page' => :'prev_page',
+      :'total_pages' => :'total_pages',
+      :'total_count' => :'total_count'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'current_page' => :'Integer',
+      :'next_page' => :'Integer',
+      :'prev_page' => :'Integer',
+      :'total_pages' => :'Integer',
+      :'total_count' => :'Integer'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::Pagination` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'current_page' => :'Integer',
-        :'next_page' => :'Integer',
-        :'prev_page' => :'Integer',
-        :'total_pages' => :'Integer',
-        :'total_count' => :'Integer'
-      }
-    end
-
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::Pagination` initialize method"
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::Pagination`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
+      h[k.to_sym] = v
+    }
 
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::Pagination`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'current_page')
-        self.current_page = attributes[:'current_page']
-      end
-
-      if attributes.key?(:'next_page')
-        self.next_page = attributes[:'next_page']
-      end
-
-      if attributes.key?(:'prev_page')
-        self.prev_page = attributes[:'prev_page']
-      end
-
-      if attributes.key?(:'total_pages')
-        self.total_pages = attributes[:'total_pages']
-      end
-
-      if attributes.key?(:'total_count')
-        self.total_count = attributes[:'total_count']
-      end
+    if attributes.key?(:'current_page')
+      self.current_page = attributes[:'current_page']
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      invalid_properties
+    if attributes.key?(:'next_page')
+      self.next_page = attributes[:'next_page']
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      true
+    if attributes.key?(:'prev_page')
+      self.prev_page = attributes[:'prev_page']
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          current_page == o.current_page &&
-          next_page == o.next_page &&
-          prev_page == o.prev_page &&
-          total_pages == o.total_pages &&
-          total_count == o.total_count
+    if attributes.key?(:'total_pages')
+      self.total_pages = attributes[:'total_pages']
     end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
+    if attributes.key?(:'total_count')
+      self.total_count = attributes[:'total_count']
     end
+  end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [current_page, next_page, prev_page, total_pages, total_count].hash
-    end
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    invalid_properties
+  end
+
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    true
+  end
+
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        current_page == o.current_page &&
+        next_page == o.next_page &&
+        prev_page == o.prev_page &&
+        total_pages == o.total_pages &&
+        total_count == o.total_count
+  end
+
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [current_page, next_page, prev_page, total_pages, total_count].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -238,5 +238,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

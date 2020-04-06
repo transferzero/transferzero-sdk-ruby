@@ -13,166 +13,166 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  class Currency
-    # The currency code in 3-character alpha ISO 4217 currency format
-    attr_accessor :code
+class Currency
+  # The currency code in 3-character alpha ISO 4217 currency format
+  attr_accessor :code
 
-    # Name of currency
-    attr_accessor :name
+  # Name of currency
+  attr_accessor :name
 
-    # Symbol of currency
-    attr_accessor :symbol
+  # Symbol of currency
+  attr_accessor :symbol
 
-    # Number of decimal points
-    attr_accessor :decimals
+  # Number of decimal points
+  attr_accessor :decimals
 
-    # Subunits in Unit (eg. there are 100 cents in 1 US Dollar)
-    attr_accessor :subunit_to_unit
+  # Subunits in Unit (eg. there are 100 cents in 1 US Dollar)
+  attr_accessor :subunit_to_unit
 
-    # Is this a primary currency?
-    attr_accessor :primary
+  # Is this a primary currency?
+  attr_accessor :primary
 
-    # The minimum amount allowed in a transaction
-    attr_accessor :min
+  # The minimum amount allowed in a transaction
+  attr_accessor :min
 
-    # The maximum amount allowed in a transaction
-    attr_accessor :max
+  # The maximum amount allowed in a transaction
+  attr_accessor :max
 
-    # The margin set for transactions in this currency
-    attr_accessor :margin
+  # The margin set for transactions in this currency
+  attr_accessor :margin
 
-    # The equivalent of the currency to 1 USD
-    attr_accessor :usd_equivalent
+  # The equivalent of the currency to 1 USD
+  attr_accessor :usd_equivalent
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'code' => :'code',
-        :'name' => :'name',
-        :'symbol' => :'symbol',
-        :'decimals' => :'decimals',
-        :'subunit_to_unit' => :'subunit_to_unit',
-        :'primary' => :'primary',
-        :'min' => :'min',
-        :'max' => :'max',
-        :'margin' => :'margin',
-        :'usd_equivalent' => :'usd_equivalent'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'code' => :'code',
+      :'name' => :'name',
+      :'symbol' => :'symbol',
+      :'decimals' => :'decimals',
+      :'subunit_to_unit' => :'subunit_to_unit',
+      :'primary' => :'primary',
+      :'min' => :'min',
+      :'max' => :'max',
+      :'margin' => :'margin',
+      :'usd_equivalent' => :'usd_equivalent'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'code' => :'String',
+      :'name' => :'String',
+      :'symbol' => :'String',
+      :'decimals' => :'Float',
+      :'subunit_to_unit' => :'String',
+      :'primary' => :'Boolean',
+      :'min' => :'String',
+      :'max' => :'String',
+      :'margin' => :'String',
+      :'usd_equivalent' => :'String'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::Currency` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'code' => :'String',
-        :'name' => :'String',
-        :'symbol' => :'String',
-        :'decimals' => :'Float',
-        :'subunit_to_unit' => :'String',
-        :'primary' => :'Boolean',
-        :'min' => :'String',
-        :'max' => :'String',
-        :'margin' => :'String',
-        :'usd_equivalent' => :'String'
-      }
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::Currency`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+      end
+      h[k.to_sym] = v
+    }
+
+    if attributes.key?(:'code')
+      self.code = attributes[:'code']
     end
 
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::Currency` initialize method"
-      end
-
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::Currency`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'code')
-        self.code = attributes[:'code']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'symbol')
-        self.symbol = attributes[:'symbol']
-      end
-
-      if attributes.key?(:'decimals')
-        self.decimals = attributes[:'decimals']
-      end
-
-      if attributes.key?(:'subunit_to_unit')
-        self.subunit_to_unit = attributes[:'subunit_to_unit']
-      end
-
-      if attributes.key?(:'primary')
-        self.primary = attributes[:'primary']
-      end
-
-      if attributes.key?(:'min')
-        self.min = attributes[:'min']
-      end
-
-      if attributes.key?(:'max')
-        self.max = attributes[:'max']
-      end
-
-      if attributes.key?(:'margin')
-        self.margin = attributes[:'margin']
-      end
-
-      if attributes.key?(:'usd_equivalent')
-        self.usd_equivalent = attributes[:'usd_equivalent']
-      end
+    if attributes.key?(:'name')
+      self.name = attributes[:'name']
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      invalid_properties
+    if attributes.key?(:'symbol')
+      self.symbol = attributes[:'symbol']
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      true
+    if attributes.key?(:'decimals')
+      self.decimals = attributes[:'decimals']
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          code == o.code &&
-          name == o.name &&
-          symbol == o.symbol &&
-          decimals == o.decimals &&
-          subunit_to_unit == o.subunit_to_unit &&
-          primary == o.primary &&
-          min == o.min &&
-          max == o.max &&
-          margin == o.margin &&
-          usd_equivalent == o.usd_equivalent
+    if attributes.key?(:'subunit_to_unit')
+      self.subunit_to_unit = attributes[:'subunit_to_unit']
     end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
+    if attributes.key?(:'primary')
+      self.primary = attributes[:'primary']
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [code, name, symbol, decimals, subunit_to_unit, primary, min, max, margin, usd_equivalent].hash
+    if attributes.key?(:'min')
+      self.min = attributes[:'min']
     end
+
+    if attributes.key?(:'max')
+      self.max = attributes[:'max']
+    end
+
+    if attributes.key?(:'margin')
+      self.margin = attributes[:'margin']
+    end
+
+    if attributes.key?(:'usd_equivalent')
+      self.usd_equivalent = attributes[:'usd_equivalent']
+    end
+  end
+
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    invalid_properties
+  end
+
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    true
+  end
+
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        code == o.code &&
+        name == o.name &&
+        symbol == o.symbol &&
+        decimals == o.decimals &&
+        subunit_to_unit == o.subunit_to_unit &&
+        primary == o.primary &&
+        min == o.min &&
+        max == o.max &&
+        margin == o.margin &&
+        usd_equivalent == o.usd_equivalent
+  end
+
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [code, name, symbol, decimals, subunit_to_unit, primary, min, max, margin, usd_equivalent].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -288,5 +288,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

@@ -13,290 +13,290 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  # The recipient describes the amount, the currency and the destination where the money should be sent.
-  class Recipient
-    # the amount that should be paid to the recipient. This can be in any currency, usually either the input or the output currency. If the value here is not the output currency we will calculate how much the recipient is going to get using the exchange rates active when the transaction was created.
-    attr_accessor :requested_amount
+# The recipient describes the amount, the currency and the destination where the money should be sent.
+class Recipient
+  # the amount that should be paid to the recipient. This can be in any currency, usually either the input or the output currency. If the value here is not the output currency we will calculate how much the recipient is going to get using the exchange rates active when the transaction was created.
+  attr_accessor :requested_amount
 
-    # the currency of the amount in 3-character alpha ISO 4217 currency format
-    attr_accessor :requested_currency
+  # the currency of the amount in 3-character alpha ISO 4217 currency format
+  attr_accessor :requested_currency
 
-    attr_accessor :payout_method
+  attr_accessor :payout_method
 
-    # Additional metadata that can be added to a recipient. These values will be returned on request
-    attr_accessor :metadata
+  # Additional metadata that can be added to a recipient. These values will be returned on request
+  attr_accessor :metadata
 
-    # Date and time that the recipient was created.
-    attr_accessor :created_at
+  # Date and time that the recipient was created.
+  attr_accessor :created_at
 
-    # Shows whether the recipient can be edited using the PATCH /v1/recipients/{id} endpoint or not
-    attr_accessor :editable
+  # Shows whether the recipient can be edited using the PATCH /v1/recipients/{id} endpoint or not
+  attr_accessor :editable
 
-    # Shows whether the transaction made to the recipient can be retried or not
-    attr_accessor :retriable
+  # Shows whether the transaction made to the recipient can be retried or not
+  attr_accessor :retriable
 
-    # Shows how much this payment is worth in USD
-    attr_accessor :input_usd_amount
+  # Shows how much this payment is worth in USD
+  attr_accessor :input_usd_amount
 
-    # Shows whether the payment can be cancelled using the DELETE /v1/recipients/{id} endpoint or not. The payment can not be cancelled if the payout is pending.
-    attr_accessor :may_cancel
+  # Shows whether the payment can be cancelled using the DELETE /v1/recipients/{id} endpoint or not. The payment can not be cancelled if the payout is pending.
+  attr_accessor :may_cancel
 
-    # In case the payment is unsuccessful it holds the error message associated with the last unsuccessful payout.
-    attr_accessor :state_reason
+  # In case the payment is unsuccessful it holds the error message associated with the last unsuccessful payout.
+  attr_accessor :state_reason
 
-    attr_accessor :state
+  attr_accessor :state
 
-    # The ID of the transaction that is related to this recipient
-    attr_accessor :transaction_id
+  # The ID of the transaction that is related to this recipient
+  attr_accessor :transaction_id
 
-    attr_accessor :transaction_state
+  attr_accessor :transaction_state
 
-    # The exchange rate used in this payment
-    attr_accessor :exchange_rate
+  # The exchange rate used in this payment
+  attr_accessor :exchange_rate
 
-    # The fee for this payment in fractional units (for example cents for USD transactions)
-    attr_accessor :fee_fractional
+  # The fee for this payment in fractional units (for example cents for USD transactions)
+  attr_accessor :fee_fractional
 
-    # The amount that had to be paid in for this payment to proceed
-    attr_accessor :input_amount
+  # The amount that had to be paid in for this payment to proceed
+  attr_accessor :input_amount
 
-    # The currency this payment was paid in
-    attr_accessor :input_currency
+  # The currency this payment was paid in
+  attr_accessor :input_currency
 
-    # The amount that will be paid to the recipient
-    attr_accessor :output_amount
+  # The amount that will be paid to the recipient
+  attr_accessor :output_amount
 
-    # The currency the payment will be delivered in
-    attr_accessor :output_currency
+  # The currency the payment will be delivered in
+  attr_accessor :output_currency
 
-    attr_accessor :id
+  attr_accessor :id
 
-    # The fields that have some problems and don't pass validation
-    attr_accessor :errors
+  # The fields that have some problems and don't pass validation
+  attr_accessor :errors
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'requested_amount' => :'requested_amount',
-        :'requested_currency' => :'requested_currency',
-        :'payout_method' => :'payout_method',
-        :'metadata' => :'metadata',
-        :'created_at' => :'created_at',
-        :'editable' => :'editable',
-        :'retriable' => :'retriable',
-        :'input_usd_amount' => :'input_usd_amount',
-        :'may_cancel' => :'may_cancel',
-        :'state_reason' => :'state_reason',
-        :'state' => :'state',
-        :'transaction_id' => :'transaction_id',
-        :'transaction_state' => :'transaction_state',
-        :'exchange_rate' => :'exchange_rate',
-        :'fee_fractional' => :'fee_fractional',
-        :'input_amount' => :'input_amount',
-        :'input_currency' => :'input_currency',
-        :'output_amount' => :'output_amount',
-        :'output_currency' => :'output_currency',
-        :'id' => :'id',
-        :'errors' => :'errors'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'requested_amount' => :'requested_amount',
+      :'requested_currency' => :'requested_currency',
+      :'payout_method' => :'payout_method',
+      :'metadata' => :'metadata',
+      :'created_at' => :'created_at',
+      :'editable' => :'editable',
+      :'retriable' => :'retriable',
+      :'input_usd_amount' => :'input_usd_amount',
+      :'may_cancel' => :'may_cancel',
+      :'state_reason' => :'state_reason',
+      :'state' => :'state',
+      :'transaction_id' => :'transaction_id',
+      :'transaction_state' => :'transaction_state',
+      :'exchange_rate' => :'exchange_rate',
+      :'fee_fractional' => :'fee_fractional',
+      :'input_amount' => :'input_amount',
+      :'input_currency' => :'input_currency',
+      :'output_amount' => :'output_amount',
+      :'output_currency' => :'output_currency',
+      :'id' => :'id',
+      :'errors' => :'errors'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'requested_amount' => :'Float',
+      :'requested_currency' => :'String',
+      :'payout_method' => :'PayoutMethod',
+      :'metadata' => :'Object',
+      :'created_at' => :'DateTime',
+      :'editable' => :'Boolean',
+      :'retriable' => :'Boolean',
+      :'input_usd_amount' => :'Float',
+      :'may_cancel' => :'Boolean',
+      :'state_reason' => :'String',
+      :'state' => :'RecipientState',
+      :'transaction_id' => :'String',
+      :'transaction_state' => :'TransactionState',
+      :'exchange_rate' => :'Float',
+      :'fee_fractional' => :'Float',
+      :'input_amount' => :'Float',
+      :'input_currency' => :'String',
+      :'output_amount' => :'Float',
+      :'output_currency' => :'String',
+      :'id' => :'String',
+      :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::Recipient` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'requested_amount' => :'Float',
-        :'requested_currency' => :'String',
-        :'payout_method' => :'PayoutMethod',
-        :'metadata' => :'Object',
-        :'created_at' => :'DateTime',
-        :'editable' => :'Boolean',
-        :'retriable' => :'Boolean',
-        :'input_usd_amount' => :'Float',
-        :'may_cancel' => :'Boolean',
-        :'state_reason' => :'String',
-        :'state' => :'RecipientState',
-        :'transaction_id' => :'String',
-        :'transaction_state' => :'TransactionState',
-        :'exchange_rate' => :'Float',
-        :'fee_fractional' => :'Float',
-        :'input_amount' => :'Float',
-        :'input_currency' => :'String',
-        :'output_amount' => :'Float',
-        :'output_currency' => :'String',
-        :'id' => :'String',
-        :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
-      }
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::Recipient`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+      end
+      h[k.to_sym] = v
+    }
+
+    if attributes.key?(:'requested_amount')
+      self.requested_amount = attributes[:'requested_amount']
     end
 
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::Recipient` initialize method"
-      end
-
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::Recipient`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'requested_amount')
-        self.requested_amount = attributes[:'requested_amount']
-      end
-
-      if attributes.key?(:'requested_currency')
-        self.requested_currency = attributes[:'requested_currency']
-      end
-
-      if attributes.key?(:'payout_method')
-        self.payout_method = attributes[:'payout_method']
-      end
-
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'editable')
-        self.editable = attributes[:'editable']
-      end
-
-      if attributes.key?(:'retriable')
-        self.retriable = attributes[:'retriable']
-      end
-
-      if attributes.key?(:'input_usd_amount')
-        self.input_usd_amount = attributes[:'input_usd_amount']
-      end
-
-      if attributes.key?(:'may_cancel')
-        self.may_cancel = attributes[:'may_cancel']
-      end
-
-      if attributes.key?(:'state_reason')
-        self.state_reason = attributes[:'state_reason']
-      end
-
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
-      if attributes.key?(:'transaction_id')
-        self.transaction_id = attributes[:'transaction_id']
-      end
-
-      if attributes.key?(:'transaction_state')
-        self.transaction_state = attributes[:'transaction_state']
-      end
-
-      if attributes.key?(:'exchange_rate')
-        self.exchange_rate = attributes[:'exchange_rate']
-      end
-
-      if attributes.key?(:'fee_fractional')
-        self.fee_fractional = attributes[:'fee_fractional']
-      end
-
-      if attributes.key?(:'input_amount')
-        self.input_amount = attributes[:'input_amount']
-      end
-
-      if attributes.key?(:'input_currency')
-        self.input_currency = attributes[:'input_currency']
-      end
-
-      if attributes.key?(:'output_amount')
-        self.output_amount = attributes[:'output_amount']
-      end
-
-      if attributes.key?(:'output_currency')
-        self.output_currency = attributes[:'output_currency']
-      end
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'errors')
-        if (value = attributes[:'errors']).is_a?(Hash)
-          self.errors = value
-        end
-      end
+    if attributes.key?(:'requested_currency')
+      self.requested_currency = attributes[:'requested_currency']
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      if @requested_amount.nil?
-        invalid_properties.push('invalid value for "requested_amount", requested_amount cannot be nil.')
+    if attributes.key?(:'payout_method')
+      self.payout_method = attributes[:'payout_method']
+    end
+
+    if attributes.key?(:'metadata')
+      self.metadata = attributes[:'metadata']
+    end
+
+    if attributes.key?(:'created_at')
+      self.created_at = attributes[:'created_at']
+    end
+
+    if attributes.key?(:'editable')
+      self.editable = attributes[:'editable']
+    end
+
+    if attributes.key?(:'retriable')
+      self.retriable = attributes[:'retriable']
+    end
+
+    if attributes.key?(:'input_usd_amount')
+      self.input_usd_amount = attributes[:'input_usd_amount']
+    end
+
+    if attributes.key?(:'may_cancel')
+      self.may_cancel = attributes[:'may_cancel']
+    end
+
+    if attributes.key?(:'state_reason')
+      self.state_reason = attributes[:'state_reason']
+    end
+
+    if attributes.key?(:'state')
+      self.state = attributes[:'state']
+    end
+
+    if attributes.key?(:'transaction_id')
+      self.transaction_id = attributes[:'transaction_id']
+    end
+
+    if attributes.key?(:'transaction_state')
+      self.transaction_state = attributes[:'transaction_state']
+    end
+
+    if attributes.key?(:'exchange_rate')
+      self.exchange_rate = attributes[:'exchange_rate']
+    end
+
+    if attributes.key?(:'fee_fractional')
+      self.fee_fractional = attributes[:'fee_fractional']
+    end
+
+    if attributes.key?(:'input_amount')
+      self.input_amount = attributes[:'input_amount']
+    end
+
+    if attributes.key?(:'input_currency')
+      self.input_currency = attributes[:'input_currency']
+    end
+
+    if attributes.key?(:'output_amount')
+      self.output_amount = attributes[:'output_amount']
+    end
+
+    if attributes.key?(:'output_currency')
+      self.output_currency = attributes[:'output_currency']
+    end
+
+    if attributes.key?(:'id')
+      self.id = attributes[:'id']
+    end
+
+    if attributes.key?(:'errors')
+      if (value = attributes[:'errors']).is_a?(Hash)
+        self.errors = value
       end
+    end
+  end
 
-      if @requested_currency.nil?
-        invalid_properties.push('invalid value for "requested_currency", requested_currency cannot be nil.')
-      end
-
-      if @payout_method.nil?
-        invalid_properties.push('invalid value for "payout_method", payout_method cannot be nil.')
-      end
-
-      invalid_properties
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    if @requested_amount.nil?
+      invalid_properties.push('invalid value for "requested_amount", requested_amount cannot be nil.')
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      return false if @requested_amount.nil?
-      return false if @requested_currency.nil?
-      return false if @payout_method.nil?
-      true
+    if @requested_currency.nil?
+      invalid_properties.push('invalid value for "requested_currency", requested_currency cannot be nil.')
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          requested_amount == o.requested_amount &&
-          requested_currency == o.requested_currency &&
-          payout_method == o.payout_method &&
-          metadata == o.metadata &&
-          created_at == o.created_at &&
-          editable == o.editable &&
-          retriable == o.retriable &&
-          input_usd_amount == o.input_usd_amount &&
-          may_cancel == o.may_cancel &&
-          state_reason == o.state_reason &&
-          state == o.state &&
-          transaction_id == o.transaction_id &&
-          transaction_state == o.transaction_state &&
-          exchange_rate == o.exchange_rate &&
-          fee_fractional == o.fee_fractional &&
-          input_amount == o.input_amount &&
-          input_currency == o.input_currency &&
-          output_amount == o.output_amount &&
-          output_currency == o.output_currency &&
-          id == o.id &&
-          errors == o.errors
+    if @payout_method.nil?
+      invalid_properties.push('invalid value for "payout_method", payout_method cannot be nil.')
     end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
-    end
+    invalid_properties
+  end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [requested_amount, requested_currency, payout_method, metadata, created_at, editable, retriable, input_usd_amount, may_cancel, state_reason, state, transaction_id, transaction_state, exchange_rate, fee_fractional, input_amount, input_currency, output_amount, output_currency, id, errors].hash
-    end
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    return false if @requested_amount.nil?
+    return false if @requested_currency.nil?
+    return false if @payout_method.nil?
+    true
+  end
+
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        requested_amount == o.requested_amount &&
+        requested_currency == o.requested_currency &&
+        payout_method == o.payout_method &&
+        metadata == o.metadata &&
+        created_at == o.created_at &&
+        editable == o.editable &&
+        retriable == o.retriable &&
+        input_usd_amount == o.input_usd_amount &&
+        may_cancel == o.may_cancel &&
+        state_reason == o.state_reason &&
+        state == o.state &&
+        transaction_id == o.transaction_id &&
+        transaction_state == o.transaction_state &&
+        exchange_rate == o.exchange_rate &&
+        fee_fractional == o.fee_fractional &&
+        input_amount == o.input_amount &&
+        input_currency == o.input_currency &&
+        output_amount == o.output_amount &&
+        output_currency == o.output_currency &&
+        id == o.id &&
+        errors == o.errors
+  end
+
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [requested_amount, requested_currency, payout_method, metadata, created_at, editable, retriable, input_usd_amount, may_cancel, state_reason, state, transaction_id, transaction_state, exchange_rate, fee_fractional, input_amount, input_currency, output_amount, output_currency, id, errors].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -412,5 +412,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

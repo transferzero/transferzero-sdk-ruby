@@ -13,98 +13,98 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  # Metadata related to the initial request that triggered the webhook
-  class WebhookLogMetadataRequest
-    attr_accessor :headers
+# Metadata related to the initial request that triggered the webhook
+class WebhookLogMetadataRequest
+  attr_accessor :headers
 
-    # The body that was sent in the webhook
-    attr_accessor :body
+  # The body that was sent in the webhook
+  attr_accessor :body
 
-    # Webhook URL
-    attr_accessor :url
+  # Webhook URL
+  attr_accessor :url
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'headers' => :'headers',
-        :'body' => :'body',
-        :'url' => :'url'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'headers' => :'headers',
+      :'body' => :'body',
+      :'url' => :'url'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'headers' => :'Hash<String, String>',
+      :'body' => :'String',
+      :'url' => :'String'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::WebhookLogMetadataRequest` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'headers' => :'Hash<String, String>',
-        :'body' => :'String',
-        :'url' => :'String'
-      }
-    end
-
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::WebhookLogMetadataRequest` initialize method"
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::WebhookLogMetadataRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
+      h[k.to_sym] = v
+    }
 
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::WebhookLogMetadataRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'headers')
-        if (value = attributes[:'headers']).is_a?(Hash)
-          self.headers = value
-        end
-      end
-
-      if attributes.key?(:'body')
-        self.body = attributes[:'body']
-      end
-
-      if attributes.key?(:'url')
-        self.url = attributes[:'url']
+    if attributes.key?(:'headers')
+      if (value = attributes[:'headers']).is_a?(Hash)
+        self.headers = value
       end
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      invalid_properties
+    if attributes.key?(:'body')
+      self.body = attributes[:'body']
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      true
+    if attributes.key?(:'url')
+      self.url = attributes[:'url']
     end
+  end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          headers == o.headers &&
-          body == o.body &&
-          url == o.url
-    end
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    invalid_properties
+  end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
-    end
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    true
+  end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [headers, body, url].hash
-    end
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        headers == o.headers &&
+        body == o.body &&
+        url == o.url
+  end
+
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [headers, body, url].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -220,5 +220,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

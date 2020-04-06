@@ -13,178 +13,178 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  # Debits are used to fund transactions from your internal TransferZero balance.
-  class Debit
-    # The amount to be debited from your account.  The \"amount\" parameter is optional - - if included, it must equal the amount required to fund the transaction. - if omitted, it will default to the amount required to fund the transaction. 
-    attr_accessor :amount
+# Debits are used to fund transactions from your internal TransferZero balance.
+class Debit
+  # The amount to be debited from your account.  The \"amount\" parameter is optional - - if included, it must equal the amount required to fund the transaction. - if omitted, it will default to the amount required to fund the transaction. 
+  attr_accessor :amount
 
-    # The currency of the amount in 3-character alpha ISO 4217 currency format.  The \"currency\" parameter is optional - if omitted, it will default to the payin currency of the transaction. - it can be added in as an additional check to ensure that the expected currency is used. (an error will be given back if it does not match up with the payin currency of the transaction) 
-    attr_accessor :currency
+  # The currency of the amount in 3-character alpha ISO 4217 currency format.  The \"currency\" parameter is optional - if omitted, it will default to the payin currency of the transaction. - it can be added in as an additional check to ensure that the expected currency is used. (an error will be given back if it does not match up with the payin currency of the transaction) 
+  attr_accessor :currency
 
-    # Describes what the debit is funding
-    attr_accessor :to_type
+  # Describes what the debit is funding
+  attr_accessor :to_type
 
-    # The ID of the resource the debit is funding
-    attr_accessor :to_id
+  # The ID of the resource the debit is funding
+  attr_accessor :to_id
 
-    # Metadata of account debit
-    attr_accessor :metadata
+  # Metadata of account debit
+  attr_accessor :metadata
 
-    attr_accessor :id
+  attr_accessor :id
 
-    # Date and time that the debit was created
-    attr_accessor :created_at
+  # Date and time that the debit was created
+  attr_accessor :created_at
 
-    # The amount to be debited from your account converted to USD 
-    attr_accessor :usd_amount
+  # The amount to be debited from your account converted to USD 
+  attr_accessor :usd_amount
 
-    # The total amount remaining in your account after the debit call 
-    attr_accessor :running_balance
+  # The total amount remaining in your account after the debit call 
+  attr_accessor :running_balance
 
-    # The fields that have some problems and don't pass validation
-    attr_accessor :errors
+  # The fields that have some problems and don't pass validation
+  attr_accessor :errors
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'amount' => :'amount',
-        :'currency' => :'currency',
-        :'to_type' => :'to_type',
-        :'to_id' => :'to_id',
-        :'metadata' => :'metadata',
-        :'id' => :'id',
-        :'created_at' => :'created_at',
-        :'usd_amount' => :'usd_amount',
-        :'running_balance' => :'running_balance',
-        :'errors' => :'errors'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'amount' => :'amount',
+      :'currency' => :'currency',
+      :'to_type' => :'to_type',
+      :'to_id' => :'to_id',
+      :'metadata' => :'metadata',
+      :'id' => :'id',
+      :'created_at' => :'created_at',
+      :'usd_amount' => :'usd_amount',
+      :'running_balance' => :'running_balance',
+      :'errors' => :'errors'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'amount' => :'Float',
+      :'currency' => :'String',
+      :'to_type' => :'String',
+      :'to_id' => :'String',
+      :'metadata' => :'Object',
+      :'id' => :'String',
+      :'created_at' => :'DateTime',
+      :'usd_amount' => :'Float',
+      :'running_balance' => :'Float',
+      :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::Debit` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'amount' => :'Float',
-        :'currency' => :'String',
-        :'to_type' => :'String',
-        :'to_id' => :'String',
-        :'metadata' => :'Object',
-        :'id' => :'String',
-        :'created_at' => :'DateTime',
-        :'usd_amount' => :'Float',
-        :'running_balance' => :'Float',
-        :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
-      }
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::Debit`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+      end
+      h[k.to_sym] = v
+    }
+
+    if attributes.key?(:'amount')
+      self.amount = attributes[:'amount']
     end
 
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::Debit` initialize method"
-      end
-
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::Debit`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'amount')
-        self.amount = attributes[:'amount']
-      end
-
-      if attributes.key?(:'currency')
-        self.currency = attributes[:'currency']
-      end
-
-      if attributes.key?(:'to_type')
-        self.to_type = attributes[:'to_type']
-      end
-
-      if attributes.key?(:'to_id')
-        self.to_id = attributes[:'to_id']
-      end
-
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'usd_amount')
-        self.usd_amount = attributes[:'usd_amount']
-      end
-
-      if attributes.key?(:'running_balance')
-        self.running_balance = attributes[:'running_balance']
-      end
-
-      if attributes.key?(:'errors')
-        if (value = attributes[:'errors']).is_a?(Hash)
-          self.errors = value
-        end
-      end
+    if attributes.key?(:'currency')
+      self.currency = attributes[:'currency']
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      if @to_type.nil?
-        invalid_properties.push('invalid value for "to_type", to_type cannot be nil.')
+    if attributes.key?(:'to_type')
+      self.to_type = attributes[:'to_type']
+    end
+
+    if attributes.key?(:'to_id')
+      self.to_id = attributes[:'to_id']
+    end
+
+    if attributes.key?(:'metadata')
+      self.metadata = attributes[:'metadata']
+    end
+
+    if attributes.key?(:'id')
+      self.id = attributes[:'id']
+    end
+
+    if attributes.key?(:'created_at')
+      self.created_at = attributes[:'created_at']
+    end
+
+    if attributes.key?(:'usd_amount')
+      self.usd_amount = attributes[:'usd_amount']
+    end
+
+    if attributes.key?(:'running_balance')
+      self.running_balance = attributes[:'running_balance']
+    end
+
+    if attributes.key?(:'errors')
+      if (value = attributes[:'errors']).is_a?(Hash)
+        self.errors = value
       end
+    end
+  end
 
-      if @to_id.nil?
-        invalid_properties.push('invalid value for "to_id", to_id cannot be nil.')
-      end
-
-      invalid_properties
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    if @to_type.nil?
+      invalid_properties.push('invalid value for "to_type", to_type cannot be nil.')
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      return false if @to_type.nil?
-      return false if @to_id.nil?
-      true
+    if @to_id.nil?
+      invalid_properties.push('invalid value for "to_id", to_id cannot be nil.')
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          amount == o.amount &&
-          currency == o.currency &&
-          to_type == o.to_type &&
-          to_id == o.to_id &&
-          metadata == o.metadata &&
-          id == o.id &&
-          created_at == o.created_at &&
-          usd_amount == o.usd_amount &&
-          running_balance == o.running_balance &&
-          errors == o.errors
-    end
+    invalid_properties
+  end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
-    end
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    return false if @to_type.nil?
+    return false if @to_id.nil?
+    true
+  end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [amount, currency, to_type, to_id, metadata, id, created_at, usd_amount, running_balance, errors].hash
-    end
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        amount == o.amount &&
+        currency == o.currency &&
+        to_type == o.to_type &&
+        to_id == o.to_id &&
+        metadata == o.metadata &&
+        id == o.id &&
+        created_at == o.created_at &&
+        usd_amount == o.usd_amount &&
+        running_balance == o.running_balance &&
+        errors == o.errors
+  end
+
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [amount, currency, to_type, to_id, metadata, id, created_at, usd_amount, running_balance, errors].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -300,5 +300,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

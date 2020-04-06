@@ -13,375 +13,375 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  class PayoutMethodDetails
-    attr_accessor :first_name
+class PayoutMethodDetails
+  attr_accessor :first_name
 
-    attr_accessor :last_name
+  attr_accessor :last_name
 
-    attr_accessor :bank_code
+  attr_accessor :bank_code
 
-    attr_accessor :bank_account
+  attr_accessor :bank_account
 
-    attr_accessor :bank_account_type
+  attr_accessor :bank_account_type
 
-    attr_accessor :phone_number
+  attr_accessor :phone_number
 
-    attr_accessor :mobile_provider
+  attr_accessor :mobile_provider
 
-    attr_accessor :iban
+  attr_accessor :iban
 
-    attr_accessor :bank_name
+  attr_accessor :bank_name
 
-    attr_accessor :bank_country
+  attr_accessor :bank_country
 
-    attr_accessor :bic
+  attr_accessor :bic
 
-    attr_accessor :sender_identity_card_type
+  attr_accessor :sender_identity_card_type
 
-    attr_accessor :sender_identity_card_id
+  attr_accessor :sender_identity_card_id
 
-    attr_accessor :sender_city_of_birth
+  attr_accessor :sender_city_of_birth
 
-    attr_accessor :sender_country_of_birth
+  attr_accessor :sender_country_of_birth
 
-    attr_accessor :sender_gender
+  attr_accessor :sender_gender
 
-    attr_accessor :reason
+  attr_accessor :reason
 
-    attr_accessor :identity_card_type
+  attr_accessor :identity_card_type
 
-    attr_accessor :identity_card_id
+  attr_accessor :identity_card_id
 
-    attr_accessor :reference
+  attr_accessor :reference
 
-    attr_accessor :name
+  attr_accessor :name
 
-    attr_accessor :address
+  attr_accessor :address
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'first_name' => :'first_name',
-        :'last_name' => :'last_name',
-        :'bank_code' => :'bank_code',
-        :'bank_account' => :'bank_account',
-        :'bank_account_type' => :'bank_account_type',
-        :'phone_number' => :'phone_number',
-        :'mobile_provider' => :'mobile_provider',
-        :'iban' => :'iban',
-        :'bank_name' => :'bank_name',
-        :'bank_country' => :'bank_country',
-        :'bic' => :'bic',
-        :'sender_identity_card_type' => :'sender_identity_card_type',
-        :'sender_identity_card_id' => :'sender_identity_card_id',
-        :'sender_city_of_birth' => :'sender_city_of_birth',
-        :'sender_country_of_birth' => :'sender_country_of_birth',
-        :'sender_gender' => :'sender_gender',
-        :'reason' => :'reason',
-        :'identity_card_type' => :'identity_card_type',
-        :'identity_card_id' => :'identity_card_id',
-        :'reference' => :'reference',
-        :'name' => :'name',
-        :'address' => :'address'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'first_name' => :'first_name',
+      :'last_name' => :'last_name',
+      :'bank_code' => :'bank_code',
+      :'bank_account' => :'bank_account',
+      :'bank_account_type' => :'bank_account_type',
+      :'phone_number' => :'phone_number',
+      :'mobile_provider' => :'mobile_provider',
+      :'iban' => :'iban',
+      :'bank_name' => :'bank_name',
+      :'bank_country' => :'bank_country',
+      :'bic' => :'bic',
+      :'sender_identity_card_type' => :'sender_identity_card_type',
+      :'sender_identity_card_id' => :'sender_identity_card_id',
+      :'sender_city_of_birth' => :'sender_city_of_birth',
+      :'sender_country_of_birth' => :'sender_country_of_birth',
+      :'sender_gender' => :'sender_gender',
+      :'reason' => :'reason',
+      :'identity_card_type' => :'identity_card_type',
+      :'identity_card_id' => :'identity_card_id',
+      :'reference' => :'reference',
+      :'name' => :'name',
+      :'address' => :'address'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'first_name' => :'String',
+      :'last_name' => :'String',
+      :'bank_code' => :'String',
+      :'bank_account' => :'String',
+      :'bank_account_type' => :'PayoutMethodBankAccountTypeEnum',
+      :'phone_number' => :'String',
+      :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
+      :'iban' => :'String',
+      :'bank_name' => :'String',
+      :'bank_country' => :'String',
+      :'bic' => :'String',
+      :'sender_identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
+      :'sender_identity_card_id' => :'String',
+      :'sender_city_of_birth' => :'String',
+      :'sender_country_of_birth' => :'String',
+      :'sender_gender' => :'PayoutMethodGenderEnum',
+      :'reason' => :'String',
+      :'identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
+      :'identity_card_id' => :'String',
+      :'reference' => :'String',
+      :'name' => :'String',
+      :'address' => :'String'
+    }
+  end
+
+  # List of class defined in oneOf (OpenAPI v3)
+  def self.openapi_one_of
+    [
+    :'PayoutMethodDetailsBTC',
+    :'PayoutMethodDetailsBalance',
+    :'PayoutMethodDetailsGHSBank',
+    :'PayoutMethodDetailsIBAN',
+    :'PayoutMethodDetailsMADCash',
+    :'PayoutMethodDetailsMobile',
+    :'PayoutMethodDetailsNGNBank',
+    :'PayoutMethodDetailsXOFBank',
+    :'PayoutMethodDetailsXOFMobile'
+    ]
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetails` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'first_name' => :'String',
-        :'last_name' => :'String',
-        :'bank_code' => :'String',
-        :'bank_account' => :'String',
-        :'bank_account_type' => :'PayoutMethodBankAccountTypeEnum',
-        :'phone_number' => :'String',
-        :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
-        :'iban' => :'String',
-        :'bank_name' => :'String',
-        :'bank_country' => :'String',
-        :'bic' => :'String',
-        :'sender_identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
-        :'sender_identity_card_id' => :'String',
-        :'sender_city_of_birth' => :'String',
-        :'sender_country_of_birth' => :'String',
-        :'sender_gender' => :'PayoutMethodGenderEnum',
-        :'reason' => :'String',
-        :'identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
-        :'identity_card_id' => :'String',
-        :'reference' => :'String',
-        :'name' => :'String',
-        :'address' => :'String'
-      }
-    end
-
-    # List of class defined in oneOf (OpenAPI v3)
-    def self.openapi_one_of
-      [
-      :'PayoutMethodDetailsBTC',
-      :'PayoutMethodDetailsBalance',
-      :'PayoutMethodDetailsGHSBank',
-      :'PayoutMethodDetailsIBAN',
-      :'PayoutMethodDetailsMADCash',
-      :'PayoutMethodDetailsMobile',
-      :'PayoutMethodDetailsNGNBank',
-      :'PayoutMethodDetailsXOFBank',
-      :'PayoutMethodDetailsXOFMobile'
-      ]
-    end
-
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetails` initialize method"
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetails`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
+      h[k.to_sym] = v
+    }
 
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetails`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+    if attributes.key?(:'first_name')
+      self.first_name = attributes[:'first_name']
+    end
+
+    if attributes.key?(:'last_name')
+      self.last_name = attributes[:'last_name']
+    end
+
+    if attributes.key?(:'bank_code')
+      self.bank_code = attributes[:'bank_code']
+    end
+
+    if attributes.key?(:'bank_account')
+      self.bank_account = attributes[:'bank_account']
+    end
+
+    if attributes.key?(:'bank_account_type')
+      self.bank_account_type = attributes[:'bank_account_type']
+    end
+
+    if attributes.key?(:'phone_number')
+      self.phone_number = attributes[:'phone_number']
+    end
+
+    if attributes.key?(:'mobile_provider')
+      self.mobile_provider = attributes[:'mobile_provider']
+    end
+
+    if attributes.key?(:'iban')
+      self.iban = attributes[:'iban']
+    end
+
+    if attributes.key?(:'bank_name')
+      self.bank_name = attributes[:'bank_name']
+    end
+
+    if attributes.key?(:'bank_country')
+      self.bank_country = attributes[:'bank_country']
+    end
+
+    if attributes.key?(:'bic')
+      self.bic = attributes[:'bic']
+    end
+
+    if attributes.key?(:'sender_identity_card_type')
+      self.sender_identity_card_type = attributes[:'sender_identity_card_type']
+    end
+
+    if attributes.key?(:'sender_identity_card_id')
+      self.sender_identity_card_id = attributes[:'sender_identity_card_id']
+    end
+
+    if attributes.key?(:'sender_city_of_birth')
+      self.sender_city_of_birth = attributes[:'sender_city_of_birth']
+    end
+
+    if attributes.key?(:'sender_country_of_birth')
+      self.sender_country_of_birth = attributes[:'sender_country_of_birth']
+    end
+
+    if attributes.key?(:'sender_gender')
+      self.sender_gender = attributes[:'sender_gender']
+    end
+
+    if attributes.key?(:'reason')
+      self.reason = attributes[:'reason']
+    end
+
+    if attributes.key?(:'identity_card_type')
+      self.identity_card_type = attributes[:'identity_card_type']
+    end
+
+    if attributes.key?(:'identity_card_id')
+      self.identity_card_id = attributes[:'identity_card_id']
+    end
+
+    if attributes.key?(:'reference')
+      self.reference = attributes[:'reference']
+    end
+
+    if attributes.key?(:'name')
+      self.name = attributes[:'name']
+    end
+
+    if attributes.key?(:'address')
+      self.address = attributes[:'address']
+    end
+  end
+
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    if @first_name.nil?
+      invalid_properties.push('invalid value for "first_name", first_name cannot be nil.')
+    end
+
+    if @last_name.nil?
+      invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
+    end
+
+    if @bank_code.nil?
+      invalid_properties.push('invalid value for "bank_code", bank_code cannot be nil.')
+    end
+
+    if @bank_account.nil?
+      invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
+    end
+
+    if @phone_number.nil?
+      invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
+    end
+
+    if @mobile_provider.nil?
+      invalid_properties.push('invalid value for "mobile_provider", mobile_provider cannot be nil.')
+    end
+
+    if @iban.nil?
+      invalid_properties.push('invalid value for "iban", iban cannot be nil.')
+    end
+
+    if @bank_name.nil?
+      invalid_properties.push('invalid value for "bank_name", bank_name cannot be nil.')
+    end
+
+    if @bank_country.nil?
+      invalid_properties.push('invalid value for "bank_country", bank_country cannot be nil.')
+    end
+
+    if @sender_identity_card_type.nil?
+      invalid_properties.push('invalid value for "sender_identity_card_type", sender_identity_card_type cannot be nil.')
+    end
+
+    if @sender_identity_card_id.nil?
+      invalid_properties.push('invalid value for "sender_identity_card_id", sender_identity_card_id cannot be nil.')
+    end
+
+    if @sender_city_of_birth.nil?
+      invalid_properties.push('invalid value for "sender_city_of_birth", sender_city_of_birth cannot be nil.')
+    end
+
+    if @sender_country_of_birth.nil?
+      invalid_properties.push('invalid value for "sender_country_of_birth", sender_country_of_birth cannot be nil.')
+    end
+
+    if @sender_gender.nil?
+      invalid_properties.push('invalid value for "sender_gender", sender_gender cannot be nil.')
+    end
+
+    if @name.nil?
+      invalid_properties.push('invalid value for "name", name cannot be nil.')
+    end
+
+    if @address.nil?
+      invalid_properties.push('invalid value for "address", address cannot be nil.')
+    end
+
+    invalid_properties
+  end
+
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    return false if @first_name.nil?
+    return false if @last_name.nil?
+    return false if @bank_code.nil?
+    return false if @bank_account.nil?
+    return false if @phone_number.nil?
+    return false if @mobile_provider.nil?
+    return false if @iban.nil?
+    return false if @bank_name.nil?
+    return false if @bank_country.nil?
+    return false if @sender_identity_card_type.nil?
+    return false if @sender_identity_card_id.nil?
+    return false if @sender_city_of_birth.nil?
+    return false if @sender_country_of_birth.nil?
+    return false if @sender_gender.nil?
+    return false if @name.nil?
+    return false if @address.nil?
+    _one_of_found = false
+    openapi_one_of.each do |_class|
+      _one_of = TransferZero.const_get(_class).build_from_hash(self.to_hash)
+      if _one_of.valid?
+        if _one_of_found?
+          return false
+        else
+          _one_of_found = true
         end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'first_name')
-        self.first_name = attributes[:'first_name']
-      end
-
-      if attributes.key?(:'last_name')
-        self.last_name = attributes[:'last_name']
-      end
-
-      if attributes.key?(:'bank_code')
-        self.bank_code = attributes[:'bank_code']
-      end
-
-      if attributes.key?(:'bank_account')
-        self.bank_account = attributes[:'bank_account']
-      end
-
-      if attributes.key?(:'bank_account_type')
-        self.bank_account_type = attributes[:'bank_account_type']
-      end
-
-      if attributes.key?(:'phone_number')
-        self.phone_number = attributes[:'phone_number']
-      end
-
-      if attributes.key?(:'mobile_provider')
-        self.mobile_provider = attributes[:'mobile_provider']
-      end
-
-      if attributes.key?(:'iban')
-        self.iban = attributes[:'iban']
-      end
-
-      if attributes.key?(:'bank_name')
-        self.bank_name = attributes[:'bank_name']
-      end
-
-      if attributes.key?(:'bank_country')
-        self.bank_country = attributes[:'bank_country']
-      end
-
-      if attributes.key?(:'bic')
-        self.bic = attributes[:'bic']
-      end
-
-      if attributes.key?(:'sender_identity_card_type')
-        self.sender_identity_card_type = attributes[:'sender_identity_card_type']
-      end
-
-      if attributes.key?(:'sender_identity_card_id')
-        self.sender_identity_card_id = attributes[:'sender_identity_card_id']
-      end
-
-      if attributes.key?(:'sender_city_of_birth')
-        self.sender_city_of_birth = attributes[:'sender_city_of_birth']
-      end
-
-      if attributes.key?(:'sender_country_of_birth')
-        self.sender_country_of_birth = attributes[:'sender_country_of_birth']
-      end
-
-      if attributes.key?(:'sender_gender')
-        self.sender_gender = attributes[:'sender_gender']
-      end
-
-      if attributes.key?(:'reason')
-        self.reason = attributes[:'reason']
-      end
-
-      if attributes.key?(:'identity_card_type')
-        self.identity_card_type = attributes[:'identity_card_type']
-      end
-
-      if attributes.key?(:'identity_card_id')
-        self.identity_card_id = attributes[:'identity_card_id']
-      end
-
-      if attributes.key?(:'reference')
-        self.reference = attributes[:'reference']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'address')
-        self.address = attributes[:'address']
       end
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      if @first_name.nil?
-        invalid_properties.push('invalid value for "first_name", first_name cannot be nil.')
-      end
-
-      if @last_name.nil?
-        invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
-      end
-
-      if @bank_code.nil?
-        invalid_properties.push('invalid value for "bank_code", bank_code cannot be nil.')
-      end
-
-      if @bank_account.nil?
-        invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
-      end
-
-      if @phone_number.nil?
-        invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
-      end
-
-      if @mobile_provider.nil?
-        invalid_properties.push('invalid value for "mobile_provider", mobile_provider cannot be nil.')
-      end
-
-      if @iban.nil?
-        invalid_properties.push('invalid value for "iban", iban cannot be nil.')
-      end
-
-      if @bank_name.nil?
-        invalid_properties.push('invalid value for "bank_name", bank_name cannot be nil.')
-      end
-
-      if @bank_country.nil?
-        invalid_properties.push('invalid value for "bank_country", bank_country cannot be nil.')
-      end
-
-      if @sender_identity_card_type.nil?
-        invalid_properties.push('invalid value for "sender_identity_card_type", sender_identity_card_type cannot be nil.')
-      end
-
-      if @sender_identity_card_id.nil?
-        invalid_properties.push('invalid value for "sender_identity_card_id", sender_identity_card_id cannot be nil.')
-      end
-
-      if @sender_city_of_birth.nil?
-        invalid_properties.push('invalid value for "sender_city_of_birth", sender_city_of_birth cannot be nil.')
-      end
-
-      if @sender_country_of_birth.nil?
-        invalid_properties.push('invalid value for "sender_country_of_birth", sender_country_of_birth cannot be nil.')
-      end
-
-      if @sender_gender.nil?
-        invalid_properties.push('invalid value for "sender_gender", sender_gender cannot be nil.')
-      end
-
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @address.nil?
-        invalid_properties.push('invalid value for "address", address cannot be nil.')
-      end
-
-      invalid_properties
+    if !_one_of_found?
+      return false
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      return false if @first_name.nil?
-      return false if @last_name.nil?
-      return false if @bank_code.nil?
-      return false if @bank_account.nil?
-      return false if @phone_number.nil?
-      return false if @mobile_provider.nil?
-      return false if @iban.nil?
-      return false if @bank_name.nil?
-      return false if @bank_country.nil?
-      return false if @sender_identity_card_type.nil?
-      return false if @sender_identity_card_id.nil?
-      return false if @sender_city_of_birth.nil?
-      return false if @sender_country_of_birth.nil?
-      return false if @sender_gender.nil?
-      return false if @name.nil?
-      return false if @address.nil?
-      _one_of_found = false
-      openapi_one_of.each do |_class|
-        _one_of = TransferZero.const_get(_class).build_from_hash(self.to_hash)
-        if _one_of.valid?
-          if _one_of_found?
-            return false
-          else
-            _one_of_found = true
-          end
-        end
-      end
+    true
+  end
 
-      if !_one_of_found?
-        return false
-      end
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        first_name == o.first_name &&
+        last_name == o.last_name &&
+        bank_code == o.bank_code &&
+        bank_account == o.bank_account &&
+        bank_account_type == o.bank_account_type &&
+        phone_number == o.phone_number &&
+        mobile_provider == o.mobile_provider &&
+        iban == o.iban &&
+        bank_name == o.bank_name &&
+        bank_country == o.bank_country &&
+        bic == o.bic &&
+        sender_identity_card_type == o.sender_identity_card_type &&
+        sender_identity_card_id == o.sender_identity_card_id &&
+        sender_city_of_birth == o.sender_city_of_birth &&
+        sender_country_of_birth == o.sender_country_of_birth &&
+        sender_gender == o.sender_gender &&
+        reason == o.reason &&
+        identity_card_type == o.identity_card_type &&
+        identity_card_id == o.identity_card_id &&
+        reference == o.reference &&
+        name == o.name &&
+        address == o.address
+  end
 
-      true
-    end
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          first_name == o.first_name &&
-          last_name == o.last_name &&
-          bank_code == o.bank_code &&
-          bank_account == o.bank_account &&
-          bank_account_type == o.bank_account_type &&
-          phone_number == o.phone_number &&
-          mobile_provider == o.mobile_provider &&
-          iban == o.iban &&
-          bank_name == o.bank_name &&
-          bank_country == o.bank_country &&
-          bic == o.bic &&
-          sender_identity_card_type == o.sender_identity_card_type &&
-          sender_identity_card_id == o.sender_identity_card_id &&
-          sender_city_of_birth == o.sender_city_of_birth &&
-          sender_country_of_birth == o.sender_country_of_birth &&
-          sender_gender == o.sender_gender &&
-          reason == o.reason &&
-          identity_card_type == o.identity_card_type &&
-          identity_card_id == o.identity_card_id &&
-          reference == o.reference &&
-          name == o.name &&
-          address == o.address
-    end
-
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
-    end
-
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, iban, bank_name, bank_country, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address].hash
-    end
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, iban, bank_name, bank_country, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -497,5 +497,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

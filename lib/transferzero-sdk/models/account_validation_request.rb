@@ -13,199 +13,199 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  class AccountValidationRequest
-    # Account Number to query
-    attr_accessor :bank_account
+class AccountValidationRequest
+  # Account Number to query
+  attr_accessor :bank_account
 
-    # Bank Code to query - same codes are used as for creating the transactions
-    attr_accessor :bank_code
+  # Bank Code to query - same codes are used as for creating the transactions
+  attr_accessor :bank_code
 
-    # Phone number to query
-    attr_accessor :phone_number
+  # Phone number to query
+  attr_accessor :phone_number
 
-    # Country of account in 2-character alpha ISO 3166-2 country format
-    attr_accessor :country
+  # Country of account in 2-character alpha ISO 3166-2 country format
+  attr_accessor :country
 
-    # The currency the bank account is in
-    attr_accessor :currency
+  # The currency the bank account is in
+  attr_accessor :currency
 
-    # The method of the payment. Currently bank and mobile are supported
-    attr_accessor :method
+  # The method of the payment. Currently bank and mobile are supported
+  attr_accessor :method
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
+  class EnumAttributeValidator
+    attr_reader :datatype
+    attr_reader :allowable_values
 
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
+    def initialize(datatype, allowable_values)
+      @allowable_values = allowable_values.map do |value|
+        case datatype.to_s
+        when /Integer/i
+          value.to_i
+        when /Float/i
+          value.to_f
+        else
+          value
         end
       end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
     end
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'bank_account' => :'bank_account',
-        :'bank_code' => :'bank_code',
-        :'phone_number' => :'phone_number',
-        :'country' => :'country',
-        :'currency' => :'currency',
-        :'method' => :'method'
-      }
+    def valid?(value)
+      !value || allowable_values.include?(value)
+    end
+  end
+
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'bank_account' => :'bank_account',
+      :'bank_code' => :'bank_code',
+      :'phone_number' => :'phone_number',
+      :'country' => :'country',
+      :'currency' => :'currency',
+      :'method' => :'method'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'bank_account' => :'String',
+      :'bank_code' => :'String',
+      :'phone_number' => :'String',
+      :'country' => :'String',
+      :'currency' => :'String',
+      :'method' => :'String'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::AccountValidationRequest` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'bank_account' => :'String',
-        :'bank_code' => :'String',
-        :'phone_number' => :'String',
-        :'country' => :'String',
-        :'currency' => :'String',
-        :'method' => :'String'
-      }
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::AccountValidationRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+      end
+      h[k.to_sym] = v
+    }
+
+    if attributes.key?(:'bank_account')
+      self.bank_account = attributes[:'bank_account']
     end
 
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::AccountValidationRequest` initialize method"
-      end
-
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::AccountValidationRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'bank_account')
-        self.bank_account = attributes[:'bank_account']
-      end
-
-      if attributes.key?(:'bank_code')
-        self.bank_code = attributes[:'bank_code']
-      end
-
-      if attributes.key?(:'phone_number')
-        self.phone_number = attributes[:'phone_number']
-      end
-
-      if attributes.key?(:'country')
-        self.country = attributes[:'country']
-      end
-
-      if attributes.key?(:'currency')
-        self.currency = attributes[:'currency']
-      end
-
-      if attributes.key?(:'method')
-        self.method = attributes[:'method']
-      end
+    if attributes.key?(:'bank_code')
+      self.bank_code = attributes[:'bank_code']
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      if @country.nil?
-        invalid_properties.push('invalid value for "country", country cannot be nil.')
-      end
-
-      if @currency.nil?
-        invalid_properties.push('invalid value for "currency", currency cannot be nil.')
-      end
-
-      if @method.nil?
-        invalid_properties.push('invalid value for "method", method cannot be nil.')
-      end
-
-      invalid_properties
+    if attributes.key?(:'phone_number')
+      self.phone_number = attributes[:'phone_number']
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      return false if @country.nil?
-      country_validator = EnumAttributeValidator.new('String', ["NG", "GH"])
-      return false unless country_validator.valid?(@country)
-      return false if @currency.nil?
-      currency_validator = EnumAttributeValidator.new('String', ["NGN", "GHS"])
-      return false unless currency_validator.valid?(@currency)
-      return false if @method.nil?
-      method_validator = EnumAttributeValidator.new('String', ["bank", "mobile"])
-      return false unless method_validator.valid?(@method)
-      true
+    if attributes.key?(:'country')
+      self.country = attributes[:'country']
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] country Object to be assigned
-    def country=(country)
-      validator = EnumAttributeValidator.new('String', ["NG", "GH"])
-      unless validator.valid?(country)
-        fail ArgumentError, "invalid value for \"country\", must be one of #{validator.allowable_values}."
-      end
-      @country = country
+    if attributes.key?(:'currency')
+      self.currency = attributes[:'currency']
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] currency Object to be assigned
-    def currency=(currency)
-      validator = EnumAttributeValidator.new('String', ["NGN", "GHS"])
-      unless validator.valid?(currency)
-        fail ArgumentError, "invalid value for \"currency\", must be one of #{validator.allowable_values}."
-      end
-      @currency = currency
+    if attributes.key?(:'method')
+      self.method = attributes[:'method']
+    end
+  end
+
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    if @country.nil?
+      invalid_properties.push('invalid value for "country", country cannot be nil.')
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] method Object to be assigned
-    def method=(method)
-      validator = EnumAttributeValidator.new('String', ["bank", "mobile"])
-      unless validator.valid?(method)
-        fail ArgumentError, "invalid value for \"method\", must be one of #{validator.allowable_values}."
-      end
-      @method = method
+    if @currency.nil?
+      invalid_properties.push('invalid value for "currency", currency cannot be nil.')
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          bank_account == o.bank_account &&
-          bank_code == o.bank_code &&
-          phone_number == o.phone_number &&
-          country == o.country &&
-          currency == o.currency &&
-          method == o.method
+    if @method.nil?
+      invalid_properties.push('invalid value for "method", method cannot be nil.')
     end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
-    end
+    invalid_properties
+  end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [bank_account, bank_code, phone_number, country, currency, method].hash
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    return false if @country.nil?
+    country_validator = EnumAttributeValidator.new('String', ["NG", "GH"])
+    return false unless country_validator.valid?(@country)
+    return false if @currency.nil?
+    currency_validator = EnumAttributeValidator.new('String', ["NGN", "GHS"])
+    return false unless currency_validator.valid?(@currency)
+    return false if @method.nil?
+    method_validator = EnumAttributeValidator.new('String', ["bank", "mobile"])
+    return false unless method_validator.valid?(@method)
+    true
+  end
+
+  # Custom attribute writer method checking allowed values (enum).
+  # @param [Object] country Object to be assigned
+  def country=(country)
+    validator = EnumAttributeValidator.new('String', ["NG", "GH"])
+    unless validator.valid?(country)
+      fail ArgumentError, "invalid value for \"country\", must be one of #{validator.allowable_values}."
     end
+    @country = country
+  end
+
+  # Custom attribute writer method checking allowed values (enum).
+  # @param [Object] currency Object to be assigned
+  def currency=(currency)
+    validator = EnumAttributeValidator.new('String', ["NGN", "GHS"])
+    unless validator.valid?(currency)
+      fail ArgumentError, "invalid value for \"currency\", must be one of #{validator.allowable_values}."
+    end
+    @currency = currency
+  end
+
+  # Custom attribute writer method checking allowed values (enum).
+  # @param [Object] method Object to be assigned
+  def method=(method)
+    validator = EnumAttributeValidator.new('String', ["bank", "mobile"])
+    unless validator.valid?(method)
+      fail ArgumentError, "invalid value for \"method\", must be one of #{validator.allowable_values}."
+    end
+    @method = method
+  end
+
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        bank_account == o.bank_account &&
+        bank_code == o.bank_code &&
+        phone_number == o.phone_number &&
+        country == o.country &&
+        currency == o.currency &&
+        method == o.method
+  end
+
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [bank_account, bank_code, phone_number, country, currency, method].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -321,5 +321,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

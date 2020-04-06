@@ -13,129 +13,129 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  # This describes the specific details on how the payment has to be routed to the recipient.
-  class PayoutMethod
-    # Contains the currency to send the money to, and the type of the money movement  Commonly used payout types are:  - `NGN::Bank` - for Nigerian bank account payments. - `NGN::Mobile` - for Nigerian mobile money payments. - `GHS::Bank` - for Ghanaian bank account payments. - `GHS::Mobile` - for Ghanaian mobile money payments. - `UGX::Mobile` - for Ugandan mobile money payments. - `TZS::Mobile` - for Tanzanian mobile money payments. - `XOF::Mobile` - for Senegalese mobile money payments. - `XOF::Bank` - for Senegalese bank account payments. *** Currently in Beta phase *** - `XOF::Cash` - for Senegalese cash remittance payments. - `MAD::Cash` - for Moroccan cash remittance payments. - `EUR::Bank` - for IBAN bank transfers in EUR. - `GBP::Bank` - for IBAN bank transfers in GBP.  You can also send funds to the internal balance using `CCY::Balance`, where `CCY` is the appropriate currency. See [Collection from senders](https://docs.transferzero.com/docs/additional-features/#collections-from-senders) for more info on how to collect money into internal balance 
-    attr_accessor :type
+# This describes the specific details on how the payment has to be routed to the recipient.
+class PayoutMethod
+  # Contains the currency to send the money to, and the type of the money movement  Commonly used payout types are:  - `NGN::Bank` - for Nigerian bank account payments. - `NGN::Mobile` - for Nigerian mobile money payments. - `GHS::Bank` - for Ghanaian bank account payments. - `GHS::Mobile` - for Ghanaian mobile money payments. - `UGX::Mobile` - for Ugandan mobile money payments. - `TZS::Mobile` - for Tanzanian mobile money payments. - `XOF::Mobile` - for Senegalese mobile money payments. - `XOF::Bank` - for Senegalese bank account payments. *** Currently in Beta phase *** - `XOF::Cash` - for Senegalese cash remittance payments. - `MAD::Cash` - for Moroccan cash remittance payments. - `EUR::Bank` - for IBAN bank transfers in EUR. - `GBP::Bank` - for IBAN bank transfers in GBP.  You can also send funds to the internal balance using `CCY::Balance`, where `CCY` is the appropriate currency. See [Collection from senders](https://docs.transferzero.com/docs/additional-features/#collections-from-senders) for more info on how to collect money into internal balance 
+  attr_accessor :type
 
-    attr_accessor :details
+  attr_accessor :details
 
-    # Metadata of payout method. You can store any kind of information in this field.
-    attr_accessor :metadata
+  # Metadata of payout method. You can store any kind of information in this field.
+  attr_accessor :metadata
 
-    attr_accessor :id
+  attr_accessor :id
 
-    # The fields that have some problems and don't pass validation
-    attr_accessor :errors
+  # The fields that have some problems and don't pass validation
+  attr_accessor :errors
 
-    # The fields needed for payments with this payment method with details on validation requirements
-    attr_accessor :fields
+  # The fields needed for payments with this payment method with details on validation requirements
+  attr_accessor :fields
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'type' => :'type',
-        :'details' => :'details',
-        :'metadata' => :'metadata',
-        :'id' => :'id',
-        :'errors' => :'errors',
-        :'fields' => :'fields'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'type' => :'type',
+      :'details' => :'details',
+      :'metadata' => :'metadata',
+      :'id' => :'id',
+      :'errors' => :'errors',
+      :'fields' => :'fields'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'type' => :'String',
+      :'details' => :'PayoutMethodDetails',
+      :'metadata' => :'Object',
+      :'id' => :'String',
+      :'errors' => :'Hash<String, Array<ValidationErrorDescription>>',
+      :'fields' => :'Hash<String, FieldDescription>'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethod` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'type' => :'String',
-        :'details' => :'PayoutMethodDetails',
-        :'metadata' => :'Object',
-        :'id' => :'String',
-        :'errors' => :'Hash<String, Array<ValidationErrorDescription>>',
-        :'fields' => :'Hash<String, FieldDescription>'
-      }
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethod`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+      end
+      h[k.to_sym] = v
+    }
+
+    if attributes.key?(:'type')
+      self.type = attributes[:'type']
     end
 
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethod` initialize method"
-      end
+    if attributes.key?(:'details')
+      self.details = attributes[:'details']
+    end
 
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethod`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
+    if attributes.key?(:'metadata')
+      self.metadata = attributes[:'metadata']
+    end
 
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
-      end
+    if attributes.key?(:'id')
+      self.id = attributes[:'id']
+    end
 
-      if attributes.key?(:'details')
-        self.details = attributes[:'details']
-      end
-
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'errors')
-        if (value = attributes[:'errors']).is_a?(Hash)
-          self.errors = value
-        end
-      end
-
-      if attributes.key?(:'fields')
-        if (value = attributes[:'fields']).is_a?(Hash)
-          self.fields = value
-        end
+    if attributes.key?(:'errors')
+      if (value = attributes[:'errors']).is_a?(Hash)
+        self.errors = value
       end
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      invalid_properties
+    if attributes.key?(:'fields')
+      if (value = attributes[:'fields']).is_a?(Hash)
+        self.fields = value
+      end
     end
+  end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      true
-    end
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    invalid_properties
+  end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          type == o.type &&
-          details == o.details &&
-          metadata == o.metadata &&
-          id == o.id &&
-          errors == o.errors &&
-          fields == o.fields
-    end
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    true
+  end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
-    end
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        type == o.type &&
+        details == o.details &&
+        metadata == o.metadata &&
+        id == o.id &&
+        errors == o.errors &&
+        fields == o.fields
+  end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [type, details, metadata, id, errors, fields].hash
-    end
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [type, details, metadata, id, errors, fields].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -251,5 +251,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

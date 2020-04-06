@@ -13,123 +13,123 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  class WebhookLog
-    # ID of the webhook log
-    attr_accessor :id
+class WebhookLog
+  # ID of the webhook log
+  attr_accessor :id
 
-    # Message detailing webhook event
-    attr_accessor :message
+  # Message detailing webhook event
+  attr_accessor :message
 
-    attr_accessor :metadata
+  attr_accessor :metadata
 
-    # Date and time of response
-    attr_accessor :created_at
+  # Date and time of response
+  attr_accessor :created_at
 
-    attr_accessor :parent_id
+  attr_accessor :parent_id
 
-    attr_accessor :parent_type
+  attr_accessor :parent_type
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'id' => :'id',
-        :'message' => :'message',
-        :'metadata' => :'metadata',
-        :'created_at' => :'created_at',
-        :'parent_id' => :'parent_id',
-        :'parent_type' => :'parent_type'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'id' => :'id',
+      :'message' => :'message',
+      :'metadata' => :'metadata',
+      :'created_at' => :'created_at',
+      :'parent_id' => :'parent_id',
+      :'parent_type' => :'parent_type'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'id' => :'String',
+      :'message' => :'String',
+      :'metadata' => :'WebhookLogMetadata',
+      :'created_at' => :'String',
+      :'parent_id' => :'String',
+      :'parent_type' => :'String'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::WebhookLog` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'id' => :'String',
-        :'message' => :'String',
-        :'metadata' => :'WebhookLogMetadata',
-        :'created_at' => :'String',
-        :'parent_id' => :'String',
-        :'parent_type' => :'String'
-      }
-    end
-
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::WebhookLog` initialize method"
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::WebhookLog`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
+      h[k.to_sym] = v
+    }
 
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::WebhookLog`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'message')
-        self.message = attributes[:'message']
-      end
-
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'parent_id')
-        self.parent_id = attributes[:'parent_id']
-      end
-
-      if attributes.key?(:'parent_type')
-        self.parent_type = attributes[:'parent_type']
-      end
+    if attributes.key?(:'id')
+      self.id = attributes[:'id']
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      invalid_properties
+    if attributes.key?(:'message')
+      self.message = attributes[:'message']
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      true
+    if attributes.key?(:'metadata')
+      self.metadata = attributes[:'metadata']
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          id == o.id &&
-          message == o.message &&
-          metadata == o.metadata &&
-          created_at == o.created_at &&
-          parent_id == o.parent_id &&
-          parent_type == o.parent_type
+    if attributes.key?(:'created_at')
+      self.created_at = attributes[:'created_at']
     end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
+    if attributes.key?(:'parent_id')
+      self.parent_id = attributes[:'parent_id']
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [id, message, metadata, created_at, parent_id, parent_type].hash
+    if attributes.key?(:'parent_type')
+      self.parent_type = attributes[:'parent_type']
     end
+  end
+
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    invalid_properties
+  end
+
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    true
+  end
+
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        id == o.id &&
+        message == o.message &&
+        metadata == o.metadata &&
+        created_at == o.created_at &&
+        parent_id == o.parent_id &&
+        parent_type == o.parent_type
+  end
+
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [id, message, metadata, created_at, parent_id, parent_type].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -245,5 +245,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

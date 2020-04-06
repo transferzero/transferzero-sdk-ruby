@@ -13,112 +13,112 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  # Whenever objects in the TransferZero API change state, we can optionally send the changed details to a pre-registered webhook address. Webhooks can be created either using the [developer portal](https://developers.transferzero.com), or using the [TransferZero API](#operations-tag-Webhooks).  Whenever possible we prefer using webhooks to listen on events (for example when a transaction has been paid out) instead of polling the status, and we expect implementations fully utilising webhooks.  Webhooks will always generate a `POST` request to the specified endpoint, and will also include the same authentication headers as described in the [authentication documentation](https://docs.transferzero.com/docs/authentication), so their validity can be verified on the receiver end.
-  class Webhook
-    # The ID of the webhook that was used to send out this callback
-    attr_accessor :webhook
+# Whenever objects in the TransferZero API change state, we can optionally send the changed details to a pre-registered webhook address. Webhooks can be created either using the [developer portal](https://developers.transferzero.com), or using the [TransferZero API](#operations-tag-Webhooks).  Whenever possible we prefer using webhooks to listen on events (for example when a transaction has been paid out) instead of polling the status, and we expect implementations fully utilising webhooks.  Webhooks will always generate a `POST` request to the specified endpoint, and will also include the same authentication headers as described in the [authentication documentation](https://docs.transferzero.com/docs/authentication), so their validity can be verified on the receiver end.
+class Webhook
+  # The ID of the webhook that was used to send out this callback
+  attr_accessor :webhook
 
-    # The event that triggered this webhook
-    attr_accessor :event
+  # The event that triggered this webhook
+  attr_accessor :event
 
-    # The returned object
-    attr_accessor :object
+  # The returned object
+  attr_accessor :object
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'webhook' => :'webhook',
-        :'event' => :'event',
-        :'object' => :'object'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'webhook' => :'webhook',
+      :'event' => :'event',
+      :'object' => :'object'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'webhook' => :'String',
+      :'event' => :'String',
+      :'object' => :'Object'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::Webhook` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'webhook' => :'String',
-        :'event' => :'String',
-        :'object' => :'Object'
-      }
-    end
-
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::Webhook` initialize method"
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::Webhook`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
+      h[k.to_sym] = v
+    }
 
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::Webhook`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'webhook')
-        self.webhook = attributes[:'webhook']
-      end
-
-      if attributes.key?(:'event')
-        self.event = attributes[:'event']
-      end
-
-      if attributes.key?(:'object')
-        self.object = attributes[:'object']
-      end
+    if attributes.key?(:'webhook')
+      self.webhook = attributes[:'webhook']
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      if @webhook.nil?
-        invalid_properties.push('invalid value for "webhook", webhook cannot be nil.')
-      end
-
-      if @event.nil?
-        invalid_properties.push('invalid value for "event", event cannot be nil.')
-      end
-
-      if @object.nil?
-        invalid_properties.push('invalid value for "object", object cannot be nil.')
-      end
-
-      invalid_properties
+    if attributes.key?(:'event')
+      self.event = attributes[:'event']
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      return false if @webhook.nil?
-      return false if @event.nil?
-      return false if @object.nil?
-      true
+    if attributes.key?(:'object')
+      self.object = attributes[:'object']
+    end
+  end
+
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    if @webhook.nil?
+      invalid_properties.push('invalid value for "webhook", webhook cannot be nil.')
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          webhook == o.webhook &&
-          event == o.event &&
-          object == o.object
+    if @event.nil?
+      invalid_properties.push('invalid value for "event", event cannot be nil.')
     end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
+    if @object.nil?
+      invalid_properties.push('invalid value for "object", object cannot be nil.')
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [webhook, event, object].hash
-    end
+    invalid_properties
+  end
+
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    return false if @webhook.nil?
+    return false if @event.nil?
+    return false if @object.nil?
+    true
+  end
+
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        webhook == o.webhook &&
+        event == o.event &&
+        object == o.object
+  end
+
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [webhook, event, object].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -234,5 +234,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

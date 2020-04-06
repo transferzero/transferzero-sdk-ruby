@@ -13,123 +13,123 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  # ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"name\": \"Full Name\"   \"address\": \"n4VQ5YdHf7hLQ2gWQYYrcxoE5B7nWuDFNF\" }
-  class PayoutMethodDetailsBTC
-    attr_accessor :first_name
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"name\": \"Full Name\"   \"address\": \"n4VQ5YdHf7hLQ2gWQYYrcxoE5B7nWuDFNF\" }
+class PayoutMethodDetailsBTC
+  attr_accessor :first_name
 
-    attr_accessor :last_name
+  attr_accessor :last_name
 
-    attr_accessor :name
+  attr_accessor :name
 
-    attr_accessor :address
+  attr_accessor :address
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'first_name' => :'first_name',
-        :'last_name' => :'last_name',
-        :'name' => :'name',
-        :'address' => :'address'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'first_name' => :'first_name',
+      :'last_name' => :'last_name',
+      :'name' => :'name',
+      :'address' => :'address'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'first_name' => :'String',
+      :'last_name' => :'String',
+      :'name' => :'String',
+      :'address' => :'String'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsBTC` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'first_name' => :'String',
-        :'last_name' => :'String',
-        :'name' => :'String',
-        :'address' => :'String'
-      }
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsBTC`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+      end
+      h[k.to_sym] = v
+    }
+
+    if attributes.key?(:'first_name')
+      self.first_name = attributes[:'first_name']
     end
 
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsBTC` initialize method"
-      end
-
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsBTC`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'first_name')
-        self.first_name = attributes[:'first_name']
-      end
-
-      if attributes.key?(:'last_name')
-        self.last_name = attributes[:'last_name']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'address')
-        self.address = attributes[:'address']
-      end
+    if attributes.key?(:'last_name')
+      self.last_name = attributes[:'last_name']
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      if @first_name.nil?
-        invalid_properties.push('invalid value for "first_name", first_name cannot be nil.')
-      end
-
-      if @last_name.nil?
-        invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
-      end
-
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @address.nil?
-        invalid_properties.push('invalid value for "address", address cannot be nil.')
-      end
-
-      invalid_properties
+    if attributes.key?(:'name')
+      self.name = attributes[:'name']
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      return false if @first_name.nil?
-      return false if @last_name.nil?
-      return false if @name.nil?
-      return false if @address.nil?
-      true
+    if attributes.key?(:'address')
+      self.address = attributes[:'address']
+    end
+  end
+
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    if @first_name.nil?
+      invalid_properties.push('invalid value for "first_name", first_name cannot be nil.')
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          first_name == o.first_name &&
-          last_name == o.last_name &&
-          name == o.name &&
-          address == o.address
+    if @last_name.nil?
+      invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
     end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
+    if @name.nil?
+      invalid_properties.push('invalid value for "name", name cannot be nil.')
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [first_name, last_name, name, address].hash
+    if @address.nil?
+      invalid_properties.push('invalid value for "address", address cannot be nil.')
     end
+
+    invalid_properties
+  end
+
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    return false if @first_name.nil?
+    return false if @last_name.nil?
+    return false if @name.nil?
+    return false if @address.nil?
+    true
+  end
+
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        first_name == o.first_name &&
+        last_name == o.last_name &&
+        name == o.name &&
+        address == o.address
+  end
+
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [first_name, last_name, name, address].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -245,5 +245,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

@@ -13,147 +13,147 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  # Fields needed by the payment processor. Depends on the chose payin type.  See the appropriate model details for more info:  - `NGN::Bank`: see [`PayinMethodDetailsNGNBank`](#model-PayinMethodDetailsNGNBank) - `GHS::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile) - `UGX::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile) - `TZS::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile)  Note that some payin processors don't require additional input, these include `paga` through `NGN::Mobile`, `lhv` through `EUR::Bank` and `GBP::Bank`. Some providers like `providus` also have all of their fields set as optional, so you might not want to set any values. To use these providers please set this value to `{}` (an empty hash) 
-  class PayinMethodDetails
-    # The payment method which the user will use to make the payments. Options are `bank`, `card` or you can leave empty to support both.
-    attr_accessor :payment_method
+# Fields needed by the payment processor. Depends on the chose payin type.  See the appropriate model details for more info:  - `NGN::Bank`: see [`PayinMethodDetailsNGNBank`](#model-PayinMethodDetailsNGNBank) - `GHS::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile) - `UGX::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile) - `TZS::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile)  Note that some payin processors don't require additional input, these include `paga` through `NGN::Mobile`, `lhv` through `EUR::Bank` and `GBP::Bank`. Some providers like `providus` also have all of their fields set as optional, so you might not want to set any values. To use these providers please set this value to `{}` (an empty hash) 
+class PayinMethodDetails
+  # The payment method which the user will use to make the payments. Options are `bank`, `card` or you can leave empty to support both.
+  attr_accessor :payment_method
 
-    # This is where the user should be redirected back when the payment has been finished
-    attr_accessor :redirect_url
+  # This is where the user should be redirected back when the payment has been finished
+  attr_accessor :redirect_url
 
-    # The phone number where the funds should be collected from
-    attr_accessor :phone_number
+  # The phone number where the funds should be collected from
+  attr_accessor :phone_number
 
-    # States whether to send out the instructions to the phone number on how to pay the funds or not. This shuold always be set to true, otherwise the sender might not receive a prompt for payment.
-    attr_accessor :send_instructions
+  # States whether to send out the instructions to the phone number on how to pay the funds or not. This shuold always be set to true, otherwise the sender might not receive a prompt for payment.
+  attr_accessor :send_instructions
 
-    # Please make sure the refund_address is a valid BTC address belonging to the sender, as that is going to be used in case the transaction has to be refunded.
-    attr_accessor :refund_address
+  # Please make sure the refund_address is a valid BTC address belonging to the sender, as that is going to be used in case the transaction has to be refunded.
+  attr_accessor :refund_address
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'payment_method' => :'payment_method',
-        :'redirect_url' => :'redirect_url',
-        :'phone_number' => :'phone_number',
-        :'send_instructions' => :'send_instructions',
-        :'refund_address' => :'refund_address'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'payment_method' => :'payment_method',
+      :'redirect_url' => :'redirect_url',
+      :'phone_number' => :'phone_number',
+      :'send_instructions' => :'send_instructions',
+      :'refund_address' => :'refund_address'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'payment_method' => :'String',
+      :'redirect_url' => :'String',
+      :'phone_number' => :'String',
+      :'send_instructions' => :'Boolean',
+      :'refund_address' => :'String'
+    }
+  end
+
+  # List of class defined in oneOf (OpenAPI v3)
+  def self.openapi_one_of
+    [
+    :'PayinMethodDetailsBTC',
+    :'PayinMethodDetailsMobile',
+    :'PayinMethodDetailsNGNBank'
+    ]
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayinMethodDetails` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'payment_method' => :'String',
-        :'redirect_url' => :'String',
-        :'phone_number' => :'String',
-        :'send_instructions' => :'Boolean',
-        :'refund_address' => :'String'
-      }
-    end
-
-    # List of class defined in oneOf (OpenAPI v3)
-    def self.openapi_one_of
-      [
-      :'PayinMethodDetailsBTC',
-      :'PayinMethodDetailsMobile',
-      :'PayinMethodDetailsNGNBank'
-      ]
-    end
-
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayinMethodDetails` initialize method"
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayinMethodDetails`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
+      h[k.to_sym] = v
+    }
 
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayinMethodDetails`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+    if attributes.key?(:'payment_method')
+      self.payment_method = attributes[:'payment_method']
+    end
+
+    if attributes.key?(:'redirect_url')
+      self.redirect_url = attributes[:'redirect_url']
+    end
+
+    if attributes.key?(:'phone_number')
+      self.phone_number = attributes[:'phone_number']
+    end
+
+    if attributes.key?(:'send_instructions')
+      self.send_instructions = attributes[:'send_instructions']
+    end
+
+    if attributes.key?(:'refund_address')
+      self.refund_address = attributes[:'refund_address']
+    end
+  end
+
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    if @phone_number.nil?
+      invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
+    end
+
+    invalid_properties
+  end
+
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    return false if @phone_number.nil?
+    _one_of_found = false
+    openapi_one_of.each do |_class|
+      _one_of = TransferZero.const_get(_class).build_from_hash(self.to_hash)
+      if _one_of.valid?
+        if _one_of_found?
+          return false
+        else
+          _one_of_found = true
         end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'payment_method')
-        self.payment_method = attributes[:'payment_method']
-      end
-
-      if attributes.key?(:'redirect_url')
-        self.redirect_url = attributes[:'redirect_url']
-      end
-
-      if attributes.key?(:'phone_number')
-        self.phone_number = attributes[:'phone_number']
-      end
-
-      if attributes.key?(:'send_instructions')
-        self.send_instructions = attributes[:'send_instructions']
-      end
-
-      if attributes.key?(:'refund_address')
-        self.refund_address = attributes[:'refund_address']
       end
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      if @phone_number.nil?
-        invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
-      end
-
-      invalid_properties
+    if !_one_of_found?
+      return false
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      return false if @phone_number.nil?
-      _one_of_found = false
-      openapi_one_of.each do |_class|
-        _one_of = TransferZero.const_get(_class).build_from_hash(self.to_hash)
-        if _one_of.valid?
-          if _one_of_found?
-            return false
-          else
-            _one_of_found = true
-          end
-        end
-      end
+    true
+  end
 
-      if !_one_of_found?
-        return false
-      end
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        payment_method == o.payment_method &&
+        redirect_url == o.redirect_url &&
+        phone_number == o.phone_number &&
+        send_instructions == o.send_instructions &&
+        refund_address == o.refund_address
+  end
 
-      true
-    end
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          payment_method == o.payment_method &&
-          redirect_url == o.redirect_url &&
-          phone_number == o.phone_number &&
-          send_instructions == o.send_instructions &&
-          refund_address == o.refund_address
-    end
-
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
-    end
-
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [payment_method, redirect_url, phone_number, send_instructions, refund_address].hash
-    end
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [payment_method, redirect_url, phone_number, send_instructions, refund_address].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -269,5 +269,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

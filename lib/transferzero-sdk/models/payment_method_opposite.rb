@@ -13,149 +13,149 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  class PaymentMethodOpposite
-    # Details currency and type of payment.
-    attr_accessor :type
+class PaymentMethodOpposite
+  # Details currency and type of payment.
+  attr_accessor :type
 
-    # Identifies the payment provider.
-    attr_accessor :provider
+  # Identifies the payment provider.
+  attr_accessor :provider
 
-    # Are over the counter transactions permitted?
-    attr_accessor :otc_permitted
+  # Are over the counter transactions permitted?
+  attr_accessor :otc_permitted
 
-    # Fields required to make the payment depending on type.
-    attr_accessor :details
+  # Fields required to make the payment depending on type.
+  attr_accessor :details
 
-    # Boolean revealing whether this is the default payout method. Only present on payout methods
-    attr_accessor :default
+  # Boolean revealing whether this is the default payout method. Only present on payout methods
+  attr_accessor :default
 
-    # The fields needed for payments with this payment method with details on validation requirements
-    attr_accessor :fields
+  # The fields needed for payments with this payment method with details on validation requirements
+  attr_accessor :fields
 
-    # List of all providers that can be used in conjunction with the main provider
-    attr_accessor :opposites
+  # List of all providers that can be used in conjunction with the main provider
+  attr_accessor :opposites
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'type' => :'type',
-        :'provider' => :'provider',
-        :'otc_permitted' => :'otc_permitted',
-        :'details' => :'details',
-        :'default' => :'default',
-        :'fields' => :'fields',
-        :'opposites' => :'opposites'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'type' => :'type',
+      :'provider' => :'provider',
+      :'otc_permitted' => :'otc_permitted',
+      :'details' => :'details',
+      :'default' => :'default',
+      :'fields' => :'fields',
+      :'opposites' => :'opposites'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'type' => :'String',
+      :'provider' => :'String',
+      :'otc_permitted' => :'Boolean',
+      :'details' => :'Array<String>',
+      :'default' => :'Boolean',
+      :'fields' => :'Hash<String, FieldDescription>',
+      :'opposites' => :'Array<PaymentMethod>'
+    }
+  end
+
+  # List of class defined in allOf (OpenAPI v3)
+  def self.openapi_all_of
+    [
+    :'PaymentMethod'
+    ]
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PaymentMethodOpposite` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'type' => :'String',
-        :'provider' => :'String',
-        :'otc_permitted' => :'Boolean',
-        :'details' => :'Array<String>',
-        :'default' => :'Boolean',
-        :'fields' => :'Hash<String, FieldDescription>',
-        :'opposites' => :'Array<PaymentMethod>'
-      }
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PaymentMethodOpposite`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+      end
+      h[k.to_sym] = v
+    }
+
+    if attributes.key?(:'type')
+      self.type = attributes[:'type']
     end
 
-    # List of class defined in allOf (OpenAPI v3)
-    def self.openapi_all_of
-      [
-      :'PaymentMethod'
-      ]
+    if attributes.key?(:'provider')
+      self.provider = attributes[:'provider']
     end
 
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PaymentMethodOpposite` initialize method"
-      end
+    if attributes.key?(:'otc_permitted')
+      self.otc_permitted = attributes[:'otc_permitted']
+    end
 
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PaymentMethodOpposite`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
-      end
-
-      if attributes.key?(:'provider')
-        self.provider = attributes[:'provider']
-      end
-
-      if attributes.key?(:'otc_permitted')
-        self.otc_permitted = attributes[:'otc_permitted']
-      end
-
-      if attributes.key?(:'details')
-        if (value = attributes[:'details']).is_a?(Array)
-          self.details = value
-        end
-      end
-
-      if attributes.key?(:'default')
-        self.default = attributes[:'default']
-      end
-
-      if attributes.key?(:'fields')
-        if (value = attributes[:'fields']).is_a?(Hash)
-          self.fields = value
-        end
-      end
-
-      if attributes.key?(:'opposites')
-        if (value = attributes[:'opposites']).is_a?(Array)
-          self.opposites = value
-        end
+    if attributes.key?(:'details')
+      if (value = attributes[:'details']).is_a?(Array)
+        self.details = value
       end
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      invalid_properties
+    if attributes.key?(:'default')
+      self.default = attributes[:'default']
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      true
+    if attributes.key?(:'fields')
+      if (value = attributes[:'fields']).is_a?(Hash)
+        self.fields = value
+      end
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          type == o.type &&
-          provider == o.provider &&
-          otc_permitted == o.otc_permitted &&
-          details == o.details &&
-          default == o.default &&
-          fields == o.fields &&
-          opposites == o.opposites
+    if attributes.key?(:'opposites')
+      if (value = attributes[:'opposites']).is_a?(Array)
+        self.opposites = value
+      end
     end
+  end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
-    end
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    invalid_properties
+  end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [type, provider, otc_permitted, details, default, fields, opposites].hash
-    end
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    true
+  end
+
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        type == o.type &&
+        provider == o.provider &&
+        otc_permitted == o.otc_permitted &&
+        details == o.details &&
+        default == o.default &&
+        fields == o.fields &&
+        opposites == o.opposites
+  end
+
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [type, provider, otc_permitted, details, default, fields, opposites].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -271,5 +271,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

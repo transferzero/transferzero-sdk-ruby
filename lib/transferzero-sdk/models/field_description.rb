@@ -13,119 +13,119 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  class FieldDescription
-    # the type of the field.
-    attr_accessor :type
+class FieldDescription
+  # the type of the field.
+  attr_accessor :type
 
-    attr_accessor :validations
+  attr_accessor :validations
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
+  class EnumAttributeValidator
+    attr_reader :datatype
+    attr_reader :allowable_values
 
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
+    def initialize(datatype, allowable_values)
+      @allowable_values = allowable_values.map do |value|
+        case datatype.to_s
+        when /Integer/i
+          value.to_i
+        when /Float/i
+          value.to_f
+        else
+          value
         end
       end
+    end
 
-      def valid?(value)
-        !value || allowable_values.include?(value)
+    def valid?(value)
+      !value || allowable_values.include?(value)
+    end
+  end
+
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'type' => :'type',
+      :'validations' => :'validations'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'type' => :'String',
+      :'validations' => :'FieldValidation'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::FieldDescription` initialize method"
+    end
+
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::FieldDescription`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
+      h[k.to_sym] = v
+    }
+
+    if attributes.key?(:'type')
+      self.type = attributes[:'type']
     end
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'type' => :'type',
-        :'validations' => :'validations'
-      }
+    if attributes.key?(:'validations')
+      self.validations = attributes[:'validations']
     end
+  end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'type' => :'String',
-        :'validations' => :'FieldValidation'
-      }
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    invalid_properties
+  end
+
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    type_validator = EnumAttributeValidator.new('String', ["input", "select"])
+    return false unless type_validator.valid?(@type)
+    true
+  end
+
+  # Custom attribute writer method checking allowed values (enum).
+  # @param [Object] type Object to be assigned
+  def type=(type)
+    validator = EnumAttributeValidator.new('String', ["input", "select"])
+    unless validator.valid?(type.presence)
+      fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
     end
+    @type = type
+  end
 
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::FieldDescription` initialize method"
-      end
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        type == o.type &&
+        validations == o.validations
+  end
 
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::FieldDescription`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
 
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
-      end
-
-      if attributes.key?(:'validations')
-        self.validations = attributes[:'validations']
-      end
-    end
-
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      invalid_properties
-    end
-
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      type_validator = EnumAttributeValidator.new('String', ["input", "select"])
-      return false unless type_validator.valid?(@type)
-      true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["input", "select"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
-      end
-      @type = type
-    end
-
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          type == o.type &&
-          validations == o.validations
-    end
-
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
-    end
-
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [type, validations].hash
-    end
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [type, validations].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -241,5 +241,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

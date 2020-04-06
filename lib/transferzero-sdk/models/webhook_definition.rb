@@ -13,130 +13,130 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  # Object that holds where to send webhooks, and what events should it be triggered with
-  class WebhookDefinition
-    # The URL to receive the webhook
-    attr_accessor :url
+# Object that holds where to send webhooks, and what events should it be triggered with
+class WebhookDefinition
+  # The URL to receive the webhook
+  attr_accessor :url
 
-    # A list of events to subscribe to
-    attr_accessor :events
+  # A list of events to subscribe to
+  attr_accessor :events
 
-    attr_accessor :metadata
+  attr_accessor :metadata
 
-    # The ID of the webhook
-    attr_accessor :id
+  # The ID of the webhook
+  attr_accessor :id
 
-    # The fields that have some problems and don't pass validation
-    attr_accessor :errors
+  # The fields that have some problems and don't pass validation
+  attr_accessor :errors
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'url' => :'url',
-        :'events' => :'events',
-        :'metadata' => :'metadata',
-        :'id' => :'id',
-        :'errors' => :'errors'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'url' => :'url',
+      :'events' => :'events',
+      :'metadata' => :'metadata',
+      :'id' => :'id',
+      :'errors' => :'errors'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'url' => :'String',
+      :'events' => :'Array<String>',
+      :'metadata' => :'Object',
+      :'id' => :'String',
+      :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::WebhookDefinition` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'url' => :'String',
-        :'events' => :'Array<String>',
-        :'metadata' => :'Object',
-        :'id' => :'String',
-        :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
-      }
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::WebhookDefinition`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+      end
+      h[k.to_sym] = v
+    }
+
+    if attributes.key?(:'url')
+      self.url = attributes[:'url']
     end
 
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::WebhookDefinition` initialize method"
-      end
-
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::WebhookDefinition`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'url')
-        self.url = attributes[:'url']
-      end
-
-      if attributes.key?(:'events')
-        if (value = attributes[:'events']).is_a?(Array)
-          self.events = value
-        end
-      end
-
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'errors')
-        if (value = attributes[:'errors']).is_a?(Hash)
-          self.errors = value
-        end
+    if attributes.key?(:'events')
+      if (value = attributes[:'events']).is_a?(Array)
+        self.events = value
       end
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      if @url.nil?
-        invalid_properties.push('invalid value for "url", url cannot be nil.')
+    if attributes.key?(:'metadata')
+      self.metadata = attributes[:'metadata']
+    end
+
+    if attributes.key?(:'id')
+      self.id = attributes[:'id']
+    end
+
+    if attributes.key?(:'errors')
+      if (value = attributes[:'errors']).is_a?(Hash)
+        self.errors = value
       end
+    end
+  end
 
-      if @events.nil?
-        invalid_properties.push('invalid value for "events", events cannot be nil.')
-      end
-
-      invalid_properties
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    if @url.nil?
+      invalid_properties.push('invalid value for "url", url cannot be nil.')
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      return false if @url.nil?
-      return false if @events.nil?
-      true
+    if @events.nil?
+      invalid_properties.push('invalid value for "events", events cannot be nil.')
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          url == o.url &&
-          events == o.events &&
-          metadata == o.metadata &&
-          id == o.id &&
-          errors == o.errors
-    end
+    invalid_properties
+  end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
-    end
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    return false if @url.nil?
+    return false if @events.nil?
+    true
+  end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [url, events, metadata, id, errors].hash
-    end
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        url == o.url &&
+        events == o.events &&
+        metadata == o.metadata &&
+        id == o.id &&
+        errors == o.errors
+  end
+
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [url, events, metadata, id, errors].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -252,5 +252,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

@@ -13,206 +13,206 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  # ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"212537718685\"     # Mandatory; International format preferred   \"sender_identity_card_type\" => \"O\",     # Mandatory; Values: \"O\": Other, \"PP\": Passport, \"NI\": National ID   \"sender_identity_card_id\" => 'AB12345678',     # Mandatory   \"sender_city_of_birth\" => \"London\",     # Mandatory   \"sender_country_of_birth\" => \"GB\",     # Mandatory; ISO 2-letter format   \"sender_gender\" => \"M\",     # Mandatory; Values: \"M\": Male, \"F\": Female   \"reason\" => \"Remittance payment\",     # Optional; Default value is 'Remittance payment'   \"identity_card_type\" => \"NI\",     # Optional; Values: \"PP\": Passport, \"NI\": National ID   \"identity_card_id\" => 'AB12345678'     # Optional } ```  Please note when sending MAD::Cash payments you should subscribe to the recipient.pending webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt -  ```JSON {   (...)   \"state\":\"pending\",   \"metadata\": {     \"payment_reference\":\"9M5GJRJUBCY\"   },   (...) } ```  The reference can also be provided optionally for MAD::Cash, but if you want to use this functionality please contact us for more details.
-  class PayoutMethodDetailsMADCash
-    attr_accessor :first_name
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"212537718685\"     # Mandatory; International format preferred   \"sender_identity_card_type\" => \"O\",     # Mandatory; Values: \"O\": Other, \"PP\": Passport, \"NI\": National ID   \"sender_identity_card_id\" => 'AB12345678',     # Mandatory   \"sender_city_of_birth\" => \"London\",     # Mandatory   \"sender_country_of_birth\" => \"GB\",     # Mandatory; ISO 2-letter format   \"sender_gender\" => \"M\",     # Mandatory; Values: \"M\": Male, \"F\": Female   \"reason\" => \"Remittance payment\",     # Optional; Default value is 'Remittance payment'   \"identity_card_type\" => \"NI\",     # Optional; Values: \"PP\": Passport, \"NI\": National ID   \"identity_card_id\" => 'AB12345678'     # Optional } ```  Please note when sending MAD::Cash payments you should subscribe to the recipient.pending webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt -  ```JSON {   (...)   \"state\":\"pending\",   \"metadata\": {     \"payment_reference\":\"9M5GJRJUBCY\"   },   (...) } ```  The reference can also be provided optionally for MAD::Cash, but if you want to use this functionality please contact us for more details.
+class PayoutMethodDetailsMADCash
+  attr_accessor :first_name
 
-    attr_accessor :last_name
+  attr_accessor :last_name
 
-    attr_accessor :phone_number
+  attr_accessor :phone_number
 
-    attr_accessor :sender_identity_card_type
+  attr_accessor :sender_identity_card_type
 
-    attr_accessor :sender_identity_card_id
+  attr_accessor :sender_identity_card_id
 
-    attr_accessor :sender_city_of_birth
+  attr_accessor :sender_city_of_birth
 
-    attr_accessor :sender_country_of_birth
+  attr_accessor :sender_country_of_birth
 
-    attr_accessor :sender_gender
+  attr_accessor :sender_gender
 
-    attr_accessor :reason
+  attr_accessor :reason
 
-    attr_accessor :identity_card_type
+  attr_accessor :identity_card_type
 
-    attr_accessor :identity_card_id
+  attr_accessor :identity_card_id
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'first_name' => :'first_name',
-        :'last_name' => :'last_name',
-        :'phone_number' => :'phone_number',
-        :'sender_identity_card_type' => :'sender_identity_card_type',
-        :'sender_identity_card_id' => :'sender_identity_card_id',
-        :'sender_city_of_birth' => :'sender_city_of_birth',
-        :'sender_country_of_birth' => :'sender_country_of_birth',
-        :'sender_gender' => :'sender_gender',
-        :'reason' => :'reason',
-        :'identity_card_type' => :'identity_card_type',
-        :'identity_card_id' => :'identity_card_id'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'first_name' => :'first_name',
+      :'last_name' => :'last_name',
+      :'phone_number' => :'phone_number',
+      :'sender_identity_card_type' => :'sender_identity_card_type',
+      :'sender_identity_card_id' => :'sender_identity_card_id',
+      :'sender_city_of_birth' => :'sender_city_of_birth',
+      :'sender_country_of_birth' => :'sender_country_of_birth',
+      :'sender_gender' => :'sender_gender',
+      :'reason' => :'reason',
+      :'identity_card_type' => :'identity_card_type',
+      :'identity_card_id' => :'identity_card_id'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'first_name' => :'String',
+      :'last_name' => :'String',
+      :'phone_number' => :'String',
+      :'sender_identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
+      :'sender_identity_card_id' => :'String',
+      :'sender_city_of_birth' => :'String',
+      :'sender_country_of_birth' => :'String',
+      :'sender_gender' => :'PayoutMethodGenderEnum',
+      :'reason' => :'String',
+      :'identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
+      :'identity_card_id' => :'String'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsMADCash` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'first_name' => :'String',
-        :'last_name' => :'String',
-        :'phone_number' => :'String',
-        :'sender_identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
-        :'sender_identity_card_id' => :'String',
-        :'sender_city_of_birth' => :'String',
-        :'sender_country_of_birth' => :'String',
-        :'sender_gender' => :'PayoutMethodGenderEnum',
-        :'reason' => :'String',
-        :'identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
-        :'identity_card_id' => :'String'
-      }
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsMADCash`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+      end
+      h[k.to_sym] = v
+    }
+
+    if attributes.key?(:'first_name')
+      self.first_name = attributes[:'first_name']
     end
 
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsMADCash` initialize method"
-      end
-
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsMADCash`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'first_name')
-        self.first_name = attributes[:'first_name']
-      end
-
-      if attributes.key?(:'last_name')
-        self.last_name = attributes[:'last_name']
-      end
-
-      if attributes.key?(:'phone_number')
-        self.phone_number = attributes[:'phone_number']
-      end
-
-      if attributes.key?(:'sender_identity_card_type')
-        self.sender_identity_card_type = attributes[:'sender_identity_card_type']
-      end
-
-      if attributes.key?(:'sender_identity_card_id')
-        self.sender_identity_card_id = attributes[:'sender_identity_card_id']
-      end
-
-      if attributes.key?(:'sender_city_of_birth')
-        self.sender_city_of_birth = attributes[:'sender_city_of_birth']
-      end
-
-      if attributes.key?(:'sender_country_of_birth')
-        self.sender_country_of_birth = attributes[:'sender_country_of_birth']
-      end
-
-      if attributes.key?(:'sender_gender')
-        self.sender_gender = attributes[:'sender_gender']
-      end
-
-      if attributes.key?(:'reason')
-        self.reason = attributes[:'reason']
-      end
-
-      if attributes.key?(:'identity_card_type')
-        self.identity_card_type = attributes[:'identity_card_type']
-      end
-
-      if attributes.key?(:'identity_card_id')
-        self.identity_card_id = attributes[:'identity_card_id']
-      end
+    if attributes.key?(:'last_name')
+      self.last_name = attributes[:'last_name']
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      if @first_name.nil?
-        invalid_properties.push('invalid value for "first_name", first_name cannot be nil.')
-      end
-
-      if @last_name.nil?
-        invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
-      end
-
-      if @phone_number.nil?
-        invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
-      end
-
-      if @sender_identity_card_type.nil?
-        invalid_properties.push('invalid value for "sender_identity_card_type", sender_identity_card_type cannot be nil.')
-      end
-
-      if @sender_identity_card_id.nil?
-        invalid_properties.push('invalid value for "sender_identity_card_id", sender_identity_card_id cannot be nil.')
-      end
-
-      if @sender_city_of_birth.nil?
-        invalid_properties.push('invalid value for "sender_city_of_birth", sender_city_of_birth cannot be nil.')
-      end
-
-      if @sender_country_of_birth.nil?
-        invalid_properties.push('invalid value for "sender_country_of_birth", sender_country_of_birth cannot be nil.')
-      end
-
-      if @sender_gender.nil?
-        invalid_properties.push('invalid value for "sender_gender", sender_gender cannot be nil.')
-      end
-
-      invalid_properties
+    if attributes.key?(:'phone_number')
+      self.phone_number = attributes[:'phone_number']
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      return false if @first_name.nil?
-      return false if @last_name.nil?
-      return false if @phone_number.nil?
-      return false if @sender_identity_card_type.nil?
-      return false if @sender_identity_card_id.nil?
-      return false if @sender_city_of_birth.nil?
-      return false if @sender_country_of_birth.nil?
-      return false if @sender_gender.nil?
-      true
+    if attributes.key?(:'sender_identity_card_type')
+      self.sender_identity_card_type = attributes[:'sender_identity_card_type']
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          first_name == o.first_name &&
-          last_name == o.last_name &&
-          phone_number == o.phone_number &&
-          sender_identity_card_type == o.sender_identity_card_type &&
-          sender_identity_card_id == o.sender_identity_card_id &&
-          sender_city_of_birth == o.sender_city_of_birth &&
-          sender_country_of_birth == o.sender_country_of_birth &&
-          sender_gender == o.sender_gender &&
-          reason == o.reason &&
-          identity_card_type == o.identity_card_type &&
-          identity_card_id == o.identity_card_id
+    if attributes.key?(:'sender_identity_card_id')
+      self.sender_identity_card_id = attributes[:'sender_identity_card_id']
     end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
+    if attributes.key?(:'sender_city_of_birth')
+      self.sender_city_of_birth = attributes[:'sender_city_of_birth']
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [first_name, last_name, phone_number, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id].hash
+    if attributes.key?(:'sender_country_of_birth')
+      self.sender_country_of_birth = attributes[:'sender_country_of_birth']
     end
+
+    if attributes.key?(:'sender_gender')
+      self.sender_gender = attributes[:'sender_gender']
+    end
+
+    if attributes.key?(:'reason')
+      self.reason = attributes[:'reason']
+    end
+
+    if attributes.key?(:'identity_card_type')
+      self.identity_card_type = attributes[:'identity_card_type']
+    end
+
+    if attributes.key?(:'identity_card_id')
+      self.identity_card_id = attributes[:'identity_card_id']
+    end
+  end
+
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    if @first_name.nil?
+      invalid_properties.push('invalid value for "first_name", first_name cannot be nil.')
+    end
+
+    if @last_name.nil?
+      invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
+    end
+
+    if @phone_number.nil?
+      invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
+    end
+
+    if @sender_identity_card_type.nil?
+      invalid_properties.push('invalid value for "sender_identity_card_type", sender_identity_card_type cannot be nil.')
+    end
+
+    if @sender_identity_card_id.nil?
+      invalid_properties.push('invalid value for "sender_identity_card_id", sender_identity_card_id cannot be nil.')
+    end
+
+    if @sender_city_of_birth.nil?
+      invalid_properties.push('invalid value for "sender_city_of_birth", sender_city_of_birth cannot be nil.')
+    end
+
+    if @sender_country_of_birth.nil?
+      invalid_properties.push('invalid value for "sender_country_of_birth", sender_country_of_birth cannot be nil.')
+    end
+
+    if @sender_gender.nil?
+      invalid_properties.push('invalid value for "sender_gender", sender_gender cannot be nil.')
+    end
+
+    invalid_properties
+  end
+
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    return false if @first_name.nil?
+    return false if @last_name.nil?
+    return false if @phone_number.nil?
+    return false if @sender_identity_card_type.nil?
+    return false if @sender_identity_card_id.nil?
+    return false if @sender_city_of_birth.nil?
+    return false if @sender_country_of_birth.nil?
+    return false if @sender_gender.nil?
+    true
+  end
+
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        first_name == o.first_name &&
+        last_name == o.last_name &&
+        phone_number == o.phone_number &&
+        sender_identity_card_type == o.sender_identity_card_type &&
+        sender_identity_card_id == o.sender_identity_card_id &&
+        sender_city_of_birth == o.sender_city_of_birth &&
+        sender_country_of_birth == o.sender_country_of_birth &&
+        sender_gender == o.sender_gender &&
+        reason == o.reason &&
+        identity_card_type == o.identity_card_type &&
+        identity_card_id == o.identity_card_id
+  end
+
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [first_name, last_name, phone_number, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -328,5 +328,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

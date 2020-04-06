@@ -13,116 +13,116 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  # This describes the specific details on how the funds should be collected from the sender.
-  class PayinMethod
-    # Describes how the payment should be requested from the user.  Possible values: - `NGN::Bank`: NGN bank and card collection requests - `NGN::Mobile`: NGN mobile collections - `GHS::Mobile`: GHS mobile collections - `TZS::Mobile`: TZS mobile collections - `UGX::Mobile`: UGX mobile collections - `EUR::Bank`: EUR IBAN collections - `GBP::Bank`: GBP IBAN collections 
-    attr_accessor :type
+# This describes the specific details on how the funds should be collected from the sender.
+class PayinMethod
+  # Describes how the payment should be requested from the user.  Possible values: - `NGN::Bank`: NGN bank and card collection requests - `NGN::Mobile`: NGN mobile collections - `GHS::Mobile`: GHS mobile collections - `TZS::Mobile`: TZS mobile collections - `UGX::Mobile`: UGX mobile collections - `EUR::Bank`: EUR IBAN collections - `GBP::Bank`: GBP IBAN collections 
+  attr_accessor :type
 
-    attr_accessor :in_details
+  attr_accessor :in_details
 
-    # This will contain the description on where to pay the funds. Please see the [Collections Details](https://docs.transferzero.com/docs/collection-details) in the API documentation on what to expect here.
-    attr_accessor :out_details
+  # This will contain the description on where to pay the funds. Please see the [Collections Details](https://docs.transferzero.com/docs/collection-details) in the API documentation on what to expect here.
+  attr_accessor :out_details
 
-    # This will contain the instructions on how to pay the funds. Please see the [Collections Details](https://docs.transferzero.com/docs/collection-details) in the API documentation on what to expect here.
-    attr_accessor :instructions
+  # This will contain the instructions on how to pay the funds. Please see the [Collections Details](https://docs.transferzero.com/docs/collection-details) in the API documentation on what to expect here.
+  attr_accessor :instructions
 
-    # Describes which provider to use for collection. Please see the [Collections Details](https://docs.transferzero.com/docs/collection-details) in the API documentation on the valid values
-    attr_accessor :provider
+  # Describes which provider to use for collection. Please see the [Collections Details](https://docs.transferzero.com/docs/collection-details) in the API documentation on the valid values
+  attr_accessor :provider
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'type' => :'type',
-        :'in_details' => :'in_details',
-        :'out_details' => :'out_details',
-        :'instructions' => :'instructions',
-        :'provider' => :'provider'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'type' => :'type',
+      :'in_details' => :'in_details',
+      :'out_details' => :'out_details',
+      :'instructions' => :'instructions',
+      :'provider' => :'provider'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'type' => :'String',
+      :'in_details' => :'PayinMethodDetails',
+      :'out_details' => :'Object',
+      :'instructions' => :'Object',
+      :'provider' => :'String'
+    }
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayinMethod` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'type' => :'String',
-        :'in_details' => :'PayinMethodDetails',
-        :'out_details' => :'Object',
-        :'instructions' => :'Object',
-        :'provider' => :'String'
-      }
-    end
-
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayinMethod` initialize method"
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayinMethod`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
+      h[k.to_sym] = v
+    }
 
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayinMethod`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
-        end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
-      end
-
-      if attributes.key?(:'in_details')
-        self.in_details = attributes[:'in_details']
-      end
-
-      if attributes.key?(:'out_details')
-        self.out_details = attributes[:'out_details']
-      end
-
-      if attributes.key?(:'instructions')
-        self.instructions = attributes[:'instructions']
-      end
-
-      if attributes.key?(:'provider')
-        self.provider = attributes[:'provider']
-      end
+    if attributes.key?(:'type')
+      self.type = attributes[:'type']
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      invalid_properties
+    if attributes.key?(:'in_details')
+      self.in_details = attributes[:'in_details']
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      true
+    if attributes.key?(:'out_details')
+      self.out_details = attributes[:'out_details']
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          type == o.type &&
-          in_details == o.in_details &&
-          out_details == o.out_details &&
-          instructions == o.instructions &&
-          provider == o.provider
+    if attributes.key?(:'instructions')
+      self.instructions = attributes[:'instructions']
     end
 
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
+    if attributes.key?(:'provider')
+      self.provider = attributes[:'provider']
     end
+  end
 
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [type, in_details, out_details, instructions, provider].hash
-    end
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    invalid_properties
+  end
+
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    true
+  end
+
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        type == o.type &&
+        in_details == o.in_details &&
+        out_details == o.out_details &&
+        instructions == o.instructions &&
+        provider == o.provider
+  end
+
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
+
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [type, in_details, out_details, instructions, provider].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -238,5 +238,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end

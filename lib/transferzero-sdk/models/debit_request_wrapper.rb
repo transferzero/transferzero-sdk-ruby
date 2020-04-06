@@ -13,101 +13,101 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  class DebitRequestWrapper
-    attr_accessor :debit
+class DebitRequestWrapper
+  attr_accessor :debit
 
-    # Attribute mapping from ruby-style variable name to JSON key.
-    def self.attribute_map
-      {
-        :'debit' => :'debit'
-      }
+  # Attribute mapping from ruby-style variable name to JSON key.
+  def self.attribute_map
+    {
+      :'debit' => :'debit'
+    }
+  end
+
+  # Attribute type mapping.
+  def self.openapi_types
+    {
+      :'debit' => :'Array<Debit>'
+    }
+  end
+
+  # List of class defined in oneOf (OpenAPI v3)
+  def self.openapi_one_of
+    [
+    :'DebitListRequest',
+    :'DebitRequest'
+    ]
+  end
+
+  # Initializes the object
+  # @param [Hash] attributes Model attributes in the form of hash
+  def initialize(attributes = {})
+    if (!attributes.is_a?(Hash))
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::DebitRequestWrapper` initialize method"
     end
 
-    # Attribute type mapping.
-    def self.openapi_types
-      {
-        :'debit' => :'Array<Debit>'
-      }
-    end
-
-    # List of class defined in oneOf (OpenAPI v3)
-    def self.openapi_one_of
-      [
-      :'DebitListRequest',
-      :'DebitRequest'
-      ]
-    end
-
-    # Initializes the object
-    # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(attributes = {})
-      if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::DebitRequestWrapper` initialize method"
+    # check to see if the attribute exists and convert string to symbol for hash key
+    attributes = attributes.each_with_object({}) { |(k, v), h|
+      if (!self.class.attribute_map.key?(k.to_sym))
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::DebitRequestWrapper`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
+      h[k.to_sym] = v
+    }
 
-      # check to see if the attribute exists and convert string to symbol for hash key
-      attributes = attributes.each_with_object({}) { |(k, v), h|
-        if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::DebitRequestWrapper`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+    if attributes.key?(:'debit')
+      if (value = attributes[:'debit']).is_a?(Array)
+        self.debit = value
+      end
+    end
+  end
+
+  # Show invalid properties with the reasons. Usually used together with valid?
+  # @return Array for valid properties with the reasons
+  def list_invalid_properties
+    invalid_properties = Array.new
+    invalid_properties
+  end
+
+  # Check to see if the all the properties in the model are valid
+  # @return true if the model is valid
+  def valid?
+    _one_of_found = false
+    openapi_one_of.each do |_class|
+      _one_of = TransferZero.const_get(_class).build_from_hash(self.to_hash)
+      if _one_of.valid?
+        if _one_of_found?
+          return false
+        else
+          _one_of_found = true
         end
-        h[k.to_sym] = v
-      }
-
-      if attributes.key?(:'debit')
-        if (value = attributes[:'debit']).is_a?(Array)
-          self.debit = value
-        end
       end
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
-    # @return Array for valid properties with the reasons
-    def list_invalid_properties
-      invalid_properties = Array.new
-      invalid_properties
+    if !_one_of_found?
+      return false
     end
 
-    # Check to see if the all the properties in the model are valid
-    # @return true if the model is valid
-    def valid?
-      _one_of_found = false
-      openapi_one_of.each do |_class|
-        _one_of = TransferZero.const_get(_class).build_from_hash(self.to_hash)
-        if _one_of.valid?
-          if _one_of_found?
-            return false
-          else
-            _one_of_found = true
-          end
-        end
-      end
+    true
+  end
 
-      if !_one_of_found?
-        return false
-      end
+  # Checks equality by comparing each attribute.
+  # @param [Object] Object to be compared
+  def ==(o)
+    return true if self.equal?(o)
+    self.class == o.class &&
+        debit == o.debit
+  end
 
-      true
-    end
+  # @see the `==` method
+  # @param [Object] Object to be compared
+  def eql?(o)
+    self == o
+  end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          debit == o.debit
-    end
-
-    # @see the `==` method
-    # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
-    end
-
-    # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [debit].hash
-    end
+  # Calculates hash code according to all attributes.
+  # @return [Integer] Hash code
+  def hash
+    [debit].hash
+  end
 
 require 'active_support/core_ext/hash'
 require 'active_support/hash_with_indifferent_access.rb'
@@ -223,5 +223,6 @@ def _to_hash(value)
   end
 end
 
-  end
+end
+
 end
