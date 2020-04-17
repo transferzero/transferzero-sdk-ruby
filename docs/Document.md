@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **upload** | **String** | Base64 encoded data uri of an image/pdf file or a fully qualified url | 
+**url** | **String** | URL of the document location | [optional] 
 **upload_file_name** | **String** | Name of the upload | 
 **metadata** | [**Object**](.md) | Metadata of document | [optional] 
 **upload_content_type** | **String** |  | [optional] 
@@ -22,6 +23,7 @@ Name | Type | Description | Notes
 require 'TransferZero'
 
 instance = TransferZero::Document.new(upload: data:image/png;base64,iVBORw0KGg...lFTkSuQmCC,
+                                 url: https://bitpesa-documents.amazonaws.com/document.pdf,
                                  upload_file_name: example.png,
                                  metadata: {},
                                  upload_content_type: image/png,

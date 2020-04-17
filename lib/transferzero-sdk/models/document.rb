@@ -17,6 +17,9 @@ class Document
   # Base64 encoded data uri of an image/pdf file or a fully qualified url
   attr_accessor :upload
 
+  # URL of the document location
+  attr_accessor :url
+
   # Name of the upload
   attr_accessor :upload_file_name
 
@@ -70,6 +73,7 @@ class Document
   def self.attribute_map
     {
       :'upload' => :'upload',
+      :'url' => :'url',
       :'upload_file_name' => :'upload_file_name',
       :'metadata' => :'metadata',
       :'upload_content_type' => :'upload_content_type',
@@ -87,6 +91,7 @@ class Document
   def self.openapi_types
     {
       :'upload' => :'String',
+      :'url' => :'String',
       :'upload_file_name' => :'String',
       :'metadata' => :'Object',
       :'upload_content_type' => :'String',
@@ -117,6 +122,10 @@ class Document
 
     if attributes.key?(:'upload')
       self.upload = attributes[:'upload']
+    end
+
+    if attributes.key?(:'url')
+      self.url = attributes[:'url']
     end
 
     if attributes.key?(:'upload_file_name')
@@ -203,6 +212,7 @@ class Document
     return true if self.equal?(o)
     self.class == o.class &&
         upload == o.upload &&
+        url == o.url &&
         upload_file_name == o.upload_file_name &&
         metadata == o.metadata &&
         upload_content_type == o.upload_content_type &&
@@ -224,7 +234,7 @@ class Document
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [upload, upload_file_name, metadata, upload_content_type, upload_file_size, category, side, document_type, issuing_country, id, errors].hash
+    [upload, url, upload_file_name, metadata, upload_content_type, upload_file_size, category, side, document_type, issuing_country, id, errors].hash
   end
 
 require 'active_support/core_ext/hash'
