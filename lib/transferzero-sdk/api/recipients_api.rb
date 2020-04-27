@@ -22,7 +22,7 @@ module TransferZero
 
 
     # Cancelling a recipient
-    # Cancels the payment to the recipient specified in the URL path.  Please note only recipients where the `may_cancel` attribute is true can be cancelled.
+    # Cancels the payment to the recipient specified in the URL path.  Please note recipients where the `may_cancel` attribute is true will be cancelled immediately. If the `may_cancel` attribute is false you can still try to cancel the recipient, however it will only gets cancelled if we will receive a confirmation from our partner that the payment has failed
     # @param recipient_id ID of recipient to cancel.  Example: &#x60;/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33&#x60;
     # @param [Hash] opts the optional parameters
     # @return [RecipientResponse]
@@ -32,7 +32,7 @@ module TransferZero
     end
 
     # Cancelling a recipient
-    # Cancels the payment to the recipient specified in the URL path.  Please note only recipients where the &#x60;may_cancel&#x60; attribute is true can be cancelled.
+    # Cancels the payment to the recipient specified in the URL path.  Please note recipients where the &#x60;may_cancel&#x60; attribute is true will be cancelled immediately. If the &#x60;may_cancel&#x60; attribute is false you can still try to cancel the recipient, however it will only gets cancelled if we will receive a confirmation from our partner that the payment has failed
     # @param recipient_id ID of recipient to cancel.  Example: &#x60;/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33&#x60;
     # @param [Hash] opts the optional parameters
     # @return [Array<(RecipientResponse, Fixnum, Hash)>] RecipientResponse data, response status code and response headers

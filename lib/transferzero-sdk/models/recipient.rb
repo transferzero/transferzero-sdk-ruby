@@ -38,7 +38,7 @@ class Recipient
   # Shows how much this payment is worth in USD
   attr_accessor :input_usd_amount
 
-  # Shows whether the payment can be cancelled using the DELETE /v1/recipients/{id} endpoint or not. The payment can not be cancelled if the payout is pending.
+  # If true it shows that the payment can be cancelled immediately using the DELETE /v1/recipients/{id} endpoint. If false you can still try to cancel it, however it will only gets cancelled once we have confirmation from our partner that the payment has failed.
   attr_accessor :may_cancel
 
   # In case the payment is unsuccessful it holds the error message associated with the last unsuccessful payout.
