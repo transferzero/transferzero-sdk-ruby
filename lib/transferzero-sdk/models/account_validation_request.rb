@@ -156,7 +156,7 @@ class AccountValidationRequest
   # @param [Object] country Object to be assigned
   def country=(country)
     validator = EnumAttributeValidator.new('String', ["NG", "GH"])
-    unless validator.valid?(country && !country.empty?
+    unless validator.valid?(country && !country.empty?)
       fail ArgumentError, "invalid value for \"country\", must be one of #{validator.allowable_values}."
     end
     @country = country
@@ -166,7 +166,7 @@ class AccountValidationRequest
   # @param [Object] currency Object to be assigned
   def currency=(currency)
     validator = EnumAttributeValidator.new('String', ["NGN", "GHS"])
-    unless validator.valid?(currency && !currency.empty?
+    unless validator.valid?(currency && !currency.empty?)
       fail ArgumentError, "invalid value for \"currency\", must be one of #{validator.allowable_values}."
     end
     @currency = currency
@@ -176,7 +176,7 @@ class AccountValidationRequest
   # @param [Object] method Object to be assigned
   def method=(method)
     validator = EnumAttributeValidator.new('String', ["bank", "mobile"])
-    unless validator.valid?(method && !method.empty?
+    unless validator.valid?(method && !method.empty?)
       fail ArgumentError, "invalid value for \"method\", must be one of #{validator.allowable_values}."
     end
     @method = method

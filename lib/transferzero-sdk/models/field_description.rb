@@ -100,7 +100,7 @@ class FieldDescription
   # @param [Object] type Object to be assigned
   def type=(type)
     validator = EnumAttributeValidator.new('String', ["input", "select"])
-    unless validator.valid?(type && !type.empty?
+    unless validator.valid?(type && !type.empty?)
       fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
     end
     @type = type

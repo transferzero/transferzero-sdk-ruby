@@ -200,7 +200,7 @@ class Document
   # @param [Object] side Object to be assigned
   def side=(side)
     validator = EnumAttributeValidator.new('String', ["front", "back"])
-    unless validator.valid?(side && !side.empty?
+    unless validator.valid?(side && !side.empty?)
       fail ArgumentError, "invalid value for \"side\", must be one of #{validator.allowable_values}."
     end
     @side = side
