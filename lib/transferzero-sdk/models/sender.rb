@@ -528,7 +528,7 @@ class Sender
   # @param [Object] type Object to be assigned
   def type=(type)
     validator = EnumAttributeValidator.new('String', ["person", "business"])
-    unless validator.valid?(type && !type.empty?)
+    unless validator.valid?(type) && !type.empty?
       fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
     end
     @type = type
@@ -538,7 +538,7 @@ class Sender
   # @param [Object] identification_type Object to be assigned
   def identification_type=(identification_type)
     validator = EnumAttributeValidator.new('String', ["DL", "PP", "ID", "OT"])
-    unless validator.valid?(identification_type && !identification_type.empty?)
+    unless validator.valid?(identification_type) && !identification_type.empty?
       fail ArgumentError, "invalid value for \"identification_type\", must be one of #{validator.allowable_values}."
     end
     @identification_type = identification_type
@@ -548,7 +548,7 @@ class Sender
   # @param [Object] legal_entity_type Object to be assigned
   def legal_entity_type=(legal_entity_type)
     validator = EnumAttributeValidator.new('String', ["sole_proprietorship", "partnership", "privately_owned_company", "publicly_owned_company", "government_owned_entity", "trust", "ngo", "club_and_society", "go", "other", "financial_institution"])
-    unless validator.valid?(legal_entity_type && !legal_entity_type.empty?)
+    unless validator.valid?(legal_entity_type) && !legal_entity_type.empty?
       fail ArgumentError, "invalid value for \"legal_entity_type\", must be one of #{validator.allowable_values}."
     end
     @legal_entity_type = legal_entity_type
