@@ -13,25 +13,20 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-  class PayoutMethodIdentityCardTypeEnum
-    O = "O".freeze
-    PP = "PP".freeze
-    NI = "NI".freeze
+class PayoutMethodIdentityCardTypeEnum
+  
+  O = "O".freeze
+  PP = "PP".freeze
+  NI = "NI".freeze
 
-    # Builds the enum from string
-    # @param [String] The enum value in the form of the string
-    # @return [String] The enum value
-    def self.build_from_hash(value)
-      new.build_from_hash(value)
-    end
-
-    # Builds the enum from string
-    # @param [String] The enum value in the form of the string
-    # @return [String] The enum value
-    def build_from_hash(value)
-      constantValues = PayoutMethodIdentityCardTypeEnum.constants.select { |c| PayoutMethodIdentityCardTypeEnum::const_get(c) == value }
-      raise "Invalid ENUM value #{value} for class #PayoutMethodIdentityCardTypeEnum" if constantValues.empty?
-      value
-    end
+  # Builds the enum from string
+  # @param [String] The enum value in the form of the string
+  # @return [String] The enum value
+  def build_from_hash(value)
+    constantValues = PayoutMethodIdentityCardTypeEnum.constants.select { |c| PayoutMethodIdentityCardTypeEnum::const_get(c) == value }
+    raise "Invalid ENUM value #{value} for class #PayoutMethodIdentityCardTypeEnum" if constantValues.empty? && !value.empty?
+    value
   end
+end
+
 end
