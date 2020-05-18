@@ -31,11 +31,6 @@ module TransferZero
     # @return [Hash]
     attr_accessor :default_headers
 
-    # The options to be used in the HTTP request.
-    #
-    # @return [Hash]
-    attr_accessor :request_options
-
     # Initializes the ApiClient
     # @option config [Configuration] Configuration for initializing the object, default to Configuration.default
     def initialize(config = Configuration.default)
@@ -45,7 +40,6 @@ module TransferZero
         'Content-Type' => 'application/json',
         'User-Agent' => @user_agent
       }
-      @request_options = {}
     end
 
     def self.default
@@ -75,14 +69,12 @@ module TransferZero
           fail ApiError.new(:code => response.code,
                             :response_headers => response.headers,
                             :response_body => response.body,
-                            :request_options => @request_options,
                             :validation_error => true
                             )
         else
           fail ApiError.new(:code => response.code,
                             :response_headers => response.headers,
                             :response_body => response.body,
-                            :request_options => @request_options,
                             :validation_error => false),
                response.status_message
         end
@@ -146,8 +138,6 @@ module TransferZero
 
       # set custom cert, if provided
       req_opts[:cainfo] = @config.ssl_ca_cert if @config.ssl_ca_cert
-
-      @request_options = req_opts
 
       if [:post, :patch, :put, :delete].include?(http_method)
         req_body = build_request_body(header_params, form_params, request_body)
