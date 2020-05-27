@@ -13,13 +13,17 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"bank_name\": \"Deutsche Bank\",   \"iban\": \"DE89370400440532013000\",   \"bic\": \"DEUTDEBBXXX\" // Optional } ```
-class PayoutMethodDetailsIBAN
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"bank_name\": \"Deutsche Bank\",   \"bank_account\": \"12345678\", // Required if IBAN is not present   \"sort_code\": \"123456\", // Required if bank_account is present   \"iban\": \"DE89370400440532013000\", // Required if no bank_account & sort_code   \"bic\": \"DEUTDEBBXXX\" // Optional } ```
+class PayoutMethodDetailsGBPBank
   attr_accessor :first_name
 
   attr_accessor :last_name
 
   attr_accessor :bank_name
+
+  attr_accessor :bank_account
+
+  attr_accessor :sort_code
 
   attr_accessor :iban
 
@@ -31,6 +35,8 @@ class PayoutMethodDetailsIBAN
       :'first_name' => :'first_name',
       :'last_name' => :'last_name',
       :'bank_name' => :'bank_name',
+      :'bank_account' => :'bank_account',
+      :'sort_code' => :'sort_code',
       :'iban' => :'iban',
       :'bic' => :'bic'
     }
@@ -42,6 +48,8 @@ class PayoutMethodDetailsIBAN
       :'first_name' => :'String',
       :'last_name' => :'String',
       :'bank_name' => :'String',
+      :'bank_account' => :'String',
+      :'sort_code' => :'String',
       :'iban' => :'String',
       :'bic' => :'String'
     }
@@ -51,13 +59,13 @@ class PayoutMethodDetailsIBAN
   # @param [Hash] attributes Model attributes in the form of hash
   def initialize(attributes = {})
     if (!attributes.is_a?(Hash))
-      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsIBAN` initialize method"
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsGBPBank` initialize method"
     end
 
     # check to see if the attribute exists and convert string to symbol for hash key
     attributes = attributes.each_with_object({}) { |(k, v), h|
       if (!self.class.attribute_map.key?(k.to_sym))
-        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsIBAN`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsGBPBank`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
       h[k.to_sym] = v
     }
@@ -72,6 +80,14 @@ class PayoutMethodDetailsIBAN
 
     if attributes.key?(:'bank_name')
       self.bank_name = attributes[:'bank_name']
+    end
+
+    if attributes.key?(:'bank_account')
+      self.bank_account = attributes[:'bank_account']
+    end
+
+    if attributes.key?(:'sort_code')
+      self.sort_code = attributes[:'sort_code']
     end
 
     if attributes.key?(:'iban')
@@ -95,10 +111,6 @@ class PayoutMethodDetailsIBAN
       invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
     end
 
-    if @iban.nil?
-      invalid_properties.push('invalid value for "iban", iban cannot be nil.')
-    end
-
     invalid_properties
   end
 
@@ -107,7 +119,6 @@ class PayoutMethodDetailsIBAN
   def valid?
     return false if @first_name.nil?
     return false if @last_name.nil?
-    return false if @iban.nil?
     true
   end
 
@@ -119,6 +130,8 @@ class PayoutMethodDetailsIBAN
         first_name == o.first_name &&
         last_name == o.last_name &&
         bank_name == o.bank_name &&
+        bank_account == o.bank_account &&
+        sort_code == o.sort_code &&
         iban == o.iban &&
         bic == o.bic
   end
@@ -132,7 +145,7 @@ class PayoutMethodDetailsIBAN
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_name, iban, bic].hash
+    [first_name, last_name, bank_name, bank_account, sort_code, iban, bic].hash
   end
 
 require 'active_support/core_ext/hash'

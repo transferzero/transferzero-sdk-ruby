@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **iban** | **String** |  | 
 **bank_name** | **String** |  | 
 **bank_country** | **String** |  | 
+**sort_code** | **String** |  | [optional] 
 **bic** | **String** |  | [optional] 
 **sender_identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | 
 **sender_identity_card_id** | **String** |  | 
@@ -42,6 +43,7 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  iban: null,
                                  bank_name: null,
                                  bank_country: null,
+                                 sort_code: null,
                                  bic: null,
                                  sender_identity_card_type: null,
                                  sender_identity_card_id: null,

@@ -199,6 +199,7 @@ Class | Method | HTTP request | Description
  - [TransferZero::PayoutMethodDetails](docs/PayoutMethodDetails.md)
  - [TransferZero::PayoutMethodDetailsBTC](docs/PayoutMethodDetailsBTC.md)
  - [TransferZero::PayoutMethodDetailsBalance](docs/PayoutMethodDetailsBalance.md)
+ - [TransferZero::PayoutMethodDetailsGBPBank](docs/PayoutMethodDetailsGBPBank.md)
  - [TransferZero::PayoutMethodDetailsGHSBank](docs/PayoutMethodDetailsGHSBank.md)
  - [TransferZero::PayoutMethodDetailsIBAN](docs/PayoutMethodDetailsIBAN.md)
  - [TransferZero::PayoutMethodDetailsMADCash](docs/PayoutMethodDetailsMADCash.md)
