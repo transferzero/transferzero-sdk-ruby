@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# This contains the details of the sender. The first time a specific sender is used the full details should be provided. Once a sender is created and is used, the next time you MUST only send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes.  Personal Sender Example: ```json {   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"first_name\": \"Johnny\",   \"last_name\": \"English\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"address_description\": \"Description of address\",   \"postal_code\": \"798983\",   \"birth_date\": \"1900-12-31\",   \"documents\": [ ],   \"politically_exposed_people\": [ ],   \"ip\": \"127.0.0.1\",   \"identification_number\": \"AB123456\",   \"identification_type\": \"ID\",   \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",   \"created_at\": \"2018-06-09 15:13:40 UTC\",   \"metadata\": { } } ```  Business Sender Example:  ```json {   \"type\": \"business\",   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"name\": \"MyCompany\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"postal_code\": \"798983\",   \"address_description\": \"Description of address\",   \"documents\": [ ],   \"politically_exposed_people\": [ ],   \"ip\": \"127.0.0.1\",   \"identification_number\": \"AB123456\",   \"identification_type\": \"ID\",   \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",   \"metadata\": { } } ```  [Sender in the API documentation](https://docs.transferzero.com/docs/transaction-flow/#sender)
+# This contains the details of the sender. The first time a specific sender is used the full details should be provided. Once a sender is created and is used, the next time you MUST only send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes.  Personal Sender Example: ```json {   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"first_name\": \"Johnny\",   \"last_name\": \"English\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"address_description\": \"Description of address\",   \"postal_code\": \"798983\",   \"birth_date\": \"1900-12-31\",   \"city_of_birth\": \"London\",   \"country_of_birth\": \"GB\",   \"gender\": \"M\",   \"documents\": [ ],   \"politically_exposed_people\": [ ],   \"ip\": \"127.0.0.1\",   \"identification_number\": \"AB123456\",   \"identification_type\": \"ID\",   \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",   \"created_at\": \"2018-06-09 15:13:40 UTC\",   \"metadata\": { } } ```  Business Sender Example:  ```json {   \"type\": \"business\",   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"name\": \"MyCompany\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"postal_code\": \"798983\",   \"address_description\": \"Description of address\",   \"documents\": [ ],   \"politically_exposed_people\": [ ],   \"ip\": \"127.0.0.1\",   \"identification_number\": \"AB123456\",   \"identification_type\": \"ID\",   \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",   \"metadata\": { } } ```  [Sender in the API documentation](https://docs.transferzero.com/docs/transaction-flow/#sender)
 class Sender
   attr_accessor :id
 
@@ -142,6 +142,15 @@ class Sender
   # Optional ID that is supplied by partner linking it to the partner's own Sender ID. Note: if present we will validate whether the sent ID is a duplicate in our system or not.
   attr_accessor :external_id
 
+  # City of birth of sender
+  attr_accessor :city_of_birth
+
+  # Country of birth of sender in 2-character alpha ISO 3166-2 country format
+  attr_accessor :country_of_birth
+
+  # The gender of the sender:  - `M`: Male - `F`: Female - `O`: Other
+  attr_accessor :gender
+
   # Date and time of sender was created
   attr_accessor :created_at
 
@@ -213,6 +222,9 @@ class Sender
       :'onboarding_status' => :'onboarding_status',
       :'politically_exposed_people' => :'politically_exposed_people',
       :'external_id' => :'external_id',
+      :'city_of_birth' => :'city_of_birth',
+      :'country_of_birth' => :'country_of_birth',
+      :'gender' => :'gender',
       :'created_at' => :'created_at'
     }
   end
@@ -263,6 +275,9 @@ class Sender
       :'onboarding_status' => :'String',
       :'politically_exposed_people' => :'Array<PoliticallyExposedPerson>',
       :'external_id' => :'String',
+      :'city_of_birth' => :'String',
+      :'country_of_birth' => :'String',
+      :'gender' => :'String',
       :'created_at' => :'String'
     }
   end
@@ -460,6 +475,18 @@ class Sender
       self.external_id = attributes[:'external_id']
     end
 
+    if attributes.key?(:'city_of_birth')
+      self.city_of_birth = attributes[:'city_of_birth']
+    end
+
+    if attributes.key?(:'country_of_birth')
+      self.country_of_birth = attributes[:'country_of_birth']
+    end
+
+    if attributes.key?(:'gender')
+      self.gender = attributes[:'gender']
+    end
+
     if attributes.key?(:'created_at')
       self.created_at = attributes[:'created_at']
     end
@@ -521,6 +548,8 @@ class Sender
     legal_entity_type_validator = EnumAttributeValidator.new('String', ["sole_proprietorship", "partnership", "privately_owned_company", "publicly_owned_company", "government_owned_entity", "trust", "ngo", "club_and_society", "go", "other", "financial_institution"])
     return false unless legal_entity_type_validator.valid?(@legal_entity_type)
     return false if @documents.nil?
+    gender_validator = EnumAttributeValidator.new('String', ["M", "F", "O"])
+    return false unless gender_validator.valid?(@gender)
     true
   end
 
@@ -552,6 +581,16 @@ class Sender
       fail ArgumentError, "invalid value for \"legal_entity_type\", must be one of #{validator.allowable_values}."
     end
     @legal_entity_type = legal_entity_type
+  end
+
+  # Custom attribute writer method checking allowed values (enum).
+  # @param [Object] gender Object to be assigned
+  def gender=(gender)
+    validator = EnumAttributeValidator.new('String', ["M", "F", "O"])
+    unless validator.valid?(gender) || gender.empty?
+      fail ArgumentError, "invalid value for \"gender\", must be one of #{validator.allowable_values}."
+    end
+    @gender = gender
   end
 
   # Checks equality by comparing each attribute.
@@ -602,6 +641,9 @@ class Sender
         onboarding_status == o.onboarding_status &&
         politically_exposed_people == o.politically_exposed_people &&
         external_id == o.external_id &&
+        city_of_birth == o.city_of_birth &&
+        country_of_birth == o.country_of_birth &&
+        gender == o.gender &&
         created_at == o.created_at
   end
 
@@ -614,7 +656,7 @@ class Sender
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, core_business_activities, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id, created_at].hash
+    [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, core_business_activities, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id, city_of_birth, country_of_birth, gender, created_at].hash
   end
 
 require 'active_support/core_ext/hash'

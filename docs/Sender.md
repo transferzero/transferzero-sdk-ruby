@@ -47,6 +47,9 @@ Name | Type | Description | Notes
 **onboarding_status** | **String** | The onboarding status of the sender | [optional] 
 **politically_exposed_people** | [**Array&lt;PoliticallyExposedPerson&gt;**](PoliticallyExposedPerson.md) | An optional list of politically exposed people, individuals who are or have been entrusted with prominent public functions by a country, for example heads of state or heads of government, senior politicians, senior government, judicial or military officials, senior executives of state owned corporations, important political party officials.  There is a limit of three (3) politically exposed people per Sender.  Politically exposed person example: &#x60;&#x60;&#x60;json   {     \&quot;politically_exposed_person\&quot;: {       \&quot;name\&quot;: \&quot;Ronald Reagan\&quot;,       \&quot;position\&quot;: \&quot;President of the United States\&quot;,       \&quot;started_date\&quot;: \&quot;1981-01-20T00:00:00.000Z\&quot;,       \&quot;ended_date\&quot;: \&quot;1989-01-20T00:00:00.000Z\&quot;,       \&quot;sender_id\&quot;: \&quot;344fb668-196d-43db-9d94-b34b7e6c7e0b\&quot;     }   } &#x60;&#x60;&#x60; | [optional] 
 **external_id** | **String** | Optional ID that is supplied by partner linking it to the partner&#39;s own Sender ID. Note: if present we will validate whether the sent ID is a duplicate in our system or not. | [optional] 
+**city_of_birth** | **String** | City of birth of sender | [optional] 
+**country_of_birth** | **String** | Country of birth of sender in 2-character alpha ISO 3166-2 country format | [optional] 
+**gender** | **String** | The gender of the sender:  - &#x60;M&#x60;: Male - &#x60;F&#x60;: Female - &#x60;O&#x60;: Other | [optional] 
 **created_at** | **String** | Date and time of sender was created | [optional] 
 
 ## Code Sample
@@ -97,6 +100,9 @@ instance = TransferZero::Sender.new(id: bf9ff782-e182-45ac-abea-5bce83ad6670,
                                  onboarding_status: null,
                                  politically_exposed_people: [{&quot;id&quot;:&quot;40&quot;,&quot;name&quot;:&quot;Ronald Reagan&quot;,&quot;position&quot;:&quot;President of the United States&quot;,&quot;started_date&quot;:&quot;1981-01-20T00:00:00.000Z&quot;,&quot;ended_date&quot;:&quot;1989-01-20T00:00:00.000Z&quot;,&quot;sender_id&quot;:&quot;f9dc79ca-0c39-4add-9f4d-5ad7e6f187fb&quot;}],
                                  external_id: 806ec63a-a5a7-43cc-9d75-1ee74fbcc026,
+                                 city_of_birth: London,
+                                 country_of_birth: GB,
+                                 gender: M,
                                  created_at: 2019-01-11T00:00:00.001+0000)
 ```
 
