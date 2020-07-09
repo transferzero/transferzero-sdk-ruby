@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **nature_of_business** | **String** | Nature of business options (used only with a Business sender) | [optional] 
 **source_of_funds** | **String** | The source of funds | [optional] 
 **custom_source_of_funds** | **String** | Custom source of funds | [optional] 
-**core_business_activities** | **String** | The core activities (used only with a Business sender) | [optional] 
+**core_business_activity** | **String** | The core activity (used only with a Business sender) | [optional] 
 **purpose_of_opening_account** | **String** | The purpose for opening their account (used only with a Business sender) | [optional] 
 **office_phone** | **String** | The official phone number (used only with a Business sender) | [optional] 
 **vat_registration_number** | **String** | The VAT registration number (used only with a Business sender) | [optional] 
@@ -85,7 +85,7 @@ instance = TransferZero::Sender.new(id: bf9ff782-e182-45ac-abea-5bce83ad6670,
                                  nature_of_business: null,
                                  source_of_funds: null,
                                  custom_source_of_funds: null,
-                                 core_business_activities: null,
+                                 core_business_activity: null,
                                  purpose_of_opening_account: null,
                                  office_phone: null,
                                  vat_registration_number: null,

@@ -94,8 +94,8 @@ class Sender
   # Custom source of funds
   attr_accessor :custom_source_of_funds
 
-  # The core activities (used only with a Business sender)
-  attr_accessor :core_business_activities
+  # The core activity (used only with a Business sender)
+  attr_accessor :core_business_activity
 
   # The purpose for opening their account (used only with a Business sender)
   attr_accessor :purpose_of_opening_account
@@ -209,7 +209,7 @@ class Sender
       :'nature_of_business' => :'nature_of_business',
       :'source_of_funds' => :'source_of_funds',
       :'custom_source_of_funds' => :'custom_source_of_funds',
-      :'core_business_activities' => :'core_business_activities',
+      :'core_business_activity' => :'core_business_activity',
       :'purpose_of_opening_account' => :'purpose_of_opening_account',
       :'office_phone' => :'office_phone',
       :'vat_registration_number' => :'vat_registration_number',
@@ -263,7 +263,7 @@ class Sender
       :'nature_of_business' => :'String',
       :'source_of_funds' => :'String',
       :'custom_source_of_funds' => :'String',
-      :'core_business_activities' => :'String',
+      :'core_business_activity' => :'String',
       :'purpose_of_opening_account' => :'String',
       :'office_phone' => :'String',
       :'vat_registration_number' => :'String',
@@ -410,8 +410,8 @@ class Sender
       self.custom_source_of_funds = attributes[:'custom_source_of_funds']
     end
 
-    if attributes.key?(:'core_business_activities')
-      self.core_business_activities = attributes[:'core_business_activities']
+    if attributes.key?(:'core_business_activity')
+      self.core_business_activity = attributes[:'core_business_activity']
     end
 
     if attributes.key?(:'purpose_of_opening_account')
@@ -634,7 +634,7 @@ class Sender
         nature_of_business == o.nature_of_business &&
         source_of_funds == o.source_of_funds &&
         custom_source_of_funds == o.custom_source_of_funds &&
-        core_business_activities == o.core_business_activities &&
+        core_business_activity == o.core_business_activity &&
         purpose_of_opening_account == o.purpose_of_opening_account &&
         office_phone == o.office_phone &&
         vat_registration_number == o.vat_registration_number &&
@@ -666,7 +666,7 @@ class Sender
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, custom_source_of_funds, core_business_activities, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id, city_of_birth, country_of_birth, gender, created_at].hash
+    [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, custom_source_of_funds, core_business_activity, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id, city_of_birth, country_of_birth, gender, created_at].hash
   end
 
 require 'active_support/core_ext/hash'
