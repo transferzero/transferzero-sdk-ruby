@@ -38,6 +38,9 @@ class Currency
   # The maximum amount allowed in a transaction
   attr_accessor :max
 
+  # The margin set for transactions in this currency
+  attr_accessor :margin
+
   # The equivalent of the currency to 1 USD
   attr_accessor :usd_equivalent
 
@@ -52,6 +55,7 @@ class Currency
       :'primary' => :'primary',
       :'min' => :'min',
       :'max' => :'max',
+      :'margin' => :'margin',
       :'usd_equivalent' => :'usd_equivalent'
     }
   end
@@ -67,6 +71,7 @@ class Currency
       :'primary' => :'Boolean',
       :'min' => :'String',
       :'max' => :'String',
+      :'margin' => :'String',
       :'usd_equivalent' => :'String'
     }
   end
@@ -118,6 +123,10 @@ class Currency
       self.max = attributes[:'max']
     end
 
+    if attributes.key?(:'margin')
+      self.margin = attributes[:'margin']
+    end
+
     if attributes.key?(:'usd_equivalent')
       self.usd_equivalent = attributes[:'usd_equivalent']
     end
@@ -149,6 +158,7 @@ class Currency
         primary == o.primary &&
         min == o.min &&
         max == o.max &&
+        margin == o.margin &&
         usd_equivalent == o.usd_equivalent
   end
 
@@ -161,7 +171,7 @@ class Currency
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [code, name, symbol, decimals, subunit_to_unit, primary, min, max, usd_equivalent].hash
+    [code, name, symbol, decimals, subunit_to_unit, primary, min, max, margin, usd_equivalent].hash
   end
 
 require 'active_support/core_ext/hash'
