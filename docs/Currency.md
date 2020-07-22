@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **primary** | **Boolean** | Is this a primary currency? | [optional] 
 **min** | **String** | The minimum amount allowed in a transaction | [optional] 
 **max** | **String** | The maximum amount allowed in a transaction | [optional] 
-**margin** | **String** | The margin set for transactions in this currency | [optional] 
 **usd_equivalent** | **String** | The equivalent of the currency to 1 USD | [optional] 
 
 ## Code Sample
@@ -28,7 +27,6 @@ instance = TransferZero::Currency.new(code: NGN,
                                  primary: true,
                                  min: 100,
                                  max: 50000000,
-                                 margin: null,
                                  usd_equivalent: null)
 ```
 
