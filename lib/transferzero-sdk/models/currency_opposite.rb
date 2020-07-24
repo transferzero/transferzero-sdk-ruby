@@ -38,6 +38,9 @@ class CurrencyOpposite
   # The maximum amount allowed in a transaction
   attr_accessor :max
 
+  # The margin set for transactions in this currency
+  attr_accessor :margin
+
   # The equivalent of the currency to 1 USD
   attr_accessor :usd_equivalent
 
@@ -46,9 +49,6 @@ class CurrencyOpposite
 
   # Mark to market rate of this particular currency against the base one with the margin factored in
   attr_accessor :mtm_rate
-
-  # The margin set for transactions of this particular currency with the base one
-  attr_accessor :margin
 
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
@@ -61,10 +61,10 @@ class CurrencyOpposite
       :'primary' => :'primary',
       :'min' => :'min',
       :'max' => :'max',
+      :'margin' => :'margin',
       :'usd_equivalent' => :'usd_equivalent',
       :'rate' => :'rate',
-      :'mtm_rate' => :'mtm_rate',
-      :'margin' => :'margin'
+      :'mtm_rate' => :'mtm_rate'
     }
   end
 
@@ -79,10 +79,10 @@ class CurrencyOpposite
       :'primary' => :'Boolean',
       :'min' => :'String',
       :'max' => :'String',
+      :'margin' => :'String',
       :'usd_equivalent' => :'String',
       :'rate' => :'Float',
-      :'mtm_rate' => :'Float',
-      :'margin' => :'String'
+      :'mtm_rate' => :'Float'
     }
   end
 
@@ -140,6 +140,10 @@ class CurrencyOpposite
       self.max = attributes[:'max']
     end
 
+    if attributes.key?(:'margin')
+      self.margin = attributes[:'margin']
+    end
+
     if attributes.key?(:'usd_equivalent')
       self.usd_equivalent = attributes[:'usd_equivalent']
     end
@@ -150,10 +154,6 @@ class CurrencyOpposite
 
     if attributes.key?(:'mtm_rate')
       self.mtm_rate = attributes[:'mtm_rate']
-    end
-
-    if attributes.key?(:'margin')
-      self.margin = attributes[:'margin']
     end
   end
 
@@ -183,10 +183,10 @@ class CurrencyOpposite
         primary == o.primary &&
         min == o.min &&
         max == o.max &&
+        margin == o.margin &&
         usd_equivalent == o.usd_equivalent &&
         rate == o.rate &&
-        mtm_rate == o.mtm_rate &&
-        margin == o.margin
+        mtm_rate == o.mtm_rate
   end
 
   # @see the `==` method
@@ -198,7 +198,7 @@ class CurrencyOpposite
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [code, name, symbol, decimals, subunit_to_unit, primary, min, max, usd_equivalent, rate, mtm_rate, margin].hash
+    [code, name, symbol, decimals, subunit_to_unit, primary, min, max, margin, usd_equivalent, rate, mtm_rate].hash
   end
 
 require 'active_support/core_ext/hash'
