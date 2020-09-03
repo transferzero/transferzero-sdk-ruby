@@ -60,6 +60,14 @@ class PayoutMethodDetails
 
   attr_accessor :address
 
+  attr_accessor :street
+
+  attr_accessor :postal_code
+
+  attr_accessor :city
+
+  attr_accessor :transfer_reason_code
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -85,7 +93,11 @@ class PayoutMethodDetails
       :'identity_card_id' => :'identity_card_id',
       :'reference' => :'reference',
       :'name' => :'name',
-      :'address' => :'address'
+      :'address' => :'address',
+      :'street' => :'street',
+      :'postal_code' => :'postal_code',
+      :'city' => :'city',
+      :'transfer_reason_code' => :'transfer_reason_code'
     }
   end
 
@@ -114,7 +126,11 @@ class PayoutMethodDetails
       :'identity_card_id' => :'String',
       :'reference' => :'String',
       :'name' => :'String',
-      :'address' => :'String'
+      :'address' => :'String',
+      :'street' => :'String',
+      :'postal_code' => :'String',
+      :'city' => :'String',
+      :'transfer_reason_code' => :'String'
     }
   end
 
@@ -130,7 +146,8 @@ class PayoutMethodDetails
     :'PayoutMethodDetailsMobile',
     :'PayoutMethodDetailsNGNBank',
     :'PayoutMethodDetailsXOFBank',
-    :'PayoutMethodDetailsXOFMobile'
+    :'PayoutMethodDetailsXOFMobile',
+    :'PayoutMethodDetailsZARBank'
     ]
   end
 
@@ -240,6 +257,22 @@ class PayoutMethodDetails
     if attributes.key?(:'address')
       self.address = attributes[:'address']
     end
+
+    if attributes.key?(:'street')
+      self.street = attributes[:'street']
+    end
+
+    if attributes.key?(:'postal_code')
+      self.postal_code = attributes[:'postal_code']
+    end
+
+    if attributes.key?(:'city')
+      self.city = attributes[:'city']
+    end
+
+    if attributes.key?(:'transfer_reason_code')
+      self.transfer_reason_code = attributes[:'transfer_reason_code']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -310,6 +343,18 @@ class PayoutMethodDetails
       invalid_properties.push('invalid value for "address", address cannot be nil.')
     end
 
+    if @street.nil?
+      invalid_properties.push('invalid value for "street", street cannot be nil.')
+    end
+
+    if @postal_code.nil?
+      invalid_properties.push('invalid value for "postal_code", postal_code cannot be nil.')
+    end
+
+    if @city.nil?
+      invalid_properties.push('invalid value for "city", city cannot be nil.')
+    end
+
     invalid_properties
   end
 
@@ -332,6 +377,9 @@ class PayoutMethodDetails
     return false if @sender_gender.nil?
     return false if @name.nil?
     return false if @address.nil?
+    return false if @street.nil?
+    return false if @postal_code.nil?
+    return false if @city.nil?
     _one_of_found = false
     openapi_one_of.each do |_class|
       _one_of = TransferZero.const_get(_class).build_from_hash(self.to_hash)
@@ -378,7 +426,11 @@ class PayoutMethodDetails
         identity_card_id == o.identity_card_id &&
         reference == o.reference &&
         name == o.name &&
-        address == o.address
+        address == o.address &&
+        street == o.street &&
+        postal_code == o.postal_code &&
+        city == o.city &&
+        transfer_reason_code == o.transfer_reason_code
   end
 
   # @see the `==` method
@@ -390,7 +442,7 @@ class PayoutMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, iban, bank_name, bank_country, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address].hash
+    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, iban, bank_name, bank_country, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, transfer_reason_code].hash
   end
 
 require 'active_support/core_ext/hash'

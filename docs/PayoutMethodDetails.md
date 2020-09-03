@@ -27,6 +27,10 @@ Name | Type | Description | Notes
 **reference** | **String** |  | [optional] 
 **name** | **String** |  | 
 **address** | **String** |  | 
+**street** | **String** |  | 
+**postal_code** | **String** |  | 
+**city** | **String** |  | 
+**transfer_reason_code** | **String** |  | [optional] 
 
 ## Code Sample
 
@@ -55,7 +59,11 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  identity_card_id: null,
                                  reference: null,
                                  name: null,
-                                 address: null)
+                                 address: null,
+                                 street: null,
+                                 postal_code: null,
+                                 city: null,
+                                 transfer_reason_code: null)
 ```
 
 
