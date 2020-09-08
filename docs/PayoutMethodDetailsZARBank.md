@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **street** | **String** |  | 
 **postal_code** | **String** |  | 
 **city** | **String** |  | 
+**email** | **String** |  | [optional] 
 **bank_code** | **String** |  | 
 **bank_account** | **String** |  | 
 **phone_number** | **String** |  | 
@@ -24,6 +25,7 @@ instance = TransferZero::PayoutMethodDetailsZARBank.new(first_name: null,
                                  street: null,
                                  postal_code: null,
                                  city: null,
+                                 email: null,
                                  bank_code: null,
                                  bank_account: null,
                                  phone_number: null,

@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"street\": \"Main Street\",     \"postal_code\": \"AB0001\",     \"city\": \"Cape Town\",     \"bank_code\": \"334810\",     \"bank_account\": \"12345678\",     \"phone_number\": \"+27119785313\",     \"transfer_reason_code\": \"185\"   } ```  See [ZAR Bank](https://docs.transferzero.com/docs/payout-details/#zarbank) documentation for the bank_code and transfer_reason_code lists
+# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"street\": \"Main Street\",     \"postal_code\": \"AB0001\",     \"city\": \"Cape Town\",     \"email\": \"recipient@email.com\",     \"bank_code\": \"334810\",     \"bank_account\": \"12345678\",     \"phone_number\": \"+27119785313\",     \"transfer_reason_code\": \"185\"   } ```  See [ZAR Bank](https://docs.transferzero.com/docs/payout-details/#zarbank) documentation for the bank_code and transfer_reason_code lists
 class PayoutMethodDetailsZARBank
   attr_accessor :first_name
 
@@ -24,6 +24,8 @@ class PayoutMethodDetailsZARBank
   attr_accessor :postal_code
 
   attr_accessor :city
+
+  attr_accessor :email
 
   attr_accessor :bank_code
 
@@ -41,6 +43,7 @@ class PayoutMethodDetailsZARBank
       :'street' => :'street',
       :'postal_code' => :'postal_code',
       :'city' => :'city',
+      :'email' => :'email',
       :'bank_code' => :'bank_code',
       :'bank_account' => :'bank_account',
       :'phone_number' => :'phone_number',
@@ -56,6 +59,7 @@ class PayoutMethodDetailsZARBank
       :'street' => :'String',
       :'postal_code' => :'String',
       :'city' => :'String',
+      :'email' => :'String',
       :'bank_code' => :'String',
       :'bank_account' => :'String',
       :'phone_number' => :'String',
@@ -96,6 +100,10 @@ class PayoutMethodDetailsZARBank
 
     if attributes.key?(:'city')
       self.city = attributes[:'city']
+    end
+
+    if attributes.key?(:'email')
+      self.email = attributes[:'email']
     end
 
     if attributes.key?(:'bank_code')
@@ -178,6 +186,7 @@ class PayoutMethodDetailsZARBank
         street == o.street &&
         postal_code == o.postal_code &&
         city == o.city &&
+        email == o.email &&
         bank_code == o.bank_code &&
         bank_account == o.bank_account &&
         phone_number == o.phone_number &&
@@ -193,7 +202,7 @@ class PayoutMethodDetailsZARBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, street, postal_code, city, bank_code, bank_account, phone_number, transfer_reason_code].hash
+    [first_name, last_name, street, postal_code, city, email, bank_code, bank_account, phone_number, transfer_reason_code].hash
   end
 
 require 'active_support/core_ext/hash'

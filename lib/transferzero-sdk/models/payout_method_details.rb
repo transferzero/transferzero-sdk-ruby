@@ -66,6 +66,8 @@ class PayoutMethodDetails
 
   attr_accessor :city
 
+  attr_accessor :email
+
   attr_accessor :transfer_reason_code
 
   # Attribute mapping from ruby-style variable name to JSON key.
@@ -97,6 +99,7 @@ class PayoutMethodDetails
       :'street' => :'street',
       :'postal_code' => :'postal_code',
       :'city' => :'city',
+      :'email' => :'email',
       :'transfer_reason_code' => :'transfer_reason_code'
     }
   end
@@ -130,6 +133,7 @@ class PayoutMethodDetails
       :'street' => :'String',
       :'postal_code' => :'String',
       :'city' => :'String',
+      :'email' => :'String',
       :'transfer_reason_code' => :'String'
     }
   end
@@ -268,6 +272,10 @@ class PayoutMethodDetails
 
     if attributes.key?(:'city')
       self.city = attributes[:'city']
+    end
+
+    if attributes.key?(:'email')
+      self.email = attributes[:'email']
     end
 
     if attributes.key?(:'transfer_reason_code')
@@ -430,6 +438,7 @@ class PayoutMethodDetails
         street == o.street &&
         postal_code == o.postal_code &&
         city == o.city &&
+        email == o.email &&
         transfer_reason_code == o.transfer_reason_code
   end
 
@@ -442,7 +451,7 @@ class PayoutMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, iban, bank_name, bank_country, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, transfer_reason_code].hash
+    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, iban, bank_name, bank_country, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code].hash
   end
 
 require 'active_support/core_ext/hash'
