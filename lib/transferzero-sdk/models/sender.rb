@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# This contains the details of the sender. The first time a specific sender is used the full details should be provided. Once a sender is created and is used, the next time you MUST only send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes.  Personal Sender Example: ```json {   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"first_name\": \"Johnny\",   \"last_name\": \"English\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"address_description\": \"Description of address\",   \"postal_code\": \"798983\",   \"birth_date\": \"1900-12-31\",   \"city_of_birth\": \"London\",   \"country_of_birth\": \"GB\",   \"gender\": \"M\",   \"documents\": [ ],   \"politically_exposed_people\": [ ],   \"ip\": \"127.0.0.1\",   \"identification_number\": \"AB123456\",   \"identification_type\": \"ID\",   \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",   \"created_at\": \"2018-06-09 15:13:40 UTC\",   \"metadata\": { } } ```  Business Sender Example:  ```json {   \"type\": \"business\",   \"country\": \"UG\",   \"phone_country\": \"UG\",   \"phone_number\": \"752403639\",   \"email\": \"example@home.org\",   \"name\": \"MyCompany\",   \"city\": \"Kampala\",   \"street\": \"Unknown 17-3\",   \"postal_code\": \"798983\",   \"address_description\": \"Description of address\",   \"documents\": [ ],   \"politically_exposed_people\": [ ],   \"ip\": \"127.0.0.1\",   \"identification_number\": \"AB123456\",   \"identification_type\": \"ID\",   \"external_id\": \"806ec63a-a5a7-43cc-9d75-1ee74fbcc026\",   \"metadata\": { } } ```  [Sender in the API documentation](https://docs.transferzero.com/docs/transaction-flow/#sender)
+# This contains the details of the sender. The first time a specific sender is used the full details should be provided. Once a sender is created and is used, the next time you MUST only send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes.  Personal Sender Example: ```json {   // name   \"first_name\": \"Jane\",   \"last_name\": \"Doe\",    // address   \"country\": \"US\",   \"city\": \"New York\",   \"street\": \"20 W 34th St\",   \"postal_code\": \"10001\",   \"address_description\": \"\",    // DOB   \"birth_date\": \"1974-12-24\",    // Contact Details; You can usually use your company's contact details here   \"phone_country\": \"US\",   \"phone_number\": \"5555551234\",   \"email\": \"info@transferzero.com\",    // ID of the sender in your system   \"external_id\": \"Sender:US:234523\",    // these fields are mandatory, but you can usually leave them with the following default values:   \"documents\": [ ],   \"ip\": \"127.0.0.1\",   \"metadata\": {} } ```  Business Sender Example:  ```json {   \"type\": \"business\",   \"name\": \"Company name\",    // Country of Incorporation   \"country\": \"US\",    // Trading address of the company   \"trading_country\": \"US\",   \"city\": \"New York\",   \"street\": \"20 W 34th St\",   \"postal_code\": \"10001\",   \"address_description\": \"\",    // Company Details   \"legal_entity_type\": \"privately_owned_company\",   \"registration_date\": \"2012-01-25\",   \"registration_number\": \"VAT1234567\",   \"nature_of_business\": \"retail_trade\",    // Contact Details   \"phone_country\": \"US\",   \"phone_number\": \"5555551234\",   \"email\": \"example@home.org\",    // ID of the sender in your system   \"external_id\": \"Sender:Business:US:234523\",    // these fields are mandatory, but you can usually leave them with the following default values:   \"documents\": [ ],   \"ip\": \"127.0.0.1\",   \"metadata\": {} } ```  [Sender in the API documentation](https://docs.transferzero.com/docs/transaction-flow/#sender)
 class Sender
   attr_accessor :id
 
@@ -22,7 +22,7 @@ class Sender
 
   attr_accessor :state
 
-  # Country of sender in 2-character alpha ISO 3166-2 country format
+  # Country of sender in 2-character alpha ISO 3166-2 country format. This is the residential country for personal senders and the country of incorporation for business senders.
   attr_accessor :country
 
   # Sender's street
@@ -76,7 +76,7 @@ class Sender
   # The nationality of the sender (used only with a Personal sender)
   attr_accessor :nationality
 
-  # Legal entity type (used only with a Business sender)
+  # Legal entity type (used only with a Business sender)  Available values:   - sole_proprietorship: Sole Proprietorship   - partnership: Partnership   - privately_owned_company: Privately Owned Company (Limited Company)   - publicly_owned_company: Publicly Listed Company (PLC)   - government_owned_entity: Government Owned Entity Trusts   - trust: Foundations & Similar Entities   - ngo: Non-Government Organisations / Charities inc Religious bodies and place of worship   - club_and_society: Clubs and Societies   - go: GO (Majority Owned Subsidiary of State-Owned Company)   - financial_institution: Financial Institution  Please note not all values are acceptable for some our corridors. Please reach out to our sales teams for more information.  Note that if you select `financial_institution` then the fields `vat_registration_number`, `financial_regulator` and `regulatory_licence_number` will be mandatory as well.
   attr_accessor :legal_entity_type
 
   # The registration date (used only with a Business sender)
@@ -85,7 +85,7 @@ class Sender
   # The registration number (used only with a Business sender)
   attr_accessor :registration_number
 
-  # Nature of business options (used only with a Business sender)
+  # Nature of business options (used only with a Business sender)  Available values:   - personal: Personal   - agriculture_and_hunting: Agriculture and Hunting   - forestry: Forestry   - fishing: Fishing   - agricultural_by_products: Agricultural By-Products   - coal_mining: Coal Mining   - oil_mining: Oil Mining   - iron_ore_mining: Iron Ore Mining   - other_metal_and_diamond_mining: Other Metal and Diamond Mining   - other_mineral_mining: Other Mineral Mining   - manufacturing_of_food_drink_tobacco: Manufacture of Food/Drink/Tobacco   - manufacturing_of_textiles_leather_fur_furniture: Manufacture of Textiles/Leather/Fur/Furniture   - manufacture_of_wooden_products_furniture: Manufacture of Wooden Products/Furniture   - manufacture_of_paper_pulp_allied_products: Manufacture of Paper/Pulp/Allied Products   - manufacture_of_chemicals_medical_petroleum_rubber_plastic_products: Manufacture Of Chemicals Medical Petroleum Rubber Plastic Products   - manufacture_of_pottery_china_glass_stone: Manufacture Of Pottery China Glass Stone   - manufacture_of_iron_steel_non_ferrous_metals_basic_industries: Manufacture Of Iron Steel Non-Ferrous Metals Basic Industries   - manufacture_of_metal_products_electrical_and_scientific_engineering: Manufacture Of Metal Products Electrical And Scientific Engineering   - manufacture_of_jewelry_musical_instruments_toys: Manufacture Of Jewelry Musical Instruments Toys   - electricity_gas_and_water: Electricity, Gas And Water   - construction: Construction   - wholesale_trade: Wholesale Trade   - retail_trade: Retail Trade   - catering_incl_hotels: Catering Incl. Hotels   - transport_storage: Transport Storage   - communications: Communications   - finance_and_holding_companies: Finance And Holding Companies   - insurance: Insurance   - business_services: Business Services   - real_estate_development_investment: Real Estate Development Investment   - central_state_governments: Central State Governments   - community_services_defence_police_prisons_etc: Community Services Defence Police Prisons Etc   - social_services_education_health_care: Social Services Education Health Care   - personal_services_leisure_services: Personal Services - Leisure Services   - personal_services_domestic_laundry_repairs: Personal Services - Domestic Laundry Repairs   - personal_services_embassies_international_organisations: Personal Services - Embassies
   attr_accessor :nature_of_business
 
   # The source of funds
@@ -258,7 +258,7 @@ class Sender
       :'occupation' => :'String',
       :'nationality' => :'String',
       :'legal_entity_type' => :'String',
-      :'registration_date' => :'String',
+      :'registration_date' => :'Date',
       :'registration_number' => :'String',
       :'nature_of_business' => :'String',
       :'source_of_funds' => :'String',
@@ -556,6 +556,8 @@ class Sender
     return false unless identification_type_validator.valid?(@identification_type)
     legal_entity_type_validator = EnumAttributeValidator.new('String', ["sole_proprietorship", "partnership", "privately_owned_company", "publicly_owned_company", "government_owned_entity", "trust", "ngo", "club_and_society", "go", "other", "financial_institution"])
     return false unless legal_entity_type_validator.valid?(@legal_entity_type)
+    nature_of_business_validator = EnumAttributeValidator.new('String', ["personal", "agriculture_and_hunting", "forestry", "fishing", "agricultural_by_products", "coal_mining", "oil_mining", "iron_ore_mining", "other_metal_and_diamond_mining", "other_mineral_mining", "manufacturing_of_food_drink_tobacco", "manufacturing_of_textiles_leather_fur_furniture", "manufacture_of_wooden_products_furniture", "manufacture_of_paper_pulp_allied_products", "manufacture_of_chemicals_medical_petroleum_rubber_plastic_products", "manufacture_of_pottery_china_glass_stone", "manufacture_of_iron_steel_non_ferrous_metals_basic_industries", "manufacture_of_metal_products_electrical_and_scientific_engineering", "manufacture_of_jewelry_musical_instruments_toys", "electricity_gas_and_water", "construction", "wholesale_trade", "retail_trade", "catering_incl_hotels", "transport_storage", "communications", "finance_and_holding_companies", "insurance", "business_services", "real_estate_development_investment", "central_state_governments", "community_services_defence_police_prisons_etc", "social_services_education_health_care", "personal_services_leisure_services", "personal_services_domestic_laundry_repairs", "personal_services_embassies_international_organisations"])
+    return false unless nature_of_business_validator.valid?(@nature_of_business)
     return false if @documents.nil?
     gender_validator = EnumAttributeValidator.new('String', ["M", "F", "O"])
     return false unless gender_validator.valid?(@gender)
@@ -590,6 +592,16 @@ class Sender
       fail ArgumentError, "invalid value for \"legal_entity_type\", must be one of #{validator.allowable_values}."
     end
     @legal_entity_type = legal_entity_type
+  end
+
+  # Custom attribute writer method checking allowed values (enum).
+  # @param [Object] nature_of_business Object to be assigned
+  def nature_of_business=(nature_of_business)
+    validator = EnumAttributeValidator.new('String', ["personal", "agriculture_and_hunting", "forestry", "fishing", "agricultural_by_products", "coal_mining", "oil_mining", "iron_ore_mining", "other_metal_and_diamond_mining", "other_mineral_mining", "manufacturing_of_food_drink_tobacco", "manufacturing_of_textiles_leather_fur_furniture", "manufacture_of_wooden_products_furniture", "manufacture_of_paper_pulp_allied_products", "manufacture_of_chemicals_medical_petroleum_rubber_plastic_products", "manufacture_of_pottery_china_glass_stone", "manufacture_of_iron_steel_non_ferrous_metals_basic_industries", "manufacture_of_metal_products_electrical_and_scientific_engineering", "manufacture_of_jewelry_musical_instruments_toys", "electricity_gas_and_water", "construction", "wholesale_trade", "retail_trade", "catering_incl_hotels", "transport_storage", "communications", "finance_and_holding_companies", "insurance", "business_services", "real_estate_development_investment", "central_state_governments", "community_services_defence_police_prisons_etc", "social_services_education_health_care", "personal_services_leisure_services", "personal_services_domestic_laundry_repairs", "personal_services_embassies_international_organisations"])
+    unless validator.valid?(nature_of_business) || nature_of_business.empty?
+      fail ArgumentError, "invalid value for \"nature_of_business\", must be one of #{validator.allowable_values}."
+    end
+    @nature_of_business = nature_of_business
   end
 
   # Custom attribute writer method checking allowed values (enum).
