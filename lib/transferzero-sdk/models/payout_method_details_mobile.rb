@@ -21,12 +21,15 @@ class PayoutMethodDetailsMobile
 
   attr_accessor :phone_number
 
+  attr_accessor :mobile_provider
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
       :'first_name' => :'first_name',
       :'last_name' => :'last_name',
-      :'phone_number' => :'phone_number'
+      :'phone_number' => :'phone_number',
+      :'mobile_provider' => :'mobile_provider'
     }
   end
 
@@ -35,7 +38,8 @@ class PayoutMethodDetailsMobile
     {
       :'first_name' => :'String',
       :'last_name' => :'String',
-      :'phone_number' => :'String'
+      :'phone_number' => :'String',
+      :'mobile_provider' => :'PayoutMethodMobileProviderEnum'
     }
   end
 
@@ -64,6 +68,10 @@ class PayoutMethodDetailsMobile
 
     if attributes.key?(:'phone_number')
       self.phone_number = attributes[:'phone_number']
+    end
+
+    if attributes.key?(:'mobile_provider')
+      self.mobile_provider = attributes[:'mobile_provider']
     end
   end
 
@@ -102,7 +110,8 @@ class PayoutMethodDetailsMobile
     self.class == o.class &&
         first_name == o.first_name &&
         last_name == o.last_name &&
-        phone_number == o.phone_number
+        phone_number == o.phone_number &&
+        mobile_provider == o.mobile_provider
   end
 
   # @see the `==` method
@@ -114,7 +123,7 @@ class PayoutMethodDetailsMobile
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, phone_number].hash
+    [first_name, last_name, phone_number, mobile_provider].hash
   end
 
 require 'active_support/core_ext/hash'

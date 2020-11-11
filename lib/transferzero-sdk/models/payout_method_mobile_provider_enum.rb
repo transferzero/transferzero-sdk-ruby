@@ -17,6 +17,9 @@ class PayoutMethodMobileProviderEnum
   
   ORANGE = "orange".freeze
   TIGO = "tigo".freeze
+  MTN = "mtn".freeze
+  AIRTEL = "airtel".freeze
+  VODAFONE = "vodafone".freeze
 
   # Builds the enum from string
   # @param [String] The enum value in the form of the string
