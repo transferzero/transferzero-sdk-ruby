@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **address_description** | **String** | Description of address | [optional] 
 **identification_number** | **String** | Identification number of document used | [optional] 
 **identification_type** | **String** | Document to be identified. The identification type can be one of the following:  - &#x60;DL&#x60;: Driving License - &#x60;PP&#x60;: International Passport - &#x60;ID&#x60;: National ID - &#x60;OT&#x60;: Other | [optional] 
+**lang** | **String** | Determines language of the served content. Defaults to English | [optional] 
 **name** | **String** | Name of sender (used only with a Business sender) | [optional] 
 **first_name** | **String** | First name of sender (used only with a Personal sender) | [optional] 
 **middle_name** | **String** | Middle name of sender (used only with a Personal sender) | [optional] 
@@ -72,6 +73,7 @@ instance = TransferZero::Sender.new(id: bf9ff782-e182-45ac-abea-5bce83ad6670,
                                  address_description: null,
                                  identification_number: AB123456,
                                  identification_type: ID,
+                                 lang: en,
                                  name: null,
                                  first_name: Johnny,
                                  middle_name: Johnny,

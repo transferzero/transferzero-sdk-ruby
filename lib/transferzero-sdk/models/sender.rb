@@ -55,6 +55,9 @@ class Sender
   # Document to be identified. The identification type can be one of the following:  - `DL`: Driving License - `PP`: International Passport - `ID`: National ID - `OT`: Other
   attr_accessor :identification_type
 
+  # Determines language of the served content. Defaults to English
+  attr_accessor :lang
+
   # Name of sender (used only with a Business sender)
   attr_accessor :name
 
@@ -196,6 +199,7 @@ class Sender
       :'address_description' => :'address_description',
       :'identification_number' => :'identification_number',
       :'identification_type' => :'identification_type',
+      :'lang' => :'lang',
       :'name' => :'name',
       :'first_name' => :'first_name',
       :'middle_name' => :'middle_name',
@@ -250,6 +254,7 @@ class Sender
       :'address_description' => :'String',
       :'identification_number' => :'String',
       :'identification_type' => :'String',
+      :'lang' => :'String',
       :'name' => :'String',
       :'first_name' => :'String',
       :'middle_name' => :'String',
@@ -356,6 +361,10 @@ class Sender
 
     if attributes.key?(:'identification_type')
       self.identification_type = attributes[:'identification_type']
+    end
+
+    if attributes.key?(:'lang')
+      self.lang = attributes[:'lang']
     end
 
     if attributes.key?(:'name')
@@ -633,6 +642,7 @@ class Sender
         address_description == o.address_description &&
         identification_number == o.identification_number &&
         identification_type == o.identification_type &&
+        lang == o.lang &&
         name == o.name &&
         first_name == o.first_name &&
         middle_name == o.middle_name &&
@@ -678,7 +688,7 @@ class Sender
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, custom_source_of_funds, core_business_activity, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id, city_of_birth, country_of_birth, gender, created_at].hash
+    [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, lang, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, custom_source_of_funds, core_business_activity, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id, city_of_birth, country_of_birth, gender, created_at].hash
   end
 
 require 'active_support/core_ext/hash'
