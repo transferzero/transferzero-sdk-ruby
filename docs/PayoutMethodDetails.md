@@ -14,6 +14,9 @@ Name | Type | Description | Notes
 **iban** | **String** |  | 
 **bank_name** | **String** |  | 
 **bank_country** | **String** |  | 
+**identity_card_id** | **String** |  | [optional] 
+**identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | [optional] 
+**cash_provider** | [**PayoutMethodCashProviderEnum**](PayoutMethodCashProviderEnum.md) |  | [optional] 
 **sort_code** | **String** |  | [optional] 
 **bic** | **String** |  | [optional] 
 **sender_identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | 
@@ -22,8 +25,6 @@ Name | Type | Description | Notes
 **sender_country_of_birth** | **String** |  | 
 **sender_gender** | [**PayoutMethodGenderEnum**](PayoutMethodGenderEnum.md) |  | 
 **reason** | **String** |  | [optional] 
-**identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | [optional] 
-**identity_card_id** | **String** |  | [optional] 
 **reference** | **String** |  | [optional] 
 **name** | **String** |  | 
 **address** | **String** |  | 
@@ -48,6 +49,9 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  iban: null,
                                  bank_name: null,
                                  bank_country: null,
+                                 identity_card_id: null,
+                                 identity_card_type: null,
+                                 cash_provider: null,
                                  sort_code: null,
                                  bic: null,
                                  sender_identity_card_type: null,
@@ -56,8 +60,6 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  sender_country_of_birth: null,
                                  sender_gender: null,
                                  reason: null,
-                                 identity_card_type: null,
-                                 identity_card_id: null,
                                  reference: null,
                                  name: null,
                                  address: null,
