@@ -34,12 +34,6 @@ class PayoutMethodDetails
 
   attr_accessor :bank_country
 
-  attr_accessor :identity_card_id
-
-  attr_accessor :identity_card_type
-
-  attr_accessor :cash_provider
-
   attr_accessor :sort_code
 
   attr_accessor :bic
@@ -55,6 +49,10 @@ class PayoutMethodDetails
   attr_accessor :sender_gender
 
   attr_accessor :reason
+
+  attr_accessor :identity_card_type
+
+  attr_accessor :identity_card_id
 
   attr_accessor :reference
 
@@ -85,9 +83,6 @@ class PayoutMethodDetails
       :'iban' => :'iban',
       :'bank_name' => :'bank_name',
       :'bank_country' => :'bank_country',
-      :'identity_card_id' => :'identity_card_id',
-      :'identity_card_type' => :'identity_card_type',
-      :'cash_provider' => :'cash_provider',
       :'sort_code' => :'sort_code',
       :'bic' => :'bic',
       :'sender_identity_card_type' => :'sender_identity_card_type',
@@ -96,6 +91,8 @@ class PayoutMethodDetails
       :'sender_country_of_birth' => :'sender_country_of_birth',
       :'sender_gender' => :'sender_gender',
       :'reason' => :'reason',
+      :'identity_card_type' => :'identity_card_type',
+      :'identity_card_id' => :'identity_card_id',
       :'reference' => :'reference',
       :'name' => :'name',
       :'address' => :'address',
@@ -120,9 +117,6 @@ class PayoutMethodDetails
       :'iban' => :'String',
       :'bank_name' => :'String',
       :'bank_country' => :'String',
-      :'identity_card_id' => :'String',
-      :'identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
-      :'cash_provider' => :'PayoutMethodCashProviderEnum',
       :'sort_code' => :'String',
       :'bic' => :'String',
       :'sender_identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
@@ -131,6 +125,8 @@ class PayoutMethodDetails
       :'sender_country_of_birth' => :'String',
       :'sender_gender' => :'PayoutMethodGenderEnum',
       :'reason' => :'String',
+      :'identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
+      :'identity_card_id' => :'String',
       :'reference' => :'String',
       :'name' => :'String',
       :'address' => :'String',
@@ -154,7 +150,6 @@ class PayoutMethodDetails
     :'PayoutMethodDetailsMobile',
     :'PayoutMethodDetailsNGNBank',
     :'PayoutMethodDetailsXOFBank',
-    :'PayoutMethodDetailsXOFCash',
     :'PayoutMethodDetailsXOFMobile',
     :'PayoutMethodDetailsZARBank'
     ]
@@ -215,18 +210,6 @@ class PayoutMethodDetails
       self.bank_country = attributes[:'bank_country']
     end
 
-    if attributes.key?(:'identity_card_id')
-      self.identity_card_id = attributes[:'identity_card_id']
-    end
-
-    if attributes.key?(:'identity_card_type')
-      self.identity_card_type = attributes[:'identity_card_type']
-    end
-
-    if attributes.key?(:'cash_provider')
-      self.cash_provider = attributes[:'cash_provider']
-    end
-
     if attributes.key?(:'sort_code')
       self.sort_code = attributes[:'sort_code']
     end
@@ -257,6 +240,14 @@ class PayoutMethodDetails
 
     if attributes.key?(:'reason')
       self.reason = attributes[:'reason']
+    end
+
+    if attributes.key?(:'identity_card_type')
+      self.identity_card_type = attributes[:'identity_card_type']
+    end
+
+    if attributes.key?(:'identity_card_id')
+      self.identity_card_id = attributes[:'identity_card_id']
     end
 
     if attributes.key?(:'reference')
@@ -431,9 +422,6 @@ class PayoutMethodDetails
         iban == o.iban &&
         bank_name == o.bank_name &&
         bank_country == o.bank_country &&
-        identity_card_id == o.identity_card_id &&
-        identity_card_type == o.identity_card_type &&
-        cash_provider == o.cash_provider &&
         sort_code == o.sort_code &&
         bic == o.bic &&
         sender_identity_card_type == o.sender_identity_card_type &&
@@ -442,6 +430,8 @@ class PayoutMethodDetails
         sender_country_of_birth == o.sender_country_of_birth &&
         sender_gender == o.sender_gender &&
         reason == o.reason &&
+        identity_card_type == o.identity_card_type &&
+        identity_card_id == o.identity_card_id &&
         reference == o.reference &&
         name == o.name &&
         address == o.address &&
@@ -461,7 +451,7 @@ class PayoutMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, iban, bank_name, bank_country, identity_card_id, identity_card_type, cash_provider, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, reference, name, address, street, postal_code, city, email, transfer_reason_code].hash
+    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, iban, bank_name, bank_country, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code].hash
   end
 
 require 'active_support/core_ext/hash'
