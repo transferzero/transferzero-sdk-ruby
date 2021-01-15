@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**delete_recipient**](RecipientsApi.md#delete_recipient) | **DELETE** /recipients/{Recipient ID} | Cancelling a recipient
 [**get_recipients**](RecipientsApi.md#get_recipients) | **GET** /recipients | Getting a list of recipients with filtering
 [**patch_recipient**](RecipientsApi.md#patch_recipient) | **PATCH** /recipients/{Recipient ID} | Updating a recipient
+[**proof_of_payments**](RecipientsApi.md#proof_of_payments) | **GET** /recipients/{Recipient ID}/proof_of_payments | Returns list of proof of payments
 
 
 # **delete_recipient**
@@ -206,6 +207,67 @@ end
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **proof_of_payments**
+> ProofOfPaymentListResponse proof_of_payments(recipient_id)
+
+Returns list of proof of payments
+
+Returns a list of uploaded proof of payment files for a transaction recipient
+
+### Example
+```ruby
+# load the gem
+require 'transferzero-sdk'
+
+api_instance = TransferZero::RecipientsApi.new
+
+
+begin
+  #Returns list of proof of payments
+  result = api_instance.proof_of_payments(recipient_id)
+  p result
+rescue TransferZero::ApiError => e
+  if e.validation_error
+    puts "WARN: Validation error occured when calling the endpoint"
+    result = e.response_object("ProofOfPaymentListResponse")
+    p result
+  else
+    puts "Exception when calling RecipientsApi->proof_of_payments: #{e}"
+  end
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **recipient_id** | [**String**](.md)| ID of the recipient for whom the proof of payments will be returned.  Example: &#x60;/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33/proof_of_payments&#x60; | 
+
+### Return type
+
+[**ProofOfPaymentListResponse**](ProofOfPaymentListResponse.md)
+
+### Authorization
+
+You can set the API Key and Secret on the TransferZero object when setting it up:
+
+```ruby
+
+TransferZero.configure do |config|
+  config.api_key = '<key'
+  config.api_secret = '<secret>'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
+end
+
+```
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 

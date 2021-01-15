@@ -217,5 +217,59 @@ module TransferZero
       end
       return data, status_code, headers
     end
+
+
+    # Returns list of proof of payments
+    # Returns a list of uploaded proof of payment files for a transaction recipient
+    # @param recipient_id ID of the recipient for whom the proof of payments will be returned.  Example: &#x60;/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33/proof_of_payments&#x60;
+    # @param [Hash] opts the optional parameters
+    # @return [ProofOfPaymentListResponse]
+    def proof_of_payments(recipient_id, opts = {})
+      data, _status_code, _headers = proof_of_payments_with_http_info(recipient_id, opts)
+      data
+    end
+
+    # Returns list of proof of payments
+    # Returns a list of uploaded proof of payment files for a transaction recipient
+    # @param recipient_id ID of the recipient for whom the proof of payments will be returned.  Example: &#x60;/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33/proof_of_payments&#x60;
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ProofOfPaymentListResponse, Fixnum, Hash)>] ProofOfPaymentListResponse data, response status code and response headers
+    def proof_of_payments_with_http_info(recipient_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RecipientsApi.proof_of_payments ...'
+      end
+      # verify the required parameter 'recipient_id' is set
+      if @api_client.config.client_side_validation && recipient_id.nil?
+        fail ArgumentError, "Missing the required parameter 'recipient_id' when calling RecipientsApi.proof_of_payments"
+      end
+      # resource path
+      local_var_path = '/recipients/{Recipient ID}/proof_of_payments'.sub('{' + 'Recipient ID' + '}', recipient_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['AuthorizationKey', 'AuthorizationNonce', 'AuthorizationSecret', 'AuthorizationSignature']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ProofOfPaymentListResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RecipientsApi#proof_of_payments\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
   end
 end
