@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"774044436\", # local or international Senegalese format   \"identity_card_id\": \"2231324232\", # optional   \"identity_card_type\": \"PP\", # optional   \"cash_provider\": \"wizall\" # optional } ```  Please note when sending XOF::Cash payments you should subscribe to the recipient.pending webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt -  ```JSON {   (...)   \"state\":\"pending\",   \"metadata\": {     \"payment_reference\":\"9M5GJRJUBCY\"   },   (...) } ```
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"774044436\", // local or international Senegalese format   \"identity_card_id\": \"2231324232\", // Required if cash_provider value is \"wizall\"   \"identity_card_type\": \"PP\", // Required if cash_provider value is \"wizall\"   \"cash_provider\": \"wizall\" // Optional; Values: \"wari\" or \"wizall; Default value is \"wari\" } ```  Please note when sending Wari cash pickup requests you should subscribe to the recipient.pending webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt -  ```JSON {   (...)   \"state\":\"pending\",   \"metadata\": {     \"payment_reference\":\"9M5GJRJUBCY\"   },   (...) } ```
 class PayoutMethodDetailsXOFCash
   attr_accessor :first_name
 
