@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **input_usd_amount** | **Float** | Shows how much this payment is worth in USD | [optional] 
 **may_cancel** | **Boolean** | If true it shows that the payment can be cancelled immediately using the DELETE /v1/recipients/{id} endpoint. If false you can still try to cancel it, however it will only gets cancelled once we have confirmation from our partner that the payment has failed. | [optional] 
 **state_reason** | **String** | In case the payment is unsuccessful it holds the error message associated with the last unsuccessful payout. | [optional] 
+**state_reason_details** | [**RecipientStateReasonDetails**](RecipientStateReasonDetails.md) |  | [optional] 
 **state** | [**RecipientState**](RecipientState.md) |  | [optional] 
 **transaction_id** | **String** | The ID of the transaction that is related to this recipient | [optional] 
 **transaction_state** | [**TransactionState**](TransactionState.md) |  | [optional] 
@@ -41,6 +42,7 @@ instance = TransferZero::Recipient.new(requested_amount: 750.0,
                                  input_usd_amount: 10,
                                  may_cancel: true,
                                  state_reason: null,
+                                 state_reason_details: null,
                                  state: null,
                                  transaction_id: 97e79719-06e4-4794-aeeb-d2d9415d983a,
                                  transaction_state: null,

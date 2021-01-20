@@ -226,6 +226,7 @@ Class | Method | HTTP request | Description
  - [TransferZero::RecipientRequest](docs/RecipientRequest.md)
  - [TransferZero::RecipientResponse](docs/RecipientResponse.md)
  - [TransferZero::RecipientState](docs/RecipientState.md)
+ - [TransferZero::RecipientStateReasonDetails](docs/RecipientStateReasonDetails.md)
  - [TransferZero::RecipientWebhook](docs/RecipientWebhook.md)
  - [TransferZero::Sender](docs/Sender.md)
  - [TransferZero::SenderListResponse](docs/SenderListResponse.md)
