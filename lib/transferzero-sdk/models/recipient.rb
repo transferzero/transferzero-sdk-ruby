@@ -51,6 +51,9 @@ class Recipient
   # The ID of the transaction that is related to this recipient
   attr_accessor :transaction_id
 
+  # Optional ID that is supplied by partner linking it to the partner's own Transaction ID.
+  attr_accessor :transaction_external_id
+
   attr_accessor :transaction_state
 
   # The exchange rate used in this payment
@@ -92,6 +95,7 @@ class Recipient
       :'state_reason_details' => :'state_reason_details',
       :'state' => :'state',
       :'transaction_id' => :'transaction_id',
+      :'transaction_external_id' => :'transaction_external_id',
       :'transaction_state' => :'transaction_state',
       :'exchange_rate' => :'exchange_rate',
       :'fee_fractional' => :'fee_fractional',
@@ -120,6 +124,7 @@ class Recipient
       :'state_reason_details' => :'RecipientStateReasonDetails',
       :'state' => :'RecipientState',
       :'transaction_id' => :'String',
+      :'transaction_external_id' => :'String',
       :'transaction_state' => :'TransactionState',
       :'exchange_rate' => :'Float',
       :'fee_fractional' => :'Float',
@@ -197,6 +202,10 @@ class Recipient
 
     if attributes.key?(:'transaction_id')
       self.transaction_id = attributes[:'transaction_id']
+    end
+
+    if attributes.key?(:'transaction_external_id')
+      self.transaction_external_id = attributes[:'transaction_external_id']
     end
 
     if attributes.key?(:'transaction_state')
@@ -284,6 +293,7 @@ class Recipient
         state_reason_details == o.state_reason_details &&
         state == o.state &&
         transaction_id == o.transaction_id &&
+        transaction_external_id == o.transaction_external_id &&
         transaction_state == o.transaction_state &&
         exchange_rate == o.exchange_rate &&
         fee_fractional == o.fee_fractional &&
@@ -304,7 +314,7 @@ class Recipient
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [requested_amount, requested_currency, payout_method, metadata, created_at, editable, retriable, input_usd_amount, may_cancel, state_reason, state_reason_details, state, transaction_id, transaction_state, exchange_rate, fee_fractional, input_amount, input_currency, output_amount, output_currency, id, errors].hash
+    [requested_amount, requested_currency, payout_method, metadata, created_at, editable, retriable, input_usd_amount, may_cancel, state_reason, state_reason_details, state, transaction_id, transaction_external_id, transaction_state, exchange_rate, fee_fractional, input_amount, input_currency, output_amount, output_currency, id, errors].hash
   end
 
 require 'active_support/core_ext/hash'

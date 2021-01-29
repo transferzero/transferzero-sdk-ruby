@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **state_reason_details** | [**RecipientStateReasonDetails**](RecipientStateReasonDetails.md) |  | [optional] 
 **state** | [**RecipientState**](RecipientState.md) |  | [optional] 
 **transaction_id** | **String** | The ID of the transaction that is related to this recipient | [optional] 
+**transaction_external_id** | **String** | Optional ID that is supplied by partner linking it to the partner&#39;s own Transaction ID. | [optional] 
 **transaction_state** | [**TransactionState**](TransactionState.md) |  | [optional] 
 **exchange_rate** | **Float** | The exchange rate used in this payment | [optional] 
 **fee_fractional** | **Float** | The fee for this payment in fractional units (for example cents for USD transactions) | [optional] 
@@ -45,6 +46,7 @@ instance = TransferZero::Recipient.new(requested_amount: 750.0,
                                  state_reason_details: null,
                                  state: null,
                                  transaction_id: 97e79719-06e4-4794-aeeb-d2d9415d983a,
+                                 transaction_external_id: 806ec63a-a5a7-43cc-9d75-1ee74fbcc026,
                                  transaction_state: null,
                                  exchange_rate: 1000,
                                  fee_fractional: 100,
