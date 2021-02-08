@@ -44,6 +44,12 @@ class Document
 
   attr_accessor :id
 
+  # Document ID issued by government
+  attr_accessor :document_id
+
+  # Document expiry date issued by government
+  attr_accessor :expiry_date
+
   # The fields that have some problems and don't pass validation
   attr_accessor :errors
 
@@ -83,6 +89,8 @@ class Document
       :'document_type' => :'document_type',
       :'issuing_country' => :'issuing_country',
       :'id' => :'id',
+      :'document_id' => :'document_id',
+      :'expiry_date' => :'expiry_date',
       :'errors' => :'errors'
     }
   end
@@ -101,6 +109,8 @@ class Document
       :'document_type' => :'String',
       :'issuing_country' => :'String',
       :'id' => :'String',
+      :'document_id' => :'String',
+      :'expiry_date' => :'Date',
       :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
     }
   end
@@ -164,6 +174,14 @@ class Document
       self.id = attributes[:'id']
     end
 
+    if attributes.key?(:'document_id')
+      self.document_id = attributes[:'document_id']
+    end
+
+    if attributes.key?(:'expiry_date')
+      self.expiry_date = attributes[:'expiry_date']
+    end
+
     if attributes.key?(:'errors')
       if (value = attributes[:'errors']).is_a?(Hash)
         self.errors = value
@@ -222,6 +240,8 @@ class Document
         document_type == o.document_type &&
         issuing_country == o.issuing_country &&
         id == o.id &&
+        document_id == o.document_id &&
+        expiry_date == o.expiry_date &&
         errors == o.errors
   end
 
@@ -234,7 +254,7 @@ class Document
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [upload, url, upload_file_name, metadata, upload_content_type, upload_file_size, category, side, document_type, issuing_country, id, errors].hash
+    [upload, url, upload_file_name, metadata, upload_content_type, upload_file_size, category, side, document_type, issuing_country, id, document_id, expiry_date, errors].hash
   end
 
 require 'active_support/core_ext/hash'
