@@ -13,15 +13,11 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"774044436\", // local or international Senegalese format   \"identity_card_id\": \"2231324232\", // Required if cash_provider value is \"wizall\"   \"identity_card_type\": \"PP\", // Required if cash_provider value is \"wizall\"   \"cash_provider\": \"wizall\" // Optional; Values: \"wari\" or \"wizall; Default value is \"wari\" } ```  Please note when sending Wari cash pickup requests you should subscribe to the recipient.pending webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt -  ```JSON {   (...)   \"state\":\"pending\",   \"metadata\": {     \"payment_reference\":\"9M5GJRJUBCY\"   },   (...) } ```
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"774044436\", // local or international Senegalese format   \"cash_provider\": \"wizall\" // Optional; Values: \"wari\" or \"wizall; Default value is \"wari\" } ```  Please note when sending Wari cash pickup requests you should subscribe to the recipient.pending webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt -  ```JSON {   (...)   \"state\":\"pending\",   \"metadata\": {     \"payment_reference\":\"9M5GJRJUBCY\"   },   (...) } ```  Please note all senders trying to create Wizall cash pickup requests must have `identity_type` and `\"identity_number` present. The fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example -  ```JSON {   \"transaction\": {       \"sender\": {         \"external_id\": \"<id of sender>\",         \"identity_type\": \"ID\",         \"identity_number\": \"AB12345678\",         (...)       },       (...)     } } ```
 class PayoutMethodDetailsXOFCash
   attr_accessor :first_name
 
   attr_accessor :last_name
-
-  attr_accessor :identity_card_id
-
-  attr_accessor :identity_card_type
 
   attr_accessor :phone_number
 
@@ -32,8 +28,6 @@ class PayoutMethodDetailsXOFCash
     {
       :'first_name' => :'first_name',
       :'last_name' => :'last_name',
-      :'identity_card_id' => :'identity_card_id',
-      :'identity_card_type' => :'identity_card_type',
       :'phone_number' => :'phone_number',
       :'cash_provider' => :'cash_provider'
     }
@@ -44,8 +38,6 @@ class PayoutMethodDetailsXOFCash
     {
       :'first_name' => :'String',
       :'last_name' => :'String',
-      :'identity_card_id' => :'String',
-      :'identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
       :'phone_number' => :'String',
       :'cash_provider' => :'PayoutMethodCashProviderEnum'
     }
@@ -72,14 +64,6 @@ class PayoutMethodDetailsXOFCash
 
     if attributes.key?(:'last_name')
       self.last_name = attributes[:'last_name']
-    end
-
-    if attributes.key?(:'identity_card_id')
-      self.identity_card_id = attributes[:'identity_card_id']
-    end
-
-    if attributes.key?(:'identity_card_type')
-      self.identity_card_type = attributes[:'identity_card_type']
     end
 
     if attributes.key?(:'phone_number')
@@ -126,8 +110,6 @@ class PayoutMethodDetailsXOFCash
     self.class == o.class &&
         first_name == o.first_name &&
         last_name == o.last_name &&
-        identity_card_id == o.identity_card_id &&
-        identity_card_type == o.identity_card_type &&
         phone_number == o.phone_number &&
         cash_provider == o.cash_provider
   end
@@ -141,7 +123,7 @@ class PayoutMethodDetailsXOFCash
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, identity_card_id, identity_card_type, phone_number, cash_provider].hash
+    [first_name, last_name, phone_number, cash_provider].hash
   end
 
 require 'active_support/core_ext/hash'

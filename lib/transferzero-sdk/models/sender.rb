@@ -52,7 +52,7 @@ class Sender
   # Identification number of document used
   attr_accessor :identification_number
 
-  # Document to be identified. The identification type can be one of the following:  - `DL`: Driving License - `PP`: International Passport - `ID`: National ID - `OT`: Other
+  # Document to be identified. The identification type can be one of the following:  - `DL`: Driving License - `PP`: International Passport - `ID`: National ID - `OT`: Other  Please note for Wizall `XOF::Cash` transactions the valid options are: - `ID`: National ID - `PP`: Passport
   attr_accessor :identification_type
 
   # Determines language of the served content. Defaults to English
