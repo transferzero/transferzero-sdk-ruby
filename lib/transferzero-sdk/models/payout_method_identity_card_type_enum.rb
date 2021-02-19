@@ -17,7 +17,7 @@ class PayoutMethodIdentityCardTypeEnum
   
   O = "O".freeze
   PP = "PP".freeze
-  NI = "NI".freeze
+  ID = "ID".freeze
 
   # Builds the enum from string
   # @param [String] The enum value in the form of the string
