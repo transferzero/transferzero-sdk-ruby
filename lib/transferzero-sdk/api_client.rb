@@ -14,7 +14,8 @@ require 'date'
 require 'json'
 require 'logger'
 require 'tempfile'
-require 'typhoeus'
+require 'time'
+require 'faraday'
 require 'uri'
 require 'openssl'
 require 'securerandom'
@@ -51,33 +52,51 @@ module TransferZero
     # @return [Array<(Object, Fixnum, Hash)>] an array of 3 elements:
     #   the data deserialized from response body (could be nil), response status code and response headers.
     def call_api(http_method, path, opts = {})
-      request = build_request(http_method, path, opts)
-      response = request.run
+      ssl_options = {
+        :ca_file => @config.ssl_ca_file,
+        :verify => @config.ssl_verify,
+        :verify_mode => @config.ssl_verify_mode,
+        :client_cert => @config.ssl_client_cert,
+        :client_key => @config.ssl_client_key
+      }
 
-      if @config.debugging
-        @config.logger.debug "HTTP response body ~BEGIN~\n#{response.body}\n~END~\n"
+      connection = Faraday.new(:url => config.base_url, :ssl => ssl_options) do |conn|
+        if opts[:header_params]["Content-Type"] == "multipart/form-data"
+          conn.request :multipart
+          conn.request :url_encoded
+        end
+        conn.adapter(Faraday.default_adapter)
       end
 
-      unless response.success?
-        if response.timed_out?
-          fail ApiError.new('Connection timed out')
-        elsif response.code == 0
-          # Errors from libcurl will be made visible here
-          fail ApiError.new(:code => 0,
-                            :message => response.return_message)
-        elsif response.code == 422
-          fail ApiError.new(:code => response.code,
-                            :response_headers => response.headers,
-                            :response_body => response.body,
-                            :validation_error => true
-                            )
-        else
-          fail ApiError.new(:code => response.code,
-                            :response_headers => response.headers,
-                            :response_body => response.body,
-                            :validation_error => false),
-               response.status_message
+      begin
+        response = connection.public_send(http_method.to_sym.downcase) do |req|
+          build_request(http_method, path, req, opts)
         end
+
+        if @config.debugging
+          @config.logger.debug "HTTP response body ~BEGIN~\n#{response.body}\n~END~\n"
+        end
+
+        unless response.success?
+          if response.status == 0 || response.status.nil?
+            # Errors from libcurl will be made visible here
+            fail ApiError.new(:code => 0,
+                              :message => response.return_message)
+          elsif response.status == 422
+            fail ApiError.new(:code => response.status,
+                              :response_headers => response.headers,
+                              :response_body => response.body,
+                              :validation_error => true
+                              )
+          else
+            fail ApiError.new(:code => response.status,
+                              :response_headers => response.headers,
+                              :response_body => response.body),
+                 response.reason_phrase
+          end
+        end
+      rescue Faraday::TimeoutError
+        fail ApiError.new('Connection timed out')
       end
 
       if opts[:return_type]
@@ -85,7 +104,7 @@ module TransferZero
       else
         data = nil
       end
-      return data, response.code, response.headers
+      return data, response.status, response.headers
     end
 
     # Builds the HTTP request
@@ -97,57 +116,49 @@ module TransferZero
     # @option opts [Hash] :form_params Query parameters
     # @option opts [Object] :body HTTP body (JSON/XML)
     # @return [Typhoeus::Request] A Typhoeus Request
-    def build_request(http_method, path, opts = {})
-      url = build_request_url(path)
+    def build_request(http_method, path, request, opts = {})
+      url = build_request_url(path, opts)
       http_method = http_method.to_sym.downcase
 
       header_params = @default_headers.merge(opts[:header_params] || {})
       query_params = opts[:query_params] || {}
-      url_with_params = add_query(url, query_params)
       form_params = opts[:form_params] || {}
-
-      request_body = opts[:body].to_s.gsub(/[[:space:]]+/, ' ').strip
-
-      request_nonce = SecureRandom.uuid
-      request_signature = sign_request([
-        request_nonce,
-        http_method.to_s.upcase,
-        url_with_params,
-        DIGEST.hexdigest(request_body)
-      ])
-
-      header_params['Authorization-Nonce'] = request_nonce
-      header_params['Authorization-Signature'] = request_signature
-      header_params['Authorization-Key'] = @config.api_key
-
-      # set ssl_verifyhosts option based on @config.verify_ssl_host (true/false)
-      _verify_ssl_host = @config.verify_ssl_host ? 2 : 0
+      url_with_params = add_query(url, query_params)
 
       req_opts = {
         :method => http_method,
         :headers => header_params,
-        :params => {}, # removed and params added to url string
+        :params => query_params,
         :params_encoding => @config.params_encoding,
         :timeout => @config.timeout,
-        :ssl_verifypeer => @config.verify_ssl,
-        :ssl_verifyhost => _verify_ssl_host,
-        :sslcert => @config.cert_file,
-        :sslkey => @config.key_file,
         :verbose => @config.debugging
       }
 
-      # set custom cert, if provided
-      req_opts[:cainfo] = @config.ssl_ca_cert if @config.ssl_ca_cert
-
+      req_body = ''
       if [:post, :patch, :put, :delete].include?(http_method)
-        req_body = build_request_body(header_params, form_params, request_body)
+        req_body = build_request_body(header_params, form_params, opts[:body])
         req_opts.update :body => req_body
         if @config.debugging
           @config.logger.debug "HTTP request body param ~BEGIN~\n#{req_body}\n~END~\n"
         end
       end
 
-      request = Typhoeus::Request.new(url_with_params, req_opts)
+      request_nonce = SecureRandom.uuid
+      request_signature = sign_request([
+        request_nonce,
+        http_method.to_s.upcase,
+        url_with_params,
+        DIGEST.hexdigest(req_body)
+      ])
+
+      header_params['Authorization-Nonce'] = request_nonce
+      header_params['Authorization-Signature'] = request_signature
+      header_params['Authorization-Key'] = @config.api_key
+
+      request.headers = header_params
+      request.body = req_body
+      request.url url
+      request.params = query_params
       download_file(request) if opts[:return_type] == 'File'
       request
     end
@@ -214,7 +225,25 @@ module TransferZero
 
       # handle file downloading - return the File instance processed in request callbacks
       # note that response body is empty when the file is written in chunks in request on_body callback
-      return @tempfile if return_type == 'File'
+      if return_type == 'File'
+        content_disposition = response.headers['Content-Disposition']
+        if content_disposition && content_disposition =~ /filename=/i
+          filename = content_disposition[/filename=['"]?([^'"\s]+)['"]?/, 1]
+          prefix = sanitize_filename(filename)
+        else
+          prefix = 'download-'
+        end
+        prefix = prefix + '-' unless prefix.end_with?('-')
+        encoding = body.encoding
+        @tempfile = Tempfile.open(prefix, @config.temp_folder_path, encoding: encoding)
+        @tempfile.write(@stream.join.force_encoding(encoding))
+        @tempfile.close
+        @config.logger.info "Temp file written to #{@tempfile.path}, please copy the file to a proper folder "\
+                            "with e.g. `FileUtils.cp(tempfile.path, '/new/file/path')` otherwise the temp file "\
+                            "will be deleted automatically with GC. It's also recommended to delete the temp file "\
+                            "explicitly with `tempfile.delete`"
+        return @tempfile
+      end
 
       return nil if body.nil? || body.empty?
 
@@ -281,39 +310,45 @@ module TransferZero
       end
     end
 
-    # Save response body into a file in (the defined) temporary folder, using the filename
-    # from the "Content-Disposition" header if provided, otherwise a random filename.
-    # The response body is written to the file in chunks in order to handle files which
-    # size is larger than maximum Ruby String or even larger than the maximum memory a Ruby
-    # process can use.
+
+    # Builds the HTTP request body
     #
-    # @see Configuration#temp_folder_path
-    def download_file(request)
-      tempfile = nil
-      encoding = nil
-      request.on_headers do |response|
-        content_disposition = response.headers['Content-Disposition']
-        if content_disposition && content_disposition =~ /filename=/i
-          filename = content_disposition[/filename=['"]?([^'"\s]+)['"]?/, 1]
-          prefix = sanitize_filename(filename)
-        else
-          prefix = 'download-'
+    # @param [Hash] header_params Header parameters
+    # @param [Hash] form_params Query parameters
+    # @param [Object] body HTTP body (JSON/XML)
+    # @return [String] HTTP body data in the form of string
+    def build_request_body(header_params, form_params, body)
+      # http form
+      if header_params['Content-Type'] == 'application/x-www-form-urlencoded'
+        data = URI.encode_www_form(form_params)
+      elsif header_params['Content-Type'] == 'multipart/form-data'
+        data = {}
+        form_params.each do |key, value|
+          case value
+          when ::File, ::Tempfile
+            # TODO hardcode to application/octet-stream, need better way to detect content type
+            data[key] = Faraday::UploadIO.new(value.path, 'application/octet-stream', value.path)
+          when ::Array, nil
+            # let Faraday handle Array and nil parameters
+            data[key] = value
+          else
+            data[key] = value.to_s
+          end
         end
-        prefix = prefix + '-' unless prefix.end_with?('-')
-        encoding = response.body.encoding
-        tempfile = Tempfile.open(prefix, @config.temp_folder_path, encoding: encoding)
-        @tempfile = tempfile
+      elsif body
+        data = body.is_a?(String) ? body : body.to_json
+      else
+        data = nil
       end
-      request.on_body do |chunk|
-        chunk.force_encoding(encoding)
-        tempfile.write(chunk)
-      end
-      request.on_complete do |response|
-        tempfile.close
-        @config.logger.info "Temp file written to #{tempfile.path}, please copy the file to a proper folder "\
-                            "with e.g. `FileUtils.cp(tempfile.path, '/new/file/path')` otherwise the temp file "\
-                            "will be deleted automatically with GC. It's also recommended to delete the temp file "\
-                            "explicitly with `tempfile.delete`"
+      data
+    end
+
+    def download_file(request)
+      @stream = []
+
+      # handle streaming Responses
+      request.options.on_data = Proc.new do |chunk, overall_received_bytes|
+        @stream << chunk
       end
     end
 
@@ -326,10 +361,10 @@ module TransferZero
       filename.gsub(/.*[\/\\]/, '')
     end
 
-    def build_request_url(path)
+    def build_request_url(path, opts = {})
       # Add leading and trailing slashes to path
       path = "/#{path}".gsub(/\/+/, '/')
-      URI.encode(@config.base_url + path)
+      @config.base_url(opts[:operation]) + path
     end
 
     # Builds the HTTP request body

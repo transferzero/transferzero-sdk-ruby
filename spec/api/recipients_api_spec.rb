@@ -34,7 +34,7 @@ describe 'RecipientsApi' do
 
   # unit tests for delete_recipient
   # Cancelling a recipient
-  # Cancels the payment to the recipient specified in the URL path.  Please note only recipients where the &#x60;may_cancel&#x60; attribute is true can be cancelled.
+  # Cancels the payment to the recipient specified in the URL path.  Please note recipients where the &#x60;may_cancel&#x60; attribute is true will be cancelled immediately. If the &#x60;may_cancel&#x60; attribute is false you can still try to cancel the recipient, however it will only gets cancelled if we will receive a confirmation from our partner that the payment has failed
   # @param recipient_id ID of recipient to cancel.  Example: &#x60;/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33&#x60;
   # @param [Hash] opts the optional parameters
   # @return [RecipientResponse]
@@ -71,6 +71,18 @@ describe 'RecipientsApi' do
   # @param [Hash] opts the optional parameters
   # @return [RecipientResponse]
   describe 'patch_recipient test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for proof_of_payments
+  # Returns list of proof of payments
+  # Returns a list of uploaded proof of payment files for a transaction recipient
+  # @param recipient_id ID of the recipient for whom the proof of payments will be returned.  Example: &#x60;/v1/recipients/9d4d7b73-a94c-4979-ab57-09074fd55d33/proof_of_payments&#x60;
+  # @param [Hash] opts the optional parameters
+  # @return [ProofOfPaymentListResponse]
+  describe 'proof_of_payments test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
