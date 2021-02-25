@@ -23,6 +23,8 @@ class AccountValidationRequest
   # Phone number to query
   attr_accessor :phone_number
 
+  attr_accessor :mobile_provider
+
   # Country of account in 2-character alpha ISO 3166-2 country format
   attr_accessor :country
 
@@ -60,6 +62,7 @@ class AccountValidationRequest
       :'bank_account' => :'bank_account',
       :'bank_code' => :'bank_code',
       :'phone_number' => :'phone_number',
+      :'mobile_provider' => :'mobile_provider',
       :'country' => :'country',
       :'currency' => :'currency',
       :'method' => :'method'
@@ -72,6 +75,7 @@ class AccountValidationRequest
       :'bank_account' => :'String',
       :'bank_code' => :'String',
       :'phone_number' => :'String',
+      :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
       :'country' => :'String',
       :'currency' => :'String',
       :'method' => :'String'
@@ -103,6 +107,10 @@ class AccountValidationRequest
 
     if attributes.key?(:'phone_number')
       self.phone_number = attributes[:'phone_number']
+    end
+
+    if attributes.key?(:'mobile_provider')
+      self.mobile_provider = attributes[:'mobile_provider']
     end
 
     if attributes.key?(:'country')
@@ -190,6 +198,7 @@ class AccountValidationRequest
         bank_account == o.bank_account &&
         bank_code == o.bank_code &&
         phone_number == o.phone_number &&
+        mobile_provider == o.mobile_provider &&
         country == o.country &&
         currency == o.currency &&
         method == o.method
@@ -204,7 +213,7 @@ class AccountValidationRequest
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [bank_account, bank_code, phone_number, country, currency, method].hash
+    [bank_account, bank_code, phone_number, mobile_provider, country, currency, method].hash
   end
 
 require 'active_support/core_ext/hash'
