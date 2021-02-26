@@ -18,6 +18,17 @@ class PayoutMethodCountryEnum
   CI = "CI".freeze
   ML = "ML".freeze
   SN = "SN".freeze
+  NG = "NG".freeze
+  MA = "MA".freeze
+  TZ = "TZ".freeze
+  GH = "GH".freeze
+  UG = "UG".freeze
+  KE = "KE".freeze
+  NJ = "NJ".freeze
+  EU = "EU".freeze
+  GB = "GB".freeze
+  ZA = "ZA".freeze
+  EG = "EG".freeze
 
   # Builds the enum from string
   # @param [String] The enum value in the form of the string
