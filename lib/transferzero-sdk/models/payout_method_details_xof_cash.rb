@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"221774044436\", // local or international format   \"cash_provider\": \"wizall\" // Optional; Values: \"wari\" or \"wizall\"; Default value is \"wari\";   \"country\": \"SN\" // Optional; Values: \"CI\", \"ML\" or \"SN\"; Default value is \"SN\"; } ```  Please note when sending Wari cash pickup requests you should subscribe to the recipient.pending webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt -  ```JSON {   (...)   \"state\":\"pending\",   \"metadata\": {     \"payment_reference\":\"9M5GJRJUBCY\"   },   (...) } ```  Please note all senders trying to create Wizall cash pickup requests must have `identity_type` and `identity_number` present. The fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example -  ```JSON {   \"transaction\": {       \"sender\": {         \"external_id\": \"<id of sender>\",         \"identity_type\": \"ID\",         \"identity_number\": \"AB12345678\",         (...)       },       (...)     } } ```
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"774044436\", // local or international Senegalese format   \"cash_provider\": \"wizall\" // Optional; Values: \"wari\" or \"wizall\"; Default value is \"wari\"; } ```  Please note when sending Wari cash pickup requests you should subscribe to the recipient.pending webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt -  ```JSON {   (...)   \"state\":\"pending\",   \"metadata\": {     \"payment_reference\":\"9M5GJRJUBCY\"   },   (...) } ```  Please note all senders trying to create Wizall cash pickup requests must have `identity_type` and `identity_number` present. The fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example -  ```JSON {   \"transaction\": {       \"sender\": {         \"external_id\": \"<id of sender>\",         \"identity_type\": \"ID\",         \"identity_number\": \"AB12345678\",         (...)       },       (...)     } } ```
 class PayoutMethodDetailsXOFCash
   attr_accessor :first_name
 
@@ -23,16 +23,13 @@ class PayoutMethodDetailsXOFCash
 
   attr_accessor :cash_provider
 
-  attr_accessor :country
-
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
       :'first_name' => :'first_name',
       :'last_name' => :'last_name',
       :'phone_number' => :'phone_number',
-      :'cash_provider' => :'cash_provider',
-      :'country' => :'country'
+      :'cash_provider' => :'cash_provider'
     }
   end
 
@@ -42,8 +39,7 @@ class PayoutMethodDetailsXOFCash
       :'first_name' => :'String',
       :'last_name' => :'String',
       :'phone_number' => :'String',
-      :'cash_provider' => :'PayoutMethodCashProviderEnum',
-      :'country' => :'PayoutMethodCountryEnum'
+      :'cash_provider' => :'PayoutMethodCashProviderEnum'
     }
   end
 
@@ -76,10 +72,6 @@ class PayoutMethodDetailsXOFCash
 
     if attributes.key?(:'cash_provider')
       self.cash_provider = attributes[:'cash_provider']
-    end
-
-    if attributes.key?(:'country')
-      self.country = attributes[:'country']
     end
   end
 
@@ -119,8 +111,7 @@ class PayoutMethodDetailsXOFCash
         first_name == o.first_name &&
         last_name == o.last_name &&
         phone_number == o.phone_number &&
-        cash_provider == o.cash_provider &&
-        country == o.country
+        cash_provider == o.cash_provider
   end
 
   # @see the `==` method
@@ -132,7 +123,7 @@ class PayoutMethodDetailsXOFCash
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, phone_number, cash_provider, country].hash
+    [first_name, last_name, phone_number, cash_provider].hash
   end
 
 require 'active_support/core_ext/hash'

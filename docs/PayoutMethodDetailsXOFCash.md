@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **last_name** | **String** |  | 
 **phone_number** | **String** |  | 
 **cash_provider** | [**PayoutMethodCashProviderEnum**](PayoutMethodCashProviderEnum.md) |  | [optional] 
-**country** | [**PayoutMethodCountryEnum**](PayoutMethodCountryEnum.md) |  | [optional] 
 
 ## Code Sample
 
@@ -18,8 +17,7 @@ require 'TransferZero'
 instance = TransferZero::PayoutMethodDetailsXOFCash.new(first_name: null,
                                  last_name: null,
                                  phone_number: null,
-                                 cash_provider: null,
-                                 country: null)
+                                 cash_provider: null)
 ```
 
 
