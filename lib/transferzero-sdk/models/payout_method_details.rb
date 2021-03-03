@@ -153,6 +153,7 @@ class PayoutMethodDetails
     :'PayoutMethodDetailsBalance',
     :'PayoutMethodDetailsGBPBank',
     :'PayoutMethodDetailsGHSBank',
+    :'PayoutMethodDetailsGHSCash',
     :'PayoutMethodDetailsIBAN',
     :'PayoutMethodDetailsMADCash',
     :'PayoutMethodDetailsMobile',

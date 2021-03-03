@@ -204,6 +204,7 @@ Class | Method | HTTP request | Description
  - [TransferZero::PayoutMethodDetailsBalance](docs/PayoutMethodDetailsBalance.md)
  - [TransferZero::PayoutMethodDetailsGBPBank](docs/PayoutMethodDetailsGBPBank.md)
  - [TransferZero::PayoutMethodDetailsGHSBank](docs/PayoutMethodDetailsGHSBank.md)
+ - [TransferZero::PayoutMethodDetailsGHSCash](docs/PayoutMethodDetailsGHSCash.md)
  - [TransferZero::PayoutMethodDetailsIBAN](docs/PayoutMethodDetailsIBAN.md)
  - [TransferZero::PayoutMethodDetailsMADCash](docs/PayoutMethodDetailsMADCash.md)
  - [TransferZero::PayoutMethodDetailsMobile](docs/PayoutMethodDetailsMobile.md)

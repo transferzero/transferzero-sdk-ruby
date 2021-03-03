@@ -13,45 +13,29 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# This describes the specific details on how the payment has to be routed to the recipient.
-class PayoutMethod
-  # Contains the currency to send the money to, and the type of the money movement  Commonly used payout types are:  - `NGN::Bank` - for Nigerian bank account payments. - `NGN::Mobile` - for Nigerian mobile money payments. - `GHS::Bank` - for Ghanaian bank account payments. - `GHS::Mobile` - for Ghanaian mobile money payments. - `GHS::Cash` - for Ghanaian cash remittance payments. - `UGX::Mobile` - for Ugandan mobile money payments. - `TZS::Mobile` - for Tanzanian mobile money payments. - `XOF::Mobile` - for Senegalese mobile money payments. - `XOF::Bank` - for Senegalese bank account payments. - `XOF::Cash` - for Senegalese cash remittance payments. - `MAD::Cash` - for Moroccan cash remittance payments. - `EUR::Bank` - for IBAN bank transfers in EUR. - `GBP::Bank` - for IBAN bank and FP accounts transfers in GBP. - `ZAR::Bank` - for South Africa bank account payments.  You can also send funds to the internal balance using `CCY::Balance`, where `CCY` is the appropriate currency. See [Collection from senders](https://docs.transferzero.com/docs/additional-features/#collections-from-senders) for more info on how to collect money into internal balance 
-  attr_accessor :type
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"0322023144\" } ```
+class PayoutMethodDetailsGHSCash
+  attr_accessor :first_name
 
-  attr_accessor :details
+  attr_accessor :last_name
 
-  # Metadata of payout method. You can store any kind of information in this field.
-  attr_accessor :metadata
-
-  attr_accessor :id
-
-  # The fields that have some problems and don't pass validation
-  attr_accessor :errors
-
-  # The fields needed for payments with this payment method with details on validation requirements
-  attr_accessor :fields
+  attr_accessor :phone_number
 
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
-      :'type' => :'type',
-      :'details' => :'details',
-      :'metadata' => :'metadata',
-      :'id' => :'id',
-      :'errors' => :'errors',
-      :'fields' => :'fields'
+      :'first_name' => :'first_name',
+      :'last_name' => :'last_name',
+      :'phone_number' => :'phone_number'
     }
   end
 
   # Attribute type mapping.
   def self.openapi_types
     {
-      :'type' => :'String',
-      :'details' => :'PayoutMethodDetails',
-      :'metadata' => :'Object',
-      :'id' => :'String',
-      :'errors' => :'Hash<String, Array<ValidationErrorDescription>>',
-      :'fields' => :'Hash<String, FieldDescription>'
+      :'first_name' => :'String',
+      :'last_name' => :'String',
+      :'phone_number' => :'String'
     }
   end
 
@@ -59,43 +43,27 @@ class PayoutMethod
   # @param [Hash] attributes Model attributes in the form of hash
   def initialize(attributes = {})
     if (!attributes.is_a?(Hash))
-      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethod` initialize method"
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsGHSCash` initialize method"
     end
 
     # check to see if the attribute exists and convert string to symbol for hash key
     attributes = attributes.each_with_object({}) { |(k, v), h|
       if (!self.class.attribute_map.key?(k.to_sym))
-        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethod`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsGHSCash`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
       h[k.to_sym] = v
     }
 
-    if attributes.key?(:'type')
-      self.type = attributes[:'type']
+    if attributes.key?(:'first_name')
+      self.first_name = attributes[:'first_name']
     end
 
-    if attributes.key?(:'details')
-      self.details = attributes[:'details']
+    if attributes.key?(:'last_name')
+      self.last_name = attributes[:'last_name']
     end
 
-    if attributes.key?(:'metadata')
-      self.metadata = attributes[:'metadata']
-    end
-
-    if attributes.key?(:'id')
-      self.id = attributes[:'id']
-    end
-
-    if attributes.key?(:'errors')
-      if (value = attributes[:'errors']).is_a?(Hash)
-        self.errors = value
-      end
-    end
-
-    if attributes.key?(:'fields')
-      if (value = attributes[:'fields']).is_a?(Hash)
-        self.fields = value
-      end
+    if attributes.key?(:'phone_number')
+      self.phone_number = attributes[:'phone_number']
     end
   end
 
@@ -103,12 +71,27 @@ class PayoutMethod
   # @return Array for valid properties with the reasons
   def list_invalid_properties
     invalid_properties = Array.new
+    if @first_name.nil?
+      invalid_properties.push('invalid value for "first_name", first_name cannot be nil.')
+    end
+
+    if @last_name.nil?
+      invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
+    end
+
+    if @phone_number.nil?
+      invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
+    end
+
     invalid_properties
   end
 
   # Check to see if the all the properties in the model are valid
   # @return true if the model is valid
   def valid?
+    return false if @first_name.nil?
+    return false if @last_name.nil?
+    return false if @phone_number.nil?
     true
   end
 
@@ -117,12 +100,9 @@ class PayoutMethod
   def ==(o)
     return true if self.equal?(o)
     self.class == o.class &&
-        type == o.type &&
-        details == o.details &&
-        metadata == o.metadata &&
-        id == o.id &&
-        errors == o.errors &&
-        fields == o.fields
+        first_name == o.first_name &&
+        last_name == o.last_name &&
+        phone_number == o.phone_number
   end
 
   # @see the `==` method
@@ -134,7 +114,7 @@ class PayoutMethod
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [type, details, metadata, id, errors, fields].hash
+    [first_name, last_name, phone_number].hash
   end
 
 require 'active_support/core_ext/hash'
