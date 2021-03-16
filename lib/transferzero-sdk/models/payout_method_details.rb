@@ -28,6 +28,8 @@ class PayoutMethodDetails
 
   attr_accessor :mobile_provider
 
+  attr_accessor :country
+
   attr_accessor :iban
 
   attr_accessor :bank_name
@@ -35,8 +37,6 @@ class PayoutMethodDetails
   attr_accessor :bank_country
 
   attr_accessor :cash_provider
-
-  attr_accessor :country
 
   attr_accessor :sort_code
 
@@ -84,11 +84,11 @@ class PayoutMethodDetails
       :'bank_account_type' => :'bank_account_type',
       :'phone_number' => :'phone_number',
       :'mobile_provider' => :'mobile_provider',
+      :'country' => :'country',
       :'iban' => :'iban',
       :'bank_name' => :'bank_name',
       :'bank_country' => :'bank_country',
       :'cash_provider' => :'cash_provider',
-      :'country' => :'country',
       :'sort_code' => :'sort_code',
       :'bic' => :'bic',
       :'sender_identity_card_type' => :'sender_identity_card_type',
@@ -120,11 +120,11 @@ class PayoutMethodDetails
       :'bank_account_type' => :'PayoutMethodBankAccountTypeEnum',
       :'phone_number' => :'String',
       :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
+      :'country' => :'PayoutMethodCountryEnum',
       :'iban' => :'String',
       :'bank_name' => :'String',
       :'bank_country' => :'String',
       :'cash_provider' => :'PayoutMethodCashProviderEnum',
-      :'country' => :'PayoutMethodCountryEnum',
       :'sort_code' => :'String',
       :'bic' => :'String',
       :'sender_identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
@@ -208,6 +208,10 @@ class PayoutMethodDetails
       self.mobile_provider = attributes[:'mobile_provider']
     end
 
+    if attributes.key?(:'country')
+      self.country = attributes[:'country']
+    end
+
     if attributes.key?(:'iban')
       self.iban = attributes[:'iban']
     end
@@ -222,10 +226,6 @@ class PayoutMethodDetails
 
     if attributes.key?(:'cash_provider')
       self.cash_provider = attributes[:'cash_provider']
-    end
-
-    if attributes.key?(:'country')
-      self.country = attributes[:'country']
     end
 
     if attributes.key?(:'sort_code')
@@ -437,11 +437,11 @@ class PayoutMethodDetails
         bank_account_type == o.bank_account_type &&
         phone_number == o.phone_number &&
         mobile_provider == o.mobile_provider &&
+        country == o.country &&
         iban == o.iban &&
         bank_name == o.bank_name &&
         bank_country == o.bank_country &&
         cash_provider == o.cash_provider &&
-        country == o.country &&
         sort_code == o.sort_code &&
         bic == o.bic &&
         sender_identity_card_type == o.sender_identity_card_type &&
@@ -471,7 +471,7 @@ class PayoutMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, iban, bank_name, bank_country, cash_provider, country, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code].hash
+    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, iban, bank_name, bank_country, cash_provider, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code].hash
   end
 
 require 'active_support/core_ext/hash'

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **last_name** | **String** |  | 
 **phone_number** | **String** |  | 
 **mobile_provider** | [**PayoutMethodMobileProviderEnum**](PayoutMethodMobileProviderEnum.md) |  | 
+**country** | [**PayoutMethodCountryEnum**](PayoutMethodCountryEnum.md) |  | [optional] 
 
 ## Code Sample
 
@@ -17,7 +18,8 @@ require 'TransferZero'
 instance = TransferZero::PayoutMethodDetailsXOFMobile.new(first_name: null,
                                  last_name: null,
                                  phone_number: null,
-                                 mobile_provider: null)
+                                 mobile_provider: null,
+                                 country: null)
 ```
 
 

@@ -17,6 +17,7 @@ class PayoutMethodMobileProviderEnum
   
   ORANGE = "orange".freeze
   TIGO = "tigo".freeze
+  MOOV = "moov".freeze
   MTN = "mtn".freeze
   AIRTEL = "airtel".freeze
   VODAFONE = "vodafone".freeze
