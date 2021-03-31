@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"212537718685\"     # Mandatory; International format preferred   \"sender_identity_card_type\" => \"O\",     # Mandatory; Values: \"O\": Other, \"PP\": Passport, \"ID\": National ID   \"sender_identity_card_id\" => 'AB12345678',     # Mandatory   \"sender_city_of_birth\" => \"London\",     # Mandatory   \"sender_country_of_birth\" => \"GB\",     # Mandatory; ISO 2-letter format   \"sender_gender\" => \"M\",     # Mandatory; Values: \"M\": Male, \"F\": Female   \"reason\" => \"Remittance payment\",     # Optional; Default value is 'Remittance payment'   \"identity_card_type\" => \"ID\",     # Optional; Values: \"PP\": Passport, \"ID\": National ID   \"identity_card_id\" => 'AB12345678'     # Optional } ```  Please note when sending MAD::Cash payments you should subscribe to the recipient.pending webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt -  ```JSON {   (...)   \"state\":\"pending\",   \"metadata\": {     \"payment_reference\":\"9M5GJRJUBCY\"   },   (...) } ```  The reference can also be provided optionally for MAD::Cash, but if you want to use this functionality please contact us for more details.
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"212537718685\"     # Mandatory; International format preferred   \"sender_identity_card_type\" => \"O\",     # Mandatory; Values: \"O\": Other, \"PP\": Passport, \"ID\": National ID   \"sender_identity_card_id\" => 'AB12345678',     # Mandatory   \"sender_city_of_birth\" => \"London\",     # Optional   \"sender_country_of_birth\" => \"GB\",     # Optional; ISO 2-letter format   \"sender_gender\" => \"M\",     # Mandatory; Values: \"M\": Male, \"F\": Female   \"reason\" => \"Remittance payment\",     # Optional; Default value is 'Remittance payment'   \"identity_card_type\" => \"ID\",     # Optional; Values: \"PP\": Passport, \"ID\": National ID   \"identity_card_id\" => 'AB12345678'     # Optional } ```  Please note when sending MAD::Cash payments you should subscribe to the recipient.pending webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt -  ```JSON {   (...)   \"state\":\"pending\",   \"metadata\": {     \"payment_reference\":\"9M5GJRJUBCY\"   },   (...) } ```  The reference can also be provided optionally for MAD::Cash, but if you want to use this functionality please contact us for more details.
 class PayoutMethodDetailsMADCash
   attr_accessor :first_name
 
@@ -155,14 +155,6 @@ class PayoutMethodDetailsMADCash
       invalid_properties.push('invalid value for "sender_identity_card_id", sender_identity_card_id cannot be nil.')
     end
 
-    if @sender_city_of_birth.nil?
-      invalid_properties.push('invalid value for "sender_city_of_birth", sender_city_of_birth cannot be nil.')
-    end
-
-    if @sender_country_of_birth.nil?
-      invalid_properties.push('invalid value for "sender_country_of_birth", sender_country_of_birth cannot be nil.')
-    end
-
     if @sender_gender.nil?
       invalid_properties.push('invalid value for "sender_gender", sender_gender cannot be nil.')
     end
@@ -178,8 +170,6 @@ class PayoutMethodDetailsMADCash
     return false if @phone_number.nil?
     return false if @sender_identity_card_type.nil?
     return false if @sender_identity_card_id.nil?
-    return false if @sender_city_of_birth.nil?
-    return false if @sender_country_of_birth.nil?
     return false if @sender_gender.nil?
     true
   end

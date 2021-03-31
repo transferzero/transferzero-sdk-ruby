@@ -20,8 +20,8 @@ Name | Type | Description | Notes
 **bic** | **String** |  | [optional] 
 **sender_identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | 
 **sender_identity_card_id** | **String** |  | 
-**sender_city_of_birth** | **String** |  | 
-**sender_country_of_birth** | **String** |  | 
+**sender_city_of_birth** | **String** |  | [optional] 
+**sender_country_of_birth** | **String** |  | [optional] 
 **sender_gender** | [**PayoutMethodGenderEnum**](PayoutMethodGenderEnum.md) |  | 
 **reason** | **String** |  | [optional] 
 **identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | [optional] 
