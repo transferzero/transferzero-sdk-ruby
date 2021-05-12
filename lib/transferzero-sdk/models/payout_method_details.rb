@@ -349,10 +349,6 @@ class PayoutMethodDetails
       invalid_properties.push('invalid value for "sender_identity_card_id", sender_identity_card_id cannot be nil.')
     end
 
-    if @sender_gender.nil?
-      invalid_properties.push('invalid value for "sender_gender", sender_gender cannot be nil.')
-    end
-
     if @name.nil?
       invalid_properties.push('invalid value for "name", name cannot be nil.')
     end
@@ -390,7 +386,6 @@ class PayoutMethodDetails
     return false if @bank_country.nil?
     return false if @sender_identity_card_type.nil?
     return false if @sender_identity_card_id.nil?
-    return false if @sender_gender.nil?
     return false if @name.nil?
     return false if @address.nil?
     return false if @street.nil?

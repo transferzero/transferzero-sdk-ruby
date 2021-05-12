@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **sender_identity_card_id** | **String** |  | 
 **sender_city_of_birth** | **String** |  | [optional] 
 **sender_country_of_birth** | **String** |  | [optional] 
-**sender_gender** | [**PayoutMethodGenderEnum**](PayoutMethodGenderEnum.md) |  | 
+**sender_gender** | [**PayoutMethodGenderEnum**](PayoutMethodGenderEnum.md) |  | [optional] 
 **reason** | **String** |  | [optional] 
 **identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | [optional] 
 **identity_card_id** | **String** |  | [optional] 
