@@ -74,6 +74,16 @@ class PayoutMethodDetails
 
   attr_accessor :transfer_reason_code
 
+  attr_accessor :contact_first_name
+
+  attr_accessor :contact_last_name
+
+  attr_accessor :registration_number
+
+  attr_accessor :nature_of_business
+
+  attr_accessor :entity_type
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -106,7 +116,12 @@ class PayoutMethodDetails
       :'postal_code' => :'postal_code',
       :'city' => :'city',
       :'email' => :'email',
-      :'transfer_reason_code' => :'transfer_reason_code'
+      :'transfer_reason_code' => :'transfer_reason_code',
+      :'contact_first_name' => :'contact_first_name',
+      :'contact_last_name' => :'contact_last_name',
+      :'registration_number' => :'registration_number',
+      :'nature_of_business' => :'nature_of_business',
+      :'entity_type' => :'entity_type'
     }
   end
 
@@ -142,7 +157,12 @@ class PayoutMethodDetails
       :'postal_code' => :'String',
       :'city' => :'String',
       :'email' => :'String',
-      :'transfer_reason_code' => :'String'
+      :'transfer_reason_code' => :'String',
+      :'contact_first_name' => :'String',
+      :'contact_last_name' => :'String',
+      :'registration_number' => :'String',
+      :'nature_of_business' => :'String',
+      :'entity_type' => :'PayoutMethodEntityTypeEnum'
     }
   end
 
@@ -299,6 +319,26 @@ class PayoutMethodDetails
     if attributes.key?(:'transfer_reason_code')
       self.transfer_reason_code = attributes[:'transfer_reason_code']
     end
+
+    if attributes.key?(:'contact_first_name')
+      self.contact_first_name = attributes[:'contact_first_name']
+    end
+
+    if attributes.key?(:'contact_last_name')
+      self.contact_last_name = attributes[:'contact_last_name']
+    end
+
+    if attributes.key?(:'registration_number')
+      self.registration_number = attributes[:'registration_number']
+    end
+
+    if attributes.key?(:'nature_of_business')
+      self.nature_of_business = attributes[:'nature_of_business']
+    end
+
+    if attributes.key?(:'entity_type')
+      self.entity_type = attributes[:'entity_type']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -444,7 +484,12 @@ class PayoutMethodDetails
         postal_code == o.postal_code &&
         city == o.city &&
         email == o.email &&
-        transfer_reason_code == o.transfer_reason_code
+        transfer_reason_code == o.transfer_reason_code &&
+        contact_first_name == o.contact_first_name &&
+        contact_last_name == o.contact_last_name &&
+        registration_number == o.registration_number &&
+        nature_of_business == o.nature_of_business &&
+        entity_type == o.entity_type
   end
 
   # @see the `==` method
@@ -456,7 +501,7 @@ class PayoutMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, iban, bank_name, bank_country, cash_provider, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code].hash
+    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, iban, bank_name, bank_country, cash_provider, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, entity_type].hash
   end
 
 require 'active_support/core_ext/hash'

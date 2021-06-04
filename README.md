@@ -213,6 +213,7 @@ Class | Method | HTTP request | Description
  - [TransferZero::PayoutMethodDetailsXOFCash](docs/PayoutMethodDetailsXOFCash.md)
  - [TransferZero::PayoutMethodDetailsXOFMobile](docs/PayoutMethodDetailsXOFMobile.md)
  - [TransferZero::PayoutMethodDetailsZARBank](docs/PayoutMethodDetailsZARBank.md)
+ - [TransferZero::PayoutMethodEntityTypeEnum](docs/PayoutMethodEntityTypeEnum.md)
  - [TransferZero::PayoutMethodGenderEnum](docs/PayoutMethodGenderEnum.md)
  - [TransferZero::PayoutMethodIdentityCardTypeEnum](docs/PayoutMethodIdentityCardTypeEnum.md)
  - [TransferZero::PayoutMethodListResponse](docs/PayoutMethodListResponse.md)

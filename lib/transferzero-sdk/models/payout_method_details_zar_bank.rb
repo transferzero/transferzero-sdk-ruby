@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"street\": \"Main Street\",     \"postal_code\": \"AB0001\",     \"city\": \"Cape Town\",     \"email\": \"recipient@email.com\",     \"bank_code\": \"334810\",     \"bank_account\": \"12345678\",     \"phone_number\": \"+27119785313\",     \"transfer_reason_code\": \"185\"   } ```  See [ZAR Bank](https://docs.transferzero.com/docs/payout-details/#zarbank) documentation for the bank_code and transfer_reason_code lists
+# ```JSON   \"details\": {     \"first_name\": \"First\", //  Mandatory for personal payouts;     \"last_name\": \"Last\", //  Mandatory for personal payouts;     \"name\" \"First Ltd\", // Mandatory for business payouts;     \"contact_first_name\" \"Business\", // Mandatory for business payouts;     \"contact_last_name\" \"Contact\", // Mandatory for business payouts;     \"street\": \"Main Street\",     \"postal_code\": \"AB0001\",     \"city\": \"Cape Town\",     \"email\": \"recipient@email.com\",     \"bank_code\": \"334810\",     \"bank_account\": \"12345678\",     \"phone_number\": \"+27119785313\",     \"transfer_reason_code\": \"185\",     \"entity_type\": \"sole_proprietorship\", // Optional; Default value is \"person\"; Mandatory for business payouts;     \"nature_of_business\": \"Mining\", // Mandatory for business payouts;     \"registration_number\": \"17364BGC\" // Mandatory for business payouts;   } ```  See [ZAR Bank](https://docs.transferzero.com/docs/payout-details/#zarbank) documentation for the bank_code and transfer_reason_code lists
 class PayoutMethodDetailsZARBank
   attr_accessor :first_name
 
@@ -35,6 +35,18 @@ class PayoutMethodDetailsZARBank
 
   attr_accessor :transfer_reason_code
 
+  attr_accessor :name
+
+  attr_accessor :contact_first_name
+
+  attr_accessor :contact_last_name
+
+  attr_accessor :registration_number
+
+  attr_accessor :nature_of_business
+
+  attr_accessor :entity_type
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -47,7 +59,13 @@ class PayoutMethodDetailsZARBank
       :'bank_code' => :'bank_code',
       :'bank_account' => :'bank_account',
       :'phone_number' => :'phone_number',
-      :'transfer_reason_code' => :'transfer_reason_code'
+      :'transfer_reason_code' => :'transfer_reason_code',
+      :'name' => :'name',
+      :'contact_first_name' => :'contact_first_name',
+      :'contact_last_name' => :'contact_last_name',
+      :'registration_number' => :'registration_number',
+      :'nature_of_business' => :'nature_of_business',
+      :'entity_type' => :'entity_type'
     }
   end
 
@@ -63,7 +81,13 @@ class PayoutMethodDetailsZARBank
       :'bank_code' => :'String',
       :'bank_account' => :'String',
       :'phone_number' => :'String',
-      :'transfer_reason_code' => :'String'
+      :'transfer_reason_code' => :'String',
+      :'name' => :'String',
+      :'contact_first_name' => :'String',
+      :'contact_last_name' => :'String',
+      :'registration_number' => :'String',
+      :'nature_of_business' => :'String',
+      :'entity_type' => :'PayoutMethodEntityTypeEnum'
     }
   end
 
@@ -120,6 +144,30 @@ class PayoutMethodDetailsZARBank
 
     if attributes.key?(:'transfer_reason_code')
       self.transfer_reason_code = attributes[:'transfer_reason_code']
+    end
+
+    if attributes.key?(:'name')
+      self.name = attributes[:'name']
+    end
+
+    if attributes.key?(:'contact_first_name')
+      self.contact_first_name = attributes[:'contact_first_name']
+    end
+
+    if attributes.key?(:'contact_last_name')
+      self.contact_last_name = attributes[:'contact_last_name']
+    end
+
+    if attributes.key?(:'registration_number')
+      self.registration_number = attributes[:'registration_number']
+    end
+
+    if attributes.key?(:'nature_of_business')
+      self.nature_of_business = attributes[:'nature_of_business']
+    end
+
+    if attributes.key?(:'entity_type')
+      self.entity_type = attributes[:'entity_type']
     end
   end
 
@@ -190,7 +238,13 @@ class PayoutMethodDetailsZARBank
         bank_code == o.bank_code &&
         bank_account == o.bank_account &&
         phone_number == o.phone_number &&
-        transfer_reason_code == o.transfer_reason_code
+        transfer_reason_code == o.transfer_reason_code &&
+        name == o.name &&
+        contact_first_name == o.contact_first_name &&
+        contact_last_name == o.contact_last_name &&
+        registration_number == o.registration_number &&
+        nature_of_business == o.nature_of_business &&
+        entity_type == o.entity_type
   end
 
   # @see the `==` method
@@ -202,7 +256,7 @@ class PayoutMethodDetailsZARBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, street, postal_code, city, email, bank_code, bank_account, phone_number, transfer_reason_code].hash
+    [first_name, last_name, street, postal_code, city, email, bank_code, bank_account, phone_number, transfer_reason_code, name, contact_first_name, contact_last_name, registration_number, nature_of_business, entity_type].hash
   end
 
 require 'active_support/core_ext/hash'

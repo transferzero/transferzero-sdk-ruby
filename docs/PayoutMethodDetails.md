@@ -34,6 +34,11 @@ Name | Type | Description | Notes
 **city** | **String** |  | 
 **email** | **String** |  | [optional] 
 **transfer_reason_code** | **String** |  | [optional] 
+**contact_first_name** | **String** |  | [optional] 
+**contact_last_name** | **String** |  | [optional] 
+**registration_number** | **String** |  | [optional] 
+**nature_of_business** | **String** |  | [optional] 
+**entity_type** | [**PayoutMethodEntityTypeEnum**](PayoutMethodEntityTypeEnum.md) |  | [optional] 
 
 ## Code Sample
 
@@ -69,7 +74,12 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  postal_code: null,
                                  city: null,
                                  email: null,
-                                 transfer_reason_code: null)
+                                 transfer_reason_code: null,
+                                 contact_first_name: null,
+                                 contact_last_name: null,
+                                 registration_number: null,
+                                 nature_of_business: null,
+                                 entity_type: null)
 ```
 
 
