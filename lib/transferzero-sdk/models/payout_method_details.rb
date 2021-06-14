@@ -82,7 +82,7 @@ class PayoutMethodDetails
 
   attr_accessor :nature_of_business
 
-  attr_accessor :entity_type
+  attr_accessor :legal_entity_type
 
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
@@ -121,7 +121,7 @@ class PayoutMethodDetails
       :'contact_last_name' => :'contact_last_name',
       :'registration_number' => :'registration_number',
       :'nature_of_business' => :'nature_of_business',
-      :'entity_type' => :'entity_type'
+      :'legal_entity_type' => :'legal_entity_type'
     }
   end
 
@@ -161,8 +161,8 @@ class PayoutMethodDetails
       :'contact_first_name' => :'String',
       :'contact_last_name' => :'String',
       :'registration_number' => :'String',
-      :'nature_of_business' => :'String',
-      :'entity_type' => :'PayoutMethodEntityTypeEnum'
+      :'nature_of_business' => :'PayoutMethodNatureOfBusinessEnum',
+      :'legal_entity_type' => :'PayoutMethodLegalEntityTypeEnum'
     }
   end
 
@@ -336,8 +336,8 @@ class PayoutMethodDetails
       self.nature_of_business = attributes[:'nature_of_business']
     end
 
-    if attributes.key?(:'entity_type')
-      self.entity_type = attributes[:'entity_type']
+    if attributes.key?(:'legal_entity_type')
+      self.legal_entity_type = attributes[:'legal_entity_type']
     end
   end
 
@@ -489,7 +489,7 @@ class PayoutMethodDetails
         contact_last_name == o.contact_last_name &&
         registration_number == o.registration_number &&
         nature_of_business == o.nature_of_business &&
-        entity_type == o.entity_type
+        legal_entity_type == o.legal_entity_type
   end
 
   # @see the `==` method
@@ -501,7 +501,7 @@ class PayoutMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, iban, bank_name, bank_country, cash_provider, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, entity_type].hash
+    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, iban, bank_name, bank_country, cash_provider, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type].hash
   end
 
 require 'active_support/core_ext/hash'

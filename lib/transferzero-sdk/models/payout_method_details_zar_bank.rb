@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"first_name\": \"First\", //  Mandatory for personal payouts;     \"last_name\": \"Last\", //  Mandatory for personal payouts;     \"name\" \"First Ltd\", // Mandatory for business payouts;     \"contact_first_name\" \"Business\", // Mandatory for business payouts;     \"contact_last_name\" \"Contact\", // Mandatory for business payouts;     \"street\": \"Main Street\",     \"postal_code\": \"AB0001\",     \"city\": \"Cape Town\",     \"email\": \"recipient@email.com\",     \"bank_code\": \"334810\",     \"bank_account\": \"12345678\",     \"phone_number\": \"+27119785313\",     \"transfer_reason_code\": \"185\",     \"entity_type\": \"sole_proprietorship\", // Optional; Default value is \"person\"; Mandatory for business payouts;     \"nature_of_business\": \"Mining\", // Mandatory for business payouts;     \"registration_number\": \"17364BGC\" // Mandatory for business payouts;   } ```  See [ZAR Bank](https://docs.transferzero.com/docs/payout-details/#zarbank) documentation for the bank_code and transfer_reason_code lists
+# ```JSON   \"details\": {     \"first_name\": \"First\", //  Mandatory for personal payouts;     \"last_name\": \"Last\", //  Mandatory for personal payouts;     \"name\" \"First Ltd\", // Mandatory for business payouts;     \"contact_first_name\" \"Business\", // Mandatory for business payouts;     \"contact_last_name\" \"Contact\", // Mandatory for business payouts;     \"street\": \"Main Street\",     \"postal_code\": \"AB0001\",     \"city\": \"Cape Town\",     \"email\": \"recipient@email.com\",     \"bank_code\": \"334810\",     \"bank_account\": \"12345678\",     \"phone_number\": \"+27119785313\",     \"transfer_reason_code\": \"185\",     \"legal_entity_type\": \"sole_proprietorship\", // Optional; Default value is \"person\"; Mandatory for business payouts;     \"nature_of_business\": \"Mining\", // Optional for business payouts;     \"registration_number\": \"17364BGC\" // Optional for business payouts;   } ```  See [ZAR Bank](https://docs.transferzero.com/docs/payout-details/#zarbank) documentation for the bank_code and transfer_reason_code lists
 class PayoutMethodDetailsZARBank
   attr_accessor :first_name
 
@@ -45,7 +45,7 @@ class PayoutMethodDetailsZARBank
 
   attr_accessor :nature_of_business
 
-  attr_accessor :entity_type
+  attr_accessor :legal_entity_type
 
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
@@ -65,7 +65,7 @@ class PayoutMethodDetailsZARBank
       :'contact_last_name' => :'contact_last_name',
       :'registration_number' => :'registration_number',
       :'nature_of_business' => :'nature_of_business',
-      :'entity_type' => :'entity_type'
+      :'legal_entity_type' => :'legal_entity_type'
     }
   end
 
@@ -86,8 +86,8 @@ class PayoutMethodDetailsZARBank
       :'contact_first_name' => :'String',
       :'contact_last_name' => :'String',
       :'registration_number' => :'String',
-      :'nature_of_business' => :'String',
-      :'entity_type' => :'PayoutMethodEntityTypeEnum'
+      :'nature_of_business' => :'PayoutMethodNatureOfBusinessEnum',
+      :'legal_entity_type' => :'PayoutMethodLegalEntityTypeEnum'
     }
   end
 
@@ -166,8 +166,8 @@ class PayoutMethodDetailsZARBank
       self.nature_of_business = attributes[:'nature_of_business']
     end
 
-    if attributes.key?(:'entity_type')
-      self.entity_type = attributes[:'entity_type']
+    if attributes.key?(:'legal_entity_type')
+      self.legal_entity_type = attributes[:'legal_entity_type']
     end
   end
 
@@ -244,7 +244,7 @@ class PayoutMethodDetailsZARBank
         contact_last_name == o.contact_last_name &&
         registration_number == o.registration_number &&
         nature_of_business == o.nature_of_business &&
-        entity_type == o.entity_type
+        legal_entity_type == o.legal_entity_type
   end
 
   # @see the `==` method
@@ -256,7 +256,7 @@ class PayoutMethodDetailsZARBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, street, postal_code, city, email, bank_code, bank_account, phone_number, transfer_reason_code, name, contact_first_name, contact_last_name, registration_number, nature_of_business, entity_type].hash
+    [first_name, last_name, street, postal_code, city, email, bank_code, bank_account, phone_number, transfer_reason_code, name, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type].hash
   end
 
 require 'active_support/core_ext/hash'

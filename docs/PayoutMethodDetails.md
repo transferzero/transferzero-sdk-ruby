@@ -37,8 +37,8 @@ Name | Type | Description | Notes
 **contact_first_name** | **String** |  | [optional] 
 **contact_last_name** | **String** |  | [optional] 
 **registration_number** | **String** |  | [optional] 
-**nature_of_business** | **String** |  | [optional] 
-**entity_type** | [**PayoutMethodEntityTypeEnum**](PayoutMethodEntityTypeEnum.md) |  | [optional] 
+**nature_of_business** | [**PayoutMethodNatureOfBusinessEnum**](PayoutMethodNatureOfBusinessEnum.md) |  | [optional] 
+**legal_entity_type** | [**PayoutMethodLegalEntityTypeEnum**](PayoutMethodLegalEntityTypeEnum.md) |  | [optional] 
 
 ## Code Sample
 
@@ -79,7 +79,7 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  contact_last_name: null,
                                  registration_number: null,
                                  nature_of_business: null,
-                                 entity_type: null)
+                                 legal_entity_type: null)
 ```
 
 
