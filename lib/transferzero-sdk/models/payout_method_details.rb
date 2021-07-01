@@ -135,7 +135,7 @@ class PayoutMethodDetails
       :'bank_account_type' => :'PayoutMethodBankAccountTypeEnum',
       :'phone_number' => :'String',
       :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
-      :'country' => :'PayoutMethodCountryEnum',
+      :'country' => :'PayoutMethodCountryEnumUSDBank',
       :'iban' => :'String',
       :'bank_name' => :'String',
       :'bank_country' => :'String',
@@ -178,6 +178,7 @@ class PayoutMethodDetails
     :'PayoutMethodDetailsMADCash',
     :'PayoutMethodDetailsMobile',
     :'PayoutMethodDetailsNGNBank',
+    :'PayoutMethodDetailsUSDBank',
     :'PayoutMethodDetailsXOFBank',
     :'PayoutMethodDetailsXOFCash',
     :'PayoutMethodDetailsXOFMobile',
@@ -369,6 +370,10 @@ class PayoutMethodDetails
       invalid_properties.push('invalid value for "mobile_provider", mobile_provider cannot be nil.')
     end
 
+    if @country.nil?
+      invalid_properties.push('invalid value for "country", country cannot be nil.')
+    end
+
     if @iban.nil?
       invalid_properties.push('invalid value for "iban", iban cannot be nil.')
     end
@@ -421,6 +426,7 @@ class PayoutMethodDetails
     return false if @bank_account.nil?
     return false if @phone_number.nil?
     return false if @mobile_provider.nil?
+    return false if @country.nil?
     return false if @iban.nil?
     return false if @bank_name.nil?
     return false if @bank_country.nil?
