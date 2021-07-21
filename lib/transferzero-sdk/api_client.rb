@@ -35,7 +35,7 @@ module TransferZero
     # @option config [Configuration] Configuration for initializing the object, default to Configuration.default
     def initialize(config = Configuration.default)
       @config = config
-      @user_agent = "TransferZero-SDK/Ruby/1.14.1"
+      @user_agent = "TransferZero-SDK/Ruby/1.14.2"
       @default_headers = {
         'Content-Type' => 'application/json',
         'User-Agent' => @user_agent
@@ -199,7 +199,7 @@ module TransferZero
         nonce,
         'POST',
         url,
-        DIGEST.hexdigest(body.to_s.gsub(/[[:space:]]+/, ' ').strip)
+        DIGEST.hexdigest(body.to_s)
       ])
 
       header_signature == signature
