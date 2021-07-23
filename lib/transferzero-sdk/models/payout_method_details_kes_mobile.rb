@@ -13,39 +13,23 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"first_name\": \"First\", //  Mandatory for personal payouts;     \"last_name\": \"Last\", //  Mandatory for personal payouts;     \"name\" \"First Ltd\", // Mandatory for business payouts;     \"contact_first_name\" \"Business\", // Mandatory for business payouts;     \"contact_last_name\" \"Contact\", // Mandatory for business payouts;     \"street\": \"Main Street\",     \"postal_code\": \"AB0001\",     \"city\": \"Cape Town\",     \"email\": \"recipient@email.com\",     \"bank_name\" 'Bank Zero', // Optional     \"bank_code\": \"334810\",     \"bank_account\": \"12345678\",     \"phone_number\": \"+27119785313\",     \"transfer_reason_code\": \"185\",     \"legal_entity_type\": \"sole_proprietorship\", // Optional; Default value is \"person\"; Mandatory for business payouts;     \"nature_of_business\": \"mining\", // Optional for business payouts;     \"registration_number\": \"17364BGC\" // Optional for business payouts;   } ```  See [ZAR Bank](https://docs.transferzero.com/docs/payout-details/#zarbank) documentation for the bank_code and transfer_reason_code lists
-class PayoutMethodDetailsZARBank
+# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"street\": \"Main Street\",     \"phone_number\": \"+254997853134\",     \"mobile_provider\": \"mpesa\",     \"transfer_reason_code\": \"185\",     \"identity_card_type\": \"ID\",     \"identity_card_id\": \"AB12345678\"   } ```  See [KES Mobile](https://docs.transferzero.com/docs/payout-details/#kesmobile) documentation for transfer_reason_code lists
+class PayoutMethodDetailsKESMobile
   attr_accessor :first_name
 
   attr_accessor :last_name
 
   attr_accessor :street
 
-  attr_accessor :postal_code
-
-  attr_accessor :city
-
-  attr_accessor :email
-
-  attr_accessor :bank_code
-
-  attr_accessor :bank_account
-
   attr_accessor :phone_number
+
+  attr_accessor :mobile_provider
 
   attr_accessor :transfer_reason_code
 
-  attr_accessor :name
+  attr_accessor :identity_card_type
 
-  attr_accessor :contact_first_name
-
-  attr_accessor :contact_last_name
-
-  attr_accessor :registration_number
-
-  attr_accessor :nature_of_business
-
-  attr_accessor :legal_entity_type
+  attr_accessor :identity_card_id
 
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
@@ -53,19 +37,11 @@ class PayoutMethodDetailsZARBank
       :'first_name' => :'first_name',
       :'last_name' => :'last_name',
       :'street' => :'street',
-      :'postal_code' => :'postal_code',
-      :'city' => :'city',
-      :'email' => :'email',
-      :'bank_code' => :'bank_code',
-      :'bank_account' => :'bank_account',
       :'phone_number' => :'phone_number',
+      :'mobile_provider' => :'mobile_provider',
       :'transfer_reason_code' => :'transfer_reason_code',
-      :'name' => :'name',
-      :'contact_first_name' => :'contact_first_name',
-      :'contact_last_name' => :'contact_last_name',
-      :'registration_number' => :'registration_number',
-      :'nature_of_business' => :'nature_of_business',
-      :'legal_entity_type' => :'legal_entity_type'
+      :'identity_card_type' => :'identity_card_type',
+      :'identity_card_id' => :'identity_card_id'
     }
   end
 
@@ -75,19 +51,11 @@ class PayoutMethodDetailsZARBank
       :'first_name' => :'String',
       :'last_name' => :'String',
       :'street' => :'String',
-      :'postal_code' => :'String',
-      :'city' => :'String',
-      :'email' => :'String',
-      :'bank_code' => :'String',
-      :'bank_account' => :'String',
       :'phone_number' => :'String',
+      :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
       :'transfer_reason_code' => :'String',
-      :'name' => :'String',
-      :'contact_first_name' => :'String',
-      :'contact_last_name' => :'String',
-      :'registration_number' => :'String',
-      :'nature_of_business' => :'PayoutMethodNatureOfBusinessEnum',
-      :'legal_entity_type' => :'PayoutMethodLegalEntityTypeEnum'
+      :'identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
+      :'identity_card_id' => :'String'
     }
   end
 
@@ -95,13 +63,13 @@ class PayoutMethodDetailsZARBank
   # @param [Hash] attributes Model attributes in the form of hash
   def initialize(attributes = {})
     if (!attributes.is_a?(Hash))
-      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsZARBank` initialize method"
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsKESMobile` initialize method"
     end
 
     # check to see if the attribute exists and convert string to symbol for hash key
     attributes = attributes.each_with_object({}) { |(k, v), h|
       if (!self.class.attribute_map.key?(k.to_sym))
-        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsZARBank`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsKESMobile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
       h[k.to_sym] = v
     }
@@ -118,56 +86,24 @@ class PayoutMethodDetailsZARBank
       self.street = attributes[:'street']
     end
 
-    if attributes.key?(:'postal_code')
-      self.postal_code = attributes[:'postal_code']
-    end
-
-    if attributes.key?(:'city')
-      self.city = attributes[:'city']
-    end
-
-    if attributes.key?(:'email')
-      self.email = attributes[:'email']
-    end
-
-    if attributes.key?(:'bank_code')
-      self.bank_code = attributes[:'bank_code']
-    end
-
-    if attributes.key?(:'bank_account')
-      self.bank_account = attributes[:'bank_account']
-    end
-
     if attributes.key?(:'phone_number')
       self.phone_number = attributes[:'phone_number']
+    end
+
+    if attributes.key?(:'mobile_provider')
+      self.mobile_provider = attributes[:'mobile_provider']
     end
 
     if attributes.key?(:'transfer_reason_code')
       self.transfer_reason_code = attributes[:'transfer_reason_code']
     end
 
-    if attributes.key?(:'name')
-      self.name = attributes[:'name']
+    if attributes.key?(:'identity_card_type')
+      self.identity_card_type = attributes[:'identity_card_type']
     end
 
-    if attributes.key?(:'contact_first_name')
-      self.contact_first_name = attributes[:'contact_first_name']
-    end
-
-    if attributes.key?(:'contact_last_name')
-      self.contact_last_name = attributes[:'contact_last_name']
-    end
-
-    if attributes.key?(:'registration_number')
-      self.registration_number = attributes[:'registration_number']
-    end
-
-    if attributes.key?(:'nature_of_business')
-      self.nature_of_business = attributes[:'nature_of_business']
-    end
-
-    if attributes.key?(:'legal_entity_type')
-      self.legal_entity_type = attributes[:'legal_entity_type']
+    if attributes.key?(:'identity_card_id')
+      self.identity_card_id = attributes[:'identity_card_id']
     end
   end
 
@@ -187,24 +123,24 @@ class PayoutMethodDetailsZARBank
       invalid_properties.push('invalid value for "street", street cannot be nil.')
     end
 
-    if @postal_code.nil?
-      invalid_properties.push('invalid value for "postal_code", postal_code cannot be nil.')
-    end
-
-    if @city.nil?
-      invalid_properties.push('invalid value for "city", city cannot be nil.')
-    end
-
-    if @bank_code.nil?
-      invalid_properties.push('invalid value for "bank_code", bank_code cannot be nil.')
-    end
-
-    if @bank_account.nil?
-      invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
-    end
-
     if @phone_number.nil?
       invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
+    end
+
+    if @mobile_provider.nil?
+      invalid_properties.push('invalid value for "mobile_provider", mobile_provider cannot be nil.')
+    end
+
+    if @transfer_reason_code.nil?
+      invalid_properties.push('invalid value for "transfer_reason_code", transfer_reason_code cannot be nil.')
+    end
+
+    if @identity_card_type.nil?
+      invalid_properties.push('invalid value for "identity_card_type", identity_card_type cannot be nil.')
+    end
+
+    if @identity_card_id.nil?
+      invalid_properties.push('invalid value for "identity_card_id", identity_card_id cannot be nil.')
     end
 
     invalid_properties
@@ -216,11 +152,11 @@ class PayoutMethodDetailsZARBank
     return false if @first_name.nil?
     return false if @last_name.nil?
     return false if @street.nil?
-    return false if @postal_code.nil?
-    return false if @city.nil?
-    return false if @bank_code.nil?
-    return false if @bank_account.nil?
     return false if @phone_number.nil?
+    return false if @mobile_provider.nil?
+    return false if @transfer_reason_code.nil?
+    return false if @identity_card_type.nil?
+    return false if @identity_card_id.nil?
     true
   end
 
@@ -232,19 +168,11 @@ class PayoutMethodDetailsZARBank
         first_name == o.first_name &&
         last_name == o.last_name &&
         street == o.street &&
-        postal_code == o.postal_code &&
-        city == o.city &&
-        email == o.email &&
-        bank_code == o.bank_code &&
-        bank_account == o.bank_account &&
         phone_number == o.phone_number &&
+        mobile_provider == o.mobile_provider &&
         transfer_reason_code == o.transfer_reason_code &&
-        name == o.name &&
-        contact_first_name == o.contact_first_name &&
-        contact_last_name == o.contact_last_name &&
-        registration_number == o.registration_number &&
-        nature_of_business == o.nature_of_business &&
-        legal_entity_type == o.legal_entity_type
+        identity_card_type == o.identity_card_type &&
+        identity_card_id == o.identity_card_id
   end
 
   # @see the `==` method
@@ -256,7 +184,7 @@ class PayoutMethodDetailsZARBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, street, postal_code, city, email, bank_code, bank_account, phone_number, transfer_reason_code, name, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type].hash
+    [first_name, last_name, street, phone_number, mobile_provider, transfer_reason_code, identity_card_type, identity_card_id].hash
   end
 
 require 'active_support/core_ext/hash'

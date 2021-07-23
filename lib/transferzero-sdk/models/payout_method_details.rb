@@ -84,6 +84,10 @@ class PayoutMethodDetails
 
   attr_accessor :legal_entity_type
 
+  attr_accessor :branch_code
+
+  attr_accessor :swift_code
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -121,7 +125,9 @@ class PayoutMethodDetails
       :'contact_last_name' => :'contact_last_name',
       :'registration_number' => :'registration_number',
       :'nature_of_business' => :'nature_of_business',
-      :'legal_entity_type' => :'legal_entity_type'
+      :'legal_entity_type' => :'legal_entity_type',
+      :'branch_code' => :'branch_code',
+      :'swift_code' => :'swift_code'
     }
   end
 
@@ -162,7 +168,9 @@ class PayoutMethodDetails
       :'contact_last_name' => :'String',
       :'registration_number' => :'String',
       :'nature_of_business' => :'PayoutMethodNatureOfBusinessEnum',
-      :'legal_entity_type' => :'PayoutMethodLegalEntityTypeEnum'
+      :'legal_entity_type' => :'PayoutMethodLegalEntityTypeEnum',
+      :'branch_code' => :'String',
+      :'swift_code' => :'String'
     }
   end
 
@@ -175,6 +183,8 @@ class PayoutMethodDetails
     :'PayoutMethodDetailsGHSBank',
     :'PayoutMethodDetailsGHSCash',
     :'PayoutMethodDetailsIBAN',
+    :'PayoutMethodDetailsKESBank',
+    :'PayoutMethodDetailsKESMobile',
     :'PayoutMethodDetailsMADCash',
     :'PayoutMethodDetailsMobile',
     :'PayoutMethodDetailsNGNBank',
@@ -340,6 +350,14 @@ class PayoutMethodDetails
     if attributes.key?(:'legal_entity_type')
       self.legal_entity_type = attributes[:'legal_entity_type']
     end
+
+    if attributes.key?(:'branch_code')
+      self.branch_code = attributes[:'branch_code']
+    end
+
+    if attributes.key?(:'swift_code')
+      self.swift_code = attributes[:'swift_code']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -394,6 +412,14 @@ class PayoutMethodDetails
       invalid_properties.push('invalid value for "sender_identity_card_id", sender_identity_card_id cannot be nil.')
     end
 
+    if @identity_card_type.nil?
+      invalid_properties.push('invalid value for "identity_card_type", identity_card_type cannot be nil.')
+    end
+
+    if @identity_card_id.nil?
+      invalid_properties.push('invalid value for "identity_card_id", identity_card_id cannot be nil.')
+    end
+
     if @name.nil?
       invalid_properties.push('invalid value for "name", name cannot be nil.')
     end
@@ -414,6 +440,14 @@ class PayoutMethodDetails
       invalid_properties.push('invalid value for "city", city cannot be nil.')
     end
 
+    if @transfer_reason_code.nil?
+      invalid_properties.push('invalid value for "transfer_reason_code", transfer_reason_code cannot be nil.')
+    end
+
+    if @swift_code.nil?
+      invalid_properties.push('invalid value for "swift_code", swift_code cannot be nil.')
+    end
+
     invalid_properties
   end
 
@@ -432,11 +466,15 @@ class PayoutMethodDetails
     return false if @bank_country.nil?
     return false if @sender_identity_card_type.nil?
     return false if @sender_identity_card_id.nil?
+    return false if @identity_card_type.nil?
+    return false if @identity_card_id.nil?
     return false if @name.nil?
     return false if @address.nil?
     return false if @street.nil?
     return false if @postal_code.nil?
     return false if @city.nil?
+    return false if @transfer_reason_code.nil?
+    return false if @swift_code.nil?
     _one_of_found = false
     openapi_one_of.each do |_class|
       _one_of = TransferZero.const_get(_class).build_from_hash(self.to_hash)
@@ -495,7 +533,9 @@ class PayoutMethodDetails
         contact_last_name == o.contact_last_name &&
         registration_number == o.registration_number &&
         nature_of_business == o.nature_of_business &&
-        legal_entity_type == o.legal_entity_type
+        legal_entity_type == o.legal_entity_type &&
+        branch_code == o.branch_code &&
+        swift_code == o.swift_code
   end
 
   # @see the `==` method
@@ -507,7 +547,7 @@ class PayoutMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, iban, bank_name, bank_country, cash_provider, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type].hash
+    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, iban, bank_name, bank_country, cash_provider, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type, branch_code, swift_code].hash
   end
 
 require 'active_support/core_ext/hash'

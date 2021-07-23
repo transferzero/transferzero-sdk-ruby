@@ -24,8 +24,8 @@ Name | Type | Description | Notes
 **sender_country_of_birth** | **String** |  | [optional] 
 **sender_gender** | [**PayoutMethodGenderEnum**](PayoutMethodGenderEnum.md) |  | [optional] 
 **reason** | **String** |  | [optional] 
-**identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | [optional] 
-**identity_card_id** | **String** |  | [optional] 
+**identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | 
+**identity_card_id** | **String** |  | 
 **reference** | **String** |  | [optional] 
 **name** | **String** |  | 
 **address** | **String** |  | 
@@ -33,12 +33,14 @@ Name | Type | Description | Notes
 **postal_code** | **String** |  | 
 **city** | **String** |  | 
 **email** | **String** |  | [optional] 
-**transfer_reason_code** | **String** |  | [optional] 
+**transfer_reason_code** | **String** |  | 
 **contact_first_name** | **String** |  | [optional] 
 **contact_last_name** | **String** |  | [optional] 
 **registration_number** | **String** |  | [optional] 
 **nature_of_business** | [**PayoutMethodNatureOfBusinessEnum**](PayoutMethodNatureOfBusinessEnum.md) |  | [optional] 
 **legal_entity_type** | [**PayoutMethodLegalEntityTypeEnum**](PayoutMethodLegalEntityTypeEnum.md) |  | [optional] 
+**branch_code** | **String** |  | [optional] 
+**swift_code** | **String** |  | 
 
 ## Code Sample
 
@@ -79,7 +81,9 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  contact_last_name: null,
                                  registration_number: null,
                                  nature_of_business: null,
-                                 legal_entity_type: null)
+                                 legal_entity_type: null,
+                                 branch_code: null,
+                                 swift_code: null)
 ```
 
 

@@ -207,6 +207,8 @@ Class | Method | HTTP request | Description
  - [TransferZero::PayoutMethodDetailsGHSBank](docs/PayoutMethodDetailsGHSBank.md)
  - [TransferZero::PayoutMethodDetailsGHSCash](docs/PayoutMethodDetailsGHSCash.md)
  - [TransferZero::PayoutMethodDetailsIBAN](docs/PayoutMethodDetailsIBAN.md)
+ - [TransferZero::PayoutMethodDetailsKESBank](docs/PayoutMethodDetailsKESBank.md)
+ - [TransferZero::PayoutMethodDetailsKESMobile](docs/PayoutMethodDetailsKESMobile.md)
  - [TransferZero::PayoutMethodDetailsMADCash](docs/PayoutMethodDetailsMADCash.md)
  - [TransferZero::PayoutMethodDetailsMobile](docs/PayoutMethodDetailsMobile.md)
  - [TransferZero::PayoutMethodDetailsNGNBank](docs/PayoutMethodDetailsNGNBank.md)
