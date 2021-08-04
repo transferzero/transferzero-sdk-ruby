@@ -7,8 +7,9 @@ Name | Type | Description | Notes
 **first_name** | **String** |  | 
 **last_name** | **String** |  | 
 **iban** | **String** |  | 
-**bank_name** | **String** |  | 
-**bank_country** | **String** |  | 
+**bank_name** | **String** |  | [optional] 
+**bank_country** | **String** |  | [optional] 
+**bank_code** | **String** |  | [optional] 
 
 ## Code Sample
 
@@ -19,7 +20,8 @@ instance = TransferZero::PayoutMethodDetailsXOFBank.new(first_name: null,
                                  last_name: null,
                                  iban: null,
                                  bank_name: null,
-                                 bank_country: null)
+                                 bank_country: null,
+                                 bank_code: null)
 ```
 
 

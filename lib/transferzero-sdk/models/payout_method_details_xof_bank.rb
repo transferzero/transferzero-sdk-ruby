@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"iban\": \"SN08SN0000000000000000000000\",   \"bank_name\": \"BRM\",   \"bank_country\": \"SN\" # ISO country code for Senegal } ```
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"iban\": \"BJ0610100100144390000769\", # BBAN format   \"bank_name\": \"Bank Of Africa Bénin\",   \"bank_country\": \"BJ\", # ISO country code for Benin   \"bank_code\": \"BJ061\" } ```  See [XOF Bank](https://docs.transferzero.com/docs/payout-details/#xofbank) documentation for the bank_code list
 class PayoutMethodDetailsXOFBank
   attr_accessor :first_name
 
@@ -25,6 +25,8 @@ class PayoutMethodDetailsXOFBank
 
   attr_accessor :bank_country
 
+  attr_accessor :bank_code
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -32,7 +34,8 @@ class PayoutMethodDetailsXOFBank
       :'last_name' => :'last_name',
       :'iban' => :'iban',
       :'bank_name' => :'bank_name',
-      :'bank_country' => :'bank_country'
+      :'bank_country' => :'bank_country',
+      :'bank_code' => :'bank_code'
     }
   end
 
@@ -43,7 +46,8 @@ class PayoutMethodDetailsXOFBank
       :'last_name' => :'String',
       :'iban' => :'String',
       :'bank_name' => :'String',
-      :'bank_country' => :'String'
+      :'bank_country' => :'String',
+      :'bank_code' => :'String'
     }
   end
 
@@ -81,6 +85,10 @@ class PayoutMethodDetailsXOFBank
     if attributes.key?(:'bank_country')
       self.bank_country = attributes[:'bank_country']
     end
+
+    if attributes.key?(:'bank_code')
+      self.bank_code = attributes[:'bank_code']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -99,14 +107,6 @@ class PayoutMethodDetailsXOFBank
       invalid_properties.push('invalid value for "iban", iban cannot be nil.')
     end
 
-    if @bank_name.nil?
-      invalid_properties.push('invalid value for "bank_name", bank_name cannot be nil.')
-    end
-
-    if @bank_country.nil?
-      invalid_properties.push('invalid value for "bank_country", bank_country cannot be nil.')
-    end
-
     invalid_properties
   end
 
@@ -116,8 +116,6 @@ class PayoutMethodDetailsXOFBank
     return false if @first_name.nil?
     return false if @last_name.nil?
     return false if @iban.nil?
-    return false if @bank_name.nil?
-    return false if @bank_country.nil?
     true
   end
 
@@ -130,7 +128,8 @@ class PayoutMethodDetailsXOFBank
         last_name == o.last_name &&
         iban == o.iban &&
         bank_name == o.bank_name &&
-        bank_country == o.bank_country
+        bank_country == o.bank_country &&
+        bank_code == o.bank_code
   end
 
   # @see the `==` method
@@ -142,7 +141,7 @@ class PayoutMethodDetailsXOFBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, iban, bank_name, bank_country].hash
+    [first_name, last_name, iban, bank_name, bank_country, bank_code].hash
   end
 
 require 'active_support/core_ext/hash'

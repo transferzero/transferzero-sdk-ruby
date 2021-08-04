@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **country** | [**PayoutMethodCountryEnumUSDBank**](PayoutMethodCountryEnumUSDBank.md) |  | 
 **iban** | **String** |  | 
 **bank_name** | **String** |  | 
-**bank_country** | **String** |  | 
+**bank_country** | **String** |  | [optional] 
 **cash_provider** | [**PayoutMethodCashProviderEnum**](PayoutMethodCashProviderEnum.md) |  | [optional] 
 **sort_code** | **String** |  | [optional] 
 **bic** | **String** |  | [optional] 

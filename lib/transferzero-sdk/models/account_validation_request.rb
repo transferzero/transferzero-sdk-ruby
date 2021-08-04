@@ -20,6 +20,9 @@ class AccountValidationRequest
   # Bank Code to query - same codes are used as for creating the transactions
   attr_accessor :bank_code
 
+  # IBAN to query - BBAN format for XOF bank accounts
+  attr_accessor :iban
+
   # Phone number to query
   attr_accessor :phone_number
 
@@ -61,6 +64,7 @@ class AccountValidationRequest
     {
       :'bank_account' => :'bank_account',
       :'bank_code' => :'bank_code',
+      :'iban' => :'iban',
       :'phone_number' => :'phone_number',
       :'mobile_provider' => :'mobile_provider',
       :'country' => :'country',
@@ -74,6 +78,7 @@ class AccountValidationRequest
     {
       :'bank_account' => :'String',
       :'bank_code' => :'String',
+      :'iban' => :'String',
       :'phone_number' => :'String',
       :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
       :'country' => :'String',
@@ -103,6 +108,10 @@ class AccountValidationRequest
 
     if attributes.key?(:'bank_code')
       self.bank_code = attributes[:'bank_code']
+    end
+
+    if attributes.key?(:'iban')
+      self.iban = attributes[:'iban']
     end
 
     if attributes.key?(:'phone_number')
@@ -149,7 +158,7 @@ class AccountValidationRequest
   # @return true if the model is valid
   def valid?
     return false if @country.nil?
-    country_validator = EnumAttributeValidator.new('String', ["NG", "GH", "SN"])
+    country_validator = EnumAttributeValidator.new('String', ["NG", "GH", "SN", "CI"])
     return false unless country_validator.valid?(@country)
     return false if @currency.nil?
     currency_validator = EnumAttributeValidator.new('String', ["NGN", "GHS", "XOF"])
@@ -163,7 +172,7 @@ class AccountValidationRequest
   # Custom attribute writer method checking allowed values (enum).
   # @param [Object] country Object to be assigned
   def country=(country)
-    validator = EnumAttributeValidator.new('String', ["NG", "GH", "SN"])
+    validator = EnumAttributeValidator.new('String', ["NG", "GH", "SN", "CI"])
     unless validator.valid?(country) || country.empty?
       fail ArgumentError, "invalid value for \"country\", must be one of #{validator.allowable_values}."
     end
@@ -197,6 +206,7 @@ class AccountValidationRequest
     self.class == o.class &&
         bank_account == o.bank_account &&
         bank_code == o.bank_code &&
+        iban == o.iban &&
         phone_number == o.phone_number &&
         mobile_provider == o.mobile_provider &&
         country == o.country &&
@@ -213,7 +223,7 @@ class AccountValidationRequest
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [bank_account, bank_code, phone_number, mobile_provider, country, currency, method].hash
+    [bank_account, bank_code, iban, phone_number, mobile_provider, country, currency, method].hash
   end
 
 require 'active_support/core_ext/hash'
