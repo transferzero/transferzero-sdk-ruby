@@ -1,4 +1,4 @@
-# TransferZero::PayoutMethodDetailsUSDBank
+# TransferZero::PayoutMethodDetailsUSDCash
 
 ## Properties
 
@@ -7,8 +7,6 @@ Name | Type | Description | Notes
 **first_name** | **String** |  | 
 **last_name** | **String** |  | 
 **phone_number** | **String** |  | 
-**bank_code** | **String** |  | 
-**bank_account** | **String** |  | 
 **country** | [**PayoutMethodCountryEnum**](PayoutMethodCountryEnum.md) |  | 
 
 ## Code Sample
@@ -16,11 +14,9 @@ Name | Type | Description | Notes
 ```ruby
 require 'TransferZero'
 
-instance = TransferZero::PayoutMethodDetailsUSDBank.new(first_name: null,
+instance = TransferZero::PayoutMethodDetailsUSDCash.new(first_name: null,
                                  last_name: null,
                                  phone_number: null,
-                                 bank_code: null,
-                                 bank_account: null,
                                  country: null)
 ```
 
