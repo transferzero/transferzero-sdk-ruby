@@ -76,8 +76,33 @@ class Recipient
 
   attr_accessor :id
 
+  # Type of recipient to create - either person or business (defaults to person) 
+  attr_accessor :type
+
   # The fields that have some problems and don't pass validation
   attr_accessor :errors
+
+  class EnumAttributeValidator
+    attr_reader :datatype
+    attr_reader :allowable_values
+
+    def initialize(datatype, allowable_values)
+      @allowable_values = allowable_values.map do |value|
+        case datatype.to_s
+        when /Integer/i
+          value.to_i
+        when /Float/i
+          value.to_f
+        else
+          value
+        end
+      end
+    end
+
+    def valid?(value)
+      !value || allowable_values.include?(value)
+    end
+  end
 
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
@@ -104,6 +129,7 @@ class Recipient
       :'output_amount' => :'output_amount',
       :'output_currency' => :'output_currency',
       :'id' => :'id',
+      :'type' => :'type',
       :'errors' => :'errors'
     }
   end
@@ -133,6 +159,7 @@ class Recipient
       :'output_amount' => :'Float',
       :'output_currency' => :'String',
       :'id' => :'String',
+      :'type' => :'String',
       :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
     }
   end
@@ -240,6 +267,10 @@ class Recipient
       self.id = attributes[:'id']
     end
 
+    if attributes.key?(:'type')
+      self.type = attributes[:'type']
+    end
+
     if attributes.key?(:'errors')
       if (value = attributes[:'errors']).is_a?(Hash)
         self.errors = value
@@ -272,7 +303,19 @@ class Recipient
     return false if @requested_amount.nil?
     return false if @requested_currency.nil?
     return false if @payout_method.nil?
+    type_validator = EnumAttributeValidator.new('String', ["person", "business"])
+    return false unless type_validator.valid?(@type)
     true
+  end
+
+  # Custom attribute writer method checking allowed values (enum).
+  # @param [Object] type Object to be assigned
+  def type=(type)
+    validator = EnumAttributeValidator.new('String', ["person", "business"])
+    unless validator.valid?(type) || type.empty?
+      fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
+    end
+    @type = type
   end
 
   # Checks equality by comparing each attribute.
@@ -302,6 +345,7 @@ class Recipient
         output_amount == o.output_amount &&
         output_currency == o.output_currency &&
         id == o.id &&
+        type == o.type &&
         errors == o.errors
   end
 
@@ -314,7 +358,7 @@ class Recipient
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [requested_amount, requested_currency, payout_method, metadata, created_at, editable, retriable, input_usd_amount, may_cancel, state_reason, state_reason_details, state, transaction_id, transaction_external_id, transaction_state, exchange_rate, fee_fractional, input_amount, input_currency, output_amount, output_currency, id, errors].hash
+    [requested_amount, requested_currency, payout_method, metadata, created_at, editable, retriable, input_usd_amount, may_cancel, state_reason, state_reason_details, state, transaction_id, transaction_external_id, transaction_state, exchange_rate, fee_fractional, input_amount, input_currency, output_amount, output_currency, id, type, errors].hash
   end
 
 require 'active_support/core_ext/hash'
