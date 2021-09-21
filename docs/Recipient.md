@@ -26,7 +26,6 @@ Name | Type | Description | Notes
 **output_amount** | **Float** | The amount that will be paid to the recipient | [optional] 
 **output_currency** | **String** | The currency the payment will be delivered in | [optional] 
 **id** | **String** |  | [optional] 
-**type** | **String** | Type of recipient to create - either person or business (defaults to person)  | [optional] 
 **errors** | **Hash&lt;String, Array&lt;ValidationErrorDescription&gt;&gt;** | The fields that have some problems and don&#39;t pass validation | [optional] 
 
 ## Code Sample
@@ -56,7 +55,6 @@ instance = TransferZero::Recipient.new(requested_amount: 750.0,
                                  output_amount: 10000,
                                  output_currency: NGN,
                                  id: 97e79719-06e4-4794-aeeb-d2d9415d983a,
-                                 type: person,
                                  errors: {&quot;phone_number&quot;:[{&quot;error&quot;:&quot;invalid&quot;}],&quot;documents&quot;:[{&quot;error&quot;:&quot;blank&quot;}]})
 ```
 
