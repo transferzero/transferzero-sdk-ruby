@@ -12,7 +12,8 @@ Name | Type | Description | Notes
 **bank_name** | **String** |  | 
 **branch_code** | **String** |  | [optional] 
 **swift_code** | **String** |  | 
-**transfer_reason_code** | **String** |  | 
+**transfer_reason_code** | **String** |  | [optional] 
+**transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | [optional] 
 **identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | 
 **identity_card_id** | **String** |  | 
 
@@ -30,6 +31,7 @@ instance = TransferZero::PayoutMethodDetailsKESBank.new(first_name: null,
                                  branch_code: null,
                                  swift_code: null,
                                  transfer_reason_code: null,
+                                 transfer_reason: null,
                                  identity_card_type: null,
                                  identity_card_id: null)
 ```

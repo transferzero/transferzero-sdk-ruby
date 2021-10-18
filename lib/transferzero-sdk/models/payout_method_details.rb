@@ -36,6 +36,8 @@ class PayoutMethodDetails
 
   attr_accessor :bank_country
 
+  attr_accessor :transfer_reason
+
   attr_accessor :cash_provider
 
   attr_accessor :sort_code
@@ -102,6 +104,7 @@ class PayoutMethodDetails
       :'iban' => :'iban',
       :'bank_name' => :'bank_name',
       :'bank_country' => :'bank_country',
+      :'transfer_reason' => :'transfer_reason',
       :'cash_provider' => :'cash_provider',
       :'sort_code' => :'sort_code',
       :'bic' => :'bic',
@@ -145,6 +148,7 @@ class PayoutMethodDetails
       :'iban' => :'String',
       :'bank_name' => :'String',
       :'bank_country' => :'String',
+      :'transfer_reason' => :'PayoutMethodTransferReasonEnum',
       :'cash_provider' => :'PayoutMethodCashProviderEnum',
       :'sort_code' => :'String',
       :'bic' => :'String',
@@ -254,6 +258,10 @@ class PayoutMethodDetails
 
     if attributes.key?(:'bank_country')
       self.bank_country = attributes[:'bank_country']
+    end
+
+    if attributes.key?(:'transfer_reason')
+      self.transfer_reason = attributes[:'transfer_reason']
     end
 
     if attributes.key?(:'cash_provider')
@@ -437,10 +445,6 @@ class PayoutMethodDetails
       invalid_properties.push('invalid value for "city", city cannot be nil.')
     end
 
-    if @transfer_reason_code.nil?
-      invalid_properties.push('invalid value for "transfer_reason_code", transfer_reason_code cannot be nil.')
-    end
-
     if @swift_code.nil?
       invalid_properties.push('invalid value for "swift_code", swift_code cannot be nil.')
     end
@@ -469,7 +473,6 @@ class PayoutMethodDetails
     return false if @street.nil?
     return false if @postal_code.nil?
     return false if @city.nil?
-    return false if @transfer_reason_code.nil?
     return false if @swift_code.nil?
     _one_of_found = false
     openapi_one_of.each do |_class|
@@ -506,6 +509,7 @@ class PayoutMethodDetails
         iban == o.iban &&
         bank_name == o.bank_name &&
         bank_country == o.bank_country &&
+        transfer_reason == o.transfer_reason &&
         cash_provider == o.cash_provider &&
         sort_code == o.sort_code &&
         bic == o.bic &&
@@ -543,7 +547,7 @@ class PayoutMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, iban, bank_name, bank_country, cash_provider, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type, branch_code, swift_code].hash
+    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, iban, bank_name, bank_country, transfer_reason, cash_provider, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type, branch_code, swift_code].hash
   end
 
 require 'active_support/core_ext/hash'

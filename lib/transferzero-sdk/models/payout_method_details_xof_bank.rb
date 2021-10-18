@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"iban\": \"BJ0610100100144390000769\", # BBAN format   \"bank_name\": \"Bank Of Africa Bénin\",   \"bank_country\": \"BJ\", # ISO country code for Benin   \"bank_code\": \"BJ061\" } ```  See [XOF Bank](https://docs.transferzero.com/docs/payout-details/#xofbank) documentation for the bank_code list
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"iban\": \"BJ0610100100144390000769\", # BBAN format   \"bank_name\": \"Bank Of Africa Bénin\",   \"bank_country\": \"BJ\", # ISO country code for Benin   \"bank_code\": \"BJ061\",   \"transfer_reason\": \"personal_account\" } ```  See [XOF Bank](https://docs.transferzero.com/docs/payout-details/#xofbank) documentation for the bank_code and transfer_reason lists
 class PayoutMethodDetailsXOFBank
   attr_accessor :first_name
 
@@ -27,6 +27,8 @@ class PayoutMethodDetailsXOFBank
 
   attr_accessor :bank_code
 
+  attr_accessor :transfer_reason
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -35,7 +37,8 @@ class PayoutMethodDetailsXOFBank
       :'iban' => :'iban',
       :'bank_name' => :'bank_name',
       :'bank_country' => :'bank_country',
-      :'bank_code' => :'bank_code'
+      :'bank_code' => :'bank_code',
+      :'transfer_reason' => :'transfer_reason'
     }
   end
 
@@ -47,7 +50,8 @@ class PayoutMethodDetailsXOFBank
       :'iban' => :'String',
       :'bank_name' => :'String',
       :'bank_country' => :'String',
-      :'bank_code' => :'String'
+      :'bank_code' => :'String',
+      :'transfer_reason' => :'PayoutMethodTransferReasonEnum'
     }
   end
 
@@ -89,6 +93,10 @@ class PayoutMethodDetailsXOFBank
     if attributes.key?(:'bank_code')
       self.bank_code = attributes[:'bank_code']
     end
+
+    if attributes.key?(:'transfer_reason')
+      self.transfer_reason = attributes[:'transfer_reason']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -129,7 +137,8 @@ class PayoutMethodDetailsXOFBank
         iban == o.iban &&
         bank_name == o.bank_name &&
         bank_country == o.bank_country &&
-        bank_code == o.bank_code
+        bank_code == o.bank_code &&
+        transfer_reason == o.transfer_reason
   end
 
   # @see the `==` method
@@ -141,7 +150,7 @@ class PayoutMethodDetailsXOFBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, iban, bank_name, bank_country, bank_code].hash
+    [first_name, last_name, iban, bank_name, bank_country, bank_code, transfer_reason].hash
   end
 
 require 'active_support/core_ext/hash'

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **iban** | **String** |  | 
 **bank_name** | **String** |  | 
 **bank_country** | **String** |  | [optional] 
+**transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | [optional] 
 **cash_provider** | [**PayoutMethodCashProviderEnum**](PayoutMethodCashProviderEnum.md) |  | [optional] 
 **sort_code** | **String** |  | [optional] 
 **bic** | **String** |  | [optional] 
@@ -33,7 +34,7 @@ Name | Type | Description | Notes
 **postal_code** | **String** |  | 
 **city** | **String** |  | 
 **email** | **String** |  | [optional] 
-**transfer_reason_code** | **String** |  | 
+**transfer_reason_code** | **String** |  | [optional] 
 **contact_first_name** | **String** |  | [optional] 
 **contact_last_name** | **String** |  | [optional] 
 **registration_number** | **String** |  | [optional] 
@@ -58,6 +59,7 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  iban: null,
                                  bank_name: null,
                                  bank_country: null,
+                                 transfer_reason: null,
                                  cash_provider: null,
                                  sort_code: null,
                                  bic: null,

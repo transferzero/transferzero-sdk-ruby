@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **bank_name** | **String** |  | [optional] 
 **bank_country** | **String** |  | [optional] 
 **bank_code** | **String** |  | [optional] 
+**transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | [optional] 
 
 ## Code Sample
 
@@ -21,7 +22,8 @@ instance = TransferZero::PayoutMethodDetailsXOFBank.new(first_name: null,
                                  iban: null,
                                  bank_name: null,
                                  bank_country: null,
-                                 bank_code: null)
+                                 bank_code: null,
+                                 transfer_reason: null)
 ```
 
 

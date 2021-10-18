@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"street\": \"Main Street\",     \"phone_number\": \"+254997853134\",     \"mobile_provider\": \"mpesa\",     \"transfer_reason_code\": \"185\",     \"identity_card_type\": \"ID\",     \"identity_card_id\": \"AB12345678\"   } ```  See [KES Mobile](https://docs.transferzero.com/docs/payout-details/#kesmobile) documentation for transfer_reason_code lists
+# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"street\": \"Main Street\",     \"phone_number\": \"+254997853134\",     \"mobile_provider\": \"mpesa\",     \"transfer_reason\": \"personal_account\", // New transfer reason field     \"identity_card_type\": \"ID\",     \"identity_card_id\": \"AB12345678\"   } ```  See [KES Mobile](https://docs.transferzero.com/docs/payout-details/#kesmobile) documentation for transfer_reason lists
 class PayoutMethodDetailsKESMobile
   attr_accessor :first_name
 
@@ -26,6 +26,8 @@ class PayoutMethodDetailsKESMobile
   attr_accessor :mobile_provider
 
   attr_accessor :transfer_reason_code
+
+  attr_accessor :transfer_reason
 
   attr_accessor :identity_card_type
 
@@ -40,6 +42,7 @@ class PayoutMethodDetailsKESMobile
       :'phone_number' => :'phone_number',
       :'mobile_provider' => :'mobile_provider',
       :'transfer_reason_code' => :'transfer_reason_code',
+      :'transfer_reason' => :'transfer_reason',
       :'identity_card_type' => :'identity_card_type',
       :'identity_card_id' => :'identity_card_id'
     }
@@ -54,6 +57,7 @@ class PayoutMethodDetailsKESMobile
       :'phone_number' => :'String',
       :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
       :'transfer_reason_code' => :'String',
+      :'transfer_reason' => :'PayoutMethodTransferReasonEnum',
       :'identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
       :'identity_card_id' => :'String'
     }
@@ -98,6 +102,10 @@ class PayoutMethodDetailsKESMobile
       self.transfer_reason_code = attributes[:'transfer_reason_code']
     end
 
+    if attributes.key?(:'transfer_reason')
+      self.transfer_reason = attributes[:'transfer_reason']
+    end
+
     if attributes.key?(:'identity_card_type')
       self.identity_card_type = attributes[:'identity_card_type']
     end
@@ -131,10 +139,6 @@ class PayoutMethodDetailsKESMobile
       invalid_properties.push('invalid value for "mobile_provider", mobile_provider cannot be nil.')
     end
 
-    if @transfer_reason_code.nil?
-      invalid_properties.push('invalid value for "transfer_reason_code", transfer_reason_code cannot be nil.')
-    end
-
     if @identity_card_type.nil?
       invalid_properties.push('invalid value for "identity_card_type", identity_card_type cannot be nil.')
     end
@@ -154,7 +158,6 @@ class PayoutMethodDetailsKESMobile
     return false if @street.nil?
     return false if @phone_number.nil?
     return false if @mobile_provider.nil?
-    return false if @transfer_reason_code.nil?
     return false if @identity_card_type.nil?
     return false if @identity_card_id.nil?
     true
@@ -171,6 +174,7 @@ class PayoutMethodDetailsKESMobile
         phone_number == o.phone_number &&
         mobile_provider == o.mobile_provider &&
         transfer_reason_code == o.transfer_reason_code &&
+        transfer_reason == o.transfer_reason &&
         identity_card_type == o.identity_card_type &&
         identity_card_id == o.identity_card_id
   end
@@ -184,7 +188,7 @@ class PayoutMethodDetailsKESMobile
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, street, phone_number, mobile_provider, transfer_reason_code, identity_card_type, identity_card_id].hash
+    [first_name, last_name, street, phone_number, mobile_provider, transfer_reason_code, transfer_reason, identity_card_type, identity_card_id].hash
   end
 
 require 'active_support/core_ext/hash'
