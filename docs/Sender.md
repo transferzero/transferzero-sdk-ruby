@@ -52,6 +52,7 @@ Name | Type | Description | Notes
 **city_of_birth** | **String** | City of birth of sender | [optional] 
 **country_of_birth** | **String** | Country of birth of sender in 2-character alpha ISO 3166-2 country format | [optional] 
 **gender** | **String** | The gender of the sender:  - &#x60;M&#x60;: Male - &#x60;F&#x60;: Female - &#x60;O&#x60;: Other | [optional] 
+**sales_lead_id** | **String** | Sales Lead ID for tracking (optional) | [optional] 
 **created_at** | **String** | Date and time of sender was created | [optional] 
 
 ## Code Sample
@@ -107,6 +108,7 @@ instance = TransferZero::Sender.new(id: bf9ff782-e182-45ac-abea-5bce83ad6670,
                                  city_of_birth: London,
                                  country_of_birth: GB,
                                  gender: M,
+                                 sales_lead_id: HF6HJVF67,
                                  created_at: 2019-01-11T00:00:00.001+0000)
 ```
 

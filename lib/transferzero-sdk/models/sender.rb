@@ -157,6 +157,9 @@ class Sender
   # The gender of the sender:  - `M`: Male - `F`: Female - `O`: Other
   attr_accessor :gender
 
+  # Sales Lead ID for tracking (optional)
+  attr_accessor :sales_lead_id
+
   # Date and time of sender was created
   attr_accessor :created_at
 
@@ -233,6 +236,7 @@ class Sender
       :'city_of_birth' => :'city_of_birth',
       :'country_of_birth' => :'country_of_birth',
       :'gender' => :'gender',
+      :'sales_lead_id' => :'sales_lead_id',
       :'created_at' => :'created_at'
     }
   end
@@ -288,6 +292,7 @@ class Sender
       :'city_of_birth' => :'String',
       :'country_of_birth' => :'String',
       :'gender' => :'String',
+      :'sales_lead_id' => :'String',
       :'created_at' => :'String'
     }
   end
@@ -505,6 +510,10 @@ class Sender
       self.gender = attributes[:'gender']
     end
 
+    if attributes.key?(:'sales_lead_id')
+      self.sales_lead_id = attributes[:'sales_lead_id']
+    end
+
     if attributes.key?(:'created_at')
       self.created_at = attributes[:'created_at']
     end
@@ -676,6 +685,7 @@ class Sender
         city_of_birth == o.city_of_birth &&
         country_of_birth == o.country_of_birth &&
         gender == o.gender &&
+        sales_lead_id == o.sales_lead_id &&
         created_at == o.created_at
   end
 
@@ -688,7 +698,7 @@ class Sender
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, lang, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, custom_source_of_funds, core_business_activity, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id, city_of_birth, country_of_birth, gender, created_at].hash
+    [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, lang, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, custom_source_of_funds, core_business_activity, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id, city_of_birth, country_of_birth, gender, sales_lead_id, created_at].hash
   end
 
 require 'active_support/core_ext/hash'
