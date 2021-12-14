@@ -1,4 +1,4 @@
-# TransferZero::PayoutMethodDetailsXOFMobile
+# TransferZero::PayoutMethodDetailsXAFMobile
 
 ## Properties
 
@@ -9,19 +9,17 @@ Name | Type | Description | Notes
 **phone_number** | **String** |  | 
 **mobile_provider** | [**PayoutMethodMobileProviderEnum**](PayoutMethodMobileProviderEnum.md) |  | 
 **country** | [**PayoutMethodCountryEnum**](PayoutMethodCountryEnum.md) |  | [optional] 
-**transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | [optional] 
 
 ## Code Sample
 
 ```ruby
 require 'TransferZero'
 
-instance = TransferZero::PayoutMethodDetailsXOFMobile.new(first_name: null,
+instance = TransferZero::PayoutMethodDetailsXAFMobile.new(first_name: null,
                                  last_name: null,
                                  phone_number: null,
                                  mobile_provider: null,
-                                 country: null,
-                                 transfer_reason: null)
+                                 country: null)
 ```
 
 

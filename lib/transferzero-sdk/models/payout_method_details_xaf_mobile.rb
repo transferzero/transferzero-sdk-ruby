@@ -13,8 +13,8 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"7087661234\" // local or international format } ```  Please note when sending XOF::Cash payments you should subscribe to the recipient.pending webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt -  ```JSON {   (...)   \"state\":\"pending\",   \"metadata\": {     \"payment_reference\":\"9M5GJRJUBCY\"   },   (...) } ```
-class PayoutMethodDetailsMobile
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"674044436\", // local or international cameroon format   \"mobile_provider\": \"orange\", // or mtn\"   \"country\" // Optional; Values: \"CM\" } ```
+class PayoutMethodDetailsXAFMobile
   attr_accessor :first_name
 
   attr_accessor :last_name
@@ -23,13 +23,16 @@ class PayoutMethodDetailsMobile
 
   attr_accessor :mobile_provider
 
+  attr_accessor :country
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
       :'first_name' => :'first_name',
       :'last_name' => :'last_name',
       :'phone_number' => :'phone_number',
-      :'mobile_provider' => :'mobile_provider'
+      :'mobile_provider' => :'mobile_provider',
+      :'country' => :'country'
     }
   end
 
@@ -39,7 +42,8 @@ class PayoutMethodDetailsMobile
       :'first_name' => :'String',
       :'last_name' => :'String',
       :'phone_number' => :'String',
-      :'mobile_provider' => :'PayoutMethodMobileProviderEnum'
+      :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
+      :'country' => :'PayoutMethodCountryEnum'
     }
   end
 
@@ -47,13 +51,13 @@ class PayoutMethodDetailsMobile
   # @param [Hash] attributes Model attributes in the form of hash
   def initialize(attributes = {})
     if (!attributes.is_a?(Hash))
-      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsMobile` initialize method"
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsXAFMobile` initialize method"
     end
 
     # check to see if the attribute exists and convert string to symbol for hash key
     attributes = attributes.each_with_object({}) { |(k, v), h|
       if (!self.class.attribute_map.key?(k.to_sym))
-        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsMobile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsXAFMobile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
       h[k.to_sym] = v
     }
@@ -73,6 +77,10 @@ class PayoutMethodDetailsMobile
     if attributes.key?(:'mobile_provider')
       self.mobile_provider = attributes[:'mobile_provider']
     end
+
+    if attributes.key?(:'country')
+      self.country = attributes[:'country']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -91,6 +99,10 @@ class PayoutMethodDetailsMobile
       invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
     end
 
+    if @mobile_provider.nil?
+      invalid_properties.push('invalid value for "mobile_provider", mobile_provider cannot be nil.')
+    end
+
     invalid_properties
   end
 
@@ -100,6 +112,7 @@ class PayoutMethodDetailsMobile
     return false if @first_name.nil?
     return false if @last_name.nil?
     return false if @phone_number.nil?
+    return false if @mobile_provider.nil?
     true
   end
 
@@ -111,7 +124,8 @@ class PayoutMethodDetailsMobile
         first_name == o.first_name &&
         last_name == o.last_name &&
         phone_number == o.phone_number &&
-        mobile_provider == o.mobile_provider
+        mobile_provider == o.mobile_provider &&
+        country == o.country
   end
 
   # @see the `==` method
@@ -123,7 +137,7 @@ class PayoutMethodDetailsMobile
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, phone_number, mobile_provider].hash
+    [first_name, last_name, phone_number, mobile_provider, country].hash
   end
 
 require 'active_support/core_ext/hash'

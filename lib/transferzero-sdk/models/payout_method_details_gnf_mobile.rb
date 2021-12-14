@@ -13,8 +13,8 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"7087661234\" // local or international format } ```  Please note when sending XOF::Cash payments you should subscribe to the recipient.pending webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt -  ```JSON {   (...)   \"state\":\"pending\",   \"metadata\": {     \"payment_reference\":\"9M5GJRJUBCY\"   },   (...) } ```
-class PayoutMethodDetailsMobile
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"444044436\", // local or international Guinea format   \"mobile_provider\": \"mtn\" } ```
+class PayoutMethodDetailsGNFMobile
   attr_accessor :first_name
 
   attr_accessor :last_name
@@ -47,13 +47,13 @@ class PayoutMethodDetailsMobile
   # @param [Hash] attributes Model attributes in the form of hash
   def initialize(attributes = {})
     if (!attributes.is_a?(Hash))
-      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsMobile` initialize method"
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsGNFMobile` initialize method"
     end
 
     # check to see if the attribute exists and convert string to symbol for hash key
     attributes = attributes.each_with_object({}) { |(k, v), h|
       if (!self.class.attribute_map.key?(k.to_sym))
-        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsMobile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsGNFMobile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
       h[k.to_sym] = v
     }
@@ -91,6 +91,10 @@ class PayoutMethodDetailsMobile
       invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
     end
 
+    if @mobile_provider.nil?
+      invalid_properties.push('invalid value for "mobile_provider", mobile_provider cannot be nil.')
+    end
+
     invalid_properties
   end
 
@@ -100,6 +104,7 @@ class PayoutMethodDetailsMobile
     return false if @first_name.nil?
     return false if @last_name.nil?
     return false if @phone_number.nil?
+    return false if @mobile_provider.nil?
     true
   end
 

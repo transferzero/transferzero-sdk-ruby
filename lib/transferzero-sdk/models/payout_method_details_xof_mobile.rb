@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"774044436\",     # local or international Senegalese or Ivory Coast format   \"mobile_provider\": \"orange\", # \"orange\" or \"tigo\" for Senegal; \"orange\", \"mtn\" or \"moov\" for Ivory Coast   \"country\" # Optional; Values: \"SN\" for Senegal or \"CI\" for Ivory Coast; Default value is \"SN\" } ```
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"774044436\", // local or international Senegalese or Ivory Coast format   \"mobile_provider\": \"orange\", // \"orange\" or \"tigo\" for Senegal; \"orange\", \"mtn\" or \"moov\" for Ivory Coast; \"orange\" or \"mobicash\" for Burkina Faso and Mali   \"country\" // Optional; Values: \"SN\" for Senegal; \"CI\" for Ivory Coast; \"ML\" for Mali; \"BF\" for Burkina Faso; Default value is \"SN\"   \"transfer_reason\": \"personal_account\" // mandatory for Mali payouts, optional otherwise } ```
 class PayoutMethodDetailsXOFMobile
   attr_accessor :first_name
 
@@ -25,6 +25,8 @@ class PayoutMethodDetailsXOFMobile
 
   attr_accessor :country
 
+  attr_accessor :transfer_reason
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -32,7 +34,8 @@ class PayoutMethodDetailsXOFMobile
       :'last_name' => :'last_name',
       :'phone_number' => :'phone_number',
       :'mobile_provider' => :'mobile_provider',
-      :'country' => :'country'
+      :'country' => :'country',
+      :'transfer_reason' => :'transfer_reason'
     }
   end
 
@@ -43,7 +46,8 @@ class PayoutMethodDetailsXOFMobile
       :'last_name' => :'String',
       :'phone_number' => :'String',
       :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
-      :'country' => :'PayoutMethodCountryEnum'
+      :'country' => :'PayoutMethodCountryEnum',
+      :'transfer_reason' => :'PayoutMethodTransferReasonEnum'
     }
   end
 
@@ -80,6 +84,10 @@ class PayoutMethodDetailsXOFMobile
 
     if attributes.key?(:'country')
       self.country = attributes[:'country']
+    end
+
+    if attributes.key?(:'transfer_reason')
+      self.transfer_reason = attributes[:'transfer_reason']
     end
   end
 
@@ -125,7 +133,8 @@ class PayoutMethodDetailsXOFMobile
         last_name == o.last_name &&
         phone_number == o.phone_number &&
         mobile_provider == o.mobile_provider &&
-        country == o.country
+        country == o.country &&
+        transfer_reason == o.transfer_reason
   end
 
   # @see the `==` method
@@ -137,7 +146,7 @@ class PayoutMethodDetailsXOFMobile
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, phone_number, mobile_provider, country].hash
+    [first_name, last_name, phone_number, mobile_provider, country, transfer_reason].hash
   end
 
 require 'active_support/core_ext/hash'

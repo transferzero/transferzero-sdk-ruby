@@ -12,10 +12,10 @@ Name | Type | Description | Notes
 **phone_number** | **String** |  | 
 **mobile_provider** | [**PayoutMethodMobileProviderEnum**](PayoutMethodMobileProviderEnum.md) |  | 
 **country** | [**PayoutMethodCountryEnum**](PayoutMethodCountryEnum.md) |  | 
+**transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | [optional] 
 **iban** | **String** |  | 
 **bank_name** | **String** |  | 
 **bank_country** | **String** |  | [optional] 
-**transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | [optional] 
 **cash_provider** | [**PayoutMethodCashProviderEnum**](PayoutMethodCashProviderEnum.md) |  | [optional] 
 **sort_code** | **String** |  | [optional] 
 **bic** | **String** |  | [optional] 
@@ -56,10 +56,10 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  phone_number: null,
                                  mobile_provider: null,
                                  country: null,
+                                 transfer_reason: null,
                                  iban: null,
                                  bank_name: null,
                                  bank_country: null,
-                                 transfer_reason: null,
                                  cash_provider: null,
                                  sort_code: null,
                                  bic: null,

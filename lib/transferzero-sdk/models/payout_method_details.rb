@@ -30,13 +30,13 @@ class PayoutMethodDetails
 
   attr_accessor :country
 
+  attr_accessor :transfer_reason
+
   attr_accessor :iban
 
   attr_accessor :bank_name
 
   attr_accessor :bank_country
-
-  attr_accessor :transfer_reason
 
   attr_accessor :cash_provider
 
@@ -101,10 +101,10 @@ class PayoutMethodDetails
       :'phone_number' => :'phone_number',
       :'mobile_provider' => :'mobile_provider',
       :'country' => :'country',
+      :'transfer_reason' => :'transfer_reason',
       :'iban' => :'iban',
       :'bank_name' => :'bank_name',
       :'bank_country' => :'bank_country',
-      :'transfer_reason' => :'transfer_reason',
       :'cash_provider' => :'cash_provider',
       :'sort_code' => :'sort_code',
       :'bic' => :'bic',
@@ -145,10 +145,10 @@ class PayoutMethodDetails
       :'phone_number' => :'String',
       :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
       :'country' => :'PayoutMethodCountryEnum',
+      :'transfer_reason' => :'PayoutMethodTransferReasonEnum',
       :'iban' => :'String',
       :'bank_name' => :'String',
       :'bank_country' => :'String',
-      :'transfer_reason' => :'PayoutMethodTransferReasonEnum',
       :'cash_provider' => :'PayoutMethodCashProviderEnum',
       :'sort_code' => :'String',
       :'bic' => :'String',
@@ -186,6 +186,7 @@ class PayoutMethodDetails
     :'PayoutMethodDetailsGBPBank',
     :'PayoutMethodDetailsGHSBank',
     :'PayoutMethodDetailsGHSCash',
+    :'PayoutMethodDetailsGNFMobile',
     :'PayoutMethodDetailsIBAN',
     :'PayoutMethodDetailsKESBank',
     :'PayoutMethodDetailsKESMobile',
@@ -194,6 +195,7 @@ class PayoutMethodDetails
     :'PayoutMethodDetailsNGNBank',
     :'PayoutMethodDetailsUSDBank',
     :'PayoutMethodDetailsUSDCash',
+    :'PayoutMethodDetailsXAFMobile',
     :'PayoutMethodDetailsXOFBank',
     :'PayoutMethodDetailsXOFCash',
     :'PayoutMethodDetailsXOFMobile',
@@ -248,6 +250,10 @@ class PayoutMethodDetails
       self.country = attributes[:'country']
     end
 
+    if attributes.key?(:'transfer_reason')
+      self.transfer_reason = attributes[:'transfer_reason']
+    end
+
     if attributes.key?(:'iban')
       self.iban = attributes[:'iban']
     end
@@ -258,10 +264,6 @@ class PayoutMethodDetails
 
     if attributes.key?(:'bank_country')
       self.bank_country = attributes[:'bank_country']
-    end
-
-    if attributes.key?(:'transfer_reason')
-      self.transfer_reason = attributes[:'transfer_reason']
     end
 
     if attributes.key?(:'cash_provider')
@@ -506,10 +508,10 @@ class PayoutMethodDetails
         phone_number == o.phone_number &&
         mobile_provider == o.mobile_provider &&
         country == o.country &&
+        transfer_reason == o.transfer_reason &&
         iban == o.iban &&
         bank_name == o.bank_name &&
         bank_country == o.bank_country &&
-        transfer_reason == o.transfer_reason &&
         cash_provider == o.cash_provider &&
         sort_code == o.sort_code &&
         bic == o.bic &&
@@ -547,7 +549,7 @@ class PayoutMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, iban, bank_name, bank_country, transfer_reason, cash_provider, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type, branch_code, swift_code].hash
+    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, transfer_reason, iban, bank_name, bank_country, cash_provider, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type, branch_code, swift_code].hash
   end
 
 require 'active_support/core_ext/hash'
