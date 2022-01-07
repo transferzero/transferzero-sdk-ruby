@@ -41,6 +41,7 @@ Name | Type | Description | Notes
 **contact_person_email** | **String** | The contact&#39;s email address (used only with a Business sender) | [optional] 
 **trading_country** | **String** | The Business trading country (used only with a Business sender) | [optional] 
 **trading_address** | **String** | The Business trading address (used only with a Business sender) | [optional] 
+**trading_name** | **String** | The Business trading name (used only with a Business sender) | [optional] 
 **number_monthly_transactions** | **String** | The estimated number of monthly transactions (used only with a Business sender) | [optional] 
 **amount_monthly_transactions** | **String** | The estimated amount for all transactions each month in USD (used only with a Business sender) | [optional] 
 **documents** | [**Array&lt;Document&gt;**](Document.md) | Needed for KYC checks. Required to approve the sender unless KYC is waived for your account. Please send us an empty list of documents: &#x60;\&quot;documents\&quot;: [ ]&#x60; in the request if KYC has been waived.  If the documents already exist, please send the Document ID eg. &#x60;&#x60;&#x60;JSON \&quot;documents\&quot;: [   {     \&quot;id\&quot;: \&quot;b6648ba3-1c7b-4f59-8580-684899c84a07\&quot;   } ] &#x60;&#x60;&#x60; | 
@@ -97,6 +98,7 @@ instance = TransferZero::Sender.new(id: bf9ff782-e182-45ac-abea-5bce83ad6670,
                                  contact_person_email: null,
                                  trading_country: null,
                                  trading_address: null,
+                                 trading_name: null,
                                  number_monthly_transactions: null,
                                  amount_monthly_transactions: null,
                                  documents: [{&quot;id&quot;:&quot;b6648ba3-1c7b-4f59-8580-684899c84a07&quot;}],

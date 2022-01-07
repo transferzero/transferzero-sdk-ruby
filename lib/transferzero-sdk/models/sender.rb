@@ -124,6 +124,9 @@ class Sender
   # The Business trading address (used only with a Business sender)
   attr_accessor :trading_address
 
+  # The Business trading name (used only with a Business sender)
+  attr_accessor :trading_name
+
   # The estimated number of monthly transactions (used only with a Business sender)
   attr_accessor :number_monthly_transactions
 
@@ -225,6 +228,7 @@ class Sender
       :'contact_person_email' => :'contact_person_email',
       :'trading_country' => :'trading_country',
       :'trading_address' => :'trading_address',
+      :'trading_name' => :'trading_name',
       :'number_monthly_transactions' => :'number_monthly_transactions',
       :'amount_monthly_transactions' => :'amount_monthly_transactions',
       :'documents' => :'documents',
@@ -281,6 +285,7 @@ class Sender
       :'contact_person_email' => :'String',
       :'trading_country' => :'String',
       :'trading_address' => :'String',
+      :'trading_name' => :'String',
       :'number_monthly_transactions' => :'String',
       :'amount_monthly_transactions' => :'String',
       :'documents' => :'Array<Document>',
@@ -458,6 +463,10 @@ class Sender
 
     if attributes.key?(:'trading_address')
       self.trading_address = attributes[:'trading_address']
+    end
+
+    if attributes.key?(:'trading_name')
+      self.trading_name = attributes[:'trading_name']
     end
 
     if attributes.key?(:'number_monthly_transactions')
@@ -674,6 +683,7 @@ class Sender
         contact_person_email == o.contact_person_email &&
         trading_country == o.trading_country &&
         trading_address == o.trading_address &&
+        trading_name == o.trading_name &&
         number_monthly_transactions == o.number_monthly_transactions &&
         amount_monthly_transactions == o.amount_monthly_transactions &&
         documents == o.documents &&
@@ -698,7 +708,7 @@ class Sender
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, lang, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, custom_source_of_funds, core_business_activity, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id, city_of_birth, country_of_birth, gender, sales_lead_id, created_at].hash
+    [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, lang, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, custom_source_of_funds, core_business_activity, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, trading_name, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id, city_of_birth, country_of_birth, gender, sales_lead_id, created_at].hash
   end
 
 require 'active_support/core_ext/hash'
