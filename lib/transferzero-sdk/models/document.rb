@@ -50,6 +50,9 @@ class Document
   # Document expiry date issued by government
   attr_accessor :expiry_date
 
+  # Determines the document's source. Default value \"Manual\"
+  attr_accessor :source
+
   # The fields that have some problems and don't pass validation
   attr_accessor :errors
 
@@ -91,6 +94,7 @@ class Document
       :'id' => :'id',
       :'document_id' => :'document_id',
       :'expiry_date' => :'expiry_date',
+      :'source' => :'source',
       :'errors' => :'errors'
     }
   end
@@ -111,6 +115,7 @@ class Document
       :'id' => :'String',
       :'document_id' => :'String',
       :'expiry_date' => :'Date',
+      :'source' => :'String',
       :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
     }
   end
@@ -182,6 +187,10 @@ class Document
       self.expiry_date = attributes[:'expiry_date']
     end
 
+    if attributes.key?(:'source')
+      self.source = attributes[:'source']
+    end
+
     if attributes.key?(:'errors')
       if (value = attributes[:'errors']).is_a?(Hash)
         self.errors = value
@@ -242,6 +251,7 @@ class Document
         id == o.id &&
         document_id == o.document_id &&
         expiry_date == o.expiry_date &&
+        source == o.source &&
         errors == o.errors
   end
 
@@ -254,7 +264,7 @@ class Document
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [upload, url, upload_file_name, metadata, upload_content_type, upload_file_size, category, side, document_type, issuing_country, id, document_id, expiry_date, errors].hash
+    [upload, url, upload_file_name, metadata, upload_content_type, upload_file_size, category, side, document_type, issuing_country, id, document_id, expiry_date, source, errors].hash
   end
 
 require 'active_support/core_ext/hash'
