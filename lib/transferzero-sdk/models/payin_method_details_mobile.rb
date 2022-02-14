@@ -18,6 +18,8 @@ class PayinMethodDetailsMobile
   # The phone number where the funds should be collected from
   attr_accessor :phone_number
 
+  attr_accessor :mobile_provider
+
   # States whether to send out the instructions to the phone number on how to pay the funds or not. This shuold always be set to true, otherwise the sender might not receive a prompt for payment.
   attr_accessor :send_instructions
 
@@ -25,6 +27,7 @@ class PayinMethodDetailsMobile
   def self.attribute_map
     {
       :'phone_number' => :'phone_number',
+      :'mobile_provider' => :'mobile_provider',
       :'send_instructions' => :'send_instructions'
     }
   end
@@ -33,6 +36,7 @@ class PayinMethodDetailsMobile
   def self.openapi_types
     {
       :'phone_number' => :'String',
+      :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
       :'send_instructions' => :'Boolean'
     }
   end
@@ -54,6 +58,10 @@ class PayinMethodDetailsMobile
 
     if attributes.key?(:'phone_number')
       self.phone_number = attributes[:'phone_number']
+    end
+
+    if attributes.key?(:'mobile_provider')
+      self.mobile_provider = attributes[:'mobile_provider']
     end
 
     if attributes.key?(:'send_instructions')
@@ -85,6 +93,7 @@ class PayinMethodDetailsMobile
     return true if self.equal?(o)
     self.class == o.class &&
         phone_number == o.phone_number &&
+        mobile_provider == o.mobile_provider &&
         send_instructions == o.send_instructions
   end
 
@@ -97,7 +106,7 @@ class PayinMethodDetailsMobile
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [phone_number, send_instructions].hash
+    [phone_number, mobile_provider, send_instructions].hash
   end
 
 require 'active_support/core_ext/hash'

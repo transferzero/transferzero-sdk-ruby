@@ -24,6 +24,8 @@ class PayinMethodDetails
   # The phone number where the funds should be collected from
   attr_accessor :phone_number
 
+  attr_accessor :mobile_provider
+
   # States whether to send out the instructions to the phone number on how to pay the funds or not. This shuold always be set to true, otherwise the sender might not receive a prompt for payment.
   attr_accessor :send_instructions
 
@@ -36,6 +38,7 @@ class PayinMethodDetails
       :'payment_method' => :'payment_method',
       :'redirect_url' => :'redirect_url',
       :'phone_number' => :'phone_number',
+      :'mobile_provider' => :'mobile_provider',
       :'send_instructions' => :'send_instructions',
       :'refund_address' => :'refund_address'
     }
@@ -47,6 +50,7 @@ class PayinMethodDetails
       :'payment_method' => :'String',
       :'redirect_url' => :'String',
       :'phone_number' => :'String',
+      :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
       :'send_instructions' => :'Boolean',
       :'refund_address' => :'String'
     }
@@ -86,6 +90,10 @@ class PayinMethodDetails
 
     if attributes.key?(:'phone_number')
       self.phone_number = attributes[:'phone_number']
+    end
+
+    if attributes.key?(:'mobile_provider')
+      self.mobile_provider = attributes[:'mobile_provider']
     end
 
     if attributes.key?(:'send_instructions')
@@ -139,6 +147,7 @@ class PayinMethodDetails
         payment_method == o.payment_method &&
         redirect_url == o.redirect_url &&
         phone_number == o.phone_number &&
+        mobile_provider == o.mobile_provider &&
         send_instructions == o.send_instructions &&
         refund_address == o.refund_address
   end
@@ -152,7 +161,7 @@ class PayinMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [payment_method, redirect_url, phone_number, send_instructions, refund_address].hash
+    [payment_method, redirect_url, phone_number, mobile_provider, send_instructions, refund_address].hash
   end
 
 require 'active_support/core_ext/hash'
