@@ -411,6 +411,10 @@ class PayoutMethodDetails
       invalid_properties.push('invalid value for "bank_name", bank_name cannot be nil.')
     end
 
+    if @cash_provider.nil?
+      invalid_properties.push('invalid value for "cash_provider", cash_provider cannot be nil.')
+    end
+
     if @sender_identity_card_type.nil?
       invalid_properties.push('invalid value for "sender_identity_card_type", sender_identity_card_type cannot be nil.')
     end
@@ -466,6 +470,7 @@ class PayoutMethodDetails
     return false if @country.nil?
     return false if @iban.nil?
     return false if @bank_name.nil?
+    return false if @cash_provider.nil?
     return false if @sender_identity_card_type.nil?
     return false if @sender_identity_card_id.nil?
     return false if @identity_card_type.nil?

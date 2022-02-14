@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **first_name** | **String** |  | 
 **last_name** | **String** |  | 
 **phone_number** | **String** |  | 
-**cash_provider** | [**PayoutMethodCashProviderEnum**](PayoutMethodCashProviderEnum.md) |  | [optional] 
+**cash_provider** | [**PayoutMethodCashProviderEnum**](PayoutMethodCashProviderEnum.md) |  | 
 **country** | [**PayoutMethodCountryEnum**](PayoutMethodCountryEnum.md) |  | [optional] 
 
 ## Code Sample

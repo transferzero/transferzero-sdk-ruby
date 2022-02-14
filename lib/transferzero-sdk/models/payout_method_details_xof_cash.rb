@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"221774044436\", // local or international format   \"cash_provider\": \"wizall\" // Optional; Values: \"wizall\"; Default value is \"wizall\";   \"country\": \"SN\" // Optional; Values: \"CI\", \"ML\" or \"SN\"; Default value is \"SN\"; } ```  Please note all senders trying to create Wizall cash pickup requests must have `identity_type` and `identity_number` present. The fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example -  ```JSON {   \"transaction\": {       \"sender\": {         \"external_id\": \"<id of sender>\",         \"identity_type\": \"ID\",         \"identity_number\": \"AB12345678\",         (...)       },       (...)     } } ```
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"221774044436\", // local or international format   \"cash_provider\": \"wizall\" // Mandatory; Values: \"wizall\";   \"country\": \"SN\" // Optional; Values: \"CI\", \"ML\" or \"SN\"; Default value is \"SN\"; } ```  Please note all senders trying to create Wizall cash pickup requests must have `identity_type` and `identity_number` present. The fields above are generally considered optional for senders for other payment corridors. If you wish to use an existing sender who has some of these fields missing you can provide them alongside the `id` or `external_id` field in the sender details. For example -  ```JSON {   \"transaction\": {       \"sender\": {         \"external_id\": \"<id of sender>\",         \"identity_type\": \"ID\",         \"identity_number\": \"AB12345678\",         (...)       },       (...)     } } ```
 class PayoutMethodDetailsXOFCash
   attr_accessor :first_name
 
@@ -99,6 +99,10 @@ class PayoutMethodDetailsXOFCash
       invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
     end
 
+    if @cash_provider.nil?
+      invalid_properties.push('invalid value for "cash_provider", cash_provider cannot be nil.')
+    end
+
     invalid_properties
   end
 
@@ -108,6 +112,7 @@ class PayoutMethodDetailsXOFCash
     return false if @first_name.nil?
     return false if @last_name.nil?
     return false if @phone_number.nil?
+    return false if @cash_provider.nil?
     true
   end
 

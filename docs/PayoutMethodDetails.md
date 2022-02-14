@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **iban** | **String** |  | 
 **bank_name** | **String** |  | 
 **bank_country** | **String** |  | [optional] 
-**cash_provider** | [**PayoutMethodCashProviderEnum**](PayoutMethodCashProviderEnum.md) |  | [optional] 
+**cash_provider** | [**PayoutMethodCashProviderEnum**](PayoutMethodCashProviderEnum.md) |  | 
 **sort_code** | **String** |  | [optional] 
 **bic** | **String** |  | [optional] 
 **sender_identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | 
