@@ -13,22 +13,18 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"phone_number\": \"+2569999999\",   \"send_instructions\": true } ```
+# ```JSON \"details\": {   \"phone_number\": \"+2569999999\", } ```
 class PayinMethodDetailsMobile
   # The phone number where the funds should be collected from
   attr_accessor :phone_number
 
   attr_accessor :mobile_provider
 
-  # States whether to send out the instructions to the phone number on how to pay the funds or not. This shuold always be set to true, otherwise the sender might not receive a prompt for payment.
-  attr_accessor :send_instructions
-
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
       :'phone_number' => :'phone_number',
-      :'mobile_provider' => :'mobile_provider',
-      :'send_instructions' => :'send_instructions'
+      :'mobile_provider' => :'mobile_provider'
     }
   end
 
@@ -36,8 +32,7 @@ class PayinMethodDetailsMobile
   def self.openapi_types
     {
       :'phone_number' => :'String',
-      :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
-      :'send_instructions' => :'Boolean'
+      :'mobile_provider' => :'PayoutMethodMobileProviderEnum'
     }
   end
 
@@ -63,27 +58,18 @@ class PayinMethodDetailsMobile
     if attributes.key?(:'mobile_provider')
       self.mobile_provider = attributes[:'mobile_provider']
     end
-
-    if attributes.key?(:'send_instructions')
-      self.send_instructions = attributes[:'send_instructions']
-    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
   # @return Array for valid properties with the reasons
   def list_invalid_properties
     invalid_properties = Array.new
-    if @phone_number.nil?
-      invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
-    end
-
     invalid_properties
   end
 
   # Check to see if the all the properties in the model are valid
   # @return true if the model is valid
   def valid?
-    return false if @phone_number.nil?
     true
   end
 
@@ -93,8 +79,7 @@ class PayinMethodDetailsMobile
     return true if self.equal?(o)
     self.class == o.class &&
         phone_number == o.phone_number &&
-        mobile_provider == o.mobile_provider &&
-        send_instructions == o.send_instructions
+        mobile_provider == o.mobile_provider
   end
 
   # @see the `==` method
@@ -106,7 +91,7 @@ class PayinMethodDetailsMobile
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [phone_number, mobile_provider, send_instructions].hash
+    [phone_number, mobile_provider].hash
   end
 
 require 'active_support/core_ext/hash'

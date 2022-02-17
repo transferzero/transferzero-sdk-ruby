@@ -1,4 +1,4 @@
-# TransferZero::RecipientStateReasonDetails
+# TransferZero::StateReasonDetails
 
 ## Properties
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ```ruby
 require 'TransferZero'
 
-instance = TransferZero::RecipientStateReasonDetails.new(code: 311,
+instance = TransferZero::StateReasonDetails.new(code: 311,
                                  category: temporary_error,
                                  messages: [&quot;Temporary error&quot;,&quot;Switch Error&quot;,&quot;Issuer/Switch inoperative&quot;],
                                  description: The central switch is not accepting transactions at the moment. We will retry the transaction)

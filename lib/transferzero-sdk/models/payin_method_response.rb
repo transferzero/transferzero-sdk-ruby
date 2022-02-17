@@ -13,27 +13,20 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"redirect_url\": \"http://redirect.back.to\"   } ```
-class PayinMethodDetailsNGNBank
-  # The payment method which the sender will use to make the payments. Options are `bank`, `card` or you can leave empty to support both.
-  attr_accessor :payment_method
-
-  # This is where the sender should be redirected back when the payment has been finished
-  attr_accessor :redirect_url
+class PayinMethodResponse
+  attr_accessor :object
 
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
-      :'payment_method' => :'payment_method',
-      :'redirect_url' => :'redirect_url'
+      :'object' => :'object'
     }
   end
 
   # Attribute type mapping.
   def self.openapi_types
     {
-      :'payment_method' => :'String',
-      :'redirect_url' => :'String'
+      :'object' => :'PayinMethod'
     }
   end
 
@@ -41,23 +34,19 @@ class PayinMethodDetailsNGNBank
   # @param [Hash] attributes Model attributes in the form of hash
   def initialize(attributes = {})
     if (!attributes.is_a?(Hash))
-      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayinMethodDetailsNGNBank` initialize method"
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayinMethodResponse` initialize method"
     end
 
     # check to see if the attribute exists and convert string to symbol for hash key
     attributes = attributes.each_with_object({}) { |(k, v), h|
       if (!self.class.attribute_map.key?(k.to_sym))
-        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayinMethodDetailsNGNBank`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayinMethodResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
       h[k.to_sym] = v
     }
 
-    if attributes.key?(:'payment_method')
-      self.payment_method = attributes[:'payment_method']
-    end
-
-    if attributes.key?(:'redirect_url')
-      self.redirect_url = attributes[:'redirect_url']
+    if attributes.key?(:'object')
+      self.object = attributes[:'object']
     end
   end
 
@@ -79,8 +68,7 @@ class PayinMethodDetailsNGNBank
   def ==(o)
     return true if self.equal?(o)
     self.class == o.class &&
-        payment_method == o.payment_method &&
-        redirect_url == o.redirect_url
+        object == o.object
   end
 
   # @see the `==` method
@@ -92,7 +80,7 @@ class PayinMethodDetailsNGNBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [payment_method, redirect_url].hash
+    [object].hash
   end
 
 require 'active_support/core_ext/hash'

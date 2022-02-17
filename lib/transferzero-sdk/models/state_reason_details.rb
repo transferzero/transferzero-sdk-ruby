@@ -13,27 +13,36 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"redirect_url\": \"http://redirect.back.to\"   } ```
-class PayinMethodDetailsNGNBank
-  # The payment method which the sender will use to make the payments. Options are `bank`, `card` or you can leave empty to support both.
-  attr_accessor :payment_method
+class StateReasonDetails
+  # Status code of transaction
+  attr_accessor :code
 
-  # This is where the sender should be redirected back when the payment has been finished
-  attr_accessor :redirect_url
+  # Main category of status code, it could be paid, unknown, pickupable, temporary_error, recipient_error, sender_error, sender_action_required
+  attr_accessor :category
+
+  # Tiered messages
+  attr_accessor :messages
+
+  # Public, human readable, detailed error message
+  attr_accessor :description
 
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
-      :'payment_method' => :'payment_method',
-      :'redirect_url' => :'redirect_url'
+      :'code' => :'code',
+      :'category' => :'category',
+      :'messages' => :'messages',
+      :'description' => :'description'
     }
   end
 
   # Attribute type mapping.
   def self.openapi_types
     {
-      :'payment_method' => :'String',
-      :'redirect_url' => :'String'
+      :'code' => :'String',
+      :'category' => :'String',
+      :'messages' => :'Array<String>',
+      :'description' => :'String'
     }
   end
 
@@ -41,23 +50,33 @@ class PayinMethodDetailsNGNBank
   # @param [Hash] attributes Model attributes in the form of hash
   def initialize(attributes = {})
     if (!attributes.is_a?(Hash))
-      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayinMethodDetailsNGNBank` initialize method"
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::StateReasonDetails` initialize method"
     end
 
     # check to see if the attribute exists and convert string to symbol for hash key
     attributes = attributes.each_with_object({}) { |(k, v), h|
       if (!self.class.attribute_map.key?(k.to_sym))
-        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayinMethodDetailsNGNBank`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::StateReasonDetails`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
       h[k.to_sym] = v
     }
 
-    if attributes.key?(:'payment_method')
-      self.payment_method = attributes[:'payment_method']
+    if attributes.key?(:'code')
+      self.code = attributes[:'code']
     end
 
-    if attributes.key?(:'redirect_url')
-      self.redirect_url = attributes[:'redirect_url']
+    if attributes.key?(:'category')
+      self.category = attributes[:'category']
+    end
+
+    if attributes.key?(:'messages')
+      if (value = attributes[:'messages']).is_a?(Array)
+        self.messages = value
+      end
+    end
+
+    if attributes.key?(:'description')
+      self.description = attributes[:'description']
     end
   end
 
@@ -79,8 +98,10 @@ class PayinMethodDetailsNGNBank
   def ==(o)
     return true if self.equal?(o)
     self.class == o.class &&
-        payment_method == o.payment_method &&
-        redirect_url == o.redirect_url
+        code == o.code &&
+        category == o.category &&
+        messages == o.messages &&
+        description == o.description
   end
 
   # @see the `==` method
@@ -92,7 +113,7 @@ class PayinMethodDetailsNGNBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [payment_method, redirect_url].hash
+    [code, category, messages, description].hash
   end
 
 require 'active_support/core_ext/hash'

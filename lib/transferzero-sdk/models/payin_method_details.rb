@@ -15,19 +15,16 @@ require 'date'
 module TransferZero
 # Fields needed by the payment processor. Depends on the chose payin type.  See the appropriate model details for more info:  - `NGN::Bank`: see [`PayinMethodDetailsNGNBank`](#model-PayinMethodDetailsNGNBank) - `GHS::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile) - `UGX::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile) - `TZS::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile)  Note that some payin processors don't require additional input, these include `paga` through `NGN::Mobile`, `lhv` through `EUR::Bank` and `GBP::Bank`. Some providers like `providus` also have all of their fields set as optional, so you might not want to set any values. To use these providers please set this value to `{}` (an empty hash) 
 class PayinMethodDetails
-  # The payment method which the user will use to make the payments. Options are `bank`, `card` or you can leave empty to support both.
+  # The payment method which the sender will use to make the payments. Options are `bank`, `card` or you can leave empty to support both.
   attr_accessor :payment_method
 
-  # This is where the user should be redirected back when the payment has been finished
+  # This is where the sender should be redirected back when the payment has been finished
   attr_accessor :redirect_url
 
   # The phone number where the funds should be collected from
   attr_accessor :phone_number
 
   attr_accessor :mobile_provider
-
-  # States whether to send out the instructions to the phone number on how to pay the funds or not. This shuold always be set to true, otherwise the sender might not receive a prompt for payment.
-  attr_accessor :send_instructions
 
   # Please make sure the refund_address is a valid BTC address belonging to the sender, as that is going to be used in case the transaction has to be refunded.
   attr_accessor :refund_address
@@ -39,7 +36,6 @@ class PayinMethodDetails
       :'redirect_url' => :'redirect_url',
       :'phone_number' => :'phone_number',
       :'mobile_provider' => :'mobile_provider',
-      :'send_instructions' => :'send_instructions',
       :'refund_address' => :'refund_address'
     }
   end
@@ -51,7 +47,6 @@ class PayinMethodDetails
       :'redirect_url' => :'String',
       :'phone_number' => :'String',
       :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
-      :'send_instructions' => :'Boolean',
       :'refund_address' => :'String'
     }
   end
@@ -96,10 +91,6 @@ class PayinMethodDetails
       self.mobile_provider = attributes[:'mobile_provider']
     end
 
-    if attributes.key?(:'send_instructions')
-      self.send_instructions = attributes[:'send_instructions']
-    end
-
     if attributes.key?(:'refund_address')
       self.refund_address = attributes[:'refund_address']
     end
@@ -109,17 +100,12 @@ class PayinMethodDetails
   # @return Array for valid properties with the reasons
   def list_invalid_properties
     invalid_properties = Array.new
-    if @phone_number.nil?
-      invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
-    end
-
     invalid_properties
   end
 
   # Check to see if the all the properties in the model are valid
   # @return true if the model is valid
   def valid?
-    return false if @phone_number.nil?
     _one_of_found = false
     openapi_one_of.each do |_class|
       _one_of = TransferZero.const_get(_class).build_from_hash(self.to_hash)
@@ -148,7 +134,6 @@ class PayinMethodDetails
         redirect_url == o.redirect_url &&
         phone_number == o.phone_number &&
         mobile_provider == o.mobile_provider &&
-        send_instructions == o.send_instructions &&
         refund_address == o.refund_address
   end
 
@@ -161,7 +146,7 @@ class PayinMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [payment_method, redirect_url, phone_number, mobile_provider, send_instructions, refund_address].hash
+    [payment_method, redirect_url, phone_number, mobile_provider, refund_address].hash
   end
 
 require 'active_support/core_ext/hash'

@@ -15,10 +15,18 @@ require 'date'
 module TransferZero
 # This describes the specific details on how the funds should be collected from the sender.
 class PayinMethod
-  # Describes how the payment should be requested from the user.  Possible values: - `NGN::Bank`: NGN bank and card collection requests - `NGN::Mobile`: NGN mobile collections - `GHS::Mobile`: GHS mobile collections - `TZS::Mobile`: TZS mobile collections - `UGX::Mobile`: UGX mobile collections - `EUR::Bank`: EUR IBAN collections - `GBP::Bank`: GBP IBAN collections 
+  # Describes how the payment should be requested from the sender.  Possible values: - `GHS::Mobile`: GHS mobile collections - `UGX::Mobile`: UGX mobile collections - `EUR::Bank`: EUR IBAN collections - `GBP::Bank`: GBP IBAN collections 
   attr_accessor :type
 
+  attr_accessor :ux_flow
+
   attr_accessor :in_details
+
+  attr_accessor :id
+
+  attr_accessor :state
+
+  attr_accessor :state_reason_details
 
   # This will contain the description on where to pay the funds. Please see the [Collections Details](https://docs.transferzero.com/docs/collection-details) in the API documentation on what to expect here.
   attr_accessor :out_details
@@ -26,17 +34,21 @@ class PayinMethod
   # This will contain the instructions on how to pay the funds. Please see the [Collections Details](https://docs.transferzero.com/docs/collection-details) in the API documentation on what to expect here.
   attr_accessor :instructions
 
-  # Describes which provider to use for collection. Please see the [Collections Details](https://docs.transferzero.com/docs/collection-details) in the API documentation on the valid values
-  attr_accessor :provider
+  # The fields that have some problems and don't pass validation
+  attr_accessor :errors
 
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
       :'type' => :'type',
+      :'ux_flow' => :'ux_flow',
       :'in_details' => :'in_details',
+      :'id' => :'id',
+      :'state' => :'state',
+      :'state_reason_details' => :'state_reason_details',
       :'out_details' => :'out_details',
       :'instructions' => :'instructions',
-      :'provider' => :'provider'
+      :'errors' => :'errors'
     }
   end
 
@@ -44,10 +56,14 @@ class PayinMethod
   def self.openapi_types
     {
       :'type' => :'String',
+      :'ux_flow' => :'PayinMethodUxFlow',
       :'in_details' => :'PayinMethodDetails',
+      :'id' => :'String',
+      :'state' => :'PayinMethodState',
+      :'state_reason_details' => :'StateReasonDetails',
       :'out_details' => :'Object',
       :'instructions' => :'Object',
-      :'provider' => :'String'
+      :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
     }
   end
 
@@ -70,8 +86,24 @@ class PayinMethod
       self.type = attributes[:'type']
     end
 
+    if attributes.key?(:'ux_flow')
+      self.ux_flow = attributes[:'ux_flow']
+    end
+
     if attributes.key?(:'in_details')
       self.in_details = attributes[:'in_details']
+    end
+
+    if attributes.key?(:'id')
+      self.id = attributes[:'id']
+    end
+
+    if attributes.key?(:'state')
+      self.state = attributes[:'state']
+    end
+
+    if attributes.key?(:'state_reason_details')
+      self.state_reason_details = attributes[:'state_reason_details']
     end
 
     if attributes.key?(:'out_details')
@@ -82,8 +114,10 @@ class PayinMethod
       self.instructions = attributes[:'instructions']
     end
 
-    if attributes.key?(:'provider')
-      self.provider = attributes[:'provider']
+    if attributes.key?(:'errors')
+      if (value = attributes[:'errors']).is_a?(Hash)
+        self.errors = value
+      end
     end
   end
 
@@ -106,10 +140,14 @@ class PayinMethod
     return true if self.equal?(o)
     self.class == o.class &&
         type == o.type &&
+        ux_flow == o.ux_flow &&
         in_details == o.in_details &&
+        id == o.id &&
+        state == o.state &&
+        state_reason_details == o.state_reason_details &&
         out_details == o.out_details &&
         instructions == o.instructions &&
-        provider == o.provider
+        errors == o.errors
   end
 
   # @see the `==` method
@@ -121,7 +159,7 @@ class PayinMethod
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [type, in_details, out_details, instructions, provider].hash
+    [type, ux_flow, in_details, id, state, state_reason_details, out_details, instructions, errors].hash
   end
 
 require 'active_support/core_ext/hash'

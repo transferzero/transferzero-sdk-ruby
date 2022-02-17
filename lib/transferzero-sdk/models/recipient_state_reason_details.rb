@@ -14,10 +14,10 @@ require 'date'
 
 module TransferZero
 class RecipientStateReasonDetails
-  # Status code of failed transaction
+  # Status code of transaction
   attr_accessor :code
 
-  # Main category of error, it could be paid, unknown, pickupable, temporary_error, recipient_error, sender_error
+  # Main category of status code, it could be paid, unknown, pickupable, temporary_error, recipient_error, sender_error, sender_action_required
   attr_accessor :category
 
   # Tiered messages
@@ -44,6 +44,13 @@ class RecipientStateReasonDetails
       :'messages' => :'Array<String>',
       :'description' => :'String'
     }
+  end
+
+  # List of class defined in anyOf (OpenAPI v3)
+  def self.openapi_any_of
+    [
+    :'StateReasonDetails'
+    ]
   end
 
   # Initializes the object
@@ -90,6 +97,18 @@ class RecipientStateReasonDetails
   # Check to see if the all the properties in the model are valid
   # @return true if the model is valid
   def valid?
+    _any_of_found = false
+    openapi_any_of.each do |_class|
+      _any_of = TransferZero.const_get(_class).build_from_hash(self.to_hash)
+      if _any_of.valid?
+        _any_of_found = true
+      end
+    end
+
+    if !_any_of_found?
+      return false
+    end
+
     true
   end
 
