@@ -17,6 +17,9 @@ class PayinMethodUxFlow
   
   USSD_POPUP = "ussd_popup".freeze
   BANK_TRANSFER = "bank_transfer".freeze
+  HTTP_REDIRECT = "http_redirect".freeze
+  BLOCKCHAIN = "blockchain".freeze
+  UNKNOWN = "unknown".freeze
 
   # Builds the enum from string
   # @param [String] The enum value in the form of the string
