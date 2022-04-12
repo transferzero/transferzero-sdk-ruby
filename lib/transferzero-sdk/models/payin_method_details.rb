@@ -26,6 +26,9 @@ class PayinMethodDetails
 
   attr_accessor :mobile_provider
 
+  # The OTP that the sender received in otp verified ussd popup ux flow.
+  attr_accessor :otp
+
   # Please make sure the refund_address is a valid BTC address belonging to the sender, as that is going to be used in case the transaction has to be refunded.
   attr_accessor :refund_address
 
@@ -36,6 +39,7 @@ class PayinMethodDetails
       :'redirect_url' => :'redirect_url',
       :'phone_number' => :'phone_number',
       :'mobile_provider' => :'mobile_provider',
+      :'otp' => :'otp',
       :'refund_address' => :'refund_address'
     }
   end
@@ -47,6 +51,7 @@ class PayinMethodDetails
       :'redirect_url' => :'String',
       :'phone_number' => :'String',
       :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
+      :'otp' => :'String',
       :'refund_address' => :'String'
     }
   end
@@ -89,6 +94,10 @@ class PayinMethodDetails
 
     if attributes.key?(:'mobile_provider')
       self.mobile_provider = attributes[:'mobile_provider']
+    end
+
+    if attributes.key?(:'otp')
+      self.otp = attributes[:'otp']
     end
 
     if attributes.key?(:'refund_address')
@@ -134,6 +143,7 @@ class PayinMethodDetails
         redirect_url == o.redirect_url &&
         phone_number == o.phone_number &&
         mobile_provider == o.mobile_provider &&
+        otp == o.otp &&
         refund_address == o.refund_address
   end
 
@@ -146,7 +156,7 @@ class PayinMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [payment_method, redirect_url, phone_number, mobile_provider, refund_address].hash
+    [payment_method, redirect_url, phone_number, mobile_provider, otp, refund_address].hash
   end
 
 require 'active_support/core_ext/hash'

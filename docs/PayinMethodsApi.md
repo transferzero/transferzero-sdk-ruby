@@ -195,7 +195,7 @@ end
 
 
 # **retry_payin_method**
-> retry_payin_method(payin_method_id)
+> PayinMethodResponse retry_payin_method(payin_method_id)
 
 Retries PayinMethod
 
@@ -211,11 +211,12 @@ api_instance = TransferZero::PayinMethodsApi.new
 
 begin
   #Retries PayinMethod
-  api_instance.retry_payin_method(payin_method_id)
+  result = api_instance.retry_payin_method(payin_method_id)
+  p result
 rescue TransferZero::ApiError => e
   if e.validation_error
     puts "WARN: Validation error occured when calling the endpoint"
-    result = e.response_object("")
+    result = e.response_object("PayinMethodResponse")
     p result
   else
     puts "Exception when calling PayinMethodsApi->retry_payin_method: #{e}"
@@ -231,7 +232,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**PayinMethodResponse**](PayinMethodResponse.md)
 
 ### Authorization
 
@@ -250,7 +251,7 @@ end
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 
