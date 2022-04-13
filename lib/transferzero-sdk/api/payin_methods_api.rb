@@ -195,17 +195,17 @@ module TransferZero
     # Retries the collection process for the payin method.  Please note only payin methods in `error` state can be retried.
     # @param payin_method_id ID of the payin method whose collection process should be retried  Example: &#x60;/v1/payin_methods/9d4d7b73-a94c-4979-ab57-09074fd55d33/retry&#x60;
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [PayinMethodResponse]
     def retry_payin_method(payin_method_id, opts = {})
-      retry_payin_method_with_http_info(payin_method_id, opts)
-      nil
+      data, _status_code, _headers = retry_payin_method_with_http_info(payin_method_id, opts)
+      data
     end
 
     # Retries PayinMethod
     # Retries the collection process for the payin method.  Please note only payin methods in &#x60;error&#x60; state can be retried.
     # @param payin_method_id ID of the payin method whose collection process should be retried  Example: &#x60;/v1/payin_methods/9d4d7b73-a94c-4979-ab57-09074fd55d33/retry&#x60;
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(PayinMethodResponse, Fixnum, Hash)>] PayinMethodResponse data, response status code and response headers
     def retry_payin_method_with_http_info(payin_method_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PayinMethodsApi.retry_payin_method ...'
@@ -222,6 +222,8 @@ module TransferZero
 
       # header parameters
       header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = {}
@@ -234,7 +236,8 @@ module TransferZero
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'PayinMethodResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PayinMethodsApi#retry_payin_method\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

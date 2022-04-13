@@ -20,11 +20,15 @@ class PayinMethodDetailsMobile
 
   attr_accessor :mobile_provider
 
+  # The OTP that the sender received in otp verified ussd popup ux flow.
+  attr_accessor :otp
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
       :'phone_number' => :'phone_number',
-      :'mobile_provider' => :'mobile_provider'
+      :'mobile_provider' => :'mobile_provider',
+      :'otp' => :'otp'
     }
   end
 
@@ -32,7 +36,8 @@ class PayinMethodDetailsMobile
   def self.openapi_types
     {
       :'phone_number' => :'String',
-      :'mobile_provider' => :'PayoutMethodMobileProviderEnum'
+      :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
+      :'otp' => :'String'
     }
   end
 
@@ -58,6 +63,10 @@ class PayinMethodDetailsMobile
     if attributes.key?(:'mobile_provider')
       self.mobile_provider = attributes[:'mobile_provider']
     end
+
+    if attributes.key?(:'otp')
+      self.otp = attributes[:'otp']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -79,7 +88,8 @@ class PayinMethodDetailsMobile
     return true if self.equal?(o)
     self.class == o.class &&
         phone_number == o.phone_number &&
-        mobile_provider == o.mobile_provider
+        mobile_provider == o.mobile_provider &&
+        otp == o.otp
   end
 
   # @see the `==` method
@@ -91,7 +101,7 @@ class PayinMethodDetailsMobile
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [phone_number, mobile_provider].hash
+    [phone_number, mobile_provider, otp].hash
   end
 
 require 'active_support/core_ext/hash'
