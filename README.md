@@ -19,7 +19,13 @@ For more information, please visit:
 * [API Specification](https://api.transferzero.com/documentation)
 
 ## Installation
+***
+See following options and choose the one that is appropriate to your needs. 
+***
+### Use transferzero-sdk locally
 
+If you're a developer and want to use sdk to create transactions easily you probably want to follow those steps: [instructions for local usage](#using-transferzero-sdk-locally-to-create-transactions-collections-etc)
+***
 ### Build a gem
 
 To build the Ruby code into a gem:
@@ -40,13 +46,13 @@ or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.or
 Finally add this to the Gemfile:
 
     gem 'transferzero-sdk', '~> 1.19.1'
-
+***
 ### Install from Git
 
 If the Ruby gem is hosted at a git repository: https://github.com/transferzero/transferzero-sdk-ruby, then add the following in the Gemfile:
 
     gem 'transferzero-sdk', :git => 'https://github.com/transferzero/transferzero-sdk-ruby.git'
-
+***
 ### Include the Ruby code directly
 
 Include the Ruby code directly using `-I` as follows:
@@ -54,11 +60,6 @@ Include the Ruby code directly using `-I` as follows:
 ```shell
 ruby -Ilib script.rb
 ```
-
-## Getting Started
-
-Please follow the [installation](#installation) procedure and then run the following code:
-
 ## Webhooks
 
 To parse webhooks you can use the following snippet:
@@ -316,3 +317,120 @@ rescue TransferZero::ApiError => e
   end
 end
 ```
+
+
+## Using transferzero-sdk locally (to create transactions, collections etc)
+1. Clone transferzero-sdk-ruby repository
+2. Run `bundle install`
+  - if you see error:  `Gem::Ext::BuildError: ERROR: Failed to build gem native extension.` related to 'autotest-fsevent' gem, go to `transferzero-sdk-ruby/transferzero-sdk.gemspec` and comment out `s.add_development_dependency 'autotest-fsevent', '~> 0.2', '>= 0.2.12'` and run bundle install again.
+3. Open `example/client.rb` and fill in necessary values:
+- Replace transferzero-sdk gem version and location:
+
+```bash
+gemfile do
+  ~~gem "transferzero-sdk", "=1.0.0"~~
+  gem 'transferzero-sdk', git: 'git@github.com:transferzero/transferzero-sdk-ruby.git'
+end
+```
+- You need to get your organization credentials. Go to developers app and sign in if you already have an account. If you don't have the account you have to sign up first. Once you're signed in go to organizations and create one (or go to the existing one you want to use).
+When organization is created go to `api keys` and copy api key and secret. Paste values into credentials hash as below.
+Change host to `http://localhost:3002/v1` and add `scheme` key as in following code snippet:
+
+```bash
+credentials = {
+    key: “your organisation api key”,
+    secret: “your organisation api secret”,
+    host: 'http://localhost:3002/v1',
+    scheme: 'http'
+}
+```
+
+- Add config.scheme to initializer
+
+```
+class Client
+  def initialize(credentials)
+    TransferZero.configure do |config|
+      config.api_key = credentials[:key]
+      config.api_secret = credentials[:secret]
+      config.host = credentials[:host]
+      config.scheme = credentials[:scheme]
+    end
+  end
+  ...
+```
+
+- In order to create transaction you have to first set the client and create sender. Uncomment lines:
+```
+client = Client.new(credentials)
+client.create_sender_example
+```
+
+- Run script 
+```
+ruby example/client.rb
+```
+
+Now sender is created. Copy its ID.
+
+Now you can use predefined examples, or use them as a pattern for creating customized records.
+
+***
+### Using examples
+
+To use any of the examples defined in client.rb uncomment 
+```
+client = Client.new(credentials)
+```
+and needed example.
+***
+
+### Transaction creation:
+If you want the transaction to be assigned to previously created sender you have to replace sender.id with newly created sender id from previous step and comment out 
+```
+transaction.external_id = 'TRANSACTION-1f834add' # Optional field for customer's ID
+```
+inside create_transaction_example method. Those attributes can't be both assigned to the single transaction.
+
+Then uncomment: 
+```
+client.create_transaction_example
+```
+and run script.
+
+***
+### Transaction created and funded:
+
+Uncomment: 
+```
+client.create_and_fund_transaction_example
+```
+and run script.
+
+If you encounter 422 TransferZero::ApiError coming from `api/account_debits_api.rb` it means that you have to fund debit.
+Go do admin app -> `Apps` -> Choose organization which credentials are pasted into client.rb and click on its ID -> You will see organization details. In API section click on `Credit` -> Fill in the form choosing the same currency that is set in transaction and appropriate amount that will be suficient to cover transaction amount.
+Now transaction should be funded successfully.
+
+***
+
+
+Newly created transactions will show up on admin dashboard **after 15 minutes**. If you want to see them immediately, change transaction `created_at` attribute.
+
+
+***
+### Issues
+
+In case of 500 server error when running the script open rails console and run:
+```
+load Rails.root.join + 'db/seeds/providers.rb'
+```
+and restart the apps.
+
+
+
+
+
+
+
+
+
