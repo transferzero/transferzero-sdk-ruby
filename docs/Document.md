@@ -37,7 +37,7 @@ instance = TransferZero::Document.new(upload: data:image/png;base64,iVBORw0KGg..
                                  issuing_country: NG,
                                  id: ebe9bc0b-f2f6-4ce8-802a-8b79912d041e,
                                  document_id: XYZ12345,
-                                 expiry_date: null,
+                                 expiry_date: Wed Jun 07 00:00:00 UTC 2028,
                                  source: Manual,
                                  errors: {&quot;phone_number&quot;:[{&quot;error&quot;:&quot;invalid&quot;}],&quot;documents&quot;:[{&quot;error&quot;:&quot;blank&quot;}]})
 ```

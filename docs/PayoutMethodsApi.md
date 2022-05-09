@@ -214,7 +214,7 @@ end
 
 Updating a payout method
 
-Updates the payout method specified in the URL path.
+Updates a single payout method by the Payout Method ID
 
 ### Example
 ```ruby

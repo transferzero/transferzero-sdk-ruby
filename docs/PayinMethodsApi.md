@@ -137,7 +137,7 @@ end
 
 Updating a payin method
 
-Updates the payin method specified in the URL path.
+Updates a single payin method by the Payin Method ID
 
 ### Example
 ```ruby
