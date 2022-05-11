@@ -177,7 +177,7 @@ class PayoutMethodCountryEnum
   NU = "NU".freeze
   NF = "NF".freeze
   MP = "MP".freeze
-  FALSE = "false".freeze
+  NO = "NO".freeze
   OM = "OM".freeze
   PK = "PK".freeze
   PW = "PW".freeze
