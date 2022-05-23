@@ -16,6 +16,7 @@ module TransferZero
 class PayinMethodUxFlow
   
   USSD_POPUP = "ussd_popup".freeze
+  USSD_VOUCHER = "ussd_voucher".freeze
   USSD_MENU_APPROVAL = "ussd_menu_approval".freeze
   OTP_VERIFIED_USSD_POPUP = "otp_verified_ussd_popup".freeze
   BANK_TRANSFER = "bank_transfer".freeze
