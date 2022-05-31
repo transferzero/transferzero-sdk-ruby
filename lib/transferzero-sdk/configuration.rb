@@ -23,6 +23,18 @@ module TransferZero
     # Defines url base path
     attr_accessor :base_path
 
+    # Define server configuration index
+    attr_accessor :server_index
+
+    # Define server operation configuration index
+    attr_accessor :server_operation_index
+
+    # Default server variables
+    attr_accessor :server_variables
+
+    # Default server operation variables
+    attr_accessor :server_operation_variables
+
     # Defines API key used with API Key authentications.
     #
     # @return [String]
@@ -73,33 +85,28 @@ module TransferZero
     # @note Do NOT set it to false in production code, otherwise you would face multiple types of cryptographic attacks.
     #
     # @return [true, false]
-    attr_accessor :verify_ssl
+    attr_accessor :ssl_verify
 
     ### TLS/SSL setting
-    # Set this to false to skip verifying SSL host name
-    # Default to true.
+    # Any `OpenSSL::SSL::` constant (see https://ruby-doc.org/stdlib-2.5.1/libdoc/openssl/rdoc/OpenSSL/SSL.html)
     #
     # @note Do NOT set it to false in production code, otherwise you would face multiple types of cryptographic attacks.
     #
-    # @return [true, false]
-    attr_accessor :verify_ssl_host
+    attr_accessor :ssl_verify_mode
 
     ### TLS/SSL setting
     # Set this to customize the certificate file to verify the peer.
     #
     # @return [String] the path to the certificate file
-    #
-    # @see The `cainfo` option of Typhoeus, `--cert` option of libcurl. Related source code:
-    # https://github.com/typhoeus/typhoeus/blob/master/lib/typhoeus/easy_factory.rb#L145
-    attr_accessor :ssl_ca_cert
+    attr_accessor :ssl_ca_file
 
     ### TLS/SSL setting
     # Client certificate file (for client certificate)
-    attr_accessor :cert_file
+    attr_accessor :ssl_client_cert
 
     ### TLS/SSL setting
     # Client private key file (for client certificate)
-    attr_accessor :key_file
+    attr_accessor :ssl_client_key
 
     # Set this to customize parameters encoding of array parameter with multi collectionFormat.
     # Default to nil.
@@ -116,15 +123,19 @@ module TransferZero
       @scheme = 'https'
       @host = 'api-sandbox.transferzero.com'
       @base_path = '/v1'
+      @server_index = nil
+      @server_operation_index = {}
+      @server_variables = {}
+      @server_operation_variables = {}
       @api_key = ''
       @api_secret = ''
       @timeout = 0
       @client_side_validation = true
-      @verify_ssl = true
-      @verify_ssl_host = true
-      @params_encoding = nil
-      @cert_file = nil
-      @key_file = nil
+      @ssl_verify = true
+      @ssl_verify_mode = nil
+      @ssl_ca_file = nil
+      @ssl_client_cert = nil
+      @ssl_client_key = nil
       @debugging = false
       @inject_format = false
       @force_ending_format = false
@@ -158,9 +169,74 @@ module TransferZero
       @base_path = '' if @base_path == '/'
     end
 
-    def base_url
-      url = "#{scheme}://#{[host, base_path].join('/').gsub(/\/+/, '/')}".sub(/\/+\z/, '')
-      URI.encode(url)
+    def base_url(operation = nil)
+      index = server_operation_index.fetch(operation, server_index)
+      return "#{scheme}://#{[host, base_path].join('/').gsub(/\/+/, '/')}".sub(/\/+\z/, '') if index == nil
+
+      server_url(index, server_operation_variables.fetch(operation, server_variables), operation_server_settings[operation])
+    end
+    # Gets Basic Auth token string
+    def basic_auth_token
+      'Basic ' + ["#{username}:#{password}"].pack('m').delete("\r\n")
+    end
+
+    # Returns Auth Settings hash for api client.
+    def auth_settings
+      {
+      }
+    end
+
+    # Returns an array of Server setting
+    def server_settings
+      [
+        {
+          url: "https://api-sandbox.transferzero.com/v1",
+          description: "No description provided",
+        },
+        {
+          url: "https://api.transferzero.com/v1",
+          description: "No description provided",
+        }
+      ]
+    end
+
+    def operation_server_settings
+      {
+      }
+    end
+
+    # Returns URL based on server settings
+    #
+    # @param index array index of the server settings
+    # @param variables hash of variable and the corresponding value
+    def server_url(index, variables = {}, servers = nil)
+      servers = server_settings if servers == nil
+
+      # check array index out of bound
+      if (index < 0 || index >= servers.size)
+        fail ArgumentError, "Invalid index #{index} when selecting the server. Must be less than #{servers.size}"
+      end
+
+      server = servers[index]
+      url = server[:url]
+
+      return url unless server.key? :variables
+
+      # go through variable and assign a value
+      server[:variables].each do |name, variable|
+        if variables.key?(name)
+          if (!server[:variables][name].key?(:enum_values) || server[:variables][name][:enum_values].include?(variables[name]))
+            url.gsub! "{" + name.to_s + "}", variables[name]
+          else
+            fail ArgumentError, "The variable `#{name}` in the server URL has invalid value #{variables[name]}. Must be #{server[:variables][name][:enum_values]}."
+          end
+        else
+          # use default value
+          url.gsub! "{" + name.to_s + "}", server[:variables][name][:default_value]
+        end
+      end
+
+      url
     end
   end
 end
