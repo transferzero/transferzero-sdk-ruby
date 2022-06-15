@@ -76,6 +76,7 @@ describe 'TransactionsApi' do
   # @option opts [Integer] :per The number of results to load per page (defaults to 10)
   # @option opts [String] :external_id Allows filtering results by &#x60;external_id&#x60;.  Example: &#x60;/v1/senders?external_id&#x3D;26ec8517-2f0d-48c0-b74f-0bccb9ab3a87&#x60;
   # @option opts [String] :sender_id Allows filtering results by &#x60;sender_id&#x60;.  Example: &#x60;/v1/transactions?sender_id&#x3D;b41d3cb7-6c54-4245-85fc-8e30690eb0f7&#x60;
+  # @option opts [String] :transactions_type Allows filtering results by &#x60;transactions_type&#x60;.  Example: &#x60;/v1/transactions?transactions_type&#x3D;automated&#x60;
   # @return [TransactionListResponse]
   describe 'get_transactions test' do
     it 'should work' do

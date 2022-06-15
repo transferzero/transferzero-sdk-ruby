@@ -76,7 +76,7 @@ describe 'PayoutMethodsApi' do
 
   # unit tests for patch_payout_method
   # Updating a payout method
-  # Updates the payout method specified in the URL path.
+  # Updates a single payout method by the Payout Method ID
   # @param payout_method_id ID of the payout method to get.  Example: &#x60;/v1/payout_methods/bf9ff782-e182-45ac-abea-5bce83ad6670&#x60;
   # @param payout_method 
   # @param [Hash] opts the optional parameters

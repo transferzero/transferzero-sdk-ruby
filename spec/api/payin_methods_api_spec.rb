@@ -58,7 +58,7 @@ describe 'PayinMethodsApi' do
 
   # unit tests for patch_payin_method
   # Updating a payin method
-  # Updates the payin method specified in the URL path.
+  # Updates a single payin method by the Payin Method ID
   # @param payin_method_id ID of the payin method to get.  Example: &#x60;/v1/payin_methods/bf9ff782-e182-45ac-abea-5bce83ad6670&#x60;
   # @param payin_method 
   # @param [Hash] opts the optional parameters
@@ -74,7 +74,7 @@ describe 'PayinMethodsApi' do
   # Retries the collection process for the payin method.  Please note only payin methods in &#x60;error&#x60; state can be retried.
   # @param payin_method_id ID of the payin method whose collection process should be retried  Example: &#x60;/v1/payin_methods/9d4d7b73-a94c-4979-ab57-09074fd55d33/retry&#x60;
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [PayinMethodResponse]
   describe 'retry_payin_method test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

@@ -44,7 +44,19 @@ describe 'AccountValidationRequest' do
     end
   end
 
+  describe 'test attribute "iban"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "phone_number"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "mobile_provider"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -53,7 +65,7 @@ describe 'AccountValidationRequest' do
   describe 'test attribute "country"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["NG", "GH"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["NG", "GH", "SN", "CI"])
       # validator.allowable_values.each do |value|
       #   expect { @instance.country = value }.not_to raise_error
       # end
@@ -63,7 +75,7 @@ describe 'AccountValidationRequest' do
   describe 'test attribute "currency"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["NGN", "GHS"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["NGN", "GHS", "XOF"])
       # validator.allowable_values.each do |value|
       #   expect { @instance.currency = value }.not_to raise_error
       # end

@@ -74,7 +74,7 @@ describe 'SendersApi' do
 
   # unit tests for patch_sender
   # Updating a sender
-  # Updates the sender specified in the URL path.
+  # Updates a single sender by the Sender ID
   # @param sender_id ID of the sender to get.  Example: &#x60;/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670&#x60;
   # @param sender_request 
   # @param [Hash] opts the optional parameters

@@ -56,4 +56,16 @@ describe 'PayoutMethodDetailsXOFMobile' do
     end
   end
 
+  describe 'test attribute "country"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "transfer_reason"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

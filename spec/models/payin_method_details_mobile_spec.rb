@@ -38,7 +38,13 @@ describe 'PayinMethodDetailsMobile' do
     end
   end
 
-  describe 'test attribute "send_instructions"' do
+  describe 'test attribute "mobile_provider"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "otp"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

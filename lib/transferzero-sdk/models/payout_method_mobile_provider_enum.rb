@@ -25,6 +25,8 @@ class PayoutMethodMobileProviderEnum
   AFRICELL = "africell".freeze
   TELECOM = "telecom".freeze
   MOBICASH = "mobicash".freeze
+  EMONEY = "emoney".freeze
+  FREE = "free".freeze
   WAVE = "wave".freeze
 
   # Builds the enum from string

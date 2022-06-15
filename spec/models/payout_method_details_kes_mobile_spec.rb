@@ -68,6 +68,12 @@ describe 'PayoutMethodDetailsKESMobile' do
     end
   end
 
+  describe 'test attribute "transfer_reason"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "identity_card_type"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
