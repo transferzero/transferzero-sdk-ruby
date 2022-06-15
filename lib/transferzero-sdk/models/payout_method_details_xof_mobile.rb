@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"774044436\", // local or international Senegalese or Ivory Coast format   \"mobile_provider\": \"orange\", // \"orange\", \"tigo\" or \"wave\" for Senegal; \"orange\", \"mtn\" or \"moov\" for Ivory Coast; \"orange\" or \"mobicash\" for Burkina Faso and Mali   \"country\" // Optional; Values: \"SN\" for Senegal; \"CI\" for Ivory Coast; \"ML\" for Mali; \"BF\" for Burkina Faso; Default value is \"SN\"   \"transfer_reason\": \"personal_account\" // mandatory for Mali payouts, optional otherwise } ```
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"774044436\", // local or international Senegalese or Ivory Coast format   \"mobile_provider\": \"orange\", // \"orange\", \"tigo\", \"emoney\", \"free\" or \"wave\" for Senegal; \"orange\", \"mtn\" or \"moov\" for Ivory Coast; \"orange\" or \"mobicash\" for Burkina Faso and Mali   \"country\" // Optional; Values: \"SN\" for Senegal; \"CI\" for Ivory Coast; \"ML\" for Mali; \"BF\" for Burkina Faso; Default value is \"SN\"   \"transfer_reason\": \"personal_account\" // mandatory for Mali payouts, optional otherwise } ```
 class PayoutMethodDetailsXOFMobile
   attr_accessor :first_name
 
