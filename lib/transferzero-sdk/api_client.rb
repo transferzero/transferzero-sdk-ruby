@@ -36,7 +36,7 @@ module TransferZero
     # @option config [Configuration] Configuration for initializing the object, default to Configuration.default
     def initialize(config = Configuration.default)
       @config = config
-      @user_agent = "TransferZero-SDK/Ruby/1.20.0"
+      @user_agent = "TransferZero-SDK/Ruby/1.20.1"
       @default_headers = {
         'Content-Type' => 'application/json',
         'User-Agent' => @user_agent
@@ -338,7 +338,7 @@ module TransferZero
       elsif body
         data = body.is_a?(String) ? body : body.to_json
       else
-        data = nil
+        data = ''
       end
       data
     end
@@ -365,34 +365,6 @@ module TransferZero
       # Add leading and trailing slashes to path
       path = "/#{path}".gsub(/\/+/, '/')
       @config.base_url(opts[:operation]) + path
-    end
-
-    # Builds the HTTP request body
-    #
-    # @param [Hash] header_params Header parameters
-    # @param [Hash] form_params Query parameters
-    # @param [Object] body HTTP body (JSON/XML)
-    # @return [String] HTTP body data in the form of string
-    def build_request_body(header_params, form_params, body)
-      # http form
-      if header_params['Content-Type'] == 'application/x-www-form-urlencoded' ||
-          header_params['Content-Type'] == 'multipart/form-data'
-        data = {}
-        form_params.each do |key, value|
-          case value
-          when ::File, ::Array, nil
-            # let typhoeus handle File, Array and nil parameters
-            data[key] = value
-          else
-            data[key] = value.to_s
-          end
-        end
-      elsif body
-        data = body.is_a?(String) ? body : body.to_json
-      else
-        data = nil
-      end
-      data
     end
 
     # Sign request using HMAC-SHA512 algorithm.
