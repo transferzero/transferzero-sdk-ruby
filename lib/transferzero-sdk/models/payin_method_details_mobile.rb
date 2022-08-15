@@ -20,6 +20,8 @@ class PayinMethodDetailsMobile
 
   attr_accessor :mobile_provider
 
+  attr_accessor :country
+
   # The OTP that the sender received in otp verified ussd popup ux flow.
   attr_accessor :otp
 
@@ -28,6 +30,7 @@ class PayinMethodDetailsMobile
     {
       :'phone_number' => :'phone_number',
       :'mobile_provider' => :'mobile_provider',
+      :'country' => :'country',
       :'otp' => :'otp'
     }
   end
@@ -37,6 +40,7 @@ class PayinMethodDetailsMobile
     {
       :'phone_number' => :'String',
       :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
+      :'country' => :'PayoutMethodCountryEnum',
       :'otp' => :'String'
     }
   end
@@ -64,6 +68,10 @@ class PayinMethodDetailsMobile
       self.mobile_provider = attributes[:'mobile_provider']
     end
 
+    if attributes.key?(:'country')
+      self.country = attributes[:'country']
+    end
+
     if attributes.key?(:'otp')
       self.otp = attributes[:'otp']
     end
@@ -89,6 +97,7 @@ class PayinMethodDetailsMobile
     self.class == o.class &&
         phone_number == o.phone_number &&
         mobile_provider == o.mobile_provider &&
+        country == o.country &&
         otp == o.otp
   end
 
@@ -101,7 +110,7 @@ class PayinMethodDetailsMobile
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [phone_number, mobile_provider, otp].hash
+    [phone_number, mobile_provider, country, otp].hash
   end
 
 require 'active_support/core_ext/hash'
