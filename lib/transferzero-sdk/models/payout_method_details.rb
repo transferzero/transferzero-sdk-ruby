@@ -195,6 +195,7 @@ class PayoutMethodDetails
     :'PayoutMethodDetailsNGNBank',
     :'PayoutMethodDetailsUSDBank',
     :'PayoutMethodDetailsUSDCash',
+    :'PayoutMethodDetailsXAFBank',
     :'PayoutMethodDetailsXAFMobile',
     :'PayoutMethodDetailsXOFBank',
     :'PayoutMethodDetailsXOFCash',
