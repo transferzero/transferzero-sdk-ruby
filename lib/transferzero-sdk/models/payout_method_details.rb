@@ -181,6 +181,7 @@ class PayoutMethodDetails
   # List of class defined in oneOf (OpenAPI v3)
   def self.openapi_one_of
     [
+    :'PayoutMethodDetailsBRLBank',
     :'PayoutMethodDetailsBTC',
     :'PayoutMethodDetailsBalance',
     :'PayoutMethodDetailsGBPBank',
@@ -392,6 +393,10 @@ class PayoutMethodDetails
       invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
     end
 
+    if @bank_account_type.nil?
+      invalid_properties.push('invalid value for "bank_account_type", bank_account_type cannot be nil.')
+    end
+
     if @phone_number.nil?
       invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
     end
@@ -402,6 +407,10 @@ class PayoutMethodDetails
 
     if @country.nil?
       invalid_properties.push('invalid value for "country", country cannot be nil.')
+    end
+
+    if @transfer_reason.nil?
+      invalid_properties.push('invalid value for "transfer_reason", transfer_reason cannot be nil.')
     end
 
     if @iban.nil?
@@ -452,6 +461,10 @@ class PayoutMethodDetails
       invalid_properties.push('invalid value for "city", city cannot be nil.')
     end
 
+    if @branch_code.nil?
+      invalid_properties.push('invalid value for "branch_code", branch_code cannot be nil.')
+    end
+
     if @swift_code.nil?
       invalid_properties.push('invalid value for "swift_code", swift_code cannot be nil.')
     end
@@ -466,9 +479,11 @@ class PayoutMethodDetails
     return false if @last_name.nil?
     return false if @bank_code.nil?
     return false if @bank_account.nil?
+    return false if @bank_account_type.nil?
     return false if @phone_number.nil?
     return false if @mobile_provider.nil?
     return false if @country.nil?
+    return false if @transfer_reason.nil?
     return false if @iban.nil?
     return false if @bank_name.nil?
     return false if @cash_provider.nil?
@@ -481,6 +496,7 @@ class PayoutMethodDetails
     return false if @street.nil?
     return false if @postal_code.nil?
     return false if @city.nil?
+    return false if @branch_code.nil?
     return false if @swift_code.nil?
     _one_of_found = false
     openapi_one_of.each do |_class|
