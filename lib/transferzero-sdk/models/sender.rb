@@ -79,7 +79,7 @@ class Sender
   # The nationality of the sender (used only with a Personal sender)
   attr_accessor :nationality
 
-  # Legal entity type (used only with a Business sender)  Available values:   - sole_proprietorship: Sole Proprietorship   - partnership: Partnership   - privately_owned_company: Privately Owned Company (Limited Company)   - publicly_owned_company: Publicly Listed Company (PLC)   - government_owned_entity: Government Owned Entity Trusts   - trust: Foundations & Similar Entities   - ngo: Non-Government Organisations / Charities inc Religious bodies and place of worship   - club_and_society: Clubs and Societies   - go: GO (Majority Owned Subsidiary of State-Owned Company)   - financial_institution: Financial Institution  Please note not all values are acceptable for some our corridors. Please reach out to our sales teams for more information.  Note that if you select `financial_institution` then the fields `vat_registration_number`, `financial_regulator` and `regulatory_licence_number` will be mandatory as well.
+  # Legal entity type (used only with a Business sender)  Available values:   - sole_proprietorship: Sole Proprietorship   - partnership: Partnership   - privately_owned_company: Privately Owned Company (Limited Company)   - publicly_owned_company: Publicly Listed Company (PLC)   - government_owned_entity: Government Owned Entity Trusts   - trust: Foundations & Similar Entities   - ngo: Non-Government Organisations / Charities inc Religious bodies and place of worship   - club_and_society: Clubs and Societies   - go: GO (Majority Owned Subsidiary of State-Owned Company)   - financial_institution: Financial Institution   - mto: Money Transfer Operator (MTO) / Other Licensed Financial Institution  Please note not all values are acceptable for some our corridors. Please reach out to our sales teams for more information.  Note that if you select `financial_institution` then the fields `vat_registration_number`, `financial_regulator` and `regulatory_licence_number` will be mandatory as well.
   attr_accessor :legal_entity_type
 
   # The registration date (used only with a Business sender)
@@ -581,7 +581,7 @@ class Sender
     return false if @ip.nil?
     identification_type_validator = EnumAttributeValidator.new('String', ["DL", "PP", "ID", "OT"])
     return false unless identification_type_validator.valid?(@identification_type)
-    legal_entity_type_validator = EnumAttributeValidator.new('String', ["sole_proprietorship", "partnership", "privately_owned_company", "publicly_owned_company", "government_owned_entity", "trust", "ngo", "club_and_society", "go", "other", "financial_institution"])
+    legal_entity_type_validator = EnumAttributeValidator.new('String', ["sole_proprietorship", "partnership", "privately_owned_company", "publicly_owned_company", "government_owned_entity", "trust", "ngo", "club_and_society", "go", "other", "financial_institution", "mto"])
     return false unless legal_entity_type_validator.valid?(@legal_entity_type)
     nature_of_business_validator = EnumAttributeValidator.new('String', ["personal", "agriculture_and_hunting", "forestry", "fishing", "agricultural_by_products", "coal_mining", "oil_mining", "iron_ore_mining", "other_metal_and_diamond_mining", "other_mineral_mining", "manufacturing_of_food_drink_tobacco", "manufacturing_of_textiles_leather_fur_furniture", "manufacture_of_wooden_products_furniture", "manufacture_of_paper_pulp_allied_products", "manufacture_of_chemicals_medical_petroleum_rubber_plastic_products", "manufacture_of_pottery_china_glass_stone", "manufacture_of_iron_steel_non_ferrous_metals_basic_industries", "manufacture_of_metal_products_electrical_and_scientific_engineering", "manufacture_of_jewelry_musical_instruments_toys", "electricity_gas_and_water", "construction", "wholesale_trade", "retail_trade", "catering_incl_hotels", "transport_storage", "communications", "finance_and_holding_companies", "insurance", "business_services", "real_estate_development_investment", "central_state_governments", "community_services_defence_police_prisons_etc", "social_services_education_health_care", "personal_services_leisure_services", "personal_services_domestic_laundry_repairs", "personal_services_embassies_international_organisations"])
     return false unless nature_of_business_validator.valid?(@nature_of_business)
@@ -614,7 +614,7 @@ class Sender
   # Custom attribute writer method checking allowed values (enum).
   # @param [Object] legal_entity_type Object to be assigned
   def legal_entity_type=(legal_entity_type)
-    validator = EnumAttributeValidator.new('String', ["sole_proprietorship", "partnership", "privately_owned_company", "publicly_owned_company", "government_owned_entity", "trust", "ngo", "club_and_society", "go", "other", "financial_institution"])
+    validator = EnumAttributeValidator.new('String', ["sole_proprietorship", "partnership", "privately_owned_company", "publicly_owned_company", "government_owned_entity", "trust", "ngo", "club_and_society", "go", "other", "financial_institution", "mto"])
     unless validator.valid?(legal_entity_type) || legal_entity_type.empty?
       fail ArgumentError, "invalid value for \"legal_entity_type\", must be one of #{validator.allowable_values}."
     end
