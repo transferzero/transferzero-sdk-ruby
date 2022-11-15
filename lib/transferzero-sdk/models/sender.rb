@@ -79,7 +79,7 @@ class Sender
   # The nationality of the sender (used only with a Personal sender)
   attr_accessor :nationality
 
-  # Legal entity type (used only with a Business sender)  Available values:   - sole_proprietorship: Sole Proprietorship   - partnership: Partnership   - privately_owned_company: Privately Owned Company (Limited Company)   - publicly_owned_company: Publicly Listed Company (PLC)   - government_owned_entity: Government Owned Entity Trusts   - trust: Foundations & Similar Entities   - ngo: Non-Government Organisations / Charities inc Religious bodies and place of worship   - club_and_society: Clubs and Societies   - go: GO (Majority Owned Subsidiary of State-Owned Company)   - financial_institution: Financial Institution   - mto: Money Transfer Operator (MTO) / Other Licensed Financial Institution  Please note not all values are acceptable for some our corridors. Please reach out to our sales teams for more information.  Note that if you select `financial_institution` then the fields `vat_registration_number`, `financial_regulator` and `regulatory_licence_number` will be mandatory as well.
+  # Legal entity type (used only with a Business sender)  Available values:   - sole_proprietorship: Sole Proprietorship   - partnership: Partnership   - privately_owned_company: Privately Owned Company (Limited Company)   - publicly_owned_company: Publicly Listed Company (PLC)   - government_owned_entity: Government Owned Entity Trusts   - trust: Foundations & Similar Entities   - ngo: Non-Government Organisations / Charities inc Religious bodies and place of worship   - club_and_society: Clubs and Societies   - go: GO (Majority Owned Subsidiary of State-Owned Company)   - financial_institution: Financial Institution   - mto: Money Transfer Operator (MTO) / Other Licensed Financial Institution  Please note not all values are acceptable for some our corridors. Please reach out to our sales teams for more information.  Note that if you select `financial_institution` then the fields `vat_registration_number`, `financial_regulator` and `regulatory_licence_number` will be mandatory as well.  Note that if you select `mto` then following fields will be mandatory as well: `regulatory_licence_number`, `company_office_number`, `company_office_number_country`, `aml_officer_email`, `aml_officer_phone`, `aml_officer_phone_country`, `company_website_url`, `tax_identification_no`, `number_of_employees_in_company`, `list_of_countries_of_operation`, `estimated_annual_revenue_turnover`, `declaration`.
   attr_accessor :legal_entity_type
 
   # The registration date (used only with a Business sender)
@@ -166,6 +166,39 @@ class Sender
   # Date and time of sender was created
   attr_accessor :created_at
 
+  # Phone number of company office (without country callcode, used only with a Business sender)
+  attr_accessor :company_office_number
+
+  # Phone number country of company office in 2-character alpha ISO 3166-2 country format (used only with a Business sender)
+  attr_accessor :company_office_number_country
+
+  # Email address of AML Officer (used only with a Business sender)
+  attr_accessor :aml_officer_email
+
+  # Phone number of AML Officer (without country callcode, used only with a Business sender)
+  attr_accessor :aml_officer_phone
+
+  # Phone number country of AML Officer in 2-character alpha ISO 3166-2 country format (used only with a Business sender)
+  attr_accessor :aml_officer_phone_country
+
+  # Company website URL (used only with a Business sender)
+  attr_accessor :company_website_url
+
+  # Tax Identification Number (used only with a Business sender)
+  attr_accessor :tax_identification_no
+
+  # Number of employees in company (used only with a Business sender)
+  attr_accessor :number_of_employees_in_company
+
+  # List of countries of operation (used only with a Business sender)
+  attr_accessor :list_of_countries_of_operation
+
+  # Estimated annual turnover (in USD or equivalent, used only with a Business sender)
+  attr_accessor :estimated_annual_revenue_turnover
+
+  # Declaration that the signatory is authorised (used only with a Business sender)
+  attr_accessor :declaration
+
   class EnumAttributeValidator
     attr_reader :datatype
     attr_reader :allowable_values
@@ -241,7 +274,18 @@ class Sender
       :'country_of_birth' => :'country_of_birth',
       :'gender' => :'gender',
       :'sales_lead_id' => :'sales_lead_id',
-      :'created_at' => :'created_at'
+      :'created_at' => :'created_at',
+      :'company_office_number' => :'company_office_number',
+      :'company_office_number_country' => :'company_office_number_country',
+      :'aml_officer_email' => :'aml_officer_email',
+      :'aml_officer_phone' => :'aml_officer_phone',
+      :'aml_officer_phone_country' => :'aml_officer_phone_country',
+      :'company_website_url' => :'company_website_url',
+      :'tax_identification_no' => :'tax_identification_no',
+      :'number_of_employees_in_company' => :'number_of_employees_in_company',
+      :'list_of_countries_of_operation' => :'list_of_countries_of_operation',
+      :'estimated_annual_revenue_turnover' => :'estimated_annual_revenue_turnover',
+      :'declaration' => :'declaration'
     }
   end
 
@@ -298,7 +342,18 @@ class Sender
       :'country_of_birth' => :'String',
       :'gender' => :'String',
       :'sales_lead_id' => :'String',
-      :'created_at' => :'String'
+      :'created_at' => :'String',
+      :'company_office_number' => :'String',
+      :'company_office_number_country' => :'String',
+      :'aml_officer_email' => :'String',
+      :'aml_officer_phone' => :'String',
+      :'aml_officer_phone_country' => :'String',
+      :'company_website_url' => :'String',
+      :'tax_identification_no' => :'String',
+      :'number_of_employees_in_company' => :'String',
+      :'list_of_countries_of_operation' => :'Array<String>',
+      :'estimated_annual_revenue_turnover' => :'String',
+      :'declaration' => :'String'
     }
   end
 
@@ -526,6 +581,52 @@ class Sender
     if attributes.key?(:'created_at')
       self.created_at = attributes[:'created_at']
     end
+
+    if attributes.key?(:'company_office_number')
+      self.company_office_number = attributes[:'company_office_number']
+    end
+
+    if attributes.key?(:'company_office_number_country')
+      self.company_office_number_country = attributes[:'company_office_number_country']
+    end
+
+    if attributes.key?(:'aml_officer_email')
+      self.aml_officer_email = attributes[:'aml_officer_email']
+    end
+
+    if attributes.key?(:'aml_officer_phone')
+      self.aml_officer_phone = attributes[:'aml_officer_phone']
+    end
+
+    if attributes.key?(:'aml_officer_phone_country')
+      self.aml_officer_phone_country = attributes[:'aml_officer_phone_country']
+    end
+
+    if attributes.key?(:'company_website_url')
+      self.company_website_url = attributes[:'company_website_url']
+    end
+
+    if attributes.key?(:'tax_identification_no')
+      self.tax_identification_no = attributes[:'tax_identification_no']
+    end
+
+    if attributes.key?(:'number_of_employees_in_company')
+      self.number_of_employees_in_company = attributes[:'number_of_employees_in_company']
+    end
+
+    if attributes.key?(:'list_of_countries_of_operation')
+      if (value = attributes[:'list_of_countries_of_operation']).is_a?(Array)
+        self.list_of_countries_of_operation = value
+      end
+    end
+
+    if attributes.key?(:'estimated_annual_revenue_turnover')
+      self.estimated_annual_revenue_turnover = attributes[:'estimated_annual_revenue_turnover']
+    end
+
+    if attributes.key?(:'declaration')
+      self.declaration = attributes[:'declaration']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -696,7 +797,18 @@ class Sender
         country_of_birth == o.country_of_birth &&
         gender == o.gender &&
         sales_lead_id == o.sales_lead_id &&
-        created_at == o.created_at
+        created_at == o.created_at &&
+        company_office_number == o.company_office_number &&
+        company_office_number_country == o.company_office_number_country &&
+        aml_officer_email == o.aml_officer_email &&
+        aml_officer_phone == o.aml_officer_phone &&
+        aml_officer_phone_country == o.aml_officer_phone_country &&
+        company_website_url == o.company_website_url &&
+        tax_identification_no == o.tax_identification_no &&
+        number_of_employees_in_company == o.number_of_employees_in_company &&
+        list_of_countries_of_operation == o.list_of_countries_of_operation &&
+        estimated_annual_revenue_turnover == o.estimated_annual_revenue_turnover &&
+        declaration == o.declaration
   end
 
   # @see the `==` method
@@ -708,7 +820,7 @@ class Sender
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, lang, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, custom_source_of_funds, core_business_activity, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, trading_name, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id, city_of_birth, country_of_birth, gender, sales_lead_id, created_at].hash
+    [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, lang, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, custom_source_of_funds, core_business_activity, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, trading_name, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id, city_of_birth, country_of_birth, gender, sales_lead_id, created_at, company_office_number, company_office_number_country, aml_officer_email, aml_officer_phone, aml_officer_phone_country, company_website_url, tax_identification_no, number_of_employees_in_company, list_of_countries_of_operation, estimated_annual_revenue_turnover, declaration].hash
   end
 
 require 'active_support/core_ext/hash'
