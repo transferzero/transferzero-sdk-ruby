@@ -13,11 +13,13 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"bank_code\": \"104\",     \"branch_code\": \"00001\",     \"bank_account\": \"0009795493\",     \"bank_account_type\": \"10\",     \"identity_card_type\": \"ID\",     \"identity_card_id\": \"01234567890\",     \"transfer_reason\": \"personal_account\"   } ```  See [BRL Bank](https://docs.transferzero.com/docs/payout-details/#brlbank) documentation for the bank_code and transfer_reason lists
+# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"phone_number\": \"+552112345678\",     \"bank_code\": \"104\",     \"branch_code\": \"00001\",     \"bank_account\": \"0009795493\",     \"bank_account_type\": \"10\",     \"identity_card_type\": \"ID\",     \"identity_card_id\": \"01234567890\",     \"transfer_reason\": \"personal_account\"   } ```  See [BRL Bank](https://docs.transferzero.com/docs/payout-details/#brlbank) documentation for the bank_code and transfer_reason lists
 class PayoutMethodDetailsBRLBank
   attr_accessor :first_name
 
   attr_accessor :last_name
+
+  attr_accessor :phone_number
 
   attr_accessor :bank_code
 
@@ -38,6 +40,7 @@ class PayoutMethodDetailsBRLBank
     {
       :'first_name' => :'first_name',
       :'last_name' => :'last_name',
+      :'phone_number' => :'phone_number',
       :'bank_code' => :'bank_code',
       :'branch_code' => :'branch_code',
       :'bank_account' => :'bank_account',
@@ -53,6 +56,7 @@ class PayoutMethodDetailsBRLBank
     {
       :'first_name' => :'String',
       :'last_name' => :'String',
+      :'phone_number' => :'String',
       :'bank_code' => :'String',
       :'branch_code' => :'String',
       :'bank_account' => :'String',
@@ -84,6 +88,10 @@ class PayoutMethodDetailsBRLBank
 
     if attributes.key?(:'last_name')
       self.last_name = attributes[:'last_name']
+    end
+
+    if attributes.key?(:'phone_number')
+      self.phone_number = attributes[:'phone_number']
     end
 
     if attributes.key?(:'bank_code')
@@ -180,6 +188,7 @@ class PayoutMethodDetailsBRLBank
     self.class == o.class &&
         first_name == o.first_name &&
         last_name == o.last_name &&
+        phone_number == o.phone_number &&
         bank_code == o.bank_code &&
         branch_code == o.branch_code &&
         bank_account == o.bank_account &&
@@ -198,7 +207,7 @@ class PayoutMethodDetailsBRLBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, branch_code, bank_account, bank_account_type, identity_card_type, identity_card_id, transfer_reason].hash
+    [first_name, last_name, phone_number, bank_code, branch_code, bank_account, bank_account_type, identity_card_type, identity_card_id, transfer_reason].hash
   end
 
 require 'active_support/core_ext/hash'

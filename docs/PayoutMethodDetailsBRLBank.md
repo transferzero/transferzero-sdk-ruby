@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **first_name** | **String** |  | 
 **last_name** | **String** |  | 
+**phone_number** | **String** |  | [optional] 
 **bank_code** | **String** |  | 
 **branch_code** | **String** |  | 
 **bank_account** | **String** |  | 
@@ -21,6 +22,7 @@ require 'TransferZero'
 
 instance = TransferZero::PayoutMethodDetailsBRLBank.new(first_name: null,
                                  last_name: null,
+                                 phone_number: null,
                                  bank_code: null,
                                  branch_code: null,
                                  bank_account: null,
