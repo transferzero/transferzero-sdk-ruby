@@ -19,7 +19,7 @@ require 'TransferZero'
 
 instance = TransferZero::PayinMethodDetails.new(payment_method: null,
                                  redirect_url: null,
-                                 phone_number: +2569999999,
+                                 phone_number: +256129999999,
                                  mobile_provider: null,
                                  country: null,
                                  otp: null,

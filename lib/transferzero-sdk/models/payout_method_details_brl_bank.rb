@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"phone_number\": \"+552112345678\",     \"bank_code\": \"104\",     \"branch_code\": \"00001\",     \"bank_account\": \"0009795493\",     \"bank_account_type\": \"10\",     \"identity_card_type\": \"ID\",     \"identity_card_id\": \"01234567890\",     \"transfer_reason\": \"personal_account\"   } ```  See [BRL Bank](https://docs.transferzero.com/docs/payout-details/#brlbank) documentation for the bank_code and transfer_reason lists
+# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"phone_number\": \"+552112345678\", // E.164 international format     \"bank_code\": \"104\",     \"branch_code\": \"00001\",     \"bank_account\": \"0009795493\",     \"bank_account_type\": \"10\",     \"identity_card_type\": \"ID\",     \"identity_card_id\": \"01234567890\",     \"transfer_reason\": \"personal_account\"   } ```  See [BRL Bank](https://docs.transferzero.com/docs/payout-details/#brlbank) documentation for the bank_code and transfer_reason lists
 class PayoutMethodDetailsBRLBank
   attr_accessor :first_name
 

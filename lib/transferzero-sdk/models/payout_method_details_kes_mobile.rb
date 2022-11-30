@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"street\": \"Main Street\",     \"phone_number\": \"+254997853134\",     \"mobile_provider\": \"mpesa\",     \"transfer_reason\": \"personal_account\", // New transfer reason field     \"identity_card_type\": \"ID\",     \"identity_card_id\": \"AB12345678\"   } ```  See [KES Mobile](https://docs.transferzero.com/docs/payout-details/#kesmobile) documentation for transfer_reason lists
+# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"street\": \"Main Street\",     \"phone_number\": \"+254997853134\", // E.164 international format     \"mobile_provider\": \"mpesa\",     \"transfer_reason\": \"personal_account\", // New transfer reason field     \"identity_card_type\": \"ID\",     \"identity_card_id\": \"AB12345678\"   } ```  See [KES Mobile](https://docs.transferzero.com/docs/payout-details/#kesmobile) documentation for transfer_reason lists
 class PayoutMethodDetailsKESMobile
   attr_accessor :first_name
 

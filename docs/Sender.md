@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **street** | **String** | Sender&#39;s street | 
 **postal_code** | **String** | Zip code of sender | 
 **city** | **String** | Sender&#39;s city | 
-**phone_country** | **String** | Phone country of sender in 2-character alpha ISO 3166-2 country format | 
+**phone_country** | **String** | Phone country of sender in 2-character alpha ISO 3166-2 country format | [optional] 
 **phone_number** | **String** | Phone number of sender (without country callcode) | [optional] 
 **email** | **String** | Email of sender | 
 **ip** | **String** | IP of sender | 

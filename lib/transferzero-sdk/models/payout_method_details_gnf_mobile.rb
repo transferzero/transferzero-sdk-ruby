@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"444044436\", // local or international Guinea format   \"mobile_provider\": \"mtn\" } ```
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"+224444044436\", // E.164 international format   \"mobile_provider\": \"mtn\" } ```
 class PayoutMethodDetailsGNFMobile
   attr_accessor :first_name
 

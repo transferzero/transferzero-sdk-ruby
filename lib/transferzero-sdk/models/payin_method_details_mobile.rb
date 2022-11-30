@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"phone_number\": \"+2569999999\", } ```
+# ```JSON \"details\": {   \"phone_number\": \"+256129999999\", } ```
 class PayinMethodDetailsMobile
   # The phone number where the funds should be collected from
   attr_accessor :phone_number

@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"7087661234\" // local or international format } ```  Please note when sending XOF::Cash payments you should subscribe to the recipient.pending webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt -  ```JSON {   (...)   \"state\":\"pending\",   \"metadata\": {     \"payment_reference\":\"9M5GJRJUBCY\"   },   (...) } ```
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"+221708766123\" // E.164 international format } ```  Please note when sending XOF::Cash payments you should subscribe to the recipient.pending webhook, as that will broadcast the payment reference ID the customer need to use to obtain the funds. Example webhook response excerpt -  ```JSON {   (...)   \"state\":\"pending\",   \"metadata\": {     \"payment_reference\":\"9M5GJRJUBCY\"   },   (...) } ```
 class PayoutMethodDetailsMobile
   attr_accessor :first_name
 

@@ -23,7 +23,7 @@ class AccountValidationRequest
   # IBAN to query - BBAN format for XOF bank accounts
   attr_accessor :iban
 
-  # Phone number to query
+  # Phone number to query in E.164 format
   attr_accessor :phone_number
 
   attr_accessor :mobile_provider

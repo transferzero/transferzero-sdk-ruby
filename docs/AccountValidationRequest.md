@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **bank_account** | **String** | Account Number to query | [optional] 
 **bank_code** | **String** | Bank Code to query - same codes are used as for creating the transactions | [optional] 
 **iban** | **String** | IBAN to query - BBAN format for XOF bank accounts | [optional] 
-**phone_number** | **String** | Phone number to query | [optional] 
+**phone_number** | **String** | Phone number to query in E.164 format | [optional] 
 **mobile_provider** | [**PayoutMethodMobileProviderEnum**](PayoutMethodMobileProviderEnum.md) |  | [optional] 
 **country** | **String** | Country of account in 2-character alpha ISO 3166-2 country format | 
 **currency** | **String** | The currency the bank account is in | 

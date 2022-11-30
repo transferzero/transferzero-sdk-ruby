@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"first_name\": \"Jane\",     \"last_name\": \"Doe\",     \"phone_number\": \"+2341234567\",     \"country\": \"NG\"   } ``` See [USD Cash](https://docs.transferzero.com/docs/payout-details/#usdcash) documentation for the country list
+# ```JSON   \"details\": {     \"first_name\": \"Jane\",     \"last_name\": \"Doe\",     \"phone_number\": \"+2341234567\", // E.164 international format     \"country\": \"NG\"   } ``` See [USD Cash](https://docs.transferzero.com/docs/payout-details/#usdcash) documentation for the country list
 class PayoutMethodDetailsUSDCash
   attr_accessor :first_name
 

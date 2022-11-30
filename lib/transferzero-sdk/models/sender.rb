@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# This contains the details of the sender. The first time a specific sender is used the full details should be provided. Once a sender is created and is used, the next time you MUST only send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes.  Personal Sender Example: ```json {   // name   \"first_name\": \"Jane\",   \"last_name\": \"Doe\",    // address   \"country\": \"US\",   \"city\": \"New York\",   \"street\": \"20 W 34th St\",   \"postal_code\": \"10001\",   \"address_description\": \"\",    // DOB   \"birth_date\": \"1974-12-24\",    // Contact Details; You can usually use your company's contact details here   \"phone_country\": \"US\",   \"phone_number\": \"5555551234\",   \"email\": \"info@transferzero.com\",    // ID of the sender in your system   \"external_id\": \"Sender:US:234523\",    // these fields are mandatory, but you can usually leave them with the following default values:   \"documents\": [ ],   \"ip\": \"127.0.0.1\",   \"metadata\": {} } ```  Business Sender Example:  ```json {   \"type\": \"business\",   \"name\": \"Company name\",    // Country of Incorporation   \"country\": \"US\",    // Trading address of the company   \"trading_country\": \"US\",   \"city\": \"New York\",   \"street\": \"20 W 34th St\",   \"postal_code\": \"10001\",   \"address_description\": \"\",    // Company Details   \"legal_entity_type\": \"privately_owned_company\",   \"registration_date\": \"2012-01-25\",   \"registration_number\": \"VAT1234567\",   \"nature_of_business\": \"retail_trade\",    // Contact Details   \"phone_country\": \"US\",   \"phone_number\": \"5555551234\",   \"email\": \"example@home.org\",    // ID of the sender in your system   \"external_id\": \"Sender:Business:US:234523\",    // these fields are mandatory, but you can usually leave them with the following default values:   \"documents\": [ ],   \"ip\": \"127.0.0.1\",   \"metadata\": {} } ```  [Sender in the API documentation](https://docs.transferzero.com/docs/transaction-flow/#sender)
+# This contains the details of the sender. The first time a specific sender is used the full details should be provided. Once a sender is created and is used, the next time you MUST only send the ID of the sender. This is so we can match the same sender across multiple transactions for KYC and audit purposes.  Personal Sender Example: ```json {   // name   \"first_name\": \"Jane\",   \"last_name\": \"Doe\",    // address   \"country\": \"US\",   \"city\": \"New York\",   \"street\": \"20 W 34th St\",   \"postal_code\": \"10001\",   \"address_description\": \"\",    // DOB   \"birth_date\": \"1974-12-24\",    // Contact Details; You can usually use your company's contact details here   \"phone_number\": \"+15555551234\",   \"email\": \"info@transferzero.com\",    // ID of the sender in your system   \"external_id\": \"Sender:US:234523\",    // these fields are mandatory, but you can usually leave them with the following default values:   \"documents\": [ ],   \"ip\": \"127.0.0.1\",   \"metadata\": {} } ```  Business Sender Example:  ```json {   \"type\": \"business\",   \"name\": \"Company name\",    // Country of Incorporation   \"country\": \"US\",    // Trading address of the company   \"trading_country\": \"US\",   \"city\": \"New York\",   \"street\": \"20 W 34th St\",   \"postal_code\": \"10001\",   \"address_description\": \"\",    // Company Details   \"legal_entity_type\": \"privately_owned_company\",   \"registration_date\": \"2012-01-25\",   \"registration_number\": \"VAT1234567\",   \"nature_of_business\": \"retail_trade\",    // Contact Details   \"phone_number\": \"+15555551234\",   \"email\": \"example@home.org\",    // ID of the sender in your system   \"external_id\": \"Sender:Business:US:234523\",    // these fields are mandatory, but you can usually leave them with the following default values:   \"documents\": [ ],   \"ip\": \"127.0.0.1\",   \"metadata\": {} } ```  [Sender in the API documentation](https://docs.transferzero.com/docs/transaction-flow/#sender)
 class Sender
   attr_accessor :id
 
@@ -649,10 +649,6 @@ class Sender
       invalid_properties.push('invalid value for "city", city cannot be nil.')
     end
 
-    if @phone_country.nil?
-      invalid_properties.push('invalid value for "phone_country", phone_country cannot be nil.')
-    end
-
     if @email.nil?
       invalid_properties.push('invalid value for "email", email cannot be nil.')
     end
@@ -677,7 +673,6 @@ class Sender
     return false if @street.nil?
     return false if @postal_code.nil?
     return false if @city.nil?
-    return false if @phone_country.nil?
     return false if @email.nil?
     return false if @ip.nil?
     identification_type_validator = EnumAttributeValidator.new('String', ["DL", "PP", "ID", "OT"])

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ```ruby
 require 'TransferZero'
 
-instance = TransferZero::PayinMethodDetailsMobile.new(phone_number: +2569999999,
+instance = TransferZero::PayinMethodDetailsMobile.new(phone_number: +256129999999,
                                  mobile_provider: null,
                                  country: null,
                                  otp: null)

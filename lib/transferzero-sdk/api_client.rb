@@ -36,7 +36,7 @@ module TransferZero
     # @option config [Configuration] Configuration for initializing the object, default to Configuration.default
     def initialize(config = Configuration.default)
       @config = config
-      @user_agent = "TransferZero-SDK/Ruby/1.23.3"
+      @user_agent = "TransferZero-SDK/Ruby/1.23.4"
       @default_headers = {
         'Content-Type' => 'application/json',
         'User-Agent' => @user_agent
