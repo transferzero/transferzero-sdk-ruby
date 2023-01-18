@@ -90,6 +90,10 @@ class PayoutMethodDetails
 
   attr_accessor :swift_code
 
+  attr_accessor :pix_key_type
+
+  attr_accessor :pix_key_value
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -130,7 +134,9 @@ class PayoutMethodDetails
       :'nature_of_business' => :'nature_of_business',
       :'legal_entity_type' => :'legal_entity_type',
       :'branch_code' => :'branch_code',
-      :'swift_code' => :'swift_code'
+      :'swift_code' => :'swift_code',
+      :'pix_key_type' => :'pix_key_type',
+      :'pix_key_value' => :'pix_key_value'
     }
   end
 
@@ -174,7 +180,9 @@ class PayoutMethodDetails
       :'nature_of_business' => :'PayoutMethodNatureOfBusinessEnum',
       :'legal_entity_type' => :'PayoutMethodLegalEntityTypeEnum',
       :'branch_code' => :'String',
-      :'swift_code' => :'String'
+      :'swift_code' => :'String',
+      :'pix_key_type' => :'PayoutMethodPixKeyTypeEnum',
+      :'pix_key_value' => :'String'
     }
   end
 
@@ -371,6 +379,14 @@ class PayoutMethodDetails
     if attributes.key?(:'swift_code')
       self.swift_code = attributes[:'swift_code']
     end
+
+    if attributes.key?(:'pix_key_type')
+      self.pix_key_type = attributes[:'pix_key_type']
+    end
+
+    if attributes.key?(:'pix_key_value')
+      self.pix_key_value = attributes[:'pix_key_value']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -391,10 +407,6 @@ class PayoutMethodDetails
 
     if @bank_account.nil?
       invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
-    end
-
-    if @bank_account_type.nil?
-      invalid_properties.push('invalid value for "bank_account_type", bank_account_type cannot be nil.')
     end
 
     if @phone_number.nil?
@@ -461,10 +473,6 @@ class PayoutMethodDetails
       invalid_properties.push('invalid value for "city", city cannot be nil.')
     end
 
-    if @branch_code.nil?
-      invalid_properties.push('invalid value for "branch_code", branch_code cannot be nil.')
-    end
-
     if @swift_code.nil?
       invalid_properties.push('invalid value for "swift_code", swift_code cannot be nil.')
     end
@@ -479,7 +487,6 @@ class PayoutMethodDetails
     return false if @last_name.nil?
     return false if @bank_code.nil?
     return false if @bank_account.nil?
-    return false if @bank_account_type.nil?
     return false if @phone_number.nil?
     return false if @mobile_provider.nil?
     return false if @country.nil?
@@ -496,7 +503,6 @@ class PayoutMethodDetails
     return false if @street.nil?
     return false if @postal_code.nil?
     return false if @city.nil?
-    return false if @branch_code.nil?
     return false if @swift_code.nil?
     _one_of_found = false
     openapi_one_of.each do |_class|
@@ -559,7 +565,9 @@ class PayoutMethodDetails
         nature_of_business == o.nature_of_business &&
         legal_entity_type == o.legal_entity_type &&
         branch_code == o.branch_code &&
-        swift_code == o.swift_code
+        swift_code == o.swift_code &&
+        pix_key_type == o.pix_key_type &&
+        pix_key_value == o.pix_key_value
   end
 
   # @see the `==` method
@@ -571,7 +579,7 @@ class PayoutMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, transfer_reason, iban, bank_name, bank_country, cash_provider, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type, branch_code, swift_code].hash
+    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, transfer_reason, iban, bank_name, bank_country, cash_provider, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type, branch_code, swift_code, pix_key_type, pix_key_value].hash
   end
 
 require 'active_support/core_ext/hash'
