@@ -27,6 +27,7 @@ class PayoutMethodCountryEnum
   AR = "AR".freeze
   AM = "AM".freeze
   AW = "AW".freeze
+  AX = "AX".freeze
   AU = "AU".freeze
   AT = "AT".freeze
   AZ = "AZ".freeze
