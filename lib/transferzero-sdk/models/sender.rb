@@ -79,7 +79,7 @@ class Sender
   # The nationality of the sender (used only with a Personal sender)
   attr_accessor :nationality
 
-  # Legal entity type (used only with a Business sender)  Available values:   - sole_proprietorship: Sole Proprietorship   - partnership: Partnership   - privately_owned_company: Privately Owned Company (Limited Company)   - publicly_owned_company: Publicly Listed Company (PLC)   - government_owned_entity: Government Owned Entity Trusts   - trust: Foundations & Similar Entities   - ngo: Non-Government Organisations / Charities inc Religious bodies and place of worship   - club_and_society: Clubs and Societies   - go: GO (Majority Owned Subsidiary of State-Owned Company)   - financial_institution: Financial Institution   - mto: Money Transfer Operator (MTO) / Other Licensed Financial Institution  Please note not all values are acceptable for some our corridors. Please reach out to our sales teams for more information.  Note that if you select `financial_institution` then the fields `vat_registration_number`, `financial_regulator` and `regulatory_licence_number` will be mandatory as well.  Note that if you select `mto` then following fields will be mandatory as well: `regulatory_licence_number`, `company_office_number`, `company_office_number_country`, `aml_officer_email`, `aml_officer_phone`, `aml_officer_phone_country`, `company_website_url`, `tax_identification_no`, `number_of_employees_in_company`, `list_of_countries_of_operation`, `estimated_annual_revenue_turnover`, `declaration`.
+  # Legal entity type (used only with a Business sender)  Available values:   - sole_proprietorship: Sole Proprietorship   - partnership: Partnership   - privately_owned_company: Privately Owned Company (Limited Company)   - publicly_owned_company: Publicly Listed Company (PLC)   - government_owned_entity: Government Owned Entity Trusts   - trust: Foundations & Similar Entities   - ngo: Non-Government Organisations / Charities inc Religious bodies and place of worship   - club_and_society: Clubs and Societies   - go: GO (Majority Owned Subsidiary of State-Owned Company)   - financial_institution: Financial Institution   - mto: Money Transfer Operator (MTO) / Other Licensed Financial Institution  Please note not all values are acceptable for some our corridors. Please reach out to our sales teams for more information.  Note that if you select `financial_institution` then the fields `vat_registration_number`, `financial_regulator` and `regulatory_licence_number` will be mandatory as well.  Note that if you select `mto` then following fields will be mandatory as well: `vat_registration_number`, `financial_regulator`, `regulatory_licence_number`, `company_office_number`, `company_office_number_country`, `aml_officer_email`, `aml_officer_phone`, `aml_officer_phone_country`, `company_website_url`, `number_of_employees_in_company`, `list_of_countries_of_operation`, `estimated_annual_revenue_turnover`, `declaration`.
   attr_accessor :legal_entity_type
 
   # The registration date (used only with a Business sender)
@@ -184,9 +184,6 @@ class Sender
   # Company website URL (used only with a Business sender)
   attr_accessor :company_website_url
 
-  # Tax Identification Number (used only with a Business sender)
-  attr_accessor :tax_identification_no
-
   # Number of employees in company (used only with a Business sender)
   attr_accessor :number_of_employees_in_company
 
@@ -281,7 +278,6 @@ class Sender
       :'aml_officer_phone' => :'aml_officer_phone',
       :'aml_officer_phone_country' => :'aml_officer_phone_country',
       :'company_website_url' => :'company_website_url',
-      :'tax_identification_no' => :'tax_identification_no',
       :'number_of_employees_in_company' => :'number_of_employees_in_company',
       :'list_of_countries_of_operation' => :'list_of_countries_of_operation',
       :'estimated_annual_revenue_turnover' => :'estimated_annual_revenue_turnover',
@@ -349,7 +345,6 @@ class Sender
       :'aml_officer_phone' => :'String',
       :'aml_officer_phone_country' => :'String',
       :'company_website_url' => :'String',
-      :'tax_identification_no' => :'String',
       :'number_of_employees_in_company' => :'String',
       :'list_of_countries_of_operation' => :'Array<String>',
       :'estimated_annual_revenue_turnover' => :'String',
@@ -606,10 +601,6 @@ class Sender
       self.company_website_url = attributes[:'company_website_url']
     end
 
-    if attributes.key?(:'tax_identification_no')
-      self.tax_identification_no = attributes[:'tax_identification_no']
-    end
-
     if attributes.key?(:'number_of_employees_in_company')
       self.number_of_employees_in_company = attributes[:'number_of_employees_in_company']
     end
@@ -799,7 +790,6 @@ class Sender
         aml_officer_phone == o.aml_officer_phone &&
         aml_officer_phone_country == o.aml_officer_phone_country &&
         company_website_url == o.company_website_url &&
-        tax_identification_no == o.tax_identification_no &&
         number_of_employees_in_company == o.number_of_employees_in_company &&
         list_of_countries_of_operation == o.list_of_countries_of_operation &&
         estimated_annual_revenue_turnover == o.estimated_annual_revenue_turnover &&
@@ -815,7 +805,7 @@ class Sender
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, lang, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, custom_source_of_funds, core_business_activity, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, trading_name, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id, city_of_birth, country_of_birth, gender, sales_lead_id, created_at, company_office_number, company_office_number_country, aml_officer_email, aml_officer_phone, aml_officer_phone_country, company_website_url, tax_identification_no, number_of_employees_in_company, list_of_countries_of_operation, estimated_annual_revenue_turnover, declaration].hash
+    [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, lang, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, custom_source_of_funds, core_business_activity, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, trading_name, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id, city_of_birth, country_of_birth, gender, sales_lead_id, created_at, company_office_number, company_office_number_country, aml_officer_email, aml_officer_phone, aml_officer_phone_country, company_website_url, number_of_employees_in_company, list_of_countries_of_operation, estimated_annual_revenue_turnover, declaration].hash
   end
 
 require 'active_support/core_ext/hash'
