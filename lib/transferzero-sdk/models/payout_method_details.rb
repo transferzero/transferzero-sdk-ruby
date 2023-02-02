@@ -202,6 +202,7 @@ class PayoutMethodDetails
     :'PayoutMethodDetailsMADCash',
     :'PayoutMethodDetailsMobile',
     :'PayoutMethodDetailsNGNBank',
+    :'PayoutMethodDetailsNZDBank',
     :'PayoutMethodDetailsUSDBank',
     :'PayoutMethodDetailsUSDCash',
     :'PayoutMethodDetailsXAFBank',
