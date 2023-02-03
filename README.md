@@ -215,6 +215,7 @@ Class | Method | HTTP request | Description
  - [TransferZero::PayoutMethodDetailsGHSCash](docs/PayoutMethodDetailsGHSCash.md)
  - [TransferZero::PayoutMethodDetailsGNFMobile](docs/PayoutMethodDetailsGNFMobile.md)
  - [TransferZero::PayoutMethodDetailsIBAN](docs/PayoutMethodDetailsIBAN.md)
+ - [TransferZero::PayoutMethodDetailsINRBank](docs/PayoutMethodDetailsINRBank.md)
  - [TransferZero::PayoutMethodDetailsKESBank](docs/PayoutMethodDetailsKESBank.md)
  - [TransferZero::PayoutMethodDetailsKESMobile](docs/PayoutMethodDetailsKESMobile.md)
  - [TransferZero::PayoutMethodDetailsMADCash](docs/PayoutMethodDetailsMADCash.md)

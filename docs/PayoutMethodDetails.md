@@ -44,6 +44,7 @@ Name | Type | Description | Notes
 **swift_code** | **String** |  | 
 **pix_key_type** | [**PayoutMethodPixKeyTypeEnum**](PayoutMethodPixKeyTypeEnum.md) |  | [optional] 
 **pix_key_value** | **String** |  | [optional] 
+**ifsc_code** | **String** |  | 
 
 ## Code Sample
 
@@ -89,7 +90,8 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  branch_code: null,
                                  swift_code: null,
                                  pix_key_type: null,
-                                 pix_key_value: null)
+                                 pix_key_value: null,
+                                 ifsc_code: null)
 ```
 
 
