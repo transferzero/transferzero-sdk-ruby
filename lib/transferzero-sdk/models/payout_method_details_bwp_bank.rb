@@ -13,25 +13,37 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-class ApiLogListResponse
-  # Array of API log objects
-  attr_accessor :object
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"bank_name\": \"Banc ABC\",   \"bank_account\": \"12345678912345678\",   \"branch_code\": \"550067\", } ``` See [BWP Bank](https://docs.transferzero.com/docs/payout-details/#bwpbank) documentation for the bank_name & branch_code list
+class PayoutMethodDetailsBWPBank
+  attr_accessor :first_name
 
-  attr_accessor :meta
+  attr_accessor :last_name
+
+  attr_accessor :bank_name
+
+  attr_accessor :bank_account
+
+  attr_accessor :branch_code
 
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
-      :'object' => :'object',
-      :'meta' => :'meta'
+      :'first_name' => :'first_name',
+      :'last_name' => :'last_name',
+      :'bank_name' => :'bank_name',
+      :'bank_account' => :'bank_account',
+      :'branch_code' => :'branch_code'
     }
   end
 
   # Attribute type mapping.
   def self.openapi_types
     {
-      :'object' => :'Array<ApiLog>',
-      :'meta' => :'PaginationMeta'
+      :'first_name' => :'String',
+      :'last_name' => :'String',
+      :'bank_name' => :'String',
+      :'bank_account' => :'String',
+      :'branch_code' => :'String'
     }
   end
 
@@ -39,25 +51,35 @@ class ApiLogListResponse
   # @param [Hash] attributes Model attributes in the form of hash
   def initialize(attributes = {})
     if (!attributes.is_a?(Hash))
-      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::ApiLogListResponse` initialize method"
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsBWPBank` initialize method"
     end
 
     # check to see if the attribute exists and convert string to symbol for hash key
     attributes = attributes.each_with_object({}) { |(k, v), h|
       if (!self.class.attribute_map.key?(k.to_sym))
-        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::ApiLogListResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsBWPBank`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
       h[k.to_sym] = v
     }
 
-    if attributes.key?(:'object')
-      if (value = attributes[:'object']).is_a?(Array)
-        self.object = value
-      end
+    if attributes.key?(:'first_name')
+      self.first_name = attributes[:'first_name']
     end
 
-    if attributes.key?(:'meta')
-      self.meta = attributes[:'meta']
+    if attributes.key?(:'last_name')
+      self.last_name = attributes[:'last_name']
+    end
+
+    if attributes.key?(:'bank_name')
+      self.bank_name = attributes[:'bank_name']
+    end
+
+    if attributes.key?(:'bank_account')
+      self.bank_account = attributes[:'bank_account']
+    end
+
+    if attributes.key?(:'branch_code')
+      self.branch_code = attributes[:'branch_code']
     end
   end
 
@@ -65,12 +87,37 @@ class ApiLogListResponse
   # @return Array for valid properties with the reasons
   def list_invalid_properties
     invalid_properties = Array.new
+    if @first_name.nil?
+      invalid_properties.push('invalid value for "first_name", first_name cannot be nil.')
+    end
+
+    if @last_name.nil?
+      invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
+    end
+
+    if @bank_name.nil?
+      invalid_properties.push('invalid value for "bank_name", bank_name cannot be nil.')
+    end
+
+    if @bank_account.nil?
+      invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
+    end
+
+    if @branch_code.nil?
+      invalid_properties.push('invalid value for "branch_code", branch_code cannot be nil.')
+    end
+
     invalid_properties
   end
 
   # Check to see if the all the properties in the model are valid
   # @return true if the model is valid
   def valid?
+    return false if @first_name.nil?
+    return false if @last_name.nil?
+    return false if @bank_name.nil?
+    return false if @bank_account.nil?
+    return false if @branch_code.nil?
     true
   end
 
@@ -79,8 +126,11 @@ class ApiLogListResponse
   def ==(o)
     return true if self.equal?(o)
     self.class == o.class &&
-        object == o.object &&
-        meta == o.meta
+        first_name == o.first_name &&
+        last_name == o.last_name &&
+        bank_name == o.bank_name &&
+        bank_account == o.bank_account &&
+        branch_code == o.branch_code
   end
 
   # @see the `==` method
@@ -92,7 +142,7 @@ class ApiLogListResponse
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [object, meta].hash
+    [first_name, last_name, bank_name, bank_account, branch_code].hash
   end
 
 require 'active_support/core_ext/hash'
