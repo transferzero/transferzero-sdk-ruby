@@ -1,6 +1,6 @@
 # TransferZero::TransactionsApi
 
-All URIs are relative to *https://api-sandbox.transferzero.com/v1*
+All URIs are relative to *https://api-sandbox.bitpesa.co/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -63,7 +63,7 @@ You can set the API Key and Secret on the TransferZero object when setting it up
 TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.transferzero.com/v1'
+  config.host = 'https://api-sandbox.bitpesa.co/v1'
 end
 
 ```
@@ -124,7 +124,7 @@ You can set the API Key and Secret on the TransferZero object when setting it up
 TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.transferzero.com/v1'
+  config.host = 'https://api-sandbox.bitpesa.co/v1'
 end
 
 ```
@@ -185,7 +185,7 @@ You can set the API Key and Secret on the TransferZero object when setting it up
 TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.transferzero.com/v1'
+  config.host = 'https://api-sandbox.bitpesa.co/v1'
 end
 
 ```
@@ -257,7 +257,7 @@ You can set the API Key and Secret on the TransferZero object when setting it up
 TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.transferzero.com/v1'
+  config.host = 'https://api-sandbox.bitpesa.co/v1'
 end
 
 ```
@@ -319,7 +319,7 @@ You can set the API Key and Secret on the TransferZero object when setting it up
 TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.transferzero.com/v1'
+  config.host = 'https://api-sandbox.bitpesa.co/v1'
 end
 
 ```
@@ -380,7 +380,7 @@ You can set the API Key and Secret on the TransferZero object when setting it up
 TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.transferzero.com/v1'
+  config.host = 'https://api-sandbox.bitpesa.co/v1'
 end
 
 ```
@@ -441,7 +441,7 @@ You can set the API Key and Secret on the TransferZero object when setting it up
 TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.transferzero.com/v1'
+  config.host = 'https://api-sandbox.bitpesa.co/v1'
 end
 
 ```
@@ -502,7 +502,7 @@ You can set the API Key and Secret on the TransferZero object when setting it up
 TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.transferzero.com/v1'
+  config.host = 'https://api-sandbox.bitpesa.co/v1'
 end
 
 ```
