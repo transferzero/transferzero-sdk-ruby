@@ -1,76 +1,14 @@
 # TransferZero::SendersApi
 
-All URIs are relative to *https://api-sandbox.bitpesa.co/v1*
+All URIs are relative to *https://api-sandbox.transferzero.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**confirm_sender_verification**](SendersApi.md#confirm_sender_verification) | **POST** /senders/{Sender ID}/confirm_verification | Change sender onboarding state to &#39;profile_completed&#39;
 [**delete_sender**](SendersApi.md#delete_sender) | **DELETE** /senders/{Sender ID} | Deleting a sender
 [**get_sender**](SendersApi.md#get_sender) | **GET** /senders/{Sender ID} | Fetching a sender
 [**get_senders**](SendersApi.md#get_senders) | **GET** /senders | Listing senders
 [**patch_sender**](SendersApi.md#patch_sender) | **PATCH** /senders/{Sender ID} | Updating a sender
 [**post_senders**](SendersApi.md#post_senders) | **POST** /senders | Creating a sender
-
-
-# **confirm_sender_verification**
-> SenderResponse confirm_sender_verification(sender_id)
-
-Change sender onboarding state to 'profile_completed'
-
-Transition sender to the 'profile_completed' onboarding state. This will only work if the sender has all the required documents uploaded and profile information present. 
-
-### Example
-```ruby
-# load the gem
-require 'transferzero-sdk'
-
-api_instance = TransferZero::SendersApi.new
-
-
-begin
-  #Change sender onboarding state to 'profile_completed'
-  result = api_instance.confirm_sender_verification(sender_id)
-  p result
-rescue TransferZero::ApiError => e
-  if e.validation_error
-    puts "WARN: Validation error occured when calling the endpoint"
-    result = e.response_object("SenderResponse")
-    p result
-  else
-    puts "Exception when calling SendersApi->confirm_sender_verification: #{e}"
-  end
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **sender_id** | [**String**](.md)| ID of the sender to get.  Example: &#x60;/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670/confirm_verification&#x60; | 
-
-### Return type
-
-[**SenderResponse**](SenderResponse.md)
-
-### Authorization
-
-You can set the API Key and Secret on the TransferZero object when setting it up:
-
-```ruby
-
-TransferZero.configure do |config|
-  config.api_key = '<key'
-  config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
-end
-
-```
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
 
 
 # **delete_sender**
@@ -122,7 +60,7 @@ You can set the API Key and Secret on the TransferZero object when setting it up
 TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -183,7 +121,7 @@ You can set the API Key and Secret on the TransferZero object when setting it up
 TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -255,7 +193,7 @@ You can set the API Key and Secret on the TransferZero object when setting it up
 TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -317,7 +255,7 @@ You can set the API Key and Secret on the TransferZero object when setting it up
 TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
@@ -378,7 +316,7 @@ You can set the API Key and Secret on the TransferZero object when setting it up
 TransferZero.configure do |config|
   config.api_key = '<key'
   config.api_secret = '<secret>'
-  config.host = 'https://api-sandbox.bitpesa.co/v1'
+  config.host = 'https://api-sandbox.transferzero.com/v1'
 end
 
 ```
