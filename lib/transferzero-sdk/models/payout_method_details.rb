@@ -195,7 +195,6 @@ class PayoutMethodDetails
     [
     :'PayoutMethodDetailsBRLBank',
     :'PayoutMethodDetailsBTC',
-    :'PayoutMethodDetailsBWPBank',
     :'PayoutMethodDetailsBalance',
     :'PayoutMethodDetailsGBPBank',
     :'PayoutMethodDetailsGHSBank',
@@ -216,8 +215,7 @@ class PayoutMethodDetails
     :'PayoutMethodDetailsXOFBank',
     :'PayoutMethodDetailsXOFCash',
     :'PayoutMethodDetailsXOFMobile',
-    :'PayoutMethodDetailsZARBank',
-    :'PayoutMethodDetailsZMWBank'
+    :'PayoutMethodDetailsZARBank'
     ]
   end
 
@@ -485,10 +483,6 @@ class PayoutMethodDetails
       invalid_properties.push('invalid value for "city", city cannot be nil.')
     end
 
-    if @branch_code.nil?
-      invalid_properties.push('invalid value for "branch_code", branch_code cannot be nil.')
-    end
-
     if @swift_code.nil?
       invalid_properties.push('invalid value for "swift_code", swift_code cannot be nil.')
     end
@@ -523,7 +517,6 @@ class PayoutMethodDetails
     return false if @street.nil?
     return false if @postal_code.nil?
     return false if @city.nil?
-    return false if @branch_code.nil?
     return false if @swift_code.nil?
     return false if @ifsc_code.nil?
     _one_of_found = false
