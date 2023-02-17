@@ -40,7 +40,7 @@ Name | Type | Description | Notes
 **registration_number** | **String** |  | [optional] 
 **nature_of_business** | [**PayoutMethodNatureOfBusinessEnum**](PayoutMethodNatureOfBusinessEnum.md) |  | [optional] 
 **legal_entity_type** | [**PayoutMethodLegalEntityTypeEnum**](PayoutMethodLegalEntityTypeEnum.md) |  | [optional] 
-**branch_code** | **String** |  | 
+**branch_code** | **String** |  | [optional] 
 **swift_code** | **String** |  | 
 **pix_key_type** | [**PayoutMethodPixKeyTypeEnum**](PayoutMethodPixKeyTypeEnum.md) |  | [optional] 
 **pix_key_value** | **String** |  | [optional] 

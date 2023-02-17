@@ -1,7 +1,7 @@
 =begin
-#TransferZero API
+#BitPesa Private API
 
-#Reference documentation for the TransferZero API V1
+#API specification used for internal BitPesa endpoints
 
 OpenAPI spec version: 1.0
 
@@ -36,7 +36,7 @@ module TransferZero
     # @option config [Configuration] Configuration for initializing the object, default to Configuration.default
     def initialize(config = Configuration.default)
       @config = config
-      @user_agent = "TransferZero-SDK/Ruby/1.25.0"
+      @user_agent = "TransferZero-SDK/Ruby/1.24.0"
       @default_headers = {
         'Content-Type' => 'application/json',
         'User-Agent' => @user_agent

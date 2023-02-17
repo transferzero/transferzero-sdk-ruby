@@ -1,7 +1,7 @@
 =begin
-#TransferZero API
+#BitPesa Private API
 
-#Reference documentation for the TransferZero API V1
+#API specification used for internal BitPesa endpoints
 
 OpenAPI spec version: 1.0
 
@@ -18,6 +18,60 @@ module TransferZero
 
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
+    end
+
+
+    # Change sender onboarding state to 'profile_completed'
+    # Transition sender to the 'profile_completed' onboarding state. This will only work if the sender has all the required documents uploaded and profile information present. 
+    # @param sender_id ID of the sender to get.  Example: &#x60;/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670/confirm_verification&#x60;
+    # @param [Hash] opts the optional parameters
+    # @return [SenderResponse]
+    def confirm_sender_verification(sender_id, opts = {})
+      data, _status_code, _headers = confirm_sender_verification_with_http_info(sender_id, opts)
+      data
+    end
+
+    # Change sender onboarding state to &#39;profile_completed&#39;
+    # Transition sender to the &#39;profile_completed&#39; onboarding state. This will only work if the sender has all the required documents uploaded and profile information present. 
+    # @param sender_id ID of the sender to get.  Example: &#x60;/v1/senders/bf9ff782-e182-45ac-abea-5bce83ad6670/confirm_verification&#x60;
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SenderResponse, Fixnum, Hash)>] SenderResponse data, response status code and response headers
+    def confirm_sender_verification_with_http_info(sender_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SendersApi.confirm_sender_verification ...'
+      end
+      # verify the required parameter 'sender_id' is set
+      if @api_client.config.client_side_validation && sender_id.nil?
+        fail ArgumentError, "Missing the required parameter 'sender_id' when calling SendersApi.confirm_sender_verification"
+      end
+      # resource path
+      local_var_path = '/senders/{Sender ID}/confirm_verification'.sub('{' + 'Sender ID' + '}', sender_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['AuthorizationKey', 'AuthorizationNonce', 'AuthorizationSecret', 'AuthorizationSignature']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SenderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SendersApi#confirm_sender_verification\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
     end
 
 

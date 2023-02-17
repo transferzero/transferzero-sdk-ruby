@@ -1,7 +1,7 @@
 =begin
-#TransferZero API
+#BitPesa Private API
 
-#Reference documentation for the TransferZero API V1
+#API specification used for internal BitPesa endpoints
 
 OpenAPI spec version: 1.0
 
@@ -11,5 +11,5 @@ OpenAPI Generator version: 4.0.0-beta3
 =end
 
 module TransferZero
-  VERSION = '1.25.0'
+  VERSION = '1.24.0'
 end
