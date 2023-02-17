@@ -1,7 +1,7 @@
 =begin
-#TransferZero API
+#BitPesa Private API
 
-#Reference documentation for the TransferZero API V1
+#API specification used for internal BitPesa endpoints
 
 OpenAPI spec version: 1.0
 
@@ -121,7 +121,7 @@ module TransferZero
 
     def initialize
       @scheme = 'https'
-      @host = 'api-sandbox.transferzero.com'
+      @host = 'api-sandbox.bitpesa.co'
       @base_path = '/v1'
       @server_index = nil
       @server_operation_index = {}
@@ -190,11 +190,11 @@ module TransferZero
     def server_settings
       [
         {
-          url: "https://api-sandbox.transferzero.com/v1",
+          url: "https://api-sandbox.bitpesa.co/v1",
           description: "No description provided",
         },
         {
-          url: "https://api.transferzero.com/v1",
+          url: "https://api.bitpesa.co/v1",
           description: "No description provided",
         }
       ]

@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
 
 =begin
-#TransferZero API
+#BitPesa Private API
 
-#Reference documentation for the TransferZero API V1
+#API specification used for internal BitPesa endpoints
 
 OpenAPI spec version: 1.0
 
@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.authors     = ["TransferZero"]
   s.email       = ["engineers@transferzero.com"]
   s.homepage    = "https://github.com/transferzero/transferzero-sdk-ruby"
-  s.summary     = "TransferZero API Ruby Gem"
+  s.summary     = "BitPesa Private API Ruby Gem"
   s.description = "Ruby library for the TransferZero API"
   s.license     = 'MIT'
   s.required_ruby_version = ">= 1.9"
