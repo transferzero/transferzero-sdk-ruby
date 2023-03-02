@@ -197,6 +197,7 @@ class PayoutMethodDetails
     :'PayoutMethodDetailsBTC',
     :'PayoutMethodDetailsBWPBank',
     :'PayoutMethodDetailsBalance',
+    :'PayoutMethodDetailsCADBank',
     :'PayoutMethodDetailsGBPBank',
     :'PayoutMethodDetailsGHSBank',
     :'PayoutMethodDetailsGHSCash',
