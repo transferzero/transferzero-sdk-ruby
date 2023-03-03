@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"first_name\": \"Jane\",     \"last_name\": \"Doe\",     \"phone_number\": \"+2341234567\", // E.164 international format     \"bank_code\": \"057\",     \"bank_account\": \"1234567890\",     \"country\": \"NG\"   } ``` See [USD Bank](https://docs.transferzero.com/docs/payout-details/#usdbank) documentation for the bank_code and country lists
+# Nigeria: ```JSON   \"details\": {     \"first_name\": \"Jane\",     \"last_name\": \"Doe\",     \"phone_number\": \"+2341234567\", // E.164 international format     \"bank_code\": \"057\",     \"bank_account\": \"1234567890\",     \"country\": \"NG\"   } ``` See [USD Bank](https://docs.transferzero.com/docs/payout-details/#usdbank) documentation for the bank_code and country lists  United States: ```JSON   \"details\": {     \"first_name\": \"Jane\",     \"last_name\": \"Doe\",     \"bank_account\": \"1234567890\",     \"bank_account_type\": \"20\", // 10 for Savings, 20 for Checking     \"bank_name\": \"US Bank\",     \"routing_number\": \"091000022\",     \"swift_code\": \"USBKUS44IMT\",     \"country\": \"US\"   } See [USD Bank](https://docs.transferzero.com/docs/payout-details/#usdbank-1) documentation
 class PayoutMethodDetailsUSDBank
   attr_accessor :first_name
 
@@ -25,6 +25,14 @@ class PayoutMethodDetailsUSDBank
 
   attr_accessor :bank_account
 
+  attr_accessor :bank_account_type
+
+  attr_accessor :bank_name
+
+  attr_accessor :routing_number
+
+  attr_accessor :swift_code
+
   attr_accessor :country
 
   # Attribute mapping from ruby-style variable name to JSON key.
@@ -35,6 +43,10 @@ class PayoutMethodDetailsUSDBank
       :'phone_number' => :'phone_number',
       :'bank_code' => :'bank_code',
       :'bank_account' => :'bank_account',
+      :'bank_account_type' => :'bank_account_type',
+      :'bank_name' => :'bank_name',
+      :'routing_number' => :'routing_number',
+      :'swift_code' => :'swift_code',
       :'country' => :'country'
     }
   end
@@ -47,6 +59,10 @@ class PayoutMethodDetailsUSDBank
       :'phone_number' => :'String',
       :'bank_code' => :'String',
       :'bank_account' => :'String',
+      :'bank_account_type' => :'PayoutMethodBankAccountTypeEnum',
+      :'bank_name' => :'String',
+      :'routing_number' => :'String',
+      :'swift_code' => :'String',
       :'country' => :'PayoutMethodCountryEnum'
     }
   end
@@ -86,6 +102,22 @@ class PayoutMethodDetailsUSDBank
       self.bank_account = attributes[:'bank_account']
     end
 
+    if attributes.key?(:'bank_account_type')
+      self.bank_account_type = attributes[:'bank_account_type']
+    end
+
+    if attributes.key?(:'bank_name')
+      self.bank_name = attributes[:'bank_name']
+    end
+
+    if attributes.key?(:'routing_number')
+      self.routing_number = attributes[:'routing_number']
+    end
+
+    if attributes.key?(:'swift_code')
+      self.swift_code = attributes[:'swift_code']
+    end
+
     if attributes.key?(:'country')
       self.country = attributes[:'country']
     end
@@ -101,14 +133,6 @@ class PayoutMethodDetailsUSDBank
 
     if @last_name.nil?
       invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
-    end
-
-    if @phone_number.nil?
-      invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
-    end
-
-    if @bank_code.nil?
-      invalid_properties.push('invalid value for "bank_code", bank_code cannot be nil.')
     end
 
     if @bank_account.nil?
@@ -127,8 +151,6 @@ class PayoutMethodDetailsUSDBank
   def valid?
     return false if @first_name.nil?
     return false if @last_name.nil?
-    return false if @phone_number.nil?
-    return false if @bank_code.nil?
     return false if @bank_account.nil?
     return false if @country.nil?
     true
@@ -144,6 +166,10 @@ class PayoutMethodDetailsUSDBank
         phone_number == o.phone_number &&
         bank_code == o.bank_code &&
         bank_account == o.bank_account &&
+        bank_account_type == o.bank_account_type &&
+        bank_name == o.bank_name &&
+        routing_number == o.routing_number &&
+        swift_code == o.swift_code &&
         country == o.country
   end
 
@@ -156,7 +182,7 @@ class PayoutMethodDetailsUSDBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, phone_number, bank_code, bank_account, country].hash
+    [first_name, last_name, phone_number, bank_code, bank_account, bank_account_type, bank_name, routing_number, swift_code, country].hash
   end
 
 require 'active_support/core_ext/hash'

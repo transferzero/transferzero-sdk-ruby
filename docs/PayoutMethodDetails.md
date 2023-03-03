@@ -40,8 +40,9 @@ Name | Type | Description | Notes
 **registration_number** | **String** |  | [optional] 
 **nature_of_business** | [**PayoutMethodNatureOfBusinessEnum**](PayoutMethodNatureOfBusinessEnum.md) |  | [optional] 
 **legal_entity_type** | [**PayoutMethodLegalEntityTypeEnum**](PayoutMethodLegalEntityTypeEnum.md) |  | [optional] 
-**branch_code** | **String** |  | 
+**routing_number** | **String** |  | [optional] 
 **swift_code** | **String** |  | 
+**branch_code** | **String** |  | 
 **pix_key_type** | [**PayoutMethodPixKeyTypeEnum**](PayoutMethodPixKeyTypeEnum.md) |  | [optional] 
 **pix_key_value** | **String** |  | [optional] 
 **ifsc_code** | **String** |  | 
@@ -87,8 +88,9 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  registration_number: null,
                                  nature_of_business: null,
                                  legal_entity_type: null,
-                                 branch_code: null,
+                                 routing_number: null,
                                  swift_code: null,
+                                 branch_code: null,
                                  pix_key_type: null,
                                  pix_key_value: null,
                                  ifsc_code: null)
