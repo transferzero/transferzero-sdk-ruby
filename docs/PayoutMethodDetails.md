@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **phone_number** | **String** |  | 
 **mobile_provider** | [**PayoutMethodMobileProviderEnum**](PayoutMethodMobileProviderEnum.md) |  | 
 **country** | [**PayoutMethodCountryEnum**](PayoutMethodCountryEnum.md) |  | 
-**transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | 
+**transfer_reason** | **String** |  | 
 **iban** | **String** |  | 
 **bank_name** | **String** |  | 
 **bank_country** | **String** |  | [optional] 
