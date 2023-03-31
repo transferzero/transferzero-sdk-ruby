@@ -13,20 +13,12 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-class TransactionWebhook
-  # The ID of the webhook that was used to send out this callback
-  attr_accessor :webhook
-
-  # The event that triggered this webhook
-  attr_accessor :event
-
+class RecipientWebhookAllOf
   attr_accessor :object
 
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
-      :'webhook' => :'webhook',
-      :'event' => :'event',
       :'object' => :'object'
     }
   end
@@ -34,42 +26,24 @@ class TransactionWebhook
   # Attribute type mapping.
   def self.openapi_types
     {
-      :'webhook' => :'String',
-      :'event' => :'String',
-      :'object' => :'Transaction'
+      :'object' => :'Recipient'
     }
-  end
-
-  # List of class defined in allOf (OpenAPI v3)
-  def self.openapi_all_of
-    [
-    :'TransactionWebhookAllOf',
-    :'Webhook'
-    ]
   end
 
   # Initializes the object
   # @param [Hash] attributes Model attributes in the form of hash
   def initialize(attributes = {})
     if (!attributes.is_a?(Hash))
-      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::TransactionWebhook` initialize method"
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::RecipientWebhookAllOf` initialize method"
     end
 
     # check to see if the attribute exists and convert string to symbol for hash key
     attributes = attributes.each_with_object({}) { |(k, v), h|
       if (!self.class.attribute_map.key?(k.to_sym))
-        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::TransactionWebhook`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::RecipientWebhookAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
       h[k.to_sym] = v
     }
-
-    if attributes.key?(:'webhook')
-      self.webhook = attributes[:'webhook']
-    end
-
-    if attributes.key?(:'event')
-      self.event = attributes[:'event']
-    end
 
     if attributes.key?(:'object')
       self.object = attributes[:'object']
@@ -80,27 +54,12 @@ class TransactionWebhook
   # @return Array for valid properties with the reasons
   def list_invalid_properties
     invalid_properties = Array.new
-    if @webhook.nil?
-      invalid_properties.push('invalid value for "webhook", webhook cannot be nil.')
-    end
-
-    if @event.nil?
-      invalid_properties.push('invalid value for "event", event cannot be nil.')
-    end
-
-    if @object.nil?
-      invalid_properties.push('invalid value for "object", object cannot be nil.')
-    end
-
     invalid_properties
   end
 
   # Check to see if the all the properties in the model are valid
   # @return true if the model is valid
   def valid?
-    return false if @webhook.nil?
-    return false if @event.nil?
-    return false if @object.nil?
     true
   end
 
@@ -109,8 +68,6 @@ class TransactionWebhook
   def ==(o)
     return true if self.equal?(o)
     self.class == o.class &&
-        webhook == o.webhook &&
-        event == o.event &&
         object == o.object
   end
 
@@ -123,7 +80,7 @@ class TransactionWebhook
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [webhook, event, object].hash
+    [object].hash
   end
 
 require 'active_support/core_ext/hash'
