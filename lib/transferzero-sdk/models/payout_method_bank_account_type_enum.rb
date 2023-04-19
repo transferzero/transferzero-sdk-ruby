@@ -17,6 +17,8 @@ class PayoutMethodBankAccountTypeEnum
   
   N10 = "10".freeze
   N20 = "20".freeze
+  N30 = "30".freeze
+  N40 = "40".freeze
 
   # Builds the enum from string
   # @param [String] The enum value in the form of the string

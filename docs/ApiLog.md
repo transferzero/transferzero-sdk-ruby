@@ -27,7 +27,7 @@ instance = TransferZero::ApiLog.new(id: a0696374-de2f-4b4e-a2d7-cb4e0a1240c0,
                                  response_status: 200,
                                  response_body: {&quot;object&quot;:{&quot;result&quot;:0}},
                                  response_headers: {&quot;X-Frame-Options&quot;:&quot;SAMEORIGIN&quot;,&quot;X-XSS-Protection&quot;:&quot;1; mode&#x3D;block&quot;,&quot;X-Content-Type-Options&quot;:&quot;nosniff&quot;,&quot;Content-Type&quot;:&quot;application/json; charset&#x3D;UTF-8&quot;},
-                                 created_at: 2019-01-11T00:00:00.001Z)
+                                 created_at: 2019-01-11T00:00:00.001+0000)
 ```
 
 

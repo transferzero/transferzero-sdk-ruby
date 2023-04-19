@@ -43,7 +43,6 @@ class TransactionWebhook
   # List of class defined in allOf (OpenAPI v3)
   def self.openapi_all_of
     [
-    :'TransactionWebhookAllOf',
     :'Webhook'
     ]
   end
