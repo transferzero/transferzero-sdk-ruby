@@ -28,6 +28,8 @@ class PayoutMethodMobileProviderEnum
   EMONEY = "emoney".freeze
   FREE = "free".freeze
   WAVE = "wave".freeze
+  EXPRESSO = "expresso".freeze
+  TMONEY = "tmoney".freeze
 
   # Builds the enum from string
   # @param [String] The enum value in the form of the string
