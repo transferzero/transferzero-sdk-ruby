@@ -74,6 +74,8 @@ class PayoutMethodDetails
 
   attr_accessor :email
 
+  attr_accessor :branch_code
+
   attr_accessor :transfer_reason_code
 
   attr_accessor :contact_first_name
@@ -89,8 +91,6 @@ class PayoutMethodDetails
   attr_accessor :routing_number
 
   attr_accessor :swift_code
-
-  attr_accessor :branch_code
 
   attr_accessor :pix_key_type
 
@@ -131,6 +131,7 @@ class PayoutMethodDetails
       :'postal_code' => :'postal_code',
       :'city' => :'city',
       :'email' => :'email',
+      :'branch_code' => :'branch_code',
       :'transfer_reason_code' => :'transfer_reason_code',
       :'contact_first_name' => :'contact_first_name',
       :'contact_last_name' => :'contact_last_name',
@@ -139,7 +140,6 @@ class PayoutMethodDetails
       :'legal_entity_type' => :'legal_entity_type',
       :'routing_number' => :'routing_number',
       :'swift_code' => :'swift_code',
-      :'branch_code' => :'branch_code',
       :'pix_key_type' => :'pix_key_type',
       :'pix_key_value' => :'pix_key_value',
       :'ifsc_code' => :'ifsc_code'
@@ -179,6 +179,7 @@ class PayoutMethodDetails
       :'postal_code' => :'String',
       :'city' => :'String',
       :'email' => :'String',
+      :'branch_code' => :'String',
       :'transfer_reason_code' => :'String',
       :'contact_first_name' => :'String',
       :'contact_last_name' => :'String',
@@ -187,7 +188,6 @@ class PayoutMethodDetails
       :'legal_entity_type' => :'PayoutMethodLegalEntityTypeEnum',
       :'routing_number' => :'String',
       :'swift_code' => :'String',
-      :'branch_code' => :'String',
       :'pix_key_type' => :'PayoutMethodPixKeyTypeEnum',
       :'pix_key_value' => :'String',
       :'ifsc_code' => :'String'
@@ -362,6 +362,10 @@ class PayoutMethodDetails
       self.email = attributes[:'email']
     end
 
+    if attributes.key?(:'branch_code')
+      self.branch_code = attributes[:'branch_code']
+    end
+
     if attributes.key?(:'transfer_reason_code')
       self.transfer_reason_code = attributes[:'transfer_reason_code']
     end
@@ -392,10 +396,6 @@ class PayoutMethodDetails
 
     if attributes.key?(:'swift_code')
       self.swift_code = attributes[:'swift_code']
-    end
-
-    if attributes.key?(:'branch_code')
-      self.branch_code = attributes[:'branch_code']
     end
 
     if attributes.key?(:'pix_key_type')
@@ -495,12 +495,12 @@ class PayoutMethodDetails
       invalid_properties.push('invalid value for "city", city cannot be nil.')
     end
 
-    if @swift_code.nil?
-      invalid_properties.push('invalid value for "swift_code", swift_code cannot be nil.')
-    end
-
     if @branch_code.nil?
       invalid_properties.push('invalid value for "branch_code", branch_code cannot be nil.')
+    end
+
+    if @swift_code.nil?
+      invalid_properties.push('invalid value for "swift_code", swift_code cannot be nil.')
     end
 
     if @ifsc_code.nil?
@@ -533,8 +533,8 @@ class PayoutMethodDetails
     return false if @street.nil?
     return false if @postal_code.nil?
     return false if @city.nil?
-    return false if @swift_code.nil?
     return false if @branch_code.nil?
+    return false if @swift_code.nil?
     return false if @ifsc_code.nil?
     _one_of_found = false
     openapi_one_of.each do |_class|
@@ -590,6 +590,7 @@ class PayoutMethodDetails
         postal_code == o.postal_code &&
         city == o.city &&
         email == o.email &&
+        branch_code == o.branch_code &&
         transfer_reason_code == o.transfer_reason_code &&
         contact_first_name == o.contact_first_name &&
         contact_last_name == o.contact_last_name &&
@@ -598,7 +599,6 @@ class PayoutMethodDetails
         legal_entity_type == o.legal_entity_type &&
         routing_number == o.routing_number &&
         swift_code == o.swift_code &&
-        branch_code == o.branch_code &&
         pix_key_type == o.pix_key_type &&
         pix_key_value == o.pix_key_value &&
         ifsc_code == o.ifsc_code
@@ -613,7 +613,7 @@ class PayoutMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, transfer_reason, iban, bank_name, bank_country, cash_provider, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type, routing_number, swift_code, branch_code, pix_key_type, pix_key_value, ifsc_code].hash
+    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, transfer_reason, iban, bank_name, bank_country, cash_provider, sort_code, bic, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, branch_code, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type, routing_number, swift_code, pix_key_type, pix_key_value, ifsc_code].hash
   end
 
 require 'active_support/core_ext/hash'

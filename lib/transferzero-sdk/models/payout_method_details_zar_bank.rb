@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"first_name\": \"First\", //  Mandatory for personal payouts;     \"last_name\": \"Last\", //  Mandatory for personal payouts;     \"name\" \"First Ltd\", // Mandatory for business payouts;     \"contact_first_name\" \"Business\", // Mandatory for business payouts;     \"contact_last_name\" \"Contact\", // Mandatory for business payouts;     \"street\": \"Main Street\",     \"postal_code\": \"AB0001\",     \"city\": \"Cape Town\",     \"email\": \"recipient@email.com\",     \"bank_name\" 'Bank Zero', // Optional     \"bank_code\": \"334810\",     \"bank_account\": \"12345678\",     \"phone_number\": \"+27119785313\", // E.164 international format     \"transfer_reason\": \"personal_account\", // New transfer reason field     \"legal_entity_type\": \"sole_proprietorship\", // Optional; Default value is \"person\"; Mandatory for business payouts;     \"nature_of_business\": \"mining\", // Optional for business payouts;     \"registration_number\": \"17364BGC\" // Optional for business payouts;   } ```  See [ZAR Bank](https://docs.transferzero.com/docs/payout-details/#zarbank) documentation for the bank_code and transfer_reason lists
+# ```JSON   \"details\": {     \"first_name\": \"First\", //  Mandatory for personal payouts;     \"last_name\": \"Last\", //  Mandatory for personal payouts;     \"name\" \"First Ltd\", // Mandatory for business payouts;     \"contact_first_name\" \"Business\",     \"contact_last_name\" \"Contact\",     \"street\": \"Main Street\",     \"postal_code\": \"AB0001\",     \"city\": \"Cape Town\",     \"email\": \"recipient@email.com\",     \"bank_name\" 'Bank Zero', // Optional     \"bank_code\": \"334810\",  // Optional; Required if branch_code is empty     \"branch_code\": \"630067\", // Optional; Required if bank_code is empty     \"bank_account\": \"12345678\",     \"phone_number\": \"+27119785313\", // E.164 international format     \"transfer_reason\": \"personal_account\", // New transfer reason field     \"legal_entity_type\": \"sole_proprietorship\", // Optional; Default value is \"person\";     \"nature_of_business\": \"mining\", // Optional for business payouts;     \"registration_number\": \"17364BGC\" // Optional for business payouts;   } ```  See [ZAR Bank](https://docs.transferzero.com/docs/payout-details/#zarbank) documentation for the bank_code and transfer_reason lists
 class PayoutMethodDetailsZARBank
   attr_accessor :first_name
 
@@ -28,6 +28,8 @@ class PayoutMethodDetailsZARBank
   attr_accessor :email
 
   attr_accessor :bank_code
+
+  attr_accessor :branch_code
 
   attr_accessor :bank_account
 
@@ -59,6 +61,7 @@ class PayoutMethodDetailsZARBank
       :'city' => :'city',
       :'email' => :'email',
       :'bank_code' => :'bank_code',
+      :'branch_code' => :'branch_code',
       :'bank_account' => :'bank_account',
       :'phone_number' => :'phone_number',
       :'transfer_reason_code' => :'transfer_reason_code',
@@ -82,6 +85,7 @@ class PayoutMethodDetailsZARBank
       :'city' => :'String',
       :'email' => :'String',
       :'bank_code' => :'String',
+      :'branch_code' => :'String',
       :'bank_account' => :'String',
       :'phone_number' => :'String',
       :'transfer_reason_code' => :'String',
@@ -138,6 +142,10 @@ class PayoutMethodDetailsZARBank
       self.bank_code = attributes[:'bank_code']
     end
 
+    if attributes.key?(:'branch_code')
+      self.branch_code = attributes[:'branch_code']
+    end
+
     if attributes.key?(:'bank_account')
       self.bank_account = attributes[:'bank_account']
     end
@@ -191,22 +199,6 @@ class PayoutMethodDetailsZARBank
       invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
     end
 
-    if @street.nil?
-      invalid_properties.push('invalid value for "street", street cannot be nil.')
-    end
-
-    if @postal_code.nil?
-      invalid_properties.push('invalid value for "postal_code", postal_code cannot be nil.')
-    end
-
-    if @city.nil?
-      invalid_properties.push('invalid value for "city", city cannot be nil.')
-    end
-
-    if @bank_code.nil?
-      invalid_properties.push('invalid value for "bank_code", bank_code cannot be nil.')
-    end
-
     if @bank_account.nil?
       invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
     end
@@ -223,10 +215,6 @@ class PayoutMethodDetailsZARBank
   def valid?
     return false if @first_name.nil?
     return false if @last_name.nil?
-    return false if @street.nil?
-    return false if @postal_code.nil?
-    return false if @city.nil?
-    return false if @bank_code.nil?
     return false if @bank_account.nil?
     return false if @phone_number.nil?
     true
@@ -244,6 +232,7 @@ class PayoutMethodDetailsZARBank
         city == o.city &&
         email == o.email &&
         bank_code == o.bank_code &&
+        branch_code == o.branch_code &&
         bank_account == o.bank_account &&
         phone_number == o.phone_number &&
         transfer_reason_code == o.transfer_reason_code &&
@@ -265,7 +254,7 @@ class PayoutMethodDetailsZARBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, street, postal_code, city, email, bank_code, bank_account, phone_number, transfer_reason_code, transfer_reason, name, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type].hash
+    [first_name, last_name, street, postal_code, city, email, bank_code, branch_code, bank_account, phone_number, transfer_reason_code, transfer_reason, name, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type].hash
   end
 
 require 'active_support/core_ext/hash'

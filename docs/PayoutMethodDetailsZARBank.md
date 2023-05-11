@@ -6,11 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **first_name** | **String** |  | 
 **last_name** | **String** |  | 
-**street** | **String** |  | 
-**postal_code** | **String** |  | 
-**city** | **String** |  | 
+**street** | **String** |  | [optional] 
+**postal_code** | **String** |  | [optional] 
+**city** | **String** |  | [optional] 
 **email** | **String** |  | [optional] 
-**bank_code** | **String** |  | 
+**bank_code** | **String** |  | [optional] 
+**branch_code** | **String** |  | [optional] 
 **bank_account** | **String** |  | 
 **phone_number** | **String** |  | 
 **transfer_reason_code** | **String** |  | [optional] 
@@ -34,6 +35,7 @@ instance = TransferZero::PayoutMethodDetailsZARBank.new(first_name: null,
                                  city: null,
                                  email: null,
                                  bank_code: null,
+                                 branch_code: null,
                                  bank_account: null,
                                  phone_number: null,
                                  transfer_reason_code: null,

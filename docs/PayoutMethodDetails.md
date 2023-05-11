@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **postal_code** | **String** |  | 
 **city** | **String** |  | 
 **email** | **String** |  | [optional] 
+**branch_code** | **String** |  | 
 **transfer_reason_code** | **String** |  | [optional] 
 **contact_first_name** | **String** |  | [optional] 
 **contact_last_name** | **String** |  | [optional] 
@@ -42,7 +43,6 @@ Name | Type | Description | Notes
 **legal_entity_type** | [**PayoutMethodLegalEntityTypeEnum**](PayoutMethodLegalEntityTypeEnum.md) |  | [optional] 
 **routing_number** | **String** |  | [optional] 
 **swift_code** | **String** |  | 
-**branch_code** | **String** |  | 
 **pix_key_type** | [**PayoutMethodPixKeyTypeEnum**](PayoutMethodPixKeyTypeEnum.md) |  | [optional] 
 **pix_key_value** | **String** |  | [optional] 
 **ifsc_code** | **String** |  | 
@@ -82,6 +82,7 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  postal_code: null,
                                  city: null,
                                  email: null,
+                                 branch_code: null,
                                  transfer_reason_code: null,
                                  contact_first_name: null,
                                  contact_last_name: null,
@@ -90,7 +91,6 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  legal_entity_type: null,
                                  routing_number: null,
                                  swift_code: null,
-                                 branch_code: null,
                                  pix_key_type: null,
                                  pix_key_value: null,
                                  ifsc_code: null)
