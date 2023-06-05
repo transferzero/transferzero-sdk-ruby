@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  release-please:
+  release-transferzero-sdk:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -32,6 +32,6 @@ jobs:
 
       - name: Tag the release
         run: |
-          NEXT_TAG=$(awk '/VERSION/{print $3}' lib/transferzero-sdk/version.rb)
+          NEXT_TAG=$(awk '/VERSION/{print $3}' lib/transferzero-sdk/version.rb | tr -d "'")
           git tag $NEXT_TAG
           git push --tags
