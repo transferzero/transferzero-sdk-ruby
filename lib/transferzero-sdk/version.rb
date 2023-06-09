@@ -11,5 +11,5 @@ OpenAPI Generator version: 4.0.0-beta3
 =end
 
 module TransferZero
-  VERSION = '1.27.5'
+  VERSION = '1.27.7'
 end
