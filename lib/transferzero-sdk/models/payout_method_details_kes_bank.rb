@@ -13,25 +13,19 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"street\": \"Main Street\",     \"bank_code\": \"68\",     \"bank_account\": \"12345678\",     \"bank_name\": \"Equity Bank Ltd\",     \"branch_code\": \"404\",     \"swift_code\" \"ABCLKENA\",     \"transfer_reason\": \"personal_account\", // New transfer reason field     \"identity_card_type\": \"ID\",     \"identity_card_id\": \"AB12345678\"   } ```  The valid bank_code values are:  - Habib Bank Limited: 08 - Trans-National Bank Limited: 26 - Housing Finance Co. Kenya: 61 - UBA Kenya Bank Ltd: 76 - Kenya Commercial Bank: 01000 - Standard Chartered Bank: 02000 - Barclays Bank of Kenya: 03000 - Bank of India: 05000 - Bank of Boroda: 06000 - NCBA Bank: 07000 - Prime Bank: 10000 - Co-operative Bank of Kenya: 11000 - National Bank of Kenya: 12000 - M-Oriental Commercial Bank Limited: 14000 - Citibank: 16000 - Habib Bank A.G. Zurich: 17000 - Middle East Bank: 18000 - Bank of Africa Kenya: 19000 - Consolidated Bank of Kenya: 23000 - Credit Bank Ltd: 25000 - Chase Bank: 30000 - Stanbic Bank Kenya: 31000 - African Banking Corporation: 35000 - Giro Bank Limited: 42000 - ECO Bank Kenya: 43000 - Spire Bank Limited: 49000 - Paramount Universal Bank Limited: 50000 - Jamii Bora Bank: 51000 - Guaranty Trust Bank Kenya: 53000 - Victoria Bank Limited: 54000 - Guardian Bank: 55000 - Investments and Mortgages Bank Limited: 57000 - Development Bank of Kenya: 59000 - Fidelity Commercial Bank: 46000 - Diamond Trust Bank: 63000 - Sidian Bank: 66000 - Equity Bank Limited: 68000 - Family Bank: 70000 - Gulf African Bank: 72000 - First Community Bank: 74000 - KWFT Bank: 78000  See [KES Bank](https://docs.transferzero.com/docs/payout-details/#kesbank) documentation for the transfer_reason list
+# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"street\": \"Main Street\",     \"city\": \"Nairobi\"     \"bank_code\": \"68\",     \"bank_account\": \"12345678\",     \"transfer_reason\": \"personal_account\", // New transfer reason field     \"identity_card_type\": \"ID\",     \"identity_card_id\": \"AB12345678\",     \"relationship_to_sender\": \"Relative\"   } ```  The valid bank_code values are:  - Absa Bank: 03 - African Banking Corporation: 35 - Bank of Africa Kenya: 19 - Citibank: 16 - Co-operative Bank of Kenya: 11 - Consolidated Bank of Kenya: 23 - Credit Bank Ltd: 25 - Diamond Trust Bank: 63 - DIB Bank: 75 - ECO Bank Kenya: 43 - Equity Bank Limited: 68 - Family Bank: 70 - First Community Bank: 74 - Guaranty Trust Bank Kenya: 53 - Guardian Bank: 55 - Gulf African Bank : 72 - Housing Finance Co. Kenya: 61 - I&M Bank: 57 - Kingdom Bank: 51 - Kenya Commercial Bank: 01 - KWFT Bank: 78 - Mayfair Bank: 65 - M-Oriental Commercial Bank Limited: 14 - Middle East Bank: 18 - National Bank of Kenya: 12 - NCBA Bank: 07 - Paramount Universal Bank Limited: 50 - Prime Bank: 10 - Sidian Bank: 66 - Stanbic Bank Kenya: 31 - Standard Chartered Bank: 02 - UBA Kenya Bank Ltd: 76 - Victoria Bank Limited: 54   See [KES Bank](https://docs.transferzero.com/docs/payout-details/#kesbank) documentation for the transfer_reason list
 class PayoutMethodDetailsKESBank
   attr_accessor :first_name
 
   attr_accessor :last_name
 
-  attr_accessor :bank_code
-
   attr_accessor :street
 
+  attr_accessor :city
+
+  attr_accessor :bank_code
+
   attr_accessor :bank_account
-
-  attr_accessor :bank_name
-
-  attr_accessor :branch_code
-
-  attr_accessor :swift_code
-
-  attr_accessor :transfer_reason_code
 
   attr_accessor :transfer_reason
 
@@ -39,21 +33,21 @@ class PayoutMethodDetailsKESBank
 
   attr_accessor :identity_card_id
 
+  attr_accessor :relationship_to_sender
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
       :'first_name' => :'first_name',
       :'last_name' => :'last_name',
-      :'bank_code' => :'bank_code',
       :'street' => :'street',
+      :'city' => :'city',
+      :'bank_code' => :'bank_code',
       :'bank_account' => :'bank_account',
-      :'bank_name' => :'bank_name',
-      :'branch_code' => :'branch_code',
-      :'swift_code' => :'swift_code',
-      :'transfer_reason_code' => :'transfer_reason_code',
       :'transfer_reason' => :'transfer_reason',
       :'identity_card_type' => :'identity_card_type',
-      :'identity_card_id' => :'identity_card_id'
+      :'identity_card_id' => :'identity_card_id',
+      :'relationship_to_sender' => :'relationship_to_sender'
     }
   end
 
@@ -62,16 +56,14 @@ class PayoutMethodDetailsKESBank
     {
       :'first_name' => :'String',
       :'last_name' => :'String',
-      :'bank_code' => :'String',
       :'street' => :'String',
+      :'city' => :'String',
+      :'bank_code' => :'String',
       :'bank_account' => :'String',
-      :'bank_name' => :'String',
-      :'branch_code' => :'String',
-      :'swift_code' => :'String',
-      :'transfer_reason_code' => :'String',
       :'transfer_reason' => :'PayoutMethodTransferReasonEnum',
       :'identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
-      :'identity_card_id' => :'String'
+      :'identity_card_id' => :'String',
+      :'relationship_to_sender' => :'String'
     }
   end
 
@@ -98,32 +90,20 @@ class PayoutMethodDetailsKESBank
       self.last_name = attributes[:'last_name']
     end
 
-    if attributes.key?(:'bank_code')
-      self.bank_code = attributes[:'bank_code']
-    end
-
     if attributes.key?(:'street')
       self.street = attributes[:'street']
     end
 
+    if attributes.key?(:'city')
+      self.city = attributes[:'city']
+    end
+
+    if attributes.key?(:'bank_code')
+      self.bank_code = attributes[:'bank_code']
+    end
+
     if attributes.key?(:'bank_account')
       self.bank_account = attributes[:'bank_account']
-    end
-
-    if attributes.key?(:'bank_name')
-      self.bank_name = attributes[:'bank_name']
-    end
-
-    if attributes.key?(:'branch_code')
-      self.branch_code = attributes[:'branch_code']
-    end
-
-    if attributes.key?(:'swift_code')
-      self.swift_code = attributes[:'swift_code']
-    end
-
-    if attributes.key?(:'transfer_reason_code')
-      self.transfer_reason_code = attributes[:'transfer_reason_code']
     end
 
     if attributes.key?(:'transfer_reason')
@@ -136,6 +116,10 @@ class PayoutMethodDetailsKESBank
 
     if attributes.key?(:'identity_card_id')
       self.identity_card_id = attributes[:'identity_card_id']
+    end
+
+    if attributes.key?(:'relationship_to_sender')
+      self.relationship_to_sender = attributes[:'relationship_to_sender']
     end
   end
 
@@ -151,24 +135,20 @@ class PayoutMethodDetailsKESBank
       invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
     end
 
-    if @bank_code.nil?
-      invalid_properties.push('invalid value for "bank_code", bank_code cannot be nil.')
-    end
-
     if @street.nil?
       invalid_properties.push('invalid value for "street", street cannot be nil.')
+    end
+
+    if @bank_code.nil?
+      invalid_properties.push('invalid value for "bank_code", bank_code cannot be nil.')
     end
 
     if @bank_account.nil?
       invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
     end
 
-    if @bank_name.nil?
-      invalid_properties.push('invalid value for "bank_name", bank_name cannot be nil.')
-    end
-
-    if @swift_code.nil?
-      invalid_properties.push('invalid value for "swift_code", swift_code cannot be nil.')
+    if @transfer_reason.nil?
+      invalid_properties.push('invalid value for "transfer_reason", transfer_reason cannot be nil.')
     end
 
     if @identity_card_type.nil?
@@ -187,11 +167,10 @@ class PayoutMethodDetailsKESBank
   def valid?
     return false if @first_name.nil?
     return false if @last_name.nil?
-    return false if @bank_code.nil?
     return false if @street.nil?
+    return false if @bank_code.nil?
     return false if @bank_account.nil?
-    return false if @bank_name.nil?
-    return false if @swift_code.nil?
+    return false if @transfer_reason.nil?
     return false if @identity_card_type.nil?
     return false if @identity_card_id.nil?
     true
@@ -204,16 +183,14 @@ class PayoutMethodDetailsKESBank
     self.class == o.class &&
         first_name == o.first_name &&
         last_name == o.last_name &&
-        bank_code == o.bank_code &&
         street == o.street &&
+        city == o.city &&
+        bank_code == o.bank_code &&
         bank_account == o.bank_account &&
-        bank_name == o.bank_name &&
-        branch_code == o.branch_code &&
-        swift_code == o.swift_code &&
-        transfer_reason_code == o.transfer_reason_code &&
         transfer_reason == o.transfer_reason &&
         identity_card_type == o.identity_card_type &&
-        identity_card_id == o.identity_card_id
+        identity_card_id == o.identity_card_id &&
+        relationship_to_sender == o.relationship_to_sender
   end
 
   # @see the `==` method
@@ -225,7 +202,7 @@ class PayoutMethodDetailsKESBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, street, bank_account, bank_name, branch_code, swift_code, transfer_reason_code, transfer_reason, identity_card_type, identity_card_id].hash
+    [first_name, last_name, street, city, bank_code, bank_account, transfer_reason, identity_card_type, identity_card_id, relationship_to_sender].hash
   end
 
 require 'active_support/core_ext/hash'
