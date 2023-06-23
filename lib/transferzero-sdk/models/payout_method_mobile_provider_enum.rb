@@ -20,6 +20,7 @@ class PayoutMethodMobileProviderEnum
   MOOV = "moov".freeze
   MTN = "mtn".freeze
   AIRTEL = "airtel".freeze
+  AIRTELTIGO = "airteltigo".freeze
   VODAFONE = "vodafone".freeze
   MPESA = "mpesa".freeze
   AFRICELL = "africell".freeze
