@@ -10,9 +10,10 @@ Name | Type | Description | Notes
 **phone_number** | **String** |  | 
 **mobile_provider** | [**PayoutMethodMobileProviderEnum**](PayoutMethodMobileProviderEnum.md) |  | 
 **transfer_reason_code** | **String** |  | [optional] 
-**transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | [optional] 
+**transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | 
 **identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | 
 **identity_card_id** | **String** |  | 
+**relationship_to_sender** | **String** |  | [optional] 
 
 ## Code Sample
 
@@ -27,7 +28,8 @@ instance = TransferZero::PayoutMethodDetailsKESMobile.new(first_name: null,
                                  transfer_reason_code: null,
                                  transfer_reason: null,
                                  identity_card_type: null,
-                                 identity_card_id: null)
+                                 identity_card_id: null,
+                                 relationship_to_sender: null)
 ```
 
 

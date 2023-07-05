@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"street\": \"Main Street\",     \"phone_number\": \"+254997853134\", // E.164 international format     \"mobile_provider\": \"mpesa\",     \"transfer_reason\": \"personal_account\", // New transfer reason field     \"identity_card_type\": \"ID\",     \"identity_card_id\": \"AB12345678\"   } ```  See [KES Mobile](https://docs.transferzero.com/docs/payout-details/#kesmobile) documentation for transfer_reason lists
+# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"street\": \"1 Linford Street\",     \"phone_number\": \"+254123456789\", // E.164 international format     \"identity_card_type\": \"ID\", // refers to the recipient's ID details; Values: \"PP\": Passport, \"ID\": National ID or \"O\": Other     \"identity_card_id\": 'AB12345678', // refers to the recipient's ID details     \"transfer_reason\": \"personal_account\",     \"mobile_provider\": \"mpesa\",     \"relationship_to_sender\": \"Aunt\" // Optional   } ```  See [KES Mobile](https://docs.transferzero.com/docs/payout-details/#kesmobile) documentation for transfer_reason lists
 class PayoutMethodDetailsKESMobile
   attr_accessor :first_name
 
@@ -33,6 +33,8 @@ class PayoutMethodDetailsKESMobile
 
   attr_accessor :identity_card_id
 
+  attr_accessor :relationship_to_sender
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -44,7 +46,8 @@ class PayoutMethodDetailsKESMobile
       :'transfer_reason_code' => :'transfer_reason_code',
       :'transfer_reason' => :'transfer_reason',
       :'identity_card_type' => :'identity_card_type',
-      :'identity_card_id' => :'identity_card_id'
+      :'identity_card_id' => :'identity_card_id',
+      :'relationship_to_sender' => :'relationship_to_sender'
     }
   end
 
@@ -59,7 +62,8 @@ class PayoutMethodDetailsKESMobile
       :'transfer_reason_code' => :'String',
       :'transfer_reason' => :'PayoutMethodTransferReasonEnum',
       :'identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
-      :'identity_card_id' => :'String'
+      :'identity_card_id' => :'String',
+      :'relationship_to_sender' => :'String'
     }
   end
 
@@ -113,6 +117,10 @@ class PayoutMethodDetailsKESMobile
     if attributes.key?(:'identity_card_id')
       self.identity_card_id = attributes[:'identity_card_id']
     end
+
+    if attributes.key?(:'relationship_to_sender')
+      self.relationship_to_sender = attributes[:'relationship_to_sender']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -139,6 +147,10 @@ class PayoutMethodDetailsKESMobile
       invalid_properties.push('invalid value for "mobile_provider", mobile_provider cannot be nil.')
     end
 
+    if @transfer_reason.nil?
+      invalid_properties.push('invalid value for "transfer_reason", transfer_reason cannot be nil.')
+    end
+
     if @identity_card_type.nil?
       invalid_properties.push('invalid value for "identity_card_type", identity_card_type cannot be nil.')
     end
@@ -158,6 +170,7 @@ class PayoutMethodDetailsKESMobile
     return false if @street.nil?
     return false if @phone_number.nil?
     return false if @mobile_provider.nil?
+    return false if @transfer_reason.nil?
     return false if @identity_card_type.nil?
     return false if @identity_card_id.nil?
     true
@@ -176,7 +189,8 @@ class PayoutMethodDetailsKESMobile
         transfer_reason_code == o.transfer_reason_code &&
         transfer_reason == o.transfer_reason &&
         identity_card_type == o.identity_card_type &&
-        identity_card_id == o.identity_card_id
+        identity_card_id == o.identity_card_id &&
+        relationship_to_sender == o.relationship_to_sender
   end
 
   # @see the `==` method
@@ -188,7 +202,7 @@ class PayoutMethodDetailsKESMobile
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, street, phone_number, mobile_provider, transfer_reason_code, transfer_reason, identity_card_type, identity_card_id].hash
+    [first_name, last_name, street, phone_number, mobile_provider, transfer_reason_code, transfer_reason, identity_card_type, identity_card_id, relationship_to_sender].hash
   end
 
 require 'active_support/core_ext/hash'
