@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **first_name** | **String** |  | 
 **last_name** | **String** |  | 
 **street** | **String** |  | 
+**city** | **String** |  | [optional] 
 **phone_number** | **String** |  | 
 **mobile_provider** | [**PayoutMethodMobileProviderEnum**](PayoutMethodMobileProviderEnum.md) |  | 
 **transfer_reason_code** | **String** |  | [optional] 
@@ -23,6 +24,7 @@ require 'TransferZero'
 instance = TransferZero::PayoutMethodDetailsKESMobile.new(first_name: null,
                                  last_name: null,
                                  street: null,
+                                 city: null,
                                  phone_number: null,
                                  mobile_provider: null,
                                  transfer_reason_code: null,

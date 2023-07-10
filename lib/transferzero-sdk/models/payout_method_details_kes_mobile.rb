@@ -13,13 +13,15 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"street\": \"1 Linford Street\",     \"phone_number\": \"+254123456789\", // E.164 international format     \"identity_card_type\": \"ID\", // refers to the recipient's ID details; Values: \"PP\": Passport, \"ID\": National ID or \"O\": Other     \"identity_card_id\": 'AB12345678', // refers to the recipient's ID details     \"transfer_reason\": \"personal_account\",     \"mobile_provider\": \"mpesa\",     \"relationship_to_sender\": \"Aunt\" // Optional   } ```  See [KES Mobile](https://docs.transferzero.com/docs/payout-details/#kesmobile) documentation for transfer_reason lists
+# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"street\": \"1 Linford Street\",     \"city\": \"Nairobi\",     \"phone_number\": \"+254123456789\", // E.164 international format     \"identity_card_type\": \"ID\", // refers to the recipient's ID details; Values: \"PP\": Passport, \"ID\": National ID or \"O\": Other     \"identity_card_id\": 'AB12345678', // refers to the recipient's ID details     \"transfer_reason\": \"personal_account\",     \"mobile_provider\": \"mpesa\",     \"relationship_to_sender\": \"Aunt\" // Optional   } ```  See [KES Mobile](https://docs.transferzero.com/docs/payout-details/#kesmobile) documentation for transfer_reason lists
 class PayoutMethodDetailsKESMobile
   attr_accessor :first_name
 
   attr_accessor :last_name
 
   attr_accessor :street
+
+  attr_accessor :city
 
   attr_accessor :phone_number
 
@@ -41,6 +43,7 @@ class PayoutMethodDetailsKESMobile
       :'first_name' => :'first_name',
       :'last_name' => :'last_name',
       :'street' => :'street',
+      :'city' => :'city',
       :'phone_number' => :'phone_number',
       :'mobile_provider' => :'mobile_provider',
       :'transfer_reason_code' => :'transfer_reason_code',
@@ -57,6 +60,7 @@ class PayoutMethodDetailsKESMobile
       :'first_name' => :'String',
       :'last_name' => :'String',
       :'street' => :'String',
+      :'city' => :'String',
       :'phone_number' => :'String',
       :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
       :'transfer_reason_code' => :'String',
@@ -92,6 +96,10 @@ class PayoutMethodDetailsKESMobile
 
     if attributes.key?(:'street')
       self.street = attributes[:'street']
+    end
+
+    if attributes.key?(:'city')
+      self.city = attributes[:'city']
     end
 
     if attributes.key?(:'phone_number')
@@ -184,6 +192,7 @@ class PayoutMethodDetailsKESMobile
         first_name == o.first_name &&
         last_name == o.last_name &&
         street == o.street &&
+        city == o.city &&
         phone_number == o.phone_number &&
         mobile_provider == o.mobile_provider &&
         transfer_reason_code == o.transfer_reason_code &&
@@ -202,7 +211,7 @@ class PayoutMethodDetailsKESMobile
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, street, phone_number, mobile_provider, transfer_reason_code, transfer_reason, identity_card_type, identity_card_id, relationship_to_sender].hash
+    [first_name, last_name, street, city, phone_number, mobile_provider, transfer_reason_code, transfer_reason, identity_card_type, identity_card_id, relationship_to_sender].hash
   end
 
 require 'active_support/core_ext/hash'
