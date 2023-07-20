@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# PIX Payment: ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"city\": \"Brasilia\",     \"postal_code\": \"70070\",     \"phone_number\": \"+552112345678\", // E.164 international format     \"pix_key_type\": \"email\",     \"pix_key_value\": \"person@example.com\",     \"identity_card_type\": \"ID\",     \"identity_card_id\": \"01234567890\",     \"transfer_reason\": \"personal_account\"   } ```  TED Payment: ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"city\": \"Brasilia\",     \"postal_code\": \"70070\",     \"phone_number\": \"+552112345678\", // E.164 international format     \"bank_code\": \"104\",     \"branch_code\": \"00001\",     \"bank_account\": \"0009795493\",     \"bank_account_type\": \"10\",     \"identity_card_type\": \"ID\",     \"identity_card_id\": \"01234567890\",     \"transfer_reason\": \"personal_account\"   } ```  See [BRL Bank](https://docs.transferzero.com/docs/payout-details/#brlbank) documentation for the bank_code and transfer_reason lists
+# PIX Payment: ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"city\": \"Brasilia\",     \"postal_code\": \"70070\",     \"phone_number\": \"+552112345678\", // E.164 international format     \"pix_key_type\": \"email\",     \"pix_key_value\": \"person@example.com\",     \"identity_card_id\": \"01234567890\", // CPF or CNPJ     \"transfer_reason\": \"personal_account\"   } ```  TED Payment: ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"city\": \"Brasilia\",     \"postal_code\": \"70070\",     \"phone_number\": \"+552112345678\", // E.164 international format     \"bank_code\": \"104\",     \"branch_code\": \"00001\",     \"bank_account\": \"0009795493\",     \"bank_account_type\": \"10\",     \"identity_card_id\": \"01234567890\", // CPF or CNPJ     \"transfer_reason\": \"personal_account\"   } ```  See [BRL Bank](https://docs.transferzero.com/docs/payout-details/#brlbank) documentation for the bank_code and transfer_reason lists
 class PayoutMethodDetailsBRLBank
   attr_accessor :first_name
 
@@ -37,8 +37,6 @@ class PayoutMethodDetailsBRLBank
 
   attr_accessor :pix_key_value
 
-  attr_accessor :identity_card_type
-
   attr_accessor :identity_card_id
 
   attr_accessor :transfer_reason
@@ -57,7 +55,6 @@ class PayoutMethodDetailsBRLBank
       :'bank_account_type' => :'bank_account_type',
       :'pix_key_type' => :'pix_key_type',
       :'pix_key_value' => :'pix_key_value',
-      :'identity_card_type' => :'identity_card_type',
       :'identity_card_id' => :'identity_card_id',
       :'transfer_reason' => :'transfer_reason'
     }
@@ -77,7 +74,6 @@ class PayoutMethodDetailsBRLBank
       :'bank_account_type' => :'PayoutMethodBankAccountTypeEnum',
       :'pix_key_type' => :'PayoutMethodPixKeyTypeEnum',
       :'pix_key_value' => :'String',
-      :'identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
       :'identity_card_id' => :'String',
       :'transfer_reason' => :'PayoutMethodTransferReasonEnum'
     }
@@ -142,10 +138,6 @@ class PayoutMethodDetailsBRLBank
       self.pix_key_value = attributes[:'pix_key_value']
     end
 
-    if attributes.key?(:'identity_card_type')
-      self.identity_card_type = attributes[:'identity_card_type']
-    end
-
     if attributes.key?(:'identity_card_id')
       self.identity_card_id = attributes[:'identity_card_id']
     end
@@ -175,10 +167,6 @@ class PayoutMethodDetailsBRLBank
       invalid_properties.push('invalid value for "postal_code", postal_code cannot be nil.')
     end
 
-    if @identity_card_type.nil?
-      invalid_properties.push('invalid value for "identity_card_type", identity_card_type cannot be nil.')
-    end
-
     if @identity_card_id.nil?
       invalid_properties.push('invalid value for "identity_card_id", identity_card_id cannot be nil.')
     end
@@ -197,7 +185,6 @@ class PayoutMethodDetailsBRLBank
     return false if @last_name.nil?
     return false if @city.nil?
     return false if @postal_code.nil?
-    return false if @identity_card_type.nil?
     return false if @identity_card_id.nil?
     return false if @transfer_reason.nil?
     true
@@ -219,7 +206,6 @@ class PayoutMethodDetailsBRLBank
         bank_account_type == o.bank_account_type &&
         pix_key_type == o.pix_key_type &&
         pix_key_value == o.pix_key_value &&
-        identity_card_type == o.identity_card_type &&
         identity_card_id == o.identity_card_id &&
         transfer_reason == o.transfer_reason
   end
@@ -233,7 +219,7 @@ class PayoutMethodDetailsBRLBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, city, postal_code, phone_number, bank_code, branch_code, bank_account, bank_account_type, pix_key_type, pix_key_value, identity_card_type, identity_card_id, transfer_reason].hash
+    [first_name, last_name, city, postal_code, phone_number, bank_code, branch_code, bank_account, bank_account_type, pix_key_type, pix_key_value, identity_card_id, transfer_reason].hash
   end
 
 require 'active_support/core_ext/hash'

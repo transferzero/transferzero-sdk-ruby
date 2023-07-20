@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **bank_account_type** | [**PayoutMethodBankAccountTypeEnum**](PayoutMethodBankAccountTypeEnum.md) |  | [optional] 
 **pix_key_type** | [**PayoutMethodPixKeyTypeEnum**](PayoutMethodPixKeyTypeEnum.md) |  | [optional] 
 **pix_key_value** | **String** |  | [optional] 
-**identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | 
 **identity_card_id** | **String** |  | 
 **transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | 
 
@@ -35,7 +34,6 @@ instance = TransferZero::PayoutMethodDetailsBRLBank.new(first_name: null,
                                  bank_account_type: null,
                                  pix_key_type: null,
                                  pix_key_value: null,
-                                 identity_card_type: null,
                                  identity_card_id: null,
                                  transfer_reason: null)
 ```
