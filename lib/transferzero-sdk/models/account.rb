@@ -20,11 +20,15 @@ class Account
   # The currency of this balance
   attr_accessor :currency
 
+  # Represents the account balance after deducting pending transactions from the last 7 days. It provides a more accurate depiction of available funds.
+  attr_accessor :amount_after_pending
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
       :'amount' => :'amount',
-      :'currency' => :'currency'
+      :'currency' => :'currency',
+      :'amount_after_pending' => :'amount_after_pending'
     }
   end
 
@@ -32,7 +36,8 @@ class Account
   def self.openapi_types
     {
       :'amount' => :'Float',
-      :'currency' => :'String'
+      :'currency' => :'String',
+      :'amount_after_pending' => :'Float'
     }
   end
 
@@ -58,6 +63,10 @@ class Account
     if attributes.key?(:'currency')
       self.currency = attributes[:'currency']
     end
+
+    if attributes.key?(:'amount_after_pending')
+      self.amount_after_pending = attributes[:'amount_after_pending']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -79,7 +88,8 @@ class Account
     return true if self.equal?(o)
     self.class == o.class &&
         amount == o.amount &&
-        currency == o.currency
+        currency == o.currency &&
+        amount_after_pending == o.amount_after_pending
   end
 
   # @see the `==` method
@@ -91,7 +101,7 @@ class Account
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [amount, currency].hash
+    [amount, currency, amount_after_pending].hash
   end
 
 require 'active_support/core_ext/hash'
