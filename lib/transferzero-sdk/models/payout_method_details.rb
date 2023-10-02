@@ -206,6 +206,7 @@ class PayoutMethodDetails
     :'PayoutMethodDetailsBWPBank',
     :'PayoutMethodDetailsBalance',
     :'PayoutMethodDetailsCADBank',
+    :'PayoutMethodDetailsEGPBank',
     :'PayoutMethodDetailsGBPBank',
     :'PayoutMethodDetailsGHSBank',
     :'PayoutMethodDetailsGHSCash',

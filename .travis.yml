@@ -8,4 +8,4 @@ script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build transferzero-sdk.gemspec
-  - gem install ./transferzero-sdk-1.29.1.gem
+  - gem install ./transferzero-sdk-1.30.0.gem
