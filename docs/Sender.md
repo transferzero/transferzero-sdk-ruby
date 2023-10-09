@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **phone_number** | **String** | Phone number of sender (without country callcode) | [optional] 
 **email** | **String** | Email of sender | 
 **ip** | **String** | IP of sender | 
+**fingerprint** | **String** | Fingerprint of sender | [optional] 
 **address_description** | **String** | Description of address | [optional] 
 **identification_number** | **String** | Identification number of document used | [optional] 
 **identification_type** | **String** | Document to be identified. The identification type can be one of the following:  - &#x60;DL&#x60;: Driving License - &#x60;PP&#x60;: International Passport - &#x60;ID&#x60;: National ID - &#x60;OT&#x60;: Other  Please note for Wizall &#x60;XOF::Cash&#x60; transactions the valid options are: - &#x60;ID&#x60;: National ID - &#x60;PP&#x60;: Passport | [optional] 
@@ -82,6 +83,7 @@ instance = TransferZero::Sender.new(id: bf9ff782-e182-45ac-abea-5bce83ad6670,
                                  phone_number: 752403639,
                                  email: example@home.org,
                                  ip: 127.0.0.1,
+                                 fingerprint: fingerprint,
                                  address_description: null,
                                  identification_number: AB123456,
                                  identification_type: ID,

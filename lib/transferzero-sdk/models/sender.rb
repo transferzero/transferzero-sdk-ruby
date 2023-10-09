@@ -46,6 +46,9 @@ class Sender
   # IP of sender
   attr_accessor :ip
 
+  # Fingerprint of sender
+  attr_accessor :fingerprint
+
   # Description of address
   attr_accessor :address_description
 
@@ -232,6 +235,7 @@ class Sender
       :'phone_number' => :'phone_number',
       :'email' => :'email',
       :'ip' => :'ip',
+      :'fingerprint' => :'fingerprint',
       :'address_description' => :'address_description',
       :'identification_number' => :'identification_number',
       :'identification_type' => :'identification_type',
@@ -299,6 +303,7 @@ class Sender
       :'phone_number' => :'String',
       :'email' => :'String',
       :'ip' => :'String',
+      :'fingerprint' => :'String',
       :'address_description' => :'String',
       :'identification_number' => :'String',
       :'identification_type' => :'String',
@@ -409,6 +414,10 @@ class Sender
 
     if attributes.key?(:'ip')
       self.ip = attributes[:'ip']
+    end
+
+    if attributes.key?(:'fingerprint')
+      self.fingerprint = attributes[:'fingerprint']
     end
 
     if attributes.key?(:'address_description')
@@ -744,6 +753,7 @@ class Sender
         phone_number == o.phone_number &&
         email == o.email &&
         ip == o.ip &&
+        fingerprint == o.fingerprint &&
         address_description == o.address_description &&
         identification_number == o.identification_number &&
         identification_type == o.identification_type &&
@@ -805,7 +815,7 @@ class Sender
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, address_description, identification_number, identification_type, lang, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, custom_source_of_funds, core_business_activity, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, trading_name, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id, city_of_birth, country_of_birth, gender, sales_lead_id, created_at, company_office_number, company_office_number_country, aml_officer_email, aml_officer_phone, aml_officer_phone_country, company_website_url, number_of_employees_in_company, list_of_countries_of_operation, estimated_annual_revenue_turnover, declaration].hash
+    [id, type, state, country, street, postal_code, city, phone_country, phone_number, email, ip, fingerprint, address_description, identification_number, identification_type, lang, name, first_name, middle_name, last_name, birth_date, occupation, nationality, legal_entity_type, registration_date, registration_number, nature_of_business, source_of_funds, custom_source_of_funds, core_business_activity, purpose_of_opening_account, office_phone, vat_registration_number, financial_regulator, regulatory_licence_number, contact_person_email, trading_country, trading_address, trading_name, number_monthly_transactions, amount_monthly_transactions, documents, metadata, errors, onboarding_status, politically_exposed_people, external_id, city_of_birth, country_of_birth, gender, sales_lead_id, created_at, company_office_number, company_office_number_country, aml_officer_email, aml_officer_phone, aml_officer_phone_country, company_website_url, number_of_employees_in_company, list_of_countries_of_operation, estimated_annual_revenue_turnover, declaration].hash
   end
 
 require 'active_support/core_ext/hash'
