@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **phone_number** | **String** |  | 
 **bank_account** | **String** |  | 
 **bank_code** | **String** |  | 
-**transfer_reason** | **String** |  | 
+**transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | 
 
 ## Code Sample
 

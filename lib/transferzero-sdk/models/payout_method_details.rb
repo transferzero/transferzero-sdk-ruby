@@ -160,7 +160,7 @@ class PayoutMethodDetails
       :'phone_number' => :'String',
       :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
       :'country' => :'PayoutMethodCountryEnum',
-      :'transfer_reason' => :'String',
+      :'transfer_reason' => :'PayoutMethodTransferReasonEnum',
       :'iban' => :'String',
       :'bank_name' => :'String',
       :'bank_country' => :'String',
