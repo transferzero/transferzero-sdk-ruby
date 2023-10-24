@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **cash_provider** | [**PayoutMethodCashProviderEnum**](PayoutMethodCashProviderEnum.md) |  | 
 **sort_code** | **String** |  | [optional] 
 **bic** | **String** |  | [optional] 
+**narration** | **String** |  | [optional] 
 **sender_identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | 
 **sender_identity_card_id** | **String** |  | 
 **sender_city_of_birth** | **String** |  | [optional] 
@@ -68,6 +69,7 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  cash_provider: null,
                                  sort_code: null,
                                  bic: null,
+                                 narration: null,
                                  sender_identity_card_type: null,
                                  sender_identity_card_id: null,
                                  sender_city_of_birth: null,

@@ -13,32 +13,35 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"bank_name\": \"Deutsche Bank\",   \"bank_account\": \"12345678\", // Required if IBAN is not present   \"sort_code\": \"123456\", // Required if bank_account is present   \"iban\": \"DE89370400440532013000\", // Required if no bank_account & sort_code   \"bic\": \"DEUTDEBBXXX\" // Optional } ```
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"iban\": \"GB45LOYD60161331926819\", // Required if no `bank_account` and `sort_code`   \"bank_account\": \"12345678\", // Required if `iban` is not present   \"sort_code\": \"123456\", // Required if `bank_account` is present   \"bic\": \"CHASUS33XXX\" // Optional   \"bank_name\": \"JPMorgan Chase Bank\", // Optional   \"narration\": \"Birthday Gift\" // Optional } ```
 class PayoutMethodDetailsGBPBank
   attr_accessor :first_name
 
   attr_accessor :last_name
 
-  attr_accessor :bank_name
+  attr_accessor :iban
 
   attr_accessor :bank_account
 
   attr_accessor :sort_code
 
-  attr_accessor :iban
-
   attr_accessor :bic
+
+  attr_accessor :bank_name
+
+  attr_accessor :narration
 
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
       :'first_name' => :'first_name',
       :'last_name' => :'last_name',
-      :'bank_name' => :'bank_name',
+      :'iban' => :'iban',
       :'bank_account' => :'bank_account',
       :'sort_code' => :'sort_code',
-      :'iban' => :'iban',
-      :'bic' => :'bic'
+      :'bic' => :'bic',
+      :'bank_name' => :'bank_name',
+      :'narration' => :'narration'
     }
   end
 
@@ -47,11 +50,12 @@ class PayoutMethodDetailsGBPBank
     {
       :'first_name' => :'String',
       :'last_name' => :'String',
-      :'bank_name' => :'String',
+      :'iban' => :'String',
       :'bank_account' => :'String',
       :'sort_code' => :'String',
-      :'iban' => :'String',
-      :'bic' => :'String'
+      :'bic' => :'String',
+      :'bank_name' => :'String',
+      :'narration' => :'String'
     }
   end
 
@@ -78,8 +82,8 @@ class PayoutMethodDetailsGBPBank
       self.last_name = attributes[:'last_name']
     end
 
-    if attributes.key?(:'bank_name')
-      self.bank_name = attributes[:'bank_name']
+    if attributes.key?(:'iban')
+      self.iban = attributes[:'iban']
     end
 
     if attributes.key?(:'bank_account')
@@ -90,12 +94,16 @@ class PayoutMethodDetailsGBPBank
       self.sort_code = attributes[:'sort_code']
     end
 
-    if attributes.key?(:'iban')
-      self.iban = attributes[:'iban']
-    end
-
     if attributes.key?(:'bic')
       self.bic = attributes[:'bic']
+    end
+
+    if attributes.key?(:'bank_name')
+      self.bank_name = attributes[:'bank_name']
+    end
+
+    if attributes.key?(:'narration')
+      self.narration = attributes[:'narration']
     end
   end
 
@@ -129,11 +137,12 @@ class PayoutMethodDetailsGBPBank
     self.class == o.class &&
         first_name == o.first_name &&
         last_name == o.last_name &&
-        bank_name == o.bank_name &&
+        iban == o.iban &&
         bank_account == o.bank_account &&
         sort_code == o.sort_code &&
-        iban == o.iban &&
-        bic == o.bic
+        bic == o.bic &&
+        bank_name == o.bank_name &&
+        narration == o.narration
   end
 
   # @see the `==` method
@@ -145,7 +154,7 @@ class PayoutMethodDetailsGBPBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_name, bank_account, sort_code, iban, bic].hash
+    [first_name, last_name, iban, bank_account, sort_code, bic, bank_name, narration].hash
   end
 
 require 'active_support/core_ext/hash'

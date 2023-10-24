@@ -6,9 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **first_name** | **String** |  | 
 **last_name** | **String** |  | 
-**bank_name** | **String** |  | [optional] 
 **iban** | **String** |  | 
 **bic** | **String** |  | [optional] 
+**bank_name** | **String** |  | [optional] 
+**narration** | **String** |  | [optional] 
 
 ## Code Sample
 
@@ -17,9 +18,10 @@ require 'TransferZero'
 
 instance = TransferZero::PayoutMethodDetailsIBAN.new(first_name: null,
                                  last_name: null,
-                                 bank_name: null,
                                  iban: null,
-                                 bic: null)
+                                 bic: null,
+                                 bank_name: null,
+                                 narration: null)
 ```
 
 
