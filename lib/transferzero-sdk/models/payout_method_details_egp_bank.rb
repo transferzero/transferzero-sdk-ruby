@@ -13,9 +13,11 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"street\": \"1 Main Street\",   \"phone_number\": \"+201023456789\",   \"bank_account\": \"1234567890\",   \"bank_code\": \"0030\",   \"transfer_reason\": \"personal_account\" } ``` See [EGP Bank](https://docs.transferzero.com/docs/payout-details/#egpbank) documentation for the bank_code list
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"middle_name\": \"Middle\",   \"last_name\": \"Last\",   \"street\": \"1 Main Street\",   \"phone_number\": \"+201023456789\",   \"bank_account\": \"1234567890\",   \"bank_code\": \"0030\",   \"transfer_reason\": \"personal_account\" } ``` See [EGP Bank](https://docs.transferzero.com/docs/payout-details/#egpbank) documentation for the bank_code list
 class PayoutMethodDetailsEGPBank
   attr_accessor :first_name
+
+  attr_accessor :middle_name
 
   attr_accessor :last_name
 
@@ -33,6 +35,7 @@ class PayoutMethodDetailsEGPBank
   def self.attribute_map
     {
       :'first_name' => :'first_name',
+      :'middle_name' => :'middle_name',
       :'last_name' => :'last_name',
       :'street' => :'street',
       :'phone_number' => :'phone_number',
@@ -46,6 +49,7 @@ class PayoutMethodDetailsEGPBank
   def self.openapi_types
     {
       :'first_name' => :'String',
+      :'middle_name' => :'String',
       :'last_name' => :'String',
       :'street' => :'String',
       :'phone_number' => :'String',
@@ -72,6 +76,10 @@ class PayoutMethodDetailsEGPBank
 
     if attributes.key?(:'first_name')
       self.first_name = attributes[:'first_name']
+    end
+
+    if attributes.key?(:'middle_name')
+      self.middle_name = attributes[:'middle_name']
     end
 
     if attributes.key?(:'last_name')
@@ -153,6 +161,7 @@ class PayoutMethodDetailsEGPBank
     return true if self.equal?(o)
     self.class == o.class &&
         first_name == o.first_name &&
+        middle_name == o.middle_name &&
         last_name == o.last_name &&
         street == o.street &&
         phone_number == o.phone_number &&
@@ -170,7 +179,7 @@ class PayoutMethodDetailsEGPBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, street, phone_number, bank_account, bank_code, transfer_reason].hash
+    [first_name, middle_name, last_name, street, phone_number, bank_account, bank_code, transfer_reason].hash
   end
 
 require 'active_support/core_ext/hash'

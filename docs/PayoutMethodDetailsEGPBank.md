@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **first_name** | **String** |  | 
+**middle_name** | **String** |  | [optional] 
 **last_name** | **String** |  | 
 **street** | **String** |  | 
 **phone_number** | **String** |  | 
@@ -18,6 +19,7 @@ Name | Type | Description | Notes
 require 'TransferZero'
 
 instance = TransferZero::PayoutMethodDetailsEGPBank.new(first_name: null,
+                                 middle_name: null,
                                  last_name: null,
                                  street: null,
                                  phone_number: null,
