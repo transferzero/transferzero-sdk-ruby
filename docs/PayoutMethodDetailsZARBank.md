@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **phone_number** | **String** |  | 
 **transfer_reason_code** | **String** |  | [optional] 
 **transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | [optional] 
+**narration** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **contact_first_name** | **String** |  | [optional] 
 **contact_last_name** | **String** |  | [optional] 
@@ -40,6 +41,7 @@ instance = TransferZero::PayoutMethodDetailsZARBank.new(first_name: null,
                                  phone_number: null,
                                  transfer_reason_code: null,
                                  transfer_reason: null,
+                                 narration: null,
                                  name: null,
                                  contact_first_name: null,
                                  contact_last_name: null,

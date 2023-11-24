@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"first_name\": \"First\", //  Mandatory for personal payouts;     \"last_name\": \"Last\", //  Mandatory for personal payouts;     \"name\" \"First Ltd\", // Mandatory for business payouts;     \"contact_first_name\" \"Business\",     \"contact_last_name\" \"Contact\",     \"street\": \"Main Street\",     \"postal_code\": \"AB0001\",     \"city\": \"Cape Town\",     \"email\": \"recipient@email.com\",     \"bank_name\" 'Bank Zero', // Optional     \"bank_code\": \"334810\",  // Optional; Required if branch_code is empty     \"branch_code\": \"630067\", // Optional; Required if bank_code is empty     \"bank_account\": \"12345678\",     \"phone_number\": \"+27119785313\", // E.164 international format     \"transfer_reason\": \"personal_account\", // New transfer reason field     \"legal_entity_type\": \"sole_proprietorship\", // Optional; Default value is \"person\";     \"nature_of_business\": \"mining\", // Optional for business payouts;     \"registration_number\": \"17364BGC\" // Optional for business payouts;   } ```  See [ZAR Bank](https://docs.transferzero.com/docs/payout-details/#zarbank) documentation for the bank_code and transfer_reason lists
+# ```JSON   \"details\": {     \"first_name\": \"First\", //  Mandatory for personal payouts;     \"last_name\": \"Last\", //  Mandatory for personal payouts;     \"name\" \"First Ltd\", // Mandatory for business payouts;     \"contact_first_name\" \"Business\",     \"contact_last_name\" \"Contact\",     \"street\": \"Main Street\",     \"postal_code\": \"AB0001\",     \"city\": \"Cape Town\",     \"email\": \"recipient@email.com\",     \"bank_name\" 'Bank Zero', // Optional     \"bank_code\": \"334810\",  // Optional; Required if branch_code is empty     \"branch_code\": \"630067\", // Optional; Required if bank_code is empty     \"bank_account\": \"12345678\",     \"phone_number\": \"+27119785313\", // E.164 international format     \"transfer_reason\": \"personal_account\", // New transfer reason field     \"narration\": \"Birthday Gift\", // Optional     \"legal_entity_type\": \"sole_proprietorship\", // Optional; Default value is \"person\";     \"nature_of_business\": \"mining\", // Optional for business payouts;     \"registration_number\": \"17364BGC\" // Optional for business payouts;   } ```  See [ZAR Bank](https://docs.transferzero.com/docs/payout-details/#zarbank) documentation for the bank_code and transfer_reason lists
 class PayoutMethodDetailsZARBank
   attr_accessor :first_name
 
@@ -38,6 +38,8 @@ class PayoutMethodDetailsZARBank
   attr_accessor :transfer_reason_code
 
   attr_accessor :transfer_reason
+
+  attr_accessor :narration
 
   attr_accessor :name
 
@@ -66,6 +68,7 @@ class PayoutMethodDetailsZARBank
       :'phone_number' => :'phone_number',
       :'transfer_reason_code' => :'transfer_reason_code',
       :'transfer_reason' => :'transfer_reason',
+      :'narration' => :'narration',
       :'name' => :'name',
       :'contact_first_name' => :'contact_first_name',
       :'contact_last_name' => :'contact_last_name',
@@ -90,6 +93,7 @@ class PayoutMethodDetailsZARBank
       :'phone_number' => :'String',
       :'transfer_reason_code' => :'String',
       :'transfer_reason' => :'PayoutMethodTransferReasonEnum',
+      :'narration' => :'String',
       :'name' => :'String',
       :'contact_first_name' => :'String',
       :'contact_last_name' => :'String',
@@ -160,6 +164,10 @@ class PayoutMethodDetailsZARBank
 
     if attributes.key?(:'transfer_reason')
       self.transfer_reason = attributes[:'transfer_reason']
+    end
+
+    if attributes.key?(:'narration')
+      self.narration = attributes[:'narration']
     end
 
     if attributes.key?(:'name')
@@ -237,6 +245,7 @@ class PayoutMethodDetailsZARBank
         phone_number == o.phone_number &&
         transfer_reason_code == o.transfer_reason_code &&
         transfer_reason == o.transfer_reason &&
+        narration == o.narration &&
         name == o.name &&
         contact_first_name == o.contact_first_name &&
         contact_last_name == o.contact_last_name &&
@@ -254,7 +263,7 @@ class PayoutMethodDetailsZARBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, street, postal_code, city, email, bank_code, branch_code, bank_account, phone_number, transfer_reason_code, transfer_reason, name, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type].hash
+    [first_name, last_name, street, postal_code, city, email, bank_code, branch_code, bank_account, phone_number, transfer_reason_code, transfer_reason, narration, name, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type].hash
   end
 
 require 'active_support/core_ext/hash'
