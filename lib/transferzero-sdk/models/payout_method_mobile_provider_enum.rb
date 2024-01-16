@@ -28,7 +28,6 @@ class PayoutMethodMobileProviderEnum
   MOBICASH = "mobicash".freeze
   EMONEY = "emoney".freeze
   FREE = "free".freeze
-  WAVE = "wave".freeze
   EXPRESSO = "expresso".freeze
   TMONEY = "tmoney".freeze
 
