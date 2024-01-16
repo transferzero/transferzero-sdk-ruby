@@ -1,11 +1,9 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.5
-  - 2.6
   - 2.7
 script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build transferzero-sdk.gemspec
-  - gem install ./transferzero-sdk-1.33.2.gem
+  - gem install ./transferzero-sdk-1.33.3.gem
