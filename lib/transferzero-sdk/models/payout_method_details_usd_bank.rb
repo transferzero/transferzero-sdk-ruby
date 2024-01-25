@@ -13,9 +13,11 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# Nigeria: ```JSON   \"details\": {     \"first_name\": \"Jane\",     \"last_name\": \"Doe\",     \"phone_number\": \"+2341234567\", // E.164 international format     \"bank_code\": \"057\",     \"bank_account\": \"1234567890\",     \"country\": \"NG\"   } ``` See [USD Bank](https://docs.transferzero.com/docs/payout-details/#usdbank) documentation for the bank_code and country lists  United States: ```JSON   \"details\": {     \"first_name\": \"Jane\",     \"last_name\": \"Doe\",     \"bank_account\": \"1234567890\",     \"bank_account_type\": \"20\", // 10 for Savings, 20 for Checking     \"bank_name\": \"US Bank\",     \"routing_number\": \"091000022\",     \"swift_code\": \"USBKUS44IMT\",     \"country\": \"US\"   } See [USD Bank](https://docs.transferzero.com/docs/payout-details/#usdbank-1) documentation
+# Nigeria: ```JSON   \"details\": {     \"first_name\": \"Jane\",     \"last_name\": \"Doe\",     \"phone_number\": \"+2341234567\", // E.164 international format     \"bank_code\": \"057\",     \"bank_account\": \"1234567890\",     \"country\": \"NG\"   } ``` See [USD Bank](https://docs.transferzero.com/docs/payout-details/#usdbank) documentation for the bank_code and country lists  United States: ```JSON   \"details\": {     \"first_name\": \"Jane\",     \"last_name\": \"Doe\",     \"bank_account\": \"1234567890\",     \"bank_account_type\": \"20\", // 10 for Savings, 20 for Checking     \"bank_name\": \"US Bank\",     \"routing_number\": \"091000022\",     \"swift_code\": \"USBKUS44IMT\",     \"country\": \"US\"   } See [USD Bank](https://docs.transferzero.com/docs/payout-details/#usdbank-1) documentation  Egypt: ```JSON   \"details\": {     \"first_name\": \"Jane\",     \"middle_name\": \"Jill\", // optional     \"last_name\": \"Doe\",     \"street\": \"1 Main Street\",     \"phone_number\": \"+201023456789\",     \"iban\": \"EG380019000500000000263180002\",     \"transfer_reason\": \"personal_account\",   } ``` See [USD Bank](https://docs.transferzero.com/docs/payout-details/#usdbank-2) documentation
 class PayoutMethodDetailsUSDBank
   attr_accessor :first_name
+
+  attr_accessor :middle_name
 
   attr_accessor :last_name
 
@@ -33,12 +35,19 @@ class PayoutMethodDetailsUSDBank
 
   attr_accessor :swift_code
 
+  attr_accessor :iban
+
+  attr_accessor :street
+
+  attr_accessor :transfer_reason
+
   attr_accessor :country
 
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
       :'first_name' => :'first_name',
+      :'middle_name' => :'middle_name',
       :'last_name' => :'last_name',
       :'phone_number' => :'phone_number',
       :'bank_code' => :'bank_code',
@@ -47,6 +56,9 @@ class PayoutMethodDetailsUSDBank
       :'bank_name' => :'bank_name',
       :'routing_number' => :'routing_number',
       :'swift_code' => :'swift_code',
+      :'iban' => :'iban',
+      :'street' => :'street',
+      :'transfer_reason' => :'transfer_reason',
       :'country' => :'country'
     }
   end
@@ -55,6 +67,7 @@ class PayoutMethodDetailsUSDBank
   def self.openapi_types
     {
       :'first_name' => :'String',
+      :'middle_name' => :'String',
       :'last_name' => :'String',
       :'phone_number' => :'String',
       :'bank_code' => :'String',
@@ -63,6 +76,9 @@ class PayoutMethodDetailsUSDBank
       :'bank_name' => :'String',
       :'routing_number' => :'String',
       :'swift_code' => :'String',
+      :'iban' => :'String',
+      :'street' => :'String',
+      :'transfer_reason' => :'PayoutMethodTransferReasonEnum',
       :'country' => :'PayoutMethodCountryEnum'
     }
   end
@@ -84,6 +100,10 @@ class PayoutMethodDetailsUSDBank
 
     if attributes.key?(:'first_name')
       self.first_name = attributes[:'first_name']
+    end
+
+    if attributes.key?(:'middle_name')
+      self.middle_name = attributes[:'middle_name']
     end
 
     if attributes.key?(:'last_name')
@@ -118,6 +138,18 @@ class PayoutMethodDetailsUSDBank
       self.swift_code = attributes[:'swift_code']
     end
 
+    if attributes.key?(:'iban')
+      self.iban = attributes[:'iban']
+    end
+
+    if attributes.key?(:'street')
+      self.street = attributes[:'street']
+    end
+
+    if attributes.key?(:'transfer_reason')
+      self.transfer_reason = attributes[:'transfer_reason']
+    end
+
     if attributes.key?(:'country')
       self.country = attributes[:'country']
     end
@@ -135,10 +167,6 @@ class PayoutMethodDetailsUSDBank
       invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
     end
 
-    if @bank_account.nil?
-      invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
-    end
-
     if @country.nil?
       invalid_properties.push('invalid value for "country", country cannot be nil.')
     end
@@ -151,7 +179,6 @@ class PayoutMethodDetailsUSDBank
   def valid?
     return false if @first_name.nil?
     return false if @last_name.nil?
-    return false if @bank_account.nil?
     return false if @country.nil?
     true
   end
@@ -162,6 +189,7 @@ class PayoutMethodDetailsUSDBank
     return true if self.equal?(o)
     self.class == o.class &&
         first_name == o.first_name &&
+        middle_name == o.middle_name &&
         last_name == o.last_name &&
         phone_number == o.phone_number &&
         bank_code == o.bank_code &&
@@ -170,6 +198,9 @@ class PayoutMethodDetailsUSDBank
         bank_name == o.bank_name &&
         routing_number == o.routing_number &&
         swift_code == o.swift_code &&
+        iban == o.iban &&
+        street == o.street &&
+        transfer_reason == o.transfer_reason &&
         country == o.country
   end
 
@@ -182,7 +213,7 @@ class PayoutMethodDetailsUSDBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, phone_number, bank_code, bank_account, bank_account_type, bank_name, routing_number, swift_code, country].hash
+    [first_name, middle_name, last_name, phone_number, bank_code, bank_account, bank_account_type, bank_name, routing_number, swift_code, iban, street, transfer_reason, country].hash
   end
 
 require 'active_support/core_ext/hash'

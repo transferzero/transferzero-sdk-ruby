@@ -42,13 +42,13 @@ Name | Type | Description | Notes
 **registration_number** | **String** |  | [optional] 
 **nature_of_business** | [**PayoutMethodNatureOfBusinessEnum**](PayoutMethodNatureOfBusinessEnum.md) |  | [optional] 
 **legal_entity_type** | [**PayoutMethodLegalEntityTypeEnum**](PayoutMethodLegalEntityTypeEnum.md) |  | [optional] 
+**middle_name** | **String** |  | [optional] 
 **routing_number** | **String** |  | [optional] 
 **swift_code** | **String** |  | [optional] 
 **relationship_to_sender** | **String** |  | [optional] 
 **pix_key_type** | [**PayoutMethodPixKeyTypeEnum**](PayoutMethodPixKeyTypeEnum.md) |  | [optional] 
 **pix_key_value** | **String** |  | [optional] 
 **ifsc_code** | **String** |  | 
-**middle_name** | **String** |  | [optional] 
 
 ## Code Sample
 
@@ -93,13 +93,13 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  registration_number: null,
                                  nature_of_business: null,
                                  legal_entity_type: null,
+                                 middle_name: null,
                                  routing_number: null,
                                  swift_code: null,
                                  relationship_to_sender: null,
                                  pix_key_type: null,
                                  pix_key_value: null,
-                                 ifsc_code: null,
-                                 middle_name: null)
+                                 ifsc_code: null)
 ```
 
 

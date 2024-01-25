@@ -90,6 +90,8 @@ class PayoutMethodDetails
 
   attr_accessor :legal_entity_type
 
+  attr_accessor :middle_name
+
   attr_accessor :routing_number
 
   attr_accessor :swift_code
@@ -101,8 +103,6 @@ class PayoutMethodDetails
   attr_accessor :pix_key_value
 
   attr_accessor :ifsc_code
-
-  attr_accessor :middle_name
 
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
@@ -145,13 +145,13 @@ class PayoutMethodDetails
       :'registration_number' => :'registration_number',
       :'nature_of_business' => :'nature_of_business',
       :'legal_entity_type' => :'legal_entity_type',
+      :'middle_name' => :'middle_name',
       :'routing_number' => :'routing_number',
       :'swift_code' => :'swift_code',
       :'relationship_to_sender' => :'relationship_to_sender',
       :'pix_key_type' => :'pix_key_type',
       :'pix_key_value' => :'pix_key_value',
-      :'ifsc_code' => :'ifsc_code',
-      :'middle_name' => :'middle_name'
+      :'ifsc_code' => :'ifsc_code'
     }
   end
 
@@ -196,13 +196,13 @@ class PayoutMethodDetails
       :'registration_number' => :'String',
       :'nature_of_business' => :'PayoutMethodNatureOfBusinessEnum',
       :'legal_entity_type' => :'PayoutMethodLegalEntityTypeEnum',
+      :'middle_name' => :'String',
       :'routing_number' => :'String',
       :'swift_code' => :'String',
       :'relationship_to_sender' => :'String',
       :'pix_key_type' => :'PayoutMethodPixKeyTypeEnum',
       :'pix_key_value' => :'String',
-      :'ifsc_code' => :'String',
-      :'middle_name' => :'String'
+      :'ifsc_code' => :'String'
     }
   end
 
@@ -407,6 +407,10 @@ class PayoutMethodDetails
       self.legal_entity_type = attributes[:'legal_entity_type']
     end
 
+    if attributes.key?(:'middle_name')
+      self.middle_name = attributes[:'middle_name']
+    end
+
     if attributes.key?(:'routing_number')
       self.routing_number = attributes[:'routing_number']
     end
@@ -429,10 +433,6 @@ class PayoutMethodDetails
 
     if attributes.key?(:'ifsc_code')
       self.ifsc_code = attributes[:'ifsc_code']
-    end
-
-    if attributes.key?(:'middle_name')
-      self.middle_name = attributes[:'middle_name']
     end
   end
 
@@ -618,13 +618,13 @@ class PayoutMethodDetails
         registration_number == o.registration_number &&
         nature_of_business == o.nature_of_business &&
         legal_entity_type == o.legal_entity_type &&
+        middle_name == o.middle_name &&
         routing_number == o.routing_number &&
         swift_code == o.swift_code &&
         relationship_to_sender == o.relationship_to_sender &&
         pix_key_type == o.pix_key_type &&
         pix_key_value == o.pix_key_value &&
-        ifsc_code == o.ifsc_code &&
-        middle_name == o.middle_name
+        ifsc_code == o.ifsc_code
   end
 
   # @see the `==` method
@@ -636,7 +636,7 @@ class PayoutMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, transfer_reason, iban, bank_name, bank_country, cash_provider, sort_code, bic, narration, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, branch_code, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type, routing_number, swift_code, relationship_to_sender, pix_key_type, pix_key_value, ifsc_code, middle_name].hash
+    [first_name, last_name, bank_code, bank_account, bank_account_type, phone_number, mobile_provider, country, transfer_reason, iban, bank_name, bank_country, cash_provider, sort_code, bic, narration, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, branch_code, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type, middle_name, routing_number, swift_code, relationship_to_sender, pix_key_type, pix_key_value, ifsc_code].hash
   end
 
 require 'active_support/core_ext/hash'
