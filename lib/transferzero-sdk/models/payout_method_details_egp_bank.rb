@@ -123,10 +123,6 @@ class PayoutMethodDetailsEGPBank
       invalid_properties.push('invalid value for "street", street cannot be nil.')
     end
 
-    if @phone_number.nil?
-      invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
-    end
-
     if @bank_account.nil?
       invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
     end
@@ -148,7 +144,6 @@ class PayoutMethodDetailsEGPBank
     return false if @first_name.nil?
     return false if @last_name.nil?
     return false if @street.nil?
-    return false if @phone_number.nil?
     return false if @bank_account.nil?
     return false if @bank_code.nil?
     return false if @transfer_reason.nil?

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **middle_name** | **String** |  | [optional] 
 **last_name** | **String** |  | 
 **street** | **String** |  | 
-**phone_number** | **String** |  | 
+**phone_number** | **String** |  | [optional] 
 **bank_account** | **String** |  | 
 **bank_code** | **String** |  | 
 **transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | 
