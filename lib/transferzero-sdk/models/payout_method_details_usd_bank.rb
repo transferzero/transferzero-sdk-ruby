@@ -43,6 +43,9 @@ class PayoutMethodDetailsUSDBank
 
   attr_accessor :country
 
+  # Date of birth of recipient
+  attr_accessor :birth_date
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -59,7 +62,8 @@ class PayoutMethodDetailsUSDBank
       :'iban' => :'iban',
       :'street' => :'street',
       :'transfer_reason' => :'transfer_reason',
-      :'country' => :'country'
+      :'country' => :'country',
+      :'birth_date' => :'birth_date'
     }
   end
 
@@ -79,7 +83,8 @@ class PayoutMethodDetailsUSDBank
       :'iban' => :'String',
       :'street' => :'String',
       :'transfer_reason' => :'PayoutMethodTransferReasonEnum',
-      :'country' => :'PayoutMethodCountryEnum'
+      :'country' => :'PayoutMethodCountryEnum',
+      :'birth_date' => :'Date'
     }
   end
 
@@ -153,6 +158,10 @@ class PayoutMethodDetailsUSDBank
     if attributes.key?(:'country')
       self.country = attributes[:'country']
     end
+
+    if attributes.key?(:'birth_date')
+      self.birth_date = attributes[:'birth_date']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -201,7 +210,8 @@ class PayoutMethodDetailsUSDBank
         iban == o.iban &&
         street == o.street &&
         transfer_reason == o.transfer_reason &&
-        country == o.country
+        country == o.country &&
+        birth_date == o.birth_date
   end
 
   # @see the `==` method
@@ -213,7 +223,7 @@ class PayoutMethodDetailsUSDBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, middle_name, last_name, phone_number, bank_code, bank_account, bank_account_type, bank_name, routing_number, swift_code, iban, street, transfer_reason, country].hash
+    [first_name, middle_name, last_name, phone_number, bank_code, bank_account, bank_account_type, bank_name, routing_number, swift_code, iban, street, transfer_reason, country, birth_date].hash
   end
 
 require 'active_support/core_ext/hash'

@@ -35,6 +35,9 @@ class PayoutMethodDetailsKESBank
 
   attr_accessor :relationship_to_sender
 
+  # Date of birth of recipient
+  attr_accessor :birth_date
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -47,7 +50,8 @@ class PayoutMethodDetailsKESBank
       :'transfer_reason' => :'transfer_reason',
       :'identity_card_type' => :'identity_card_type',
       :'identity_card_id' => :'identity_card_id',
-      :'relationship_to_sender' => :'relationship_to_sender'
+      :'relationship_to_sender' => :'relationship_to_sender',
+      :'birth_date' => :'birth_date'
     }
   end
 
@@ -63,7 +67,8 @@ class PayoutMethodDetailsKESBank
       :'transfer_reason' => :'PayoutMethodTransferReasonEnum',
       :'identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
       :'identity_card_id' => :'String',
-      :'relationship_to_sender' => :'String'
+      :'relationship_to_sender' => :'String',
+      :'birth_date' => :'Date'
     }
   end
 
@@ -120,6 +125,10 @@ class PayoutMethodDetailsKESBank
 
     if attributes.key?(:'relationship_to_sender')
       self.relationship_to_sender = attributes[:'relationship_to_sender']
+    end
+
+    if attributes.key?(:'birth_date')
+      self.birth_date = attributes[:'birth_date']
     end
   end
 
@@ -190,7 +199,8 @@ class PayoutMethodDetailsKESBank
         transfer_reason == o.transfer_reason &&
         identity_card_type == o.identity_card_type &&
         identity_card_id == o.identity_card_id &&
-        relationship_to_sender == o.relationship_to_sender
+        relationship_to_sender == o.relationship_to_sender &&
+        birth_date == o.birth_date
   end
 
   # @see the `==` method
@@ -202,7 +212,7 @@ class PayoutMethodDetailsKESBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, street, city, bank_code, bank_account, transfer_reason, identity_card_type, identity_card_id, relationship_to_sender].hash
+    [first_name, last_name, street, city, bank_code, bank_account, transfer_reason, identity_card_type, identity_card_id, relationship_to_sender, birth_date].hash
   end
 
 require 'active_support/core_ext/hash'

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **bank_code** | **String** |  | 
 **bank_account** | **String** |  | 
 **bank_account_type** | [**PayoutMethodBankAccountTypeEnum**](PayoutMethodBankAccountTypeEnum.md) |  | [optional] 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -19,7 +20,8 @@ instance = TransferZero::PayoutMethodDetailsNGNBank.new(first_name: null,
                                  last_name: null,
                                  bank_code: null,
                                  bank_account: null,
-                                 bank_account_type: null)
+                                 bank_account_type: null,
+                                 birth_date: null)
 ```
 
 

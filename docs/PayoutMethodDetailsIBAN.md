@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **bic** | **String** |  | [optional] 
 **bank_name** | **String** |  | [optional] 
 **narration** | **String** |  | [optional] 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -21,7 +22,8 @@ instance = TransferZero::PayoutMethodDetailsIBAN.new(first_name: null,
                                  iban: null,
                                  bic: null,
                                  bank_name: null,
-                                 narration: null)
+                                 narration: null,
+                                 birth_date: null)
 ```
 
 

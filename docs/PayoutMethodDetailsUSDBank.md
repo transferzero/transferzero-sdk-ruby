@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **street** | **String** |  | [optional] 
 **transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | [optional] 
 **country** | [**PayoutMethodCountryEnum**](PayoutMethodCountryEnum.md) |  | 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -37,7 +38,8 @@ instance = TransferZero::PayoutMethodDetailsUSDBank.new(first_name: null,
                                  iban: null,
                                  street: null,
                                  transfer_reason: null,
-                                 country: null)
+                                 country: null,
+                                 birth_date: null)
 ```
 
 

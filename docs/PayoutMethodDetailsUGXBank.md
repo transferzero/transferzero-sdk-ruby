@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **bank_account** | **String** |  | 
 **branch_code** | **String** |  | 
 **transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -27,7 +28,8 @@ instance = TransferZero::PayoutMethodDetailsUGXBank.new(first_name: null,
                                  identity_card_id: null,
                                  bank_account: null,
                                  branch_code: null,
-                                 transfer_reason: null)
+                                 transfer_reason: null,
+                                 birth_date: null)
 ```
 
 

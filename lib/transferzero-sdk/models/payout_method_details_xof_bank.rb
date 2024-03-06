@@ -29,6 +29,9 @@ class PayoutMethodDetailsXOFBank
 
   attr_accessor :transfer_reason
 
+  # Date of birth of recipient
+  attr_accessor :birth_date
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -38,7 +41,8 @@ class PayoutMethodDetailsXOFBank
       :'bank_name' => :'bank_name',
       :'bank_country' => :'bank_country',
       :'bank_code' => :'bank_code',
-      :'transfer_reason' => :'transfer_reason'
+      :'transfer_reason' => :'transfer_reason',
+      :'birth_date' => :'birth_date'
     }
   end
 
@@ -51,7 +55,8 @@ class PayoutMethodDetailsXOFBank
       :'bank_name' => :'String',
       :'bank_country' => :'String',
       :'bank_code' => :'String',
-      :'transfer_reason' => :'PayoutMethodTransferReasonEnum'
+      :'transfer_reason' => :'PayoutMethodTransferReasonEnum',
+      :'birth_date' => :'Date'
     }
   end
 
@@ -97,6 +102,10 @@ class PayoutMethodDetailsXOFBank
     if attributes.key?(:'transfer_reason')
       self.transfer_reason = attributes[:'transfer_reason']
     end
+
+    if attributes.key?(:'birth_date')
+      self.birth_date = attributes[:'birth_date']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -138,7 +147,8 @@ class PayoutMethodDetailsXOFBank
         bank_name == o.bank_name &&
         bank_country == o.bank_country &&
         bank_code == o.bank_code &&
-        transfer_reason == o.transfer_reason
+        transfer_reason == o.transfer_reason &&
+        birth_date == o.birth_date
   end
 
   # @see the `==` method
@@ -150,7 +160,7 @@ class PayoutMethodDetailsXOFBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, iban, bank_name, bank_country, bank_code, transfer_reason].hash
+    [first_name, last_name, iban, bank_name, bank_country, bank_code, transfer_reason, birth_date].hash
   end
 
 require 'active_support/core_ext/hash'

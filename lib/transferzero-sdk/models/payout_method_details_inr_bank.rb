@@ -33,6 +33,9 @@ class PayoutMethodDetailsINRBank
 
   attr_accessor :ifsc_code
 
+  # Date of birth of recipient
+  attr_accessor :birth_date
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -44,7 +47,8 @@ class PayoutMethodDetailsINRBank
       :'phone_number' => :'phone_number',
       :'bank_name' => :'bank_name',
       :'bank_account' => :'bank_account',
-      :'ifsc_code' => :'ifsc_code'
+      :'ifsc_code' => :'ifsc_code',
+      :'birth_date' => :'birth_date'
     }
   end
 
@@ -59,7 +63,8 @@ class PayoutMethodDetailsINRBank
       :'phone_number' => :'String',
       :'bank_name' => :'String',
       :'bank_account' => :'String',
-      :'ifsc_code' => :'String'
+      :'ifsc_code' => :'String',
+      :'birth_date' => :'Date'
     }
   end
 
@@ -112,6 +117,10 @@ class PayoutMethodDetailsINRBank
 
     if attributes.key?(:'ifsc_code')
       self.ifsc_code = attributes[:'ifsc_code']
+    end
+
+    if attributes.key?(:'birth_date')
+      self.birth_date = attributes[:'birth_date']
     end
   end
 
@@ -186,7 +195,8 @@ class PayoutMethodDetailsINRBank
         phone_number == o.phone_number &&
         bank_name == o.bank_name &&
         bank_account == o.bank_account &&
-        ifsc_code == o.ifsc_code
+        ifsc_code == o.ifsc_code &&
+        birth_date == o.birth_date
   end
 
   # @see the `==` method
@@ -198,7 +208,7 @@ class PayoutMethodDetailsINRBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, city, street, postal_code, phone_number, bank_name, bank_account, ifsc_code].hash
+    [first_name, last_name, city, street, postal_code, phone_number, bank_name, bank_account, ifsc_code, birth_date].hash
   end
 
 require 'active_support/core_ext/hash'

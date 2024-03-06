@@ -25,6 +25,9 @@ class PayoutMethodDetailsXOFCash
 
   attr_accessor :country
 
+  # Date of birth of recipient
+  attr_accessor :birth_date
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -32,7 +35,8 @@ class PayoutMethodDetailsXOFCash
       :'last_name' => :'last_name',
       :'phone_number' => :'phone_number',
       :'cash_provider' => :'cash_provider',
-      :'country' => :'country'
+      :'country' => :'country',
+      :'birth_date' => :'birth_date'
     }
   end
 
@@ -43,7 +47,8 @@ class PayoutMethodDetailsXOFCash
       :'last_name' => :'String',
       :'phone_number' => :'String',
       :'cash_provider' => :'PayoutMethodCashProviderEnum',
-      :'country' => :'PayoutMethodCountryEnum'
+      :'country' => :'PayoutMethodCountryEnum',
+      :'birth_date' => :'Date'
     }
   end
 
@@ -80,6 +85,10 @@ class PayoutMethodDetailsXOFCash
 
     if attributes.key?(:'country')
       self.country = attributes[:'country']
+    end
+
+    if attributes.key?(:'birth_date')
+      self.birth_date = attributes[:'birth_date']
     end
   end
 
@@ -125,7 +134,8 @@ class PayoutMethodDetailsXOFCash
         last_name == o.last_name &&
         phone_number == o.phone_number &&
         cash_provider == o.cash_provider &&
-        country == o.country
+        country == o.country &&
+        birth_date == o.birth_date
   end
 
   # @see the `==` method
@@ -137,7 +147,7 @@ class PayoutMethodDetailsXOFCash
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, phone_number, cash_provider, country].hash
+    [first_name, last_name, phone_number, cash_provider, country, birth_date].hash
   end
 
 require 'active_support/core_ext/hash'

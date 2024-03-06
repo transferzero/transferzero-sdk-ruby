@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **bank_name** | **String** |  | 
 **bank_account** | **String** |  | 
 **ifsc_code** | **String** |  | 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -27,7 +28,8 @@ instance = TransferZero::PayoutMethodDetailsINRBank.new(first_name: null,
                                  phone_number: null,
                                  bank_name: null,
                                  bank_account: null,
-                                 ifsc_code: null)
+                                 ifsc_code: null,
+                                 birth_date: null)
 ```
 
 

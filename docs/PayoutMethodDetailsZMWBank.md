@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **last_name** | **String** |  | 
 **bank_account** | **String** |  | 
 **branch_code** | **String** |  | 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -17,7 +18,8 @@ require 'TransferZero'
 instance = TransferZero::PayoutMethodDetailsZMWBank.new(first_name: null,
                                  last_name: null,
                                  bank_account: null,
-                                 branch_code: null)
+                                 branch_code: null,
+                                 birth_date: null)
 ```
 
 

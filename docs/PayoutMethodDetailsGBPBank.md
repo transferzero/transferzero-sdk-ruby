@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **bic** | **String** |  | [optional] 
 **bank_name** | **String** |  | [optional] 
 **narration** | **String** |  | [optional] 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -25,7 +26,8 @@ instance = TransferZero::PayoutMethodDetailsGBPBank.new(first_name: null,
                                  sort_code: null,
                                  bic: null,
                                  bank_name: null,
-                                 narration: null)
+                                 narration: null,
+                                 birth_date: null)
 ```
 
 

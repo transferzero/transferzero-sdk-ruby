@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **bank_account** | **String** |  | 
 **bank_code** | **String** |  | 
 **transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -25,7 +26,8 @@ instance = TransferZero::PayoutMethodDetailsEGPBank.new(first_name: null,
                                  phone_number: null,
                                  bank_account: null,
                                  bank_code: null,
-                                 transfer_reason: null)
+                                 transfer_reason: null,
+                                 birth_date: null)
 ```
 
 

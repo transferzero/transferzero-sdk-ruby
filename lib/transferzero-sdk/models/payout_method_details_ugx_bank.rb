@@ -33,6 +33,9 @@ class PayoutMethodDetailsUGXBank
 
   attr_accessor :transfer_reason
 
+  # Date of birth of recipient
+  attr_accessor :birth_date
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -44,7 +47,8 @@ class PayoutMethodDetailsUGXBank
       :'identity_card_id' => :'identity_card_id',
       :'bank_account' => :'bank_account',
       :'branch_code' => :'branch_code',
-      :'transfer_reason' => :'transfer_reason'
+      :'transfer_reason' => :'transfer_reason',
+      :'birth_date' => :'birth_date'
     }
   end
 
@@ -59,7 +63,8 @@ class PayoutMethodDetailsUGXBank
       :'identity_card_id' => :'String',
       :'bank_account' => :'String',
       :'branch_code' => :'String',
-      :'transfer_reason' => :'PayoutMethodTransferReasonEnum'
+      :'transfer_reason' => :'PayoutMethodTransferReasonEnum',
+      :'birth_date' => :'Date'
     }
   end
 
@@ -112,6 +117,10 @@ class PayoutMethodDetailsUGXBank
 
     if attributes.key?(:'transfer_reason')
       self.transfer_reason = attributes[:'transfer_reason']
+    end
+
+    if attributes.key?(:'birth_date')
+      self.birth_date = attributes[:'birth_date']
     end
   end
 
@@ -186,7 +195,8 @@ class PayoutMethodDetailsUGXBank
         identity_card_id == o.identity_card_id &&
         bank_account == o.bank_account &&
         branch_code == o.branch_code &&
-        transfer_reason == o.transfer_reason
+        transfer_reason == o.transfer_reason &&
+        birth_date == o.birth_date
   end
 
   # @see the `==` method
@@ -198,7 +208,7 @@ class PayoutMethodDetailsUGXBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, street, city, postal_code, identity_card_id, bank_account, branch_code, transfer_reason].hash
+    [first_name, last_name, street, city, postal_code, identity_card_id, bank_account, branch_code, transfer_reason, birth_date].hash
   end
 
 require 'active_support/core_ext/hash'

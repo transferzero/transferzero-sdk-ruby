@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **reason** | **String** |  | [optional] 
 **identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | [optional] 
 **identity_card_id** | **String** |  | [optional] 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -31,7 +32,8 @@ instance = TransferZero::PayoutMethodDetailsMADCash.new(first_name: null,
                                  sender_gender: null,
                                  reason: null,
                                  identity_card_type: null,
-                                 identity_card_id: null)
+                                 identity_card_id: null,
+                                 birth_date: null)
 ```
 
 
