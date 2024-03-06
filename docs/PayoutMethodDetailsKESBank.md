@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **identity_card_type** | [**PayoutMethodIdentityCardTypeEnum**](PayoutMethodIdentityCardTypeEnum.md) |  | 
 **identity_card_id** | **String** |  | 
 **relationship_to_sender** | **String** |  | [optional] 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -29,7 +30,8 @@ instance = TransferZero::PayoutMethodDetailsKESBank.new(first_name: null,
                                  transfer_reason: null,
                                  identity_card_type: null,
                                  identity_card_id: null,
-                                 relationship_to_sender: null)
+                                 relationship_to_sender: null,
+                                 birth_date: null)
 ```
 
 

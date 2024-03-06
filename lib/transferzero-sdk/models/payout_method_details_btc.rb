@@ -23,13 +23,17 @@ class PayoutMethodDetailsBTC
 
   attr_accessor :address
 
+  # Date of birth of recipient
+  attr_accessor :birth_date
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
       :'first_name' => :'first_name',
       :'last_name' => :'last_name',
       :'name' => :'name',
-      :'address' => :'address'
+      :'address' => :'address',
+      :'birth_date' => :'birth_date'
     }
   end
 
@@ -39,7 +43,8 @@ class PayoutMethodDetailsBTC
       :'first_name' => :'String',
       :'last_name' => :'String',
       :'name' => :'String',
-      :'address' => :'String'
+      :'address' => :'String',
+      :'birth_date' => :'Date'
     }
   end
 
@@ -72,6 +77,10 @@ class PayoutMethodDetailsBTC
 
     if attributes.key?(:'address')
       self.address = attributes[:'address']
+    end
+
+    if attributes.key?(:'birth_date')
+      self.birth_date = attributes[:'birth_date']
     end
   end
 
@@ -116,7 +125,8 @@ class PayoutMethodDetailsBTC
         first_name == o.first_name &&
         last_name == o.last_name &&
         name == o.name &&
-        address == o.address
+        address == o.address &&
+        birth_date == o.birth_date
   end
 
   # @see the `==` method
@@ -128,7 +138,7 @@ class PayoutMethodDetailsBTC
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, name, address].hash
+    [first_name, last_name, name, address, birth_date].hash
   end
 
 require 'active_support/core_ext/hash'

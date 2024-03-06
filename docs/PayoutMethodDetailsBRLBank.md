@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **pix_key_value** | **String** |  | [optional] 
 **identity_card_id** | **String** |  | 
 **transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -35,7 +36,8 @@ instance = TransferZero::PayoutMethodDetailsBRLBank.new(first_name: null,
                                  pix_key_type: null,
                                  pix_key_value: null,
                                  identity_card_id: null,
-                                 transfer_reason: null)
+                                 transfer_reason: null,
+                                 birth_date: null)
 ```
 
 

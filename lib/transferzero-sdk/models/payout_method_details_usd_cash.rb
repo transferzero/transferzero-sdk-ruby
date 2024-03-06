@@ -23,13 +23,17 @@ class PayoutMethodDetailsUSDCash
 
   attr_accessor :country
 
+  # Date of birth of recipient
+  attr_accessor :birth_date
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
       :'first_name' => :'first_name',
       :'last_name' => :'last_name',
       :'phone_number' => :'phone_number',
-      :'country' => :'country'
+      :'country' => :'country',
+      :'birth_date' => :'birth_date'
     }
   end
 
@@ -39,7 +43,8 @@ class PayoutMethodDetailsUSDCash
       :'first_name' => :'String',
       :'last_name' => :'String',
       :'phone_number' => :'String',
-      :'country' => :'PayoutMethodCountryEnum'
+      :'country' => :'PayoutMethodCountryEnum',
+      :'birth_date' => :'Date'
     }
   end
 
@@ -72,6 +77,10 @@ class PayoutMethodDetailsUSDCash
 
     if attributes.key?(:'country')
       self.country = attributes[:'country']
+    end
+
+    if attributes.key?(:'birth_date')
+      self.birth_date = attributes[:'birth_date']
     end
   end
 
@@ -116,7 +125,8 @@ class PayoutMethodDetailsUSDCash
         first_name == o.first_name &&
         last_name == o.last_name &&
         phone_number == o.phone_number &&
-        country == o.country
+        country == o.country &&
+        birth_date == o.birth_date
   end
 
   # @see the `==` method
@@ -128,7 +138,7 @@ class PayoutMethodDetailsUSDCash
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, phone_number, country].hash
+    [first_name, last_name, phone_number, country, birth_date].hash
   end
 
 require 'active_support/core_ext/hash'

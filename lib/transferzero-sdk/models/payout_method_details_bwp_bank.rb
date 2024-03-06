@@ -25,6 +25,9 @@ class PayoutMethodDetailsBWPBank
 
   attr_accessor :branch_code
 
+  # Date of birth of recipient
+  attr_accessor :birth_date
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -32,7 +35,8 @@ class PayoutMethodDetailsBWPBank
       :'last_name' => :'last_name',
       :'bank_name' => :'bank_name',
       :'bank_account' => :'bank_account',
-      :'branch_code' => :'branch_code'
+      :'branch_code' => :'branch_code',
+      :'birth_date' => :'birth_date'
     }
   end
 
@@ -43,7 +47,8 @@ class PayoutMethodDetailsBWPBank
       :'last_name' => :'String',
       :'bank_name' => :'String',
       :'bank_account' => :'String',
-      :'branch_code' => :'String'
+      :'branch_code' => :'String',
+      :'birth_date' => :'Date'
     }
   end
 
@@ -80,6 +85,10 @@ class PayoutMethodDetailsBWPBank
 
     if attributes.key?(:'branch_code')
       self.branch_code = attributes[:'branch_code']
+    end
+
+    if attributes.key?(:'birth_date')
+      self.birth_date = attributes[:'birth_date']
     end
   end
 
@@ -130,7 +139,8 @@ class PayoutMethodDetailsBWPBank
         last_name == o.last_name &&
         bank_name == o.bank_name &&
         bank_account == o.bank_account &&
-        branch_code == o.branch_code
+        branch_code == o.branch_code &&
+        birth_date == o.birth_date
   end
 
   # @see the `==` method
@@ -142,7 +152,7 @@ class PayoutMethodDetailsBWPBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_name, bank_account, branch_code].hash
+    [first_name, last_name, bank_name, bank_account, branch_code, birth_date].hash
   end
 
 require 'active_support/core_ext/hash'

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **last_name** | **String** |  | 
 **phone_number** | **String** |  | 
 **country** | [**PayoutMethodCountryEnum**](PayoutMethodCountryEnum.md) |  | 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -17,7 +18,8 @@ require 'TransferZero'
 instance = TransferZero::PayoutMethodDetailsUSDCash.new(first_name: null,
                                  last_name: null,
                                  phone_number: null,
-                                 country: null)
+                                 country: null,
+                                 birth_date: null)
 ```
 
 

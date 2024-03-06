@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **last_name** | **String** |  | 
 **bank_code** | **String** |  | 
 **bank_account** | **String** |  | 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -17,7 +18,8 @@ require 'TransferZero'
 instance = TransferZero::PayoutMethodDetailsGHSBank.new(first_name: null,
                                  last_name: null,
                                  bank_code: null,
-                                 bank_account: null)
+                                 bank_account: null,
+                                 birth_date: null)
 ```
 
 

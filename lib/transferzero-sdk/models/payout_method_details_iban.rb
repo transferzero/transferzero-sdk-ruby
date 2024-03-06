@@ -27,6 +27,9 @@ class PayoutMethodDetailsIBAN
 
   attr_accessor :narration
 
+  # Date of birth of recipient
+  attr_accessor :birth_date
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -35,7 +38,8 @@ class PayoutMethodDetailsIBAN
       :'iban' => :'iban',
       :'bic' => :'bic',
       :'bank_name' => :'bank_name',
-      :'narration' => :'narration'
+      :'narration' => :'narration',
+      :'birth_date' => :'birth_date'
     }
   end
 
@@ -47,7 +51,8 @@ class PayoutMethodDetailsIBAN
       :'iban' => :'String',
       :'bic' => :'String',
       :'bank_name' => :'String',
-      :'narration' => :'String'
+      :'narration' => :'String',
+      :'birth_date' => :'Date'
     }
   end
 
@@ -89,6 +94,10 @@ class PayoutMethodDetailsIBAN
     if attributes.key?(:'narration')
       self.narration = attributes[:'narration']
     end
+
+    if attributes.key?(:'birth_date')
+      self.birth_date = attributes[:'birth_date']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -129,7 +138,8 @@ class PayoutMethodDetailsIBAN
         iban == o.iban &&
         bic == o.bic &&
         bank_name == o.bank_name &&
-        narration == o.narration
+        narration == o.narration &&
+        birth_date == o.birth_date
   end
 
   # @see the `==` method
@@ -141,7 +151,7 @@ class PayoutMethodDetailsIBAN
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, iban, bic, bank_name, narration].hash
+    [first_name, last_name, iban, bic, bank_name, narration, birth_date].hash
   end
 
 require 'active_support/core_ext/hash'

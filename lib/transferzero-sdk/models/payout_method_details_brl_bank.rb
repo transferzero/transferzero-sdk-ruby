@@ -41,6 +41,9 @@ class PayoutMethodDetailsBRLBank
 
   attr_accessor :transfer_reason
 
+  # Date of birth of recipient
+  attr_accessor :birth_date
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -56,7 +59,8 @@ class PayoutMethodDetailsBRLBank
       :'pix_key_type' => :'pix_key_type',
       :'pix_key_value' => :'pix_key_value',
       :'identity_card_id' => :'identity_card_id',
-      :'transfer_reason' => :'transfer_reason'
+      :'transfer_reason' => :'transfer_reason',
+      :'birth_date' => :'birth_date'
     }
   end
 
@@ -75,7 +79,8 @@ class PayoutMethodDetailsBRLBank
       :'pix_key_type' => :'PayoutMethodPixKeyTypeEnum',
       :'pix_key_value' => :'String',
       :'identity_card_id' => :'String',
-      :'transfer_reason' => :'PayoutMethodTransferReasonEnum'
+      :'transfer_reason' => :'PayoutMethodTransferReasonEnum',
+      :'birth_date' => :'Date'
     }
   end
 
@@ -145,6 +150,10 @@ class PayoutMethodDetailsBRLBank
     if attributes.key?(:'transfer_reason')
       self.transfer_reason = attributes[:'transfer_reason']
     end
+
+    if attributes.key?(:'birth_date')
+      self.birth_date = attributes[:'birth_date']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -207,7 +216,8 @@ class PayoutMethodDetailsBRLBank
         pix_key_type == o.pix_key_type &&
         pix_key_value == o.pix_key_value &&
         identity_card_id == o.identity_card_id &&
-        transfer_reason == o.transfer_reason
+        transfer_reason == o.transfer_reason &&
+        birth_date == o.birth_date
   end
 
   # @see the `==` method
@@ -219,7 +229,7 @@ class PayoutMethodDetailsBRLBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, city, postal_code, phone_number, bank_code, branch_code, bank_account, bank_account_type, pix_key_type, pix_key_value, identity_card_id, transfer_reason].hash
+    [first_name, last_name, city, postal_code, phone_number, bank_code, branch_code, bank_account, bank_account_type, pix_key_type, pix_key_value, identity_card_id, transfer_reason, birth_date].hash
   end
 
 require 'active_support/core_ext/hash'

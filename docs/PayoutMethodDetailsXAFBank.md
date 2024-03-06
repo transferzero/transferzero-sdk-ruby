@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **bank_code** | **String** |  | [optional] 
 **sort_code** | **String** |  | [optional] 
 **transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | [optional] 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -27,7 +28,8 @@ instance = TransferZero::PayoutMethodDetailsXAFBank.new(first_name: null,
                                  bank_country: null,
                                  bank_code: null,
                                  sort_code: null,
-                                 transfer_reason: null)
+                                 transfer_reason: null,
+                                 birth_date: null)
 ```
 
 

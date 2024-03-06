@@ -25,6 +25,9 @@ class PayoutMethodDetailsNGNBank
 
   attr_accessor :bank_account_type
 
+  # Date of birth of recipient
+  attr_accessor :birth_date
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -32,7 +35,8 @@ class PayoutMethodDetailsNGNBank
       :'last_name' => :'last_name',
       :'bank_code' => :'bank_code',
       :'bank_account' => :'bank_account',
-      :'bank_account_type' => :'bank_account_type'
+      :'bank_account_type' => :'bank_account_type',
+      :'birth_date' => :'birth_date'
     }
   end
 
@@ -43,7 +47,8 @@ class PayoutMethodDetailsNGNBank
       :'last_name' => :'String',
       :'bank_code' => :'String',
       :'bank_account' => :'String',
-      :'bank_account_type' => :'PayoutMethodBankAccountTypeEnum'
+      :'bank_account_type' => :'PayoutMethodBankAccountTypeEnum',
+      :'birth_date' => :'Date'
     }
   end
 
@@ -80,6 +85,10 @@ class PayoutMethodDetailsNGNBank
 
     if attributes.key?(:'bank_account_type')
       self.bank_account_type = attributes[:'bank_account_type']
+    end
+
+    if attributes.key?(:'birth_date')
+      self.birth_date = attributes[:'birth_date']
     end
   end
 
@@ -125,7 +134,8 @@ class PayoutMethodDetailsNGNBank
         last_name == o.last_name &&
         bank_code == o.bank_code &&
         bank_account == o.bank_account &&
-        bank_account_type == o.bank_account_type
+        bank_account_type == o.bank_account_type &&
+        birth_date == o.birth_date
   end
 
   # @see the `==` method
@@ -137,7 +147,7 @@ class PayoutMethodDetailsNGNBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, bank_account, bank_account_type].hash
+    [first_name, last_name, bank_code, bank_account, bank_account_type, birth_date].hash
   end
 
 require 'active_support/core_ext/hash'

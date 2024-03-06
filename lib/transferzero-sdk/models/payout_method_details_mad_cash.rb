@@ -37,6 +37,9 @@ class PayoutMethodDetailsMADCash
 
   attr_accessor :identity_card_id
 
+  # Date of birth of recipient
+  attr_accessor :birth_date
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -50,7 +53,8 @@ class PayoutMethodDetailsMADCash
       :'sender_gender' => :'sender_gender',
       :'reason' => :'reason',
       :'identity_card_type' => :'identity_card_type',
-      :'identity_card_id' => :'identity_card_id'
+      :'identity_card_id' => :'identity_card_id',
+      :'birth_date' => :'birth_date'
     }
   end
 
@@ -67,7 +71,8 @@ class PayoutMethodDetailsMADCash
       :'sender_gender' => :'PayoutMethodGenderEnum',
       :'reason' => :'String',
       :'identity_card_type' => :'PayoutMethodIdentityCardTypeEnum',
-      :'identity_card_id' => :'String'
+      :'identity_card_id' => :'String',
+      :'birth_date' => :'Date'
     }
   end
 
@@ -129,6 +134,10 @@ class PayoutMethodDetailsMADCash
     if attributes.key?(:'identity_card_id')
       self.identity_card_id = attributes[:'identity_card_id']
     end
+
+    if attributes.key?(:'birth_date')
+      self.birth_date = attributes[:'birth_date']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -184,7 +193,8 @@ class PayoutMethodDetailsMADCash
         sender_gender == o.sender_gender &&
         reason == o.reason &&
         identity_card_type == o.identity_card_type &&
-        identity_card_id == o.identity_card_id
+        identity_card_id == o.identity_card_id &&
+        birth_date == o.birth_date
   end
 
   # @see the `==` method
@@ -196,7 +206,7 @@ class PayoutMethodDetailsMADCash
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, phone_number, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id].hash
+    [first_name, last_name, phone_number, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, birth_date].hash
   end
 
 require 'active_support/core_ext/hash'

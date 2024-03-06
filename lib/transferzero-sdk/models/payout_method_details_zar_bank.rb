@@ -53,6 +53,9 @@ class PayoutMethodDetailsZARBank
 
   attr_accessor :legal_entity_type
 
+  # Date of birth of recipient
+  attr_accessor :birth_date
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -74,7 +77,8 @@ class PayoutMethodDetailsZARBank
       :'contact_last_name' => :'contact_last_name',
       :'registration_number' => :'registration_number',
       :'nature_of_business' => :'nature_of_business',
-      :'legal_entity_type' => :'legal_entity_type'
+      :'legal_entity_type' => :'legal_entity_type',
+      :'birth_date' => :'birth_date'
     }
   end
 
@@ -99,7 +103,8 @@ class PayoutMethodDetailsZARBank
       :'contact_last_name' => :'String',
       :'registration_number' => :'String',
       :'nature_of_business' => :'PayoutMethodNatureOfBusinessEnum',
-      :'legal_entity_type' => :'PayoutMethodLegalEntityTypeEnum'
+      :'legal_entity_type' => :'PayoutMethodLegalEntityTypeEnum',
+      :'birth_date' => :'Date'
     }
   end
 
@@ -193,6 +198,10 @@ class PayoutMethodDetailsZARBank
     if attributes.key?(:'legal_entity_type')
       self.legal_entity_type = attributes[:'legal_entity_type']
     end
+
+    if attributes.key?(:'birth_date')
+      self.birth_date = attributes[:'birth_date']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -251,7 +260,8 @@ class PayoutMethodDetailsZARBank
         contact_last_name == o.contact_last_name &&
         registration_number == o.registration_number &&
         nature_of_business == o.nature_of_business &&
-        legal_entity_type == o.legal_entity_type
+        legal_entity_type == o.legal_entity_type &&
+        birth_date == o.birth_date
   end
 
   # @see the `==` method
@@ -263,7 +273,7 @@ class PayoutMethodDetailsZARBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, street, postal_code, city, email, bank_code, branch_code, bank_account, phone_number, transfer_reason_code, transfer_reason, narration, name, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type].hash
+    [first_name, last_name, street, postal_code, city, email, bank_code, branch_code, bank_account, phone_number, transfer_reason_code, transfer_reason, narration, name, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type, birth_date].hash
   end
 
 require 'active_support/core_ext/hash'

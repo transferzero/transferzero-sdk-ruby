@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **last_name** | **String** |  | 
 **name** | **String** |  | 
 **address** | **String** |  | 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -17,7 +18,8 @@ require 'TransferZero'
 instance = TransferZero::PayoutMethodDetailsBTC.new(first_name: null,
                                  last_name: null,
                                  name: null,
-                                 address: null)
+                                 address: null,
+                                 birth_date: null)
 ```
 
 

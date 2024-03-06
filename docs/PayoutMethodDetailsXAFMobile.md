@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **phone_number** | **String** |  | 
 **mobile_provider** | [**PayoutMethodMobileProviderEnum**](PayoutMethodMobileProviderEnum.md) |  | 
 **country** | [**PayoutMethodCountryEnum**](PayoutMethodCountryEnum.md) |  | [optional] 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -19,7 +20,8 @@ instance = TransferZero::PayoutMethodDetailsXAFMobile.new(first_name: null,
                                  last_name: null,
                                  phone_number: null,
                                  mobile_provider: null,
-                                 country: null)
+                                 country: null,
+                                 birth_date: null)
 ```
 
 

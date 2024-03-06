@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **registration_number** | **String** |  | [optional] 
 **nature_of_business** | [**PayoutMethodNatureOfBusinessEnum**](PayoutMethodNatureOfBusinessEnum.md) |  | [optional] 
 **legal_entity_type** | [**PayoutMethodLegalEntityTypeEnum**](PayoutMethodLegalEntityTypeEnum.md) |  | [optional] 
+**birth_date** | **Date** | Date of birth of recipient | [optional] 
 
 ## Code Sample
 
@@ -47,7 +48,8 @@ instance = TransferZero::PayoutMethodDetailsZARBank.new(first_name: null,
                                  contact_last_name: null,
                                  registration_number: null,
                                  nature_of_business: null,
-                                 legal_entity_type: null)
+                                 legal_entity_type: null,
+                                 birth_date: null)
 ```
 
 
