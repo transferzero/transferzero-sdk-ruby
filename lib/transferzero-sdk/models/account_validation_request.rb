@@ -158,7 +158,7 @@ class AccountValidationRequest
   # @return true if the model is valid
   def valid?
     return false if @country.nil?
-    country_validator = EnumAttributeValidator.new('String', ["BJ", "BF", "NG", "GH", "SN", "CI", "CM", "UG", "TG"])
+    country_validator = EnumAttributeValidator.new('String', ["BF", "BJ", "CF", "CG", "CI", "CM", "GA", "GH", "NG", "SN", "TD", "TG", "UG"])
     return false unless country_validator.valid?(@country)
     return false if @currency.nil?
     currency_validator = EnumAttributeValidator.new('String', ["NGN", "GHS", "XOF", "UGX", "XAF"])
@@ -172,7 +172,7 @@ class AccountValidationRequest
   # Custom attribute writer method checking allowed values (enum).
   # @param [Object] country Object to be assigned
   def country=(country)
-    validator = EnumAttributeValidator.new('String', ["BJ", "BF", "NG", "GH", "SN", "CI", "CM", "UG", "TG"])
+    validator = EnumAttributeValidator.new('String', ["BF", "BJ", "CF", "CG", "CI", "CM", "GA", "GH", "NG", "SN", "TD", "TG", "UG"])
     unless validator.valid?(country) || country.empty?
       fail ArgumentError, "invalid value for \"country\", must be one of #{validator.allowable_values}."
     end

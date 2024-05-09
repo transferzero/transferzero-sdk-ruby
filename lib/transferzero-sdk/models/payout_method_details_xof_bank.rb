@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"iban\": \"BJ0610100100144390000769\", # BBAN format   \"bank_name\": \"Bank Of Africa Bénin\",   \"bank_country\": \"BJ\", # ISO country code for Benin   \"bank_code\": \"BJ061\",   \"transfer_reason\": \"personal_account\" } ```  See [XOF Bank](https://docs.transferzero.com/docs/payout-details/#xofbank) documentation for the bank_code and transfer_reason lists
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"iban\": \"BJ0610100100144390000769\", # BBAN format   \"bank_name\": \"Bank Of Africa Bénin\",   \"bank_country\": \"BJ\", # ISO country code for Benin   \"bank_code\": \"BJ061\",   \"transfer_reason\": \"personal_account\",   \"narration\": \"Birthday Gift\" // Optional } ```  See [XOF Bank](https://docs.transferzero.com/docs/payout-details/#xofbank) documentation for the bank_code and transfer_reason lists
 class PayoutMethodDetailsXOFBank
   attr_accessor :first_name
 

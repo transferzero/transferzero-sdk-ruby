@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"+237674044436\", // E.164 international format   \"mobile_provider\": \"orange\", // or mtn\"   \"country\" // Optional; Values: \"CM\" } ```
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"+237674044436\", // E.164 international format   \"mobile_provider\": \"orange\",   \"country\": \"CM\" } ```
 class PayoutMethodDetailsXAFMobile
   attr_accessor :first_name
 
