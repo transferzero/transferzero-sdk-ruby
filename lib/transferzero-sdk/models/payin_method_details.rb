@@ -15,12 +15,6 @@ require 'date'
 module TransferZero
 # Fields needed by the payment processor. Depends on the chose payin type.  See the appropriate model details for more info:  - `NGN::Bank`: see [`PayinMethodDetailsNGNBank`](#model-PayinMethodDetailsNGNBank) - `GHS::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile) - `UGX::Mobile`: see [`PayinMethodDetailsMobile`](#model-PayinMethodDetailsMobile)  Note that some payin processors don't require additional input, these include `lhv` through `EUR::Bank` and `GBP::Bank`. Some providers like `providus` also have all of their fields set as optional, so you might not want to set any values. To use these providers please set this value to `{}` (an empty hash) 
 class PayinMethodDetails
-  # The payment method which the sender will use to make the payments. Options are `bank`, `card` or you can leave empty to support both.
-  attr_accessor :payment_method
-
-  # This is where the sender should be redirected back when the payment has been finished
-  attr_accessor :redirect_url
-
   # The phone number where the funds should be collected from
   attr_accessor :phone_number
 
@@ -37,8 +31,6 @@ class PayinMethodDetails
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
-      :'payment_method' => :'payment_method',
-      :'redirect_url' => :'redirect_url',
       :'phone_number' => :'phone_number',
       :'mobile_provider' => :'mobile_provider',
       :'country' => :'country',
@@ -50,8 +42,6 @@ class PayinMethodDetails
   # Attribute type mapping.
   def self.openapi_types
     {
-      :'payment_method' => :'String',
-      :'redirect_url' => :'String',
       :'phone_number' => :'String',
       :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
       :'country' => :'PayoutMethodCountryEnum',
@@ -83,14 +73,6 @@ class PayinMethodDetails
       end
       h[k.to_sym] = v
     }
-
-    if attributes.key?(:'payment_method')
-      self.payment_method = attributes[:'payment_method']
-    end
-
-    if attributes.key?(:'redirect_url')
-      self.redirect_url = attributes[:'redirect_url']
-    end
 
     if attributes.key?(:'phone_number')
       self.phone_number = attributes[:'phone_number']
@@ -147,8 +129,6 @@ class PayinMethodDetails
   def ==(o)
     return true if self.equal?(o)
     self.class == o.class &&
-        payment_method == o.payment_method &&
-        redirect_url == o.redirect_url &&
         phone_number == o.phone_number &&
         mobile_provider == o.mobile_provider &&
         country == o.country &&
@@ -165,7 +145,7 @@ class PayinMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [payment_method, redirect_url, phone_number, mobile_provider, country, otp, refund_address].hash
+    [phone_number, mobile_provider, country, otp, refund_address].hash
   end
 
 require 'active_support/core_ext/hash'

@@ -13,27 +13,22 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"redirect_url\": \"http://redirect.back.to\"   } ```
+# ```JSON   \"details\": {     \"phone_number\": \"+2347087661211\"   } ```
 class PayinMethodDetailsNGNBank
-  # The payment method which the sender will use to make the payments. Options are `bank`, `card` or you can leave empty to support both.
-  attr_accessor :payment_method
-
-  # This is where the sender should be redirected back when the payment has been finished
-  attr_accessor :redirect_url
+  # Sender's phone number
+  attr_accessor :phone_number
 
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
-      :'payment_method' => :'payment_method',
-      :'redirect_url' => :'redirect_url'
+      :'phone_number' => :'phone_number'
     }
   end
 
   # Attribute type mapping.
   def self.openapi_types
     {
-      :'payment_method' => :'String',
-      :'redirect_url' => :'String'
+      :'phone_number' => :'String'
     }
   end
 
@@ -52,12 +47,8 @@ class PayinMethodDetailsNGNBank
       h[k.to_sym] = v
     }
 
-    if attributes.key?(:'payment_method')
-      self.payment_method = attributes[:'payment_method']
-    end
-
-    if attributes.key?(:'redirect_url')
-      self.redirect_url = attributes[:'redirect_url']
+    if attributes.key?(:'phone_number')
+      self.phone_number = attributes[:'phone_number']
     end
   end
 
@@ -79,8 +70,7 @@ class PayinMethodDetailsNGNBank
   def ==(o)
     return true if self.equal?(o)
     self.class == o.class &&
-        payment_method == o.payment_method &&
-        redirect_url == o.redirect_url
+        phone_number == o.phone_number
   end
 
   # @see the `==` method
@@ -92,7 +82,7 @@ class PayinMethodDetailsNGNBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [payment_method, redirect_url].hash
+    [phone_number].hash
   end
 
 require 'active_support/core_ext/hash'
