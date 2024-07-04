@@ -4,15 +4,16 @@ require 'securerandom'
 require 'bundler/inline'
 
 gemfile do
-  gem "transferzero-sdk", "=1.0.0"
+  gem 'transferzero-sdk', git: 'git@github.com:transferzero/transferzero-sdk-ruby.git'
 end
 
 require 'transferzero-sdk'
 
 credentials = {
-    key: "<key>",
-    secret: "<secret>",
-    host: "https://api-sandbox.transferzero.com/v1"
+  key: "JgFgqlhxIp7yztdpQtKP+D9KbSCfG/Qz9qTXAYgBoDOX6cwxeVojq16QvOl4YUA35dKeOS4/vhIkUSP9KcLgkQ==",
+  secret: "t9vW9cXf7OQUbQFjN88dSfHeabb4/5FUK2lBKDtkZtlBngdj4E5rW6vc5ai9B8h/GGJIeaiTQaqMNf87TbIwgw==",
+  scheme: 'http',
+  host: 'http://localhost:3002/v1',
 }
 
 # Please see our documentation at https://docs.transferzero.com
@@ -25,6 +26,7 @@ class Client
       config.api_key = credentials[:key]
       config.api_secret = credentials[:secret]
       config.host = credentials[:host]
+      config.scheme = credentials[:scheme]
     end
   end
 
@@ -67,19 +69,33 @@ class Client
     begin
       api = TransferZero::SendersApi.new
       sender = TransferZero::Sender.new
-      sender.country = 'UG'
-      sender.phone_country = 'UG'
-      sender.phone_number = '752403639'
+      sender.type = 'person'
+      # sender.name = 'Mose Company'
+      # sender.trading_country = "US";
+      sender.ip = '127.0.0.1'
+      # sender.address_description = "Description"
+      # sender.documents = 'new ArrayList<>()'
+      # sender.legal_entity_type = "privately_owned_company"; #Company type, Optional
+      # sender.registration_date = "2012-01-25"; # Optional
+      # sender.registration_number = "VAT1234567"; # Optional
+      # sender.nature_of_business = "retail_trade"; # Industry, Optional
+      sender.identification_type = "OT"
+      sender.identification_number = "AB12345678"
+      sender.country = 'ZA'
+      sender.source_of_funds = "Salary"
+      sender.phone_country = 'ZA'
+      sender.phone_number = '+27732403639'
       sender.email = 'example@home.org'
-      sender.first_name = 'Johnny'
-      sender.last_name = 'English'
+      sender.first_name = 'First'
+      sender.last_name = 'Zero'
       sender.city = 'Kampala'
       sender.street = "Unknown 17-3"
       sender.address_description = "Description of address"
       sender.postal_code = "798983"
       sender.birth_date = "1900-12-31"
-      sender.ip = '127.0.0.1'
-      sender.external_id = 'SENDER-2b59def0' # Optional field for customer ID
+      sender.documents = ''
+      sender.external_id = "Sender:109"
+      sender.documents = ['test.doc','id.png']
 
       sender_request = TransferZero::SenderRequest.new
       sender_request.sender = sender
@@ -100,7 +116,7 @@ class Client
   def get_sender_by_external_id_example
     # Find more details on external IDs at https://docs.transferzero.com/docs/transaction-flow/#external-id
     begin
-      opts = { external_id: 'SENDER-2b59def0' }
+      opts = { external_id: '64315aaf-c64d-47e9-94ef-a8ab9ed23b27' }
       sender = TransferZero::SendersApi.new
       sender.get_senders(opts).object.first
     rescue TransferZero::ApiError => e
@@ -121,7 +137,7 @@ class Client
       sender_request = TransferZero::SenderRequest.new
       sender_request.sender = sender
 
-      api.patch_sender('ec33484c-4456-4625-a823-9704a3a54e68', sender_request)
+      api.patch_sender('abeece1b-ce15-496c-950f-6fd3ce2a79f5', sender_request)
     rescue TransferZero::ApiError => e
       if e.validation_error
         puts e.response_object("SenderResponse").object.errors
@@ -141,32 +157,47 @@ class Client
       sender = TransferZero::Sender.new
       # When adding a sender to transaction, please use either an id or external_id. Providing both will result in a validation error.
       # Please see our documentation at https://docs.transferzero.com/docs/transaction-flow/#sender
-      sender.id = 'ec33484c-4456-4625-a823-9704a3a54e68'
+      sender.id = '5e9b385e-62ab-414e-843e-29e2958ad284'#'cbe581c1-de2d-4cde-946b-a247db6c2f3d'#'abeece1b-ce15-496c-950f-6fd3ce2a79f5'#'6ab20696-8cd9-476b-9b2d-9656b9448f5b'
 
       # You can find the various payout options at https://docs.transferzero.com/docs/transaction-flow/#payout-details
-      ngn_bank_details = TransferZero::PayoutMethodDetails.new
-      ngn_bank_details.bank_account = '123456789'
-      ngn_bank_details.bank_account_type = TransferZero::PayoutMethodBankAccountTypeEnum::N20
-      ngn_bank_details.bank_code = '082'
-      ngn_bank_details.first_name = 'first'
-      ngn_bank_details.last_name = 'last'
+      # ngn_bank_details = TransferZero::PayoutMethodDetails.new
+      # ngn_bank_details.bank_account = '123456789'
+      # ngn_bank_details.bank_account_type = TransferZero::PayoutMethodBankAccountTypeEnum::N20
+      # ngn_bank_details.bank_code = '082'
+      # ngn_bank_details.first_name = 'first'
+      # ngn_bank_details.last_name = 'last'
+
+      zar_bank_details = TransferZero::PayoutMethodDetails.new
+      zar_bank_details.bank_account = '010234567890'
+      zar_bank_details.bank_account_type = TransferZero::PayoutMethodBankAccountTypeEnum::N20
+      zar_bank_details.bank_code = '632005'
+      zar_bank_details.first_name = 'Peace'
+      zar_bank_details.last_name = 'Lombard'
+      zar_bank_details.email = 'test@test.com'
+      zar_bank_details.phone_number = '+27119785313'
+      zar_bank_details.narration = 'Birthday Gift'
+
 
       payout_method = TransferZero::PayoutMethod.new
-      payout_method.type = 'NGN::Bank'
-      payout_method.details = ngn_bank_details
+      # payout_method.type = 'NGN::Bank'
+      # payout_method.details = ngn_bank_details
+
+      payout_method.type = 'ZAR::Bank'
+      payout_method.details = zar_bank_details
 
       # Please see https://docs.transferzero.com/docs/transaction-flow/#requested-amount-and-currency
       # on what the request amount and currencies do
       recipient = TransferZero::Recipient.new
-      recipient.requested_amount = 10000
-      recipient.requested_currency = 'NGN'
+      recipient.requested_amount = 13
+      # recipient.requested_currency = 'NGN'
+      recipient.requested_currency = 'ZAR'
       recipient.payout_method = payout_method
 
       # Similarly you can check https://docs.transferzero.com/docs/transaction-flow/#requested-amount-and-currency
       # on details about the input currency parameter
 
       # Find more details on external IDs at https://docs.transferzero.com/docs/transaction-flow/#external-id
-      transaction.external_id = 'TRANSACTION-1f834add' # Optional field for customer's ID
+      transaction.external_id = 'TRANSACTION33' # Optional field for customer's ID
       transaction.input_currency = 'GBP'
       transaction.sender = sender
       transaction.recipients = [recipient]
@@ -183,22 +214,6 @@ class Client
         puts e.response_object("TransactionResponse").object.errors
       else
         puts e
-      end
-    end
-  end
-
-  def get_transaction_by_external_id_example
-    # Please see https://docs.transferzero.com/docs/transaction-flow/#external-id
-    # for more details on external IDs
-    begin
-      opts = { external_id: 'TRANSACTION-1f834add' }
-      transaction = TransferZero::TransactionsApi.new
-      transaction.get_transactions(opts).object.first
-    rescue TransferZero::ApiError => e
-      if e.validation_error
-        puts e.response_object("TransactionResponse").object.errors
-      else
-        puts "Exception when calling TransactionsApi#get_transaction_by_external_id_example: #{e}"
       end
     end
   end
@@ -461,13 +476,13 @@ class Client
   end
 end
 
-# client = Client.new(credentials)
+client = Client.new(credentials)
 # client.list_currencies_example
 # client.account_validation_example
 # client.create_sender_example
 # client.get_sender_by_external_id_example
 # client.update_sender_example
-# client.create_transaction_example
+#  client.create_transaction_example
 # client.get_transaction_by_external_id_example
-# client.create_and_fund_transaction_example
+client.create_and_fund_transaction_example
 # client.webhook_parse_example
