@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **phone_number** | **String** |  | 
 **street** | **String** |  | 
 **transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | 
+**email** | **String** |  | [optional] 
+**reference** | **String** |  | [optional] 
 
 ## Code Sample
 
@@ -21,7 +23,9 @@ instance = TransferZero::PayoutMethodDetailsEGPCash.new(first_name: null,
                                  last_name: null,
                                  phone_number: null,
                                  street: null,
-                                 transfer_reason: null)
+                                 transfer_reason: null,
+                                 email: null,
+                                 reference: null)
 ```
 
 

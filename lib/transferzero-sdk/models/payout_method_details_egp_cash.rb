@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"middle_name\": \"Middle\",   \"last_name\": \"Last\",   \"phone_number\": \"+201023456789\",   \"street\": \"1 Main Street\",   \"transfer_reason\": \"personal_account\" }
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"middle_name\": \"Middle\",   \"last_name\": \"Last\",   \"phone_number\": \"+201023456789\",   \"street\": \"1 Main Street\",   \"transfer_reason\": \"personal_account\",   \"email\": \"recipient@email.com\", // Optional   \"reference\": \"3414006608\" // Optional reference that'll appear on the recipient pickup notification (if provided must be unique and exactly 10 digits long) }
 class PayoutMethodDetailsEGPCash
   attr_accessor :first_name
 
@@ -27,6 +27,10 @@ class PayoutMethodDetailsEGPCash
 
   attr_accessor :transfer_reason
 
+  attr_accessor :email
+
+  attr_accessor :reference
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -35,7 +39,9 @@ class PayoutMethodDetailsEGPCash
       :'last_name' => :'last_name',
       :'phone_number' => :'phone_number',
       :'street' => :'street',
-      :'transfer_reason' => :'transfer_reason'
+      :'transfer_reason' => :'transfer_reason',
+      :'email' => :'email',
+      :'reference' => :'reference'
     }
   end
 
@@ -47,7 +53,9 @@ class PayoutMethodDetailsEGPCash
       :'last_name' => :'String',
       :'phone_number' => :'String',
       :'street' => :'String',
-      :'transfer_reason' => :'PayoutMethodTransferReasonEnum'
+      :'transfer_reason' => :'PayoutMethodTransferReasonEnum',
+      :'email' => :'String',
+      :'reference' => :'String'
     }
   end
 
@@ -88,6 +96,14 @@ class PayoutMethodDetailsEGPCash
 
     if attributes.key?(:'transfer_reason')
       self.transfer_reason = attributes[:'transfer_reason']
+    end
+
+    if attributes.key?(:'email')
+      self.email = attributes[:'email']
+    end
+
+    if attributes.key?(:'reference')
+      self.reference = attributes[:'reference']
     end
   end
 
@@ -139,7 +155,9 @@ class PayoutMethodDetailsEGPCash
         last_name == o.last_name &&
         phone_number == o.phone_number &&
         street == o.street &&
-        transfer_reason == o.transfer_reason
+        transfer_reason == o.transfer_reason &&
+        email == o.email &&
+        reference == o.reference
   end
 
   # @see the `==` method
@@ -151,7 +169,7 @@ class PayoutMethodDetailsEGPCash
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, middle_name, last_name, phone_number, street, transfer_reason].hash
+    [first_name, middle_name, last_name, phone_number, street, transfer_reason, email, reference].hash
   end
 
 require 'active_support/core_ext/hash'
