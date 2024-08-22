@@ -534,6 +534,10 @@ class PayoutMethodDetails
       invalid_properties.push('invalid value for "branch_code", branch_code cannot be nil.')
     end
 
+    if @middle_name.nil?
+      invalid_properties.push('invalid value for "middle_name", middle_name cannot be nil.')
+    end
+
     if @ifsc_code.nil?
       invalid_properties.push('invalid value for "ifsc_code", ifsc_code cannot be nil.')
     end
@@ -565,6 +569,7 @@ class PayoutMethodDetails
     return false if @postal_code.nil?
     return false if @city.nil?
     return false if @branch_code.nil?
+    return false if @middle_name.nil?
     return false if @ifsc_code.nil?
     _one_of_found = false
     openapi_one_of.each do |_class|

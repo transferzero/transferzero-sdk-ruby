@@ -43,7 +43,7 @@ Name | Type | Description | Notes
 **registration_number** | **String** |  | [optional] 
 **nature_of_business** | [**PayoutMethodNatureOfBusinessEnum**](PayoutMethodNatureOfBusinessEnum.md) |  | [optional] 
 **legal_entity_type** | [**PayoutMethodLegalEntityTypeEnum**](PayoutMethodLegalEntityTypeEnum.md) |  | [optional] 
-**middle_name** | **String** |  | [optional] 
+**middle_name** | **String** |  | 
 **routing_number** | **String** |  | [optional] 
 **swift_code** | **String** |  | [optional] 
 **relationship_to_sender** | **String** |  | [optional] 

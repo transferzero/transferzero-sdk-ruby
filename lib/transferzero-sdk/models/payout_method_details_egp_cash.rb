@@ -115,6 +115,10 @@ class PayoutMethodDetailsEGPCash
       invalid_properties.push('invalid value for "first_name", first_name cannot be nil.')
     end
 
+    if @middle_name.nil?
+      invalid_properties.push('invalid value for "middle_name", middle_name cannot be nil.')
+    end
+
     if @last_name.nil?
       invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
     end
@@ -138,6 +142,7 @@ class PayoutMethodDetailsEGPCash
   # @return true if the model is valid
   def valid?
     return false if @first_name.nil?
+    return false if @middle_name.nil?
     return false if @last_name.nil?
     return false if @phone_number.nil?
     return false if @street.nil?
