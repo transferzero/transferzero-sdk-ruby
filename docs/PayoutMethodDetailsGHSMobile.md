@@ -1,4 +1,4 @@
-# TransferZero::PayoutMethodDetailsGHSBank
+# TransferZero::PayoutMethodDetailsGHSMobile
 
 ## Properties
 
@@ -6,9 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **first_name** | **String** |  | 
 **last_name** | **String** |  | 
-**bank_code** | **String** |  | 
-**bank_account** | **String** |  | 
-**birth_date** | **Date** | Date of birth of recipient | [optional] 
+**phone_number** | **String** |  | 
+**mobile_provider** | [**PayoutMethodMobileProviderEnum**](PayoutMethodMobileProviderEnum.md) |  | [optional] 
 **transfer_reason** | [**PayoutMethodTransferReasonEnum**](PayoutMethodTransferReasonEnum.md) |  | [optional] 
 
 ## Code Sample
@@ -16,11 +15,10 @@ Name | Type | Description | Notes
 ```ruby
 require 'TransferZero'
 
-instance = TransferZero::PayoutMethodDetailsGHSBank.new(first_name: null,
+instance = TransferZero::PayoutMethodDetailsGHSMobile.new(first_name: null,
                                  last_name: null,
-                                 bank_code: null,
-                                 bank_account: null,
-                                 birth_date: null,
+                                 phone_number: null,
+                                 mobile_provider: null,
                                  transfer_reason: null)
 ```
 

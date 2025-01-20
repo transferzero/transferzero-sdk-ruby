@@ -224,6 +224,7 @@ class PayoutMethodDetails
     :'PayoutMethodDetailsGBPBank',
     :'PayoutMethodDetailsGHSBank',
     :'PayoutMethodDetailsGHSCash',
+    :'PayoutMethodDetailsGHSMobile',
     :'PayoutMethodDetailsGNFMobile',
     :'PayoutMethodDetailsIBAN',
     :'PayoutMethodDetailsINRBank',

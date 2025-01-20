@@ -13,18 +13,15 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"bank_code\": \"030100\",   \"bank_account\": \"123456789\",   \"transfer_reason\": \"third_party_person_account\" } ```  The current banks supported and their bank_codes values are:  - Access Bank: 280100 - Barclays Bank: 030100 - GCB Bank: 040100 - Ecobank: 130100 - First National Bank: 330100 - Heritage Bank: 370100 - Prudential Bank: 180100 - Stanbic Bank: 190100 - Standard Chartered Bank: 020100 - United Bank for Africa: 060100 - Zenith Bank: 120100
-class PayoutMethodDetailsGHSBank
+# ```JSON \"details\": {   \"first_name\": \"First\",   \"last_name\": \"Last\",   \"phone_number\": \"+233302123456\", // E.164 international format   \"mobile_provider\": \"vodafone\",   \"transfer_reason\": \"third_party_person_account\" } ```
+class PayoutMethodDetailsGHSMobile
   attr_accessor :first_name
 
   attr_accessor :last_name
 
-  attr_accessor :bank_code
+  attr_accessor :phone_number
 
-  attr_accessor :bank_account
-
-  # Date of birth of recipient
-  attr_accessor :birth_date
+  attr_accessor :mobile_provider
 
   attr_accessor :transfer_reason
 
@@ -33,9 +30,8 @@ class PayoutMethodDetailsGHSBank
     {
       :'first_name' => :'first_name',
       :'last_name' => :'last_name',
-      :'bank_code' => :'bank_code',
-      :'bank_account' => :'bank_account',
-      :'birth_date' => :'birth_date',
+      :'phone_number' => :'phone_number',
+      :'mobile_provider' => :'mobile_provider',
       :'transfer_reason' => :'transfer_reason'
     }
   end
@@ -45,9 +41,8 @@ class PayoutMethodDetailsGHSBank
     {
       :'first_name' => :'String',
       :'last_name' => :'String',
-      :'bank_code' => :'String',
-      :'bank_account' => :'String',
-      :'birth_date' => :'Date',
+      :'phone_number' => :'String',
+      :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
       :'transfer_reason' => :'PayoutMethodTransferReasonEnum'
     }
   end
@@ -56,13 +51,13 @@ class PayoutMethodDetailsGHSBank
   # @param [Hash] attributes Model attributes in the form of hash
   def initialize(attributes = {})
     if (!attributes.is_a?(Hash))
-      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsGHSBank` initialize method"
+      fail ArgumentError, "The input argument (attributes) must be a hash in `TransferZero::PayoutMethodDetailsGHSMobile` initialize method"
     end
 
     # check to see if the attribute exists and convert string to symbol for hash key
     attributes = attributes.each_with_object({}) { |(k, v), h|
       if (!self.class.attribute_map.key?(k.to_sym))
-        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsGHSBank`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+        fail ArgumentError, "`#{k}` is not a valid attribute in `TransferZero::PayoutMethodDetailsGHSMobile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
       end
       h[k.to_sym] = v
     }
@@ -75,16 +70,12 @@ class PayoutMethodDetailsGHSBank
       self.last_name = attributes[:'last_name']
     end
 
-    if attributes.key?(:'bank_code')
-      self.bank_code = attributes[:'bank_code']
+    if attributes.key?(:'phone_number')
+      self.phone_number = attributes[:'phone_number']
     end
 
-    if attributes.key?(:'bank_account')
-      self.bank_account = attributes[:'bank_account']
-    end
-
-    if attributes.key?(:'birth_date')
-      self.birth_date = attributes[:'birth_date']
+    if attributes.key?(:'mobile_provider')
+      self.mobile_provider = attributes[:'mobile_provider']
     end
 
     if attributes.key?(:'transfer_reason')
@@ -104,12 +95,8 @@ class PayoutMethodDetailsGHSBank
       invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
     end
 
-    if @bank_code.nil?
-      invalid_properties.push('invalid value for "bank_code", bank_code cannot be nil.')
-    end
-
-    if @bank_account.nil?
-      invalid_properties.push('invalid value for "bank_account", bank_account cannot be nil.')
+    if @phone_number.nil?
+      invalid_properties.push('invalid value for "phone_number", phone_number cannot be nil.')
     end
 
     invalid_properties
@@ -120,8 +107,7 @@ class PayoutMethodDetailsGHSBank
   def valid?
     return false if @first_name.nil?
     return false if @last_name.nil?
-    return false if @bank_code.nil?
-    return false if @bank_account.nil?
+    return false if @phone_number.nil?
     true
   end
 
@@ -132,9 +118,8 @@ class PayoutMethodDetailsGHSBank
     self.class == o.class &&
         first_name == o.first_name &&
         last_name == o.last_name &&
-        bank_code == o.bank_code &&
-        bank_account == o.bank_account &&
-        birth_date == o.birth_date &&
+        phone_number == o.phone_number &&
+        mobile_provider == o.mobile_provider &&
         transfer_reason == o.transfer_reason
   end
 
@@ -147,7 +132,7 @@ class PayoutMethodDetailsGHSBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, bank_account, birth_date, transfer_reason].hash
+    [first_name, last_name, phone_number, mobile_provider, transfer_reason].hash
   end
 
 require 'active_support/core_ext/hash'
