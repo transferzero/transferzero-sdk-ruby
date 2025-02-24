@@ -158,10 +158,10 @@ class AccountValidationRequest
   # @return true if the model is valid
   def valid?
     return false if @country.nil?
-    country_validator = EnumAttributeValidator.new('String', ["BF", "BJ", "CG", "CI", "CM", "GA", "GH", "NG", "SN", "TD", "TG", "UG"])
+    country_validator = EnumAttributeValidator.new('String', ["BF", "BJ", "CG", "CI", "CM", "GA", "GH", "KE", "NG", "SN", "TD", "TG", "UG"])
     return false unless country_validator.valid?(@country)
     return false if @currency.nil?
-    currency_validator = EnumAttributeValidator.new('String', ["NGN", "GHS", "XOF", "UGX", "XAF"])
+    currency_validator = EnumAttributeValidator.new('String', ["NGN", "GHS", "KES", "XOF", "UGX", "XAF"])
     return false unless currency_validator.valid?(@currency)
     return false if @method.nil?
     method_validator = EnumAttributeValidator.new('String', ["bank", "mobile"])
@@ -172,7 +172,7 @@ class AccountValidationRequest
   # Custom attribute writer method checking allowed values (enum).
   # @param [Object] country Object to be assigned
   def country=(country)
-    validator = EnumAttributeValidator.new('String', ["BF", "BJ", "CG", "CI", "CM", "GA", "GH", "NG", "SN", "TD", "TG", "UG"])
+    validator = EnumAttributeValidator.new('String', ["BF", "BJ", "CG", "CI", "CM", "GA", "GH", "KE", "NG", "SN", "TD", "TG", "UG"])
     unless validator.valid?(country) || country.empty?
       fail ArgumentError, "invalid value for \"country\", must be one of #{validator.allowable_values}."
     end
@@ -182,7 +182,7 @@ class AccountValidationRequest
   # Custom attribute writer method checking allowed values (enum).
   # @param [Object] currency Object to be assigned
   def currency=(currency)
-    validator = EnumAttributeValidator.new('String', ["NGN", "GHS", "XOF", "UGX", "XAF"])
+    validator = EnumAttributeValidator.new('String', ["NGN", "GHS", "KES", "XOF", "UGX", "XAF"])
     unless validator.valid?(currency) || currency.empty?
       fail ArgumentError, "invalid value for \"currency\", must be one of #{validator.allowable_values}."
     end
