@@ -15,21 +15,22 @@ require 'date'
 module TransferZero
 class PayoutMethodMobileProviderEnum
   
-  ORANGE = "orange".freeze
-  TIGO = "tigo".freeze
-  MOOV = "moov".freeze
-  MTN = "mtn".freeze
+  AFRICELL = "africell".freeze
   AIRTEL = "airtel".freeze
   AIRTELTIGO = "airteltigo".freeze
-  VODAFONE = "vodafone".freeze
-  MPESA = "mpesa".freeze
-  AFRICELL = "africell".freeze
-  TELECOM = "telecom".freeze
-  MOBICASH = "mobicash".freeze
   EMONEY = "emoney".freeze
-  FREE = "free".freeze
   EXPRESSO = "expresso".freeze
+  FREE = "free".freeze
+  MOBICASH = "mobicash".freeze
+  MOOV = "moov".freeze
+  MPESA = "mpesa".freeze
+  MTN = "mtn".freeze
+  ORANGE = "orange".freeze
+  TELECOM = "telecom".freeze
+  TIGO = "tigo".freeze
   TMONEY = "tmoney".freeze
+  VODAFONE = "vodafone".freeze
+  WAVE = "wave".freeze
 
   # Builds the enum from string
   # @param [String] The enum value in the form of the string
