@@ -19,11 +19,14 @@ class AccountValidationResult
 
   attr_accessor :mapped_mobile_provider
 
+  attr_accessor :account_status
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
       :'account_name' => :'account_name',
-      :'mapped_mobile_provider' => :'mapped_mobile_provider'
+      :'mapped_mobile_provider' => :'mapped_mobile_provider',
+      :'account_status' => :'account_status'
     }
   end
 
@@ -31,7 +34,8 @@ class AccountValidationResult
   def self.openapi_types
     {
       :'account_name' => :'String',
-      :'mapped_mobile_provider' => :'String'
+      :'mapped_mobile_provider' => :'String',
+      :'account_status' => :'String'
     }
   end
 
@@ -57,6 +61,10 @@ class AccountValidationResult
     if attributes.key?(:'mapped_mobile_provider')
       self.mapped_mobile_provider = attributes[:'mapped_mobile_provider']
     end
+
+    if attributes.key?(:'account_status')
+      self.account_status = attributes[:'account_status']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -78,7 +86,8 @@ class AccountValidationResult
     return true if self.equal?(o)
     self.class == o.class &&
         account_name == o.account_name &&
-        mapped_mobile_provider == o.mapped_mobile_provider
+        mapped_mobile_provider == o.mapped_mobile_provider &&
+        account_status == o.account_status
   end
 
   # @see the `==` method
@@ -90,7 +99,7 @@ class AccountValidationResult
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [account_name, mapped_mobile_provider].hash
+    [account_name, mapped_mobile_provider, account_status].hash
   end
 
 require 'active_support/core_ext/hash'
