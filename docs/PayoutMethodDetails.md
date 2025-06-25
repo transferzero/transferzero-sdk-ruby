@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **bank_account** | **String** |  | 
 **bank_account_type** | [**PayoutMethodBankAccountTypeEnum**](PayoutMethodBankAccountTypeEnum.md) |  | [optional] 
 **birth_date** | **Date** | Date of birth of recipient | [optional] 
-**street** | **String** |  | [optional] 
+**street** | **String** |  | 
 **phone_number** | **String** |  | 
 **mobile_provider** | [**PayoutMethodMobileProviderEnum**](PayoutMethodMobileProviderEnum.md) |  | 
 **country** | [**PayoutMethodCountryEnum**](PayoutMethodCountryEnum.md) |  | 
@@ -33,7 +33,6 @@ Name | Type | Description | Notes
 **reference** | **String** |  | [optional] 
 **name** | **String** |  | 
 **address** | **String** |  | 
-**street** | **String** |  | 
 **postal_code** | **String** |  | 
 **city** | **String** |  | 
 **email** | **String** |  | [optional] 
@@ -86,7 +85,6 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  reference: null,
                                  name: null,
                                  address: null,
-                                 street: null,
                                  postal_code: null,
                                  city: null,
                                  email: null,

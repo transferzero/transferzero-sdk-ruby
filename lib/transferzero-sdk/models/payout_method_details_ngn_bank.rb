@@ -39,7 +39,7 @@ class PayoutMethodDetailsNGNBank
       :'bank_account' => :'bank_account',
       :'bank_account_type' => :'bank_account_type',
       :'birth_date' => :'birth_date',
-      :'street' => :'street"'
+      :'street' => :'street'
     }
   end
 
