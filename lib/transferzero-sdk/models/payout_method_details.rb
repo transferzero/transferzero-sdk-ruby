@@ -27,6 +27,8 @@ class PayoutMethodDetails
   # Date of birth of recipient
   attr_accessor :birth_date
 
+  attr_accessor :street
+
   attr_accessor :phone_number
 
   attr_accessor :mobile_provider
@@ -116,6 +118,7 @@ class PayoutMethodDetails
       :'bank_account' => :'bank_account',
       :'bank_account_type' => :'bank_account_type',
       :'birth_date' => :'birth_date',
+      :'street' => :'street"',
       :'phone_number' => :'phone_number',
       :'mobile_provider' => :'mobile_provider',
       :'country' => :'country',
@@ -168,6 +171,7 @@ class PayoutMethodDetails
       :'bank_account' => :'String',
       :'bank_account_type' => :'PayoutMethodBankAccountTypeEnum',
       :'birth_date' => :'Date',
+      :'street' => :'String',
       :'phone_number' => :'String',
       :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
       :'country' => :'PayoutMethodCountryEnum',
@@ -284,6 +288,10 @@ class PayoutMethodDetails
 
     if attributes.key?(:'birth_date')
       self.birth_date = attributes[:'birth_date']
+    end
+
+    if attributes.key?(:'street')
+      self.street = attributes[:'street']
     end
 
     if attributes.key?(:'phone_number')
@@ -602,6 +610,7 @@ class PayoutMethodDetails
         bank_account == o.bank_account &&
         bank_account_type == o.bank_account_type &&
         birth_date == o.birth_date &&
+        street == o.street &&
         phone_number == o.phone_number &&
         mobile_provider == o.mobile_provider &&
         country == o.country &&
@@ -653,7 +662,7 @@ class PayoutMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, bank_account, bank_account_type, birth_date, phone_number, mobile_provider, country, transfer_reason, iban, bank_name, bank_country, cash_provider, sort_code, bic, narration, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, branch_code, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type, middle_name, routing_number, swift_code, relationship_to_sender, pix_key_type, pix_key_value, ifsc_code].hash
+    [first_name, last_name, bank_code, bank_account, bank_account_type, birth_date, street, phone_number, mobile_provider, country, transfer_reason, iban, bank_name, bank_country, cash_provider, sort_code, bic, narration, sender_identity_card_type, sender_identity_card_id, sender_city_of_birth, sender_country_of_birth, sender_gender, reason, identity_card_type, identity_card_id, reference, name, address, street, postal_code, city, email, branch_code, transfer_reason_code, contact_first_name, contact_last_name, registration_number, nature_of_business, legal_entity_type, middle_name, routing_number, swift_code, relationship_to_sender, pix_key_type, pix_key_value, ifsc_code].hash
   end
 
 require 'active_support/core_ext/hash'

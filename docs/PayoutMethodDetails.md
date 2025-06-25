@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **bank_account** | **String** |  | 
 **bank_account_type** | [**PayoutMethodBankAccountTypeEnum**](PayoutMethodBankAccountTypeEnum.md) |  | [optional] 
 **birth_date** | **Date** | Date of birth of recipient | [optional] 
+**street** | **String** |  | [optional] 
 **phone_number** | **String** |  | 
 **mobile_provider** | [**PayoutMethodMobileProviderEnum**](PayoutMethodMobileProviderEnum.md) |  | 
 **country** | [**PayoutMethodCountryEnum**](PayoutMethodCountryEnum.md) |  | 
@@ -62,6 +63,7 @@ instance = TransferZero::PayoutMethodDetails.new(first_name: null,
                                  bank_account: null,
                                  bank_account_type: null,
                                  birth_date: null,
+                                 street: null,
                                  phone_number: null,
                                  mobile_provider: null,
                                  country: null,

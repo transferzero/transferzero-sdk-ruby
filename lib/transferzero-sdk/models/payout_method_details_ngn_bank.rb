@@ -13,7 +13,7 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"bank_code\": \"058\",     \"bank_account\": \"123456789\",     \"bank_account_type\": \"10\"       # 10 for saving       # 20 for current accounts   } ```  See [NGN Bank](https://docs.azafinance.com/docs/individual-payments/#ngnbank) documentation for the bank_code
+# ```JSON   \"details\": {     \"first_name\": \"First\",     \"last_name\": \"Last\",     \"bank_code\": \"058\",     \"bank_account\": \"123456789\",     \"bank_account_type\": \"10\", # 10 for saving, 20 for current accounts     \"street\": \"1 Main Street\"   } ```  See [NGN Bank](https://docs.azafinance.com/docs/individual-payments/#ngnbank) documentation for the bank_code
 class PayoutMethodDetailsNGNBank
   attr_accessor :first_name
 
@@ -28,6 +28,8 @@ class PayoutMethodDetailsNGNBank
   # Date of birth of recipient
   attr_accessor :birth_date
 
+  attr_accessor :street
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
@@ -36,7 +38,8 @@ class PayoutMethodDetailsNGNBank
       :'bank_code' => :'bank_code',
       :'bank_account' => :'bank_account',
       :'bank_account_type' => :'bank_account_type',
-      :'birth_date' => :'birth_date'
+      :'birth_date' => :'birth_date',
+      :'street' => :'street"'
     }
   end
 
@@ -48,7 +51,8 @@ class PayoutMethodDetailsNGNBank
       :'bank_code' => :'String',
       :'bank_account' => :'String',
       :'bank_account_type' => :'PayoutMethodBankAccountTypeEnum',
-      :'birth_date' => :'Date'
+      :'birth_date' => :'Date',
+      :'street' => :'String'
     }
   end
 
@@ -89,6 +93,10 @@ class PayoutMethodDetailsNGNBank
 
     if attributes.key?(:'birth_date')
       self.birth_date = attributes[:'birth_date']
+    end
+
+    if attributes.key?(:'street')
+      self.street = attributes[:'street']
     end
   end
 
@@ -135,7 +143,8 @@ class PayoutMethodDetailsNGNBank
         bank_code == o.bank_code &&
         bank_account == o.bank_account &&
         bank_account_type == o.bank_account_type &&
-        birth_date == o.birth_date
+        birth_date == o.birth_date &&
+        street == o.street
   end
 
   # @see the `==` method
@@ -147,7 +156,7 @@ class PayoutMethodDetailsNGNBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [first_name, last_name, bank_code, bank_account, bank_account_type, birth_date].hash
+    [first_name, last_name, bank_code, bank_account, bank_account_type, birth_date, street].hash
   end
 
 require 'active_support/core_ext/hash'
