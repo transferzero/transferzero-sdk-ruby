@@ -303,6 +303,8 @@ TransferZero.configure do |config|
   config.api_key = 'YOUR API KEY'
   config.api_secret = 'YOUR API SECRET'
   config.host = "https://api-sandbox.transferzero.com/v1"
+  // Optional
+  config.timeout = 30 // In seconds
 end
 
 begin
