@@ -13,22 +13,32 @@ OpenAPI Generator version: 4.0.0-beta3
 require 'date'
 
 module TransferZero
-# ```JSON   \"details\": {     \"phone_number\": \"+2347087661211\"   } ```
+# ```JSON   \"details\": {     \"phone_number\": \"+2348187221236\",     \"account_name\": \"Test Merchant\",     \"account_number\": \"1234567890\"   } ```
 class PayinMethodDetailsNGNBank
   # Sender's phone number
   attr_accessor :phone_number
 
+  # Merchant's virtual account name
+  attr_accessor :account_name
+
+  # Merchant's virtual account number
+  attr_accessor :account_number
+
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
     {
-      :'phone_number' => :'phone_number'
+      :'phone_number' => :'phone_number',
+      :'account_name' => :'account_name',
+      :'account_number' => :'account_number'
     }
   end
 
   # Attribute type mapping.
   def self.openapi_types
     {
-      :'phone_number' => :'String'
+      :'phone_number' => :'String',
+      :'account_name' => :'String',
+      :'account_number' => :'String'
     }
   end
 
@@ -50,6 +60,14 @@ class PayinMethodDetailsNGNBank
     if attributes.key?(:'phone_number')
       self.phone_number = attributes[:'phone_number']
     end
+
+    if attributes.key?(:'account_name')
+      self.account_name = attributes[:'account_name']
+    end
+
+    if attributes.key?(:'account_number')
+      self.account_number = attributes[:'account_number']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -70,7 +88,9 @@ class PayinMethodDetailsNGNBank
   def ==(o)
     return true if self.equal?(o)
     self.class == o.class &&
-        phone_number == o.phone_number
+        phone_number == o.phone_number &&
+        account_name == o.account_name &&
+        account_number == o.account_number
   end
 
   # @see the `==` method
@@ -82,7 +102,7 @@ class PayinMethodDetailsNGNBank
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [phone_number].hash
+    [phone_number, account_name, account_number].hash
   end
 
 require 'active_support/core_ext/hash'

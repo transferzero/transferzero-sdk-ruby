@@ -18,6 +18,12 @@ class PayinMethodDetails
   # The phone number where the funds should be collected from
   attr_accessor :phone_number
 
+  # Merchant's virtual account name
+  attr_accessor :account_name
+
+  # Merchant's virtual account number
+  attr_accessor :account_number
+
   attr_accessor :mobile_provider
 
   attr_accessor :country
@@ -32,6 +38,8 @@ class PayinMethodDetails
   def self.attribute_map
     {
       :'phone_number' => :'phone_number',
+      :'account_name' => :'account_name',
+      :'account_number' => :'account_number',
       :'mobile_provider' => :'mobile_provider',
       :'country' => :'country',
       :'otp' => :'otp',
@@ -43,6 +51,8 @@ class PayinMethodDetails
   def self.openapi_types
     {
       :'phone_number' => :'String',
+      :'account_name' => :'String',
+      :'account_number' => :'String',
       :'mobile_provider' => :'PayoutMethodMobileProviderEnum',
       :'country' => :'PayoutMethodCountryEnum',
       :'otp' => :'String',
@@ -76,6 +86,14 @@ class PayinMethodDetails
 
     if attributes.key?(:'phone_number')
       self.phone_number = attributes[:'phone_number']
+    end
+
+    if attributes.key?(:'account_name')
+      self.account_name = attributes[:'account_name']
+    end
+
+    if attributes.key?(:'account_number')
+      self.account_number = attributes[:'account_number']
     end
 
     if attributes.key?(:'mobile_provider')
@@ -130,6 +148,8 @@ class PayinMethodDetails
     return true if self.equal?(o)
     self.class == o.class &&
         phone_number == o.phone_number &&
+        account_name == o.account_name &&
+        account_number == o.account_number &&
         mobile_provider == o.mobile_provider &&
         country == o.country &&
         otp == o.otp &&
@@ -145,7 +165,7 @@ class PayinMethodDetails
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [phone_number, mobile_provider, country, otp, refund_address].hash
+    [phone_number, account_name, account_number, mobile_provider, country, otp, refund_address].hash
   end
 
 require 'active_support/core_ext/hash'
