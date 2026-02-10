@@ -16,8 +16,8 @@ require 'TransferZero'
 
 instance = TransferZero::ProofOfPayment.new(id: null,
                                  file_name: my_file.jpg,
-                                 thumbnail: https://bitpesa-development.s3.eu-west-1.amazonaws.com/my_file_thumb.jpg,
-                                 url: https://bitpesa-development.s3.eu-west-1.amazonaws.com/my_file.jpg)
+                                 thumbnail: https://bitpesa-development-reports.s3.eu-west-1.amazonaws.com/my_file_thumb.jpg,
+                                 url: https://bitpesa-development-reports.s3.eu-west-1.amazonaws.com/my_file.jpg)
 ```
 
 
