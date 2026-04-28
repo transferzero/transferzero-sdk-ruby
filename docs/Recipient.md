@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | [optional] 
 **type** | **String** | Type of recipient to create - either person or business (defaults to person)  | [optional] 
 **errors** | **Hash&lt;String, Array&lt;ValidationErrorDescription&gt;&gt;** | The fields that have some problems and don&#39;t pass validation | [optional] 
+**mandate_id** | **String** | The ID of the mandate that is related to this recipient. This field is present when a ZAR bank mandate signing is required or has been completed. | [optional] 
 
 ## Code Sample
 
@@ -57,7 +58,8 @@ instance = TransferZero::Recipient.new(requested_amount: 750.0,
                                  output_currency: NGN,
                                  id: 97e79719-06e4-4794-aeeb-d2d9415d983a,
                                  type: person,
-                                 errors: {&quot;phone_number&quot;:[{&quot;error&quot;:&quot;invalid&quot;}],&quot;documents&quot;:[{&quot;error&quot;:&quot;blank&quot;}]})
+                                 errors: {&quot;phone_number&quot;:[{&quot;error&quot;:&quot;invalid&quot;}],&quot;documents&quot;:[{&quot;error&quot;:&quot;blank&quot;}]},
+                                 mandate_id: 97e79719-06e4-4794-aeeb-d2d9415d983a)
 ```
 
 

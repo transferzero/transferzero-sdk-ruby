@@ -82,6 +82,9 @@ class Recipient
   # The fields that have some problems and don't pass validation
   attr_accessor :errors
 
+  # The ID of the mandate that is related to this recipient. This field is present when a ZAR bank mandate signing is required or has been completed.
+  attr_accessor :mandate_id
+
   class EnumAttributeValidator
     attr_reader :datatype
     attr_reader :allowable_values
@@ -130,7 +133,8 @@ class Recipient
       :'output_currency' => :'output_currency',
       :'id' => :'id',
       :'type' => :'type',
-      :'errors' => :'errors'
+      :'errors' => :'errors',
+      :'mandate_id' => :'mandate_id'
     }
   end
 
@@ -160,7 +164,8 @@ class Recipient
       :'output_currency' => :'String',
       :'id' => :'String',
       :'type' => :'String',
-      :'errors' => :'Hash<String, Array<ValidationErrorDescription>>'
+      :'errors' => :'Hash<String, Array<ValidationErrorDescription>>',
+      :'mandate_id' => :'String'
     }
   end
 
@@ -276,6 +281,10 @@ class Recipient
         self.errors = value
       end
     end
+
+    if attributes.key?(:'mandate_id')
+      self.mandate_id = attributes[:'mandate_id']
+    end
   end
 
   # Show invalid properties with the reasons. Usually used together with valid?
@@ -346,7 +355,8 @@ class Recipient
         output_currency == o.output_currency &&
         id == o.id &&
         type == o.type &&
-        errors == o.errors
+        errors == o.errors &&
+        mandate_id == o.mandate_id
   end
 
   # @see the `==` method
@@ -358,7 +368,7 @@ class Recipient
   # Calculates hash code according to all attributes.
   # @return [Integer] Hash code
   def hash
-    [requested_amount, requested_currency, payout_method, metadata, created_at, editable, retriable, input_usd_amount, may_cancel, state_reason, state_reason_details, state, transaction_id, transaction_external_id, transaction_state, exchange_rate, fee_fractional, input_amount, input_currency, output_amount, output_currency, id, type, errors].hash
+    [requested_amount, requested_currency, payout_method, metadata, created_at, editable, retriable, input_usd_amount, may_cancel, state_reason, state_reason_details, state, transaction_id, transaction_external_id, transaction_state, exchange_rate, fee_fractional, input_amount, input_currency, output_amount, output_currency, id, type, errors, mandate_id].hash
   end
 
 require 'active_support/core_ext/hash'
