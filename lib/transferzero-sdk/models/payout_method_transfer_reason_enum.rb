@@ -123,6 +123,21 @@ class PayoutMethodTransferReasonEnum
   OTHER_BUSINESS_SERVICES = "other_business_services".freeze
   INSTITUTIONAL_INVESTOR_DISINVESTMENT = "institutional_investor_disinvestment".freeze
   GOVERNMENT_SERVICES = "government_services".freeze
+  OWN_ACCOUNT = "own_account".freeze
+  DONATIONS_GIFTS = "donations_gifts".freeze
+  FAMILY_SUPPORT = "family_support".freeze
+  MORTGAGE_REPAYMENT = "mortgage_repayment".freeze
+  BUSINESS_TRAVEL = "business_travel".freeze
+  PERSONAL_TRAVEL = "personal_travel".freeze
+  MANAGEMENT_CONSULTING = "management_consulting".freeze
+  ADVERTISING_MARKET_RESEARCH = "advertising_market_research".freeze
+  CULTURAL_RECREATIONAL = "cultural_recreational".freeze
+  SALARY_RESIDENT_ABROAD = "salary_resident_abroad".freeze
+  SALARY_NON_RESIDENT_IN_SA = "salary_non_resident_in_sa".freeze
+  SALARY_FOREIGN_CONTRACT_IN_SA = "salary_foreign_contract_in_sa".freeze
+  COMMISSION_BROKERAGE = "commission_brokerage".freeze
+  INVESTMENT_INCOME = "investment_income".freeze
+  ARCHITECTURAL_ENGINEERING = "architectural_engineering".freeze
 
   # Builds the enum from string
   # @param [String] The enum value in the form of the string
