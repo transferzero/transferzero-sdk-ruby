@@ -18,7 +18,6 @@ class Mandate
   # ID of the mandate
   attr_accessor :id
 
-  # Current state of the mandate.  - `pending` — created, awaiting signing flow - `notified` — recipient has been notified to sign - `signed` — recipient signed; mandate is active - `failed` — signing flow failed (e.g. AVS/CDV rejection) - `bypassed` — administratively bypassed for an inward AZA payment
   attr_accessor :status
 
   # Numeric beneficiary type identifier. Identifies whether the mandate was issued for a natural person, sole proprietor, partnership, company, etc.
@@ -35,28 +34,6 @@ class Mandate
 
   # Timestamp when the mandate was last updated.
   attr_accessor :updated_at
-
-  class EnumAttributeValidator
-    attr_reader :datatype
-    attr_reader :allowable_values
-
-    def initialize(datatype, allowable_values)
-      @allowable_values = allowable_values.map do |value|
-        case datatype.to_s
-        when /Integer/i
-          value.to_i
-        when /Float/i
-          value.to_f
-        else
-          value
-        end
-      end
-    end
-
-    def valid?(value)
-      !value || allowable_values.include?(value)
-    end
-  end
 
   # Attribute mapping from ruby-style variable name to JSON key.
   def self.attribute_map
@@ -75,7 +52,7 @@ class Mandate
   def self.openapi_types
     {
       :'id' => :'String',
-      :'status' => :'String',
+      :'status' => :'MandateStatus',
       :'type_id' => :'Integer',
       :'reference' => :'String',
       :'signed_at' => :'DateTime',
@@ -138,19 +115,7 @@ class Mandate
   # Check to see if the all the properties in the model are valid
   # @return true if the model is valid
   def valid?
-    status_validator = EnumAttributeValidator.new('String', ["pending", "notified", "signed", "failed", "bypassed"])
-    return false unless status_validator.valid?(@status)
     true
-  end
-
-  # Custom attribute writer method checking allowed values (enum).
-  # @param [Object] status Object to be assigned
-  def status=(status)
-    validator = EnumAttributeValidator.new('String', ["pending", "notified", "signed", "failed", "bypassed"])
-    unless validator.valid?(status) || status.empty?
-      fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
-    end
-    @status = status
   end
 
   # Checks equality by comparing each attribute.
